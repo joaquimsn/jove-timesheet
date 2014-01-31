@@ -8,5 +8,5 @@
 		<pattern value="/" />
 		<view-id value="/public/index.xhtml" />
 	</url-mapping>
-
+	
 </pretty-config>
