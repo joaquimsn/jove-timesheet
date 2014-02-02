@@ -1,7 +1,9 @@
 package br.com.jovetecnologia.domain.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -13,7 +15,8 @@ import java.util.List;
 @Table(name="departamento")
 @NamedQuery(name="Departamento.findAll", query="SELECT d FROM Departamento d")
 public class Departamento implements Serializable {
-	private static final long serialVersionUID = 1L;
+	
+	private static final long serialVersionUID = -859501000444182315L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -98,6 +101,61 @@ public class Departamento implements Serializable {
 		funcionario.setDepartamento(null);
 
 		return funcionario;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ativo;
+		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
+		result = prime * result + ((empresa == null) ? 0 : empresa.hashCode());
+		result = prime * result + ((funcionarios == null) ? 0 : funcionarios.hashCode());
+		result = prime * result + idDepartamento;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Departamento other = (Departamento) obj;
+		if (ativo != other.ativo)
+			return false;
+		if (descricao == null) {
+			if (other.descricao != null)
+				return false;
+		} else if (!descricao.equals(other.descricao))
+			return false;
+		if (empresa == null) {
+			if (other.empresa != null)
+				return false;
+		} else if (!empresa.equals(other.empresa))
+			return false;
+		if (funcionarios == null) {
+			if (other.funcionarios != null)
+				return false;
+		} else if (!funcionarios.equals(other.funcionarios))
+			return false;
+		if (idDepartamento != other.idDepartamento)
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		return true;
 	}
 
 }

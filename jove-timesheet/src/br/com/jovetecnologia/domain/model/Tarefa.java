@@ -1,7 +1,9 @@
 package br.com.jovetecnologia.domain.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -13,7 +15,8 @@ import java.util.List;
 @Table(name="tarefa")
 @NamedQuery(name="Tarefa.findAll", query="SELECT t FROM Tarefa t")
 public class Tarefa implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = -8477097361045555138L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -85,6 +88,55 @@ public class Tarefa implements Serializable {
 		registro.setTarefa(null);
 
 		return registro;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ativo;
+		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
+		result = prime * result + idTarefa;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((registros == null) ? 0 : registros.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Tarefa other = (Tarefa) obj;
+		if (ativo != other.ativo)
+			return false;
+		if (descricao == null) {
+			if (other.descricao != null)
+				return false;
+		} else if (!descricao.equals(other.descricao))
+			return false;
+		if (idTarefa != other.idTarefa)
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (registros == null) {
+			if (other.registros != null)
+				return false;
+		} else if (!registros.equals(other.registros))
+			return false;
+		return true;
 	}
 
 }

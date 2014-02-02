@@ -10,7 +10,7 @@ CREATE TABLE empresa(
 	numero VARCHAR(10) NOT NULL,
 	bairro VARCHAR(50) NOT NULL,
 	complemento VARCHAR(50) NOT NULL,
-	cidade VARCHAR(50) NOT NULL,SS
+	cidade VARCHAR(50) NOT NULL,
 	uf VARCHAR(2) NOT NULL,
 	cep VARCHAR(9) NOT NULL,
 	telefone VARCHAR(15) NULL,
@@ -63,6 +63,7 @@ CREATE TABLE funcionario(
 	id_jornada_trabalho INT NOT NULL,
 	ativo INT NULL,
 	PRIMARY KEY (id_funcionario),
+	UNIQUE KEY (email),
 	CONSTRAINT fk_funcionario_fk_id_funcionario
 		FOREIGN KEY (fk_id_funcionario)
 		REFERENCES funcionario (id_funcionario),
@@ -76,12 +77,13 @@ CREATE TABLE funcionario(
 
 CREATE TABLE usuario(
 	id_usuario INT NOT NULL AUTO_INCREMENT,
-	nome VARCHAR(30) NOT NULL,
+	usuario VARCHAR(30) NOT NULL,
 	senha VARCHAR(30)NOT NULL,
 	nivel INT NOT NULL,
 	ativo INT NOT NULL,
 	id_funcionario INT NOT NULL,
 	PRIMARY KEY (id_usuario),
+	UNIQUE KEY (usuario),
 	CONSTRAINT fk_funcionario_id_funcionario
 		FOREIGN KEY (id_funcionario)
 		REFERENCES funcionario (id_funcionario) 
@@ -137,5 +139,3 @@ CREATE TABLE registro(
 		FOREIGN KEY (id_tarefa)
 		REFERENCES tarefa (id_tarefa)
 );
-
-

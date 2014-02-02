@@ -1,7 +1,9 @@
 package br.com.jovetecnologia.domain.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +16,8 @@ import java.util.List;
 @Table(name="funcionario")
 @NamedQuery(name="Funcionario.findAll", query="SELECT f FROM Funcionario f")
 public class Funcionario implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = -8915485994646358418L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -300,6 +303,157 @@ public class Funcionario implements Serializable {
 		usuario.setFuncionario(null);
 
 		return usuario;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ativo;
+		result = prime * result + ((bairro == null) ? 0 : bairro.hashCode());
+		result = prime * result + ((celular == null) ? 0 : celular.hashCode());
+		result = prime * result + ((cep == null) ? 0 : cep.hashCode());
+		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
+		result = prime * result + ((complemento == null) ? 0 : complemento.hashCode());
+		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+		result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
+		result = prime * result + ((departamento == null) ? 0 : departamento.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((funcionario == null) ? 0 : funcionario.hashCode());
+		result = prime * result + ((funcionarios == null) ? 0 : funcionarios.hashCode());
+		result = prime * result + ((genero == null) ? 0 : genero.hashCode());
+		result = prime * result + idFuncionario;
+		result = prime * result + ((jornadaTrabalho == null) ? 0 : jornadaTrabalho.hashCode());
+		result = prime * result + ((logradouro == null) ? 0 : logradouro.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+		result = prime * result + ((registros == null) ? 0 : registros.hashCode());
+		result = prime * result + ((telefoneFixo == null) ? 0 : telefoneFixo.hashCode());
+		result = prime * result + ((uf == null) ? 0 : uf.hashCode());
+		result = prime * result + ((usuarios == null) ? 0 : usuarios.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Funcionario other = (Funcionario) obj;
+		if (ativo != other.ativo)
+			return false;
+		if (bairro == null) {
+			if (other.bairro != null)
+				return false;
+		} else if (!bairro.equals(other.bairro))
+			return false;
+		if (celular == null) {
+			if (other.celular != null)
+				return false;
+		} else if (!celular.equals(other.celular))
+			return false;
+		if (cep == null) {
+			if (other.cep != null)
+				return false;
+		} else if (!cep.equals(other.cep))
+			return false;
+		if (cidade == null) {
+			if (other.cidade != null)
+				return false;
+		} else if (!cidade.equals(other.cidade))
+			return false;
+		if (complemento == null) {
+			if (other.complemento != null)
+				return false;
+		} else if (!complemento.equals(other.complemento))
+			return false;
+		if (cpf == null) {
+			if (other.cpf != null)
+				return false;
+		} else if (!cpf.equals(other.cpf))
+			return false;
+		if (dataNascimento == null) {
+			if (other.dataNascimento != null)
+				return false;
+		} else if (!dataNascimento.equals(other.dataNascimento))
+			return false;
+		if (departamento == null) {
+			if (other.departamento != null)
+				return false;
+		} else if (!departamento.equals(other.departamento))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (funcionario == null) {
+			if (other.funcionario != null)
+				return false;
+		} else if (!funcionario.equals(other.funcionario))
+			return false;
+		if (funcionarios == null) {
+			if (other.funcionarios != null)
+				return false;
+		} else if (!funcionarios.equals(other.funcionarios))
+			return false;
+		if (genero == null) {
+			if (other.genero != null)
+				return false;
+		} else if (!genero.equals(other.genero))
+			return false;
+		if (idFuncionario != other.idFuncionario)
+			return false;
+		if (jornadaTrabalho == null) {
+			if (other.jornadaTrabalho != null)
+				return false;
+		} else if (!jornadaTrabalho.equals(other.jornadaTrabalho))
+			return false;
+		if (logradouro == null) {
+			if (other.logradouro != null)
+				return false;
+		} else if (!logradouro.equals(other.logradouro))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (numero == null) {
+			if (other.numero != null)
+				return false;
+		} else if (!numero.equals(other.numero))
+			return false;
+		if (registros == null) {
+			if (other.registros != null)
+				return false;
+		} else if (!registros.equals(other.registros))
+			return false;
+		if (telefoneFixo == null) {
+			if (other.telefoneFixo != null)
+				return false;
+		} else if (!telefoneFixo.equals(other.telefoneFixo))
+			return false;
+		if (uf == null) {
+			if (other.uf != null)
+				return false;
+		} else if (!uf.equals(other.uf))
+			return false;
+		if (usuarios == null) {
+			if (other.usuarios != null)
+				return false;
+		} else if (!usuarios.equals(other.usuarios))
+			return false;
+		return true;
 	}
 
 }
