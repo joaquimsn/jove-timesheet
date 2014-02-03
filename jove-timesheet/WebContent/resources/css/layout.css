@@ -1,0 +1,38 @@
+*{
+	margin: 0px;
+	padding: opx;
+}
+
+/*===================================
+Configuração do Menu
+=====================================*/
+#header{
+	height: 100px;
+	background: #ddd;
+	box-shadow: 0 8px 6px -6px #777;
+}
+
+/*===================================
+Configuração do container
+=====================================*/
+#container{
+	width: 1024px;
+	height: 550px;
+	border-radius: 10px;
+	margin: 18px auto;
+	padding: 10px;
+	box-shadow: -4px 4px 5px -2px #777;
+}
+
+/*===================================
+Configuração Footer
+=====================================*/
+#footer{
+	height: 50px;
+	background: #ddd;
+	padding: 0;
+}
+
+#footer-conteudo{
+	
+}

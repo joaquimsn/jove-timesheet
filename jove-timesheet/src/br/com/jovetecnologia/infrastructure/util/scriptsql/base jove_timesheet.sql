@@ -22,7 +22,7 @@ CREATE TABLE departamento(
 	id_departamento INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(100) NOT NULL,
 	descricao VARCHAR(150) NOT NULL,
-	ativo INT NULL,
+	ativo BOOLEAN NULL,
 	id_empresa int NOT NULL,
 	PRIMARY KEY (id_departamento),
 	CONSTRAINT fk_empresa_id_empresa
@@ -38,7 +38,7 @@ CREATE TABLE jornada_trabalho(
 	jornada VARCHAR(50) NOT NULL,
 	tempo_refeicao TIME NOT NULL,
 	folga VARCHAR(25) NOT NULL,
-	ativo INT NULL,
+	ativo BOOLEAN NULL,
 	PRIMARY KEY (id_jornada_trabalho)
 );
 
@@ -61,7 +61,7 @@ CREATE TABLE funcionario(
 	fk_id_funcionario INT NOT NULL,
 	id_departamento INT NOT NULL,
 	id_jornada_trabalho INT NOT NULL,
-	ativo INT NULL,
+	ativo BOOLEAN NULL,
 	PRIMARY KEY (id_funcionario),
 	UNIQUE KEY (email),
 	CONSTRAINT fk_funcionario_fk_id_funcionario
@@ -76,13 +76,12 @@ CREATE TABLE funcionario(
 );
 
 CREATE TABLE usuario(
-	id_usuario INT NOT NULL AUTO_INCREMENT,
+	id_funcionario INT NOT NULL,
 	usuario VARCHAR(30) NOT NULL,
 	senha VARCHAR(30)NOT NULL,
 	nivel INT NOT NULL,
-	ativo INT NOT NULL,
-	id_funcionario INT NOT NULL,
-	PRIMARY KEY (id_usuario),
+	ativo BOOLEAN NOT NULL,
+	PRIMARY KEY (id_funcionario),
 	UNIQUE KEY (usuario),
 	CONSTRAINT fk_funcionario_id_funcionario
 		FOREIGN KEY (id_funcionario)
@@ -93,7 +92,7 @@ CREATE TABLE projeto(
 	id_projeto INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(100) NOT NULL,
 	descricao VARCHAR(200) NOT NULL,
-	ativo INT NULL,
+	ativo BOOLEAN NULL,
 	PRIMARY KEY (id_projeto)
 );
 
@@ -101,7 +100,7 @@ CREATE TABLE atividade(
 	id_atividade INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(100) NOT NULL,
 	descricao VARCHAR(200) NOT NULL,
-	ativo INT NULL,
+	ativo BOOLEAN NULL,
 	PRIMARY KEY (id_atividade)
 );
 
@@ -109,7 +108,7 @@ CREATE TABLE tarefa(
 	id_tarefa INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(100) NOT NULL,
 	descricao VARCHAR(200) NOT NULL,
-	ativo INT NULL,
+	ativo BOOLEAN NULL,
 	PRIMARY KEY (id_tarefa)
 );
 

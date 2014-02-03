@@ -6,21 +6,19 @@ import javax.persistence.*;
 
 import java.util.List;
 
-
 /**
  * The persistent class for the empresa database table.
- * 
  */
 @Entity
-@Table(name="empresa")
-@NamedQuery(name="Empresa.findAll", query="SELECT e FROM Empresa e")
+@Table(name = "empresa")
+@NamedQuery(name = "Empresa.findAll", query = "SELECT e FROM Empresa e")
 public class Empresa implements Serializable {
 
 	private static final long serialVersionUID = -2163362020390152398L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_empresa")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_empresa")
 	private int idEmpresa;
 
 	private String bairro;
@@ -41,171 +39,230 @@ public class Empresa implements Serializable {
 
 	private String numero;
 
-	@Column(name="razao_social")
+	@Column(name = "razao_social")
 	private String razaoSocial;
 
 	private String telefone;
 
 	private String uf;
 
-	//bi-directional many-to-one association to Departamento
-	@OneToMany(mappedBy="empresa")
+	// bi-directional many-to-one association to Departamento
+	@OneToMany(mappedBy = "empresa")
 	private List<Departamento> departamentos;
 
 	public Empresa() {
 	}
 
+	/**
+	 * @return the idEmpresa
+	 */
 	public int getIdEmpresa() {
-		return this.idEmpresa;
+		return idEmpresa;
 	}
 
+	/**
+	 * @param idEmpresa the idEmpresa to set
+	 */
 	public void setIdEmpresa(int idEmpresa) {
 		this.idEmpresa = idEmpresa;
 	}
 
+	/**
+	 * @return the bairro
+	 */
 	public String getBairro() {
-		return this.bairro;
+		return bairro;
 	}
 
+	/**
+	 * @param bairro the bairro to set
+	 */
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
 
+	/**
+	 * @return the cep
+	 */
 	public String getCep() {
-		return this.cep;
+		return cep;
 	}
 
+	/**
+	 * @param cep the cep to set
+	 */
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
 
+	/**
+	 * @return the cidade
+	 */
 	public String getCidade() {
-		return this.cidade;
+		return cidade;
 	}
 
+	/**
+	 * @param cidade the cidade to set
+	 */
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
 
+	/**
+	 * @return the cnpj
+	 */
 	public String getCnpj() {
-		return this.cnpj;
+		return cnpj;
 	}
 
+	/**
+	 * @param cnpj the cnpj to set
+	 */
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
 
+	/**
+	 * @return the complemento
+	 */
 	public String getComplemento() {
-		return this.complemento;
+		return complemento;
 	}
 
+	/**
+	 * @param complemento the complemento to set
+	 */
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
 
+	/**
+	 * @return the email
+	 */
 	public String getEmail() {
-		return this.email;
+		return email;
 	}
 
+	/**
+	 * @param email the email to set
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	/**
+	 * @return the fantasia
+	 */
 	public String getFantasia() {
-		return this.fantasia;
+		return fantasia;
 	}
 
+	/**
+	 * @param fantasia the fantasia to set
+	 */
 	public void setFantasia(String fantasia) {
 		this.fantasia = fantasia;
 	}
 
+	/**
+	 * @return the logradouro
+	 */
 	public String getLogradouro() {
-		return this.logradouro;
+		return logradouro;
 	}
 
+	/**
+	 * @param logradouro the logradouro to set
+	 */
 	public void setLogradouro(String logradouro) {
 		this.logradouro = logradouro;
 	}
 
+	/**
+	 * @return the numero
+	 */
 	public String getNumero() {
-		return this.numero;
+		return numero;
 	}
 
+	/**
+	 * @param numero the numero to set
+	 */
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
+	/**
+	 * @return the razaoSocial
+	 */
 	public String getRazaoSocial() {
-		return this.razaoSocial;
+		return razaoSocial;
 	}
 
+	/**
+	 * @param razaoSocial the razaoSocial to set
+	 */
 	public void setRazaoSocial(String razaoSocial) {
 		this.razaoSocial = razaoSocial;
 	}
 
+	/**
+	 * @return the telefone
+	 */
 	public String getTelefone() {
-		return this.telefone;
+		return telefone;
 	}
 
+	/**
+	 * @param telefone the telefone to set
+	 */
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
+	/**
+	 * @return the uf
+	 */
 	public String getUf() {
-		return this.uf;
+		return uf;
 	}
 
+	/**
+	 * @param uf the uf to set
+	 */
 	public void setUf(String uf) {
 		this.uf = uf;
 	}
 
+	/**
+	 * @return the departamentos
+	 */
 	public List<Departamento> getDepartamentos() {
-		return this.departamentos;
+		return departamentos;
 	}
 
+	/**
+	 * @param departamentos the departamentos to set
+	 */
 	public void setDepartamentos(List<Departamento> departamentos) {
 		this.departamentos = departamentos;
 	}
 
-	public Departamento addDepartamento(Departamento departamento) {
-		getDepartamentos().add(departamento);
-		departamento.setEmpresa(this);
-
-		return departamento;
-	}
-
-	public Departamento removeDepartamento(Departamento departamento) {
-		getDepartamentos().remove(departamento);
-		departamento.setEmpresa(null);
-
-		return departamento;
-	}
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((bairro == null) ? 0 : bairro.hashCode());
-		result = prime * result + ((cep == null) ? 0 : cep.hashCode());
-		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
-		result = prime * result + ((cnpj == null) ? 0 : cnpj.hashCode());
-		result = prime * result + ((complemento == null) ? 0 : complemento.hashCode());
-		result = prime * result + ((departamentos == null) ? 0 : departamentos.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((fantasia == null) ? 0 : fantasia.hashCode());
 		result = prime * result + idEmpresa;
-		result = prime * result + ((logradouro == null) ? 0 : logradouro.hashCode());
-		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
-		result = prime * result + ((razaoSocial == null) ? 0 : razaoSocial.hashCode());
-		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
-		result = prime * result + ((uf == null) ? 0 : uf.hashCode());
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -217,72 +274,7 @@ public class Empresa implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Empresa other = (Empresa) obj;
-		if (bairro == null) {
-			if (other.bairro != null)
-				return false;
-		} else if (!bairro.equals(other.bairro))
-			return false;
-		if (cep == null) {
-			if (other.cep != null)
-				return false;
-		} else if (!cep.equals(other.cep))
-			return false;
-		if (cidade == null) {
-			if (other.cidade != null)
-				return false;
-		} else if (!cidade.equals(other.cidade))
-			return false;
-		if (cnpj == null) {
-			if (other.cnpj != null)
-				return false;
-		} else if (!cnpj.equals(other.cnpj))
-			return false;
-		if (complemento == null) {
-			if (other.complemento != null)
-				return false;
-		} else if (!complemento.equals(other.complemento))
-			return false;
-		if (departamentos == null) {
-			if (other.departamentos != null)
-				return false;
-		} else if (!departamentos.equals(other.departamentos))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (fantasia == null) {
-			if (other.fantasia != null)
-				return false;
-		} else if (!fantasia.equals(other.fantasia))
-			return false;
 		if (idEmpresa != other.idEmpresa)
-			return false;
-		if (logradouro == null) {
-			if (other.logradouro != null)
-				return false;
-		} else if (!logradouro.equals(other.logradouro))
-			return false;
-		if (numero == null) {
-			if (other.numero != null)
-				return false;
-		} else if (!numero.equals(other.numero))
-			return false;
-		if (razaoSocial == null) {
-			if (other.razaoSocial != null)
-				return false;
-		} else if (!razaoSocial.equals(other.razaoSocial))
-			return false;
-		if (telefone == null) {
-			if (other.telefone != null)
-				return false;
-		} else if (!telefone.equals(other.telefone))
-			return false;
-		if (uf == null) {
-			if (other.uf != null)
-				return false;
-		} else if (!uf.equals(other.uf))
 			return false;
 		return true;
 	}

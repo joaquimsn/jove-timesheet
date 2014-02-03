@@ -6,120 +6,137 @@ import javax.persistence.*;
 
 import java.util.List;
 
-
 /**
  * The persistent class for the departamento database table.
- * 
  */
 @Entity
-@Table(name="departamento")
-@NamedQuery(name="Departamento.findAll", query="SELECT d FROM Departamento d")
+@Table(name = "departamento")
+@NamedQuery(name = "Departamento.findAll", query = "SELECT d FROM Departamento d")
 public class Departamento implements Serializable {
-	
-	private static final long serialVersionUID = -859501000444182315L;
+
+	private static final long serialVersionUID = -2875193932395234071L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_departamento")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_departamento")
 	private int idDepartamento;
 
-	private int ativo;
+	private byte ativo;
 
 	private String descricao;
 
 	private String nome;
 
-	//bi-directional many-to-one association to Empresa
+	// bi-directional many-to-one association to Empresa
 	@ManyToOne
-	@JoinColumn(name="id_empresa")
+	@JoinColumn(name = "id_empresa")
 	private Empresa empresa;
 
-	//bi-directional many-to-one association to Funcionario
-	@OneToMany(mappedBy="departamento")
+	// bi-directional many-to-one association to Funcionario
+	@OneToMany(mappedBy = "departamento")
 	private List<Funcionario> funcionarios;
 
 	public Departamento() {
 	}
 
+	/**
+	 * @return the idDepartamento
+	 */
 	public int getIdDepartamento() {
-		return this.idDepartamento;
+		return idDepartamento;
 	}
 
+	/**
+	 * @param idDepartamento the idDepartamento to set
+	 */
 	public void setIdDepartamento(int idDepartamento) {
 		this.idDepartamento = idDepartamento;
 	}
 
-	public int getAtivo() {
-		return this.ativo;
+	/**
+	 * @return the ativo
+	 */
+	public byte getAtivo() {
+		return ativo;
 	}
 
-	public void setAtivo(int ativo) {
+	/**
+	 * @param ativo the ativo to set
+	 */
+	public void setAtivo(byte ativo) {
 		this.ativo = ativo;
 	}
 
+	/**
+	 * @return the descricao
+	 */
 	public String getDescricao() {
-		return this.descricao;
+		return descricao;
 	}
 
+	/**
+	 * @param descricao the descricao to set
+	 */
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 
+	/**
+	 * @return the nome
+	 */
 	public String getNome() {
-		return this.nome;
+		return nome;
 	}
 
+	/**
+	 * @param nome the nome to set
+	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
+	/**
+	 * @return the empresa
+	 */
 	public Empresa getEmpresa() {
-		return this.empresa;
+		return empresa;
 	}
 
+	/**
+	 * @param empresa the empresa to set
+	 */
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
 
+	/**
+	 * @return the funcionarios
+	 */
 	public List<Funcionario> getFuncionarios() {
-		return this.funcionarios;
+		return funcionarios;
 	}
 
+	/**
+	 * @param funcionarios the funcionarios to set
+	 */
 	public void setFuncionarios(List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
 	}
 
-	public Funcionario addFuncionario(Funcionario funcionario) {
-		getFuncionarios().add(funcionario);
-		funcionario.setDepartamento(this);
-
-		return funcionario;
-	}
-
-	public Funcionario removeFuncionario(Funcionario funcionario) {
-		getFuncionarios().remove(funcionario);
-		funcionario.setDepartamento(null);
-
-		return funcionario;
-	}
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ativo;
-		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
-		result = prime * result + ((empresa == null) ? 0 : empresa.hashCode());
-		result = prime * result + ((funcionarios == null) ? 0 : funcionarios.hashCode());
 		result = prime * result + idDepartamento;
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -131,29 +148,7 @@ public class Departamento implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Departamento other = (Departamento) obj;
-		if (ativo != other.ativo)
-			return false;
-		if (descricao == null) {
-			if (other.descricao != null)
-				return false;
-		} else if (!descricao.equals(other.descricao))
-			return false;
-		if (empresa == null) {
-			if (other.empresa != null)
-				return false;
-		} else if (!empresa.equals(other.empresa))
-			return false;
-		if (funcionarios == null) {
-			if (other.funcionarios != null)
-				return false;
-		} else if (!funcionarios.equals(other.funcionarios))
-			return false;
 		if (idDepartamento != other.idDepartamento)
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
 			return false;
 		return true;
 	}

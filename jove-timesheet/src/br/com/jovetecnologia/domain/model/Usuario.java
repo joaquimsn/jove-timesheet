@@ -4,24 +4,22 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-
 /**
  * The persistent class for the usuario database table.
- * 
  */
 @Entity
-@Table(name="usuario")
-@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
+@Table(name = "usuario")
+@NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
 public class Usuario implements Serializable {
-	
-	private static final long serialVersionUID = -6156504375082672807L;
+
+	private static final long serialVersionUID = 3198675969842101851L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_usuario")
-	private int idUsuario;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_funcionario")
+	private int idFuncionario;
 
-	private int ativo;
+	private byte ativo;
 
 	private int nivel;
 
@@ -29,79 +27,112 @@ public class Usuario implements Serializable {
 
 	private String usuario;
 
-	//bi-directional many-to-one association to Funcionario
-	@ManyToOne
-	@JoinColumn(name="id_funcionario")
+	// bi-directional one-to-one association to Funcionario
+	@OneToOne
+	@JoinColumn(name = "id_funcionario")
 	private Funcionario funcionario;
 
 	public Usuario() {
 	}
 
-	public int getIdUsuario() {
-		return this.idUsuario;
+	/**
+	 * @return the idFuncionario
+	 */
+	public int getIdFuncionario() {
+		return idFuncionario;
 	}
 
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+	/**
+	 * @param idFuncionario the idFuncionario to set
+	 */
+	public void setIdFuncionario(int idFuncionario) {
+		this.idFuncionario = idFuncionario;
 	}
 
-	public int getAtivo() {
-		return this.ativo;
+	/**
+	 * @return the ativo
+	 */
+	public byte getAtivo() {
+		return ativo;
 	}
 
-	public void setAtivo(int ativo) {
+	/**
+	 * @param ativo the ativo to set
+	 */
+	public void setAtivo(byte ativo) {
 		this.ativo = ativo;
 	}
 
+	/**
+	 * @return the nivel
+	 */
 	public int getNivel() {
-		return this.nivel;
+		return nivel;
 	}
 
+	/**
+	 * @param nivel the nivel to set
+	 */
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
 
+	/**
+	 * @return the senha
+	 */
 	public String getSenha() {
-		return this.senha;
+		return senha;
 	}
 
+	/**
+	 * @param senha the senha to set
+	 */
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
 
+	/**
+	 * @return the usuario
+	 */
 	public String getUsuario() {
-		return this.usuario;
+		return usuario;
 	}
 
+	/**
+	 * @param usuario the usuario to set
+	 */
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
 
+	/**
+	 * @return the funcionario
+	 */
 	public Funcionario getFuncionario() {
-		return this.funcionario;
+		return funcionario;
 	}
 
+	/**
+	 * @param funcionario the funcionario to set
+	 */
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ativo;
-		result = prime * result + ((funcionario == null) ? 0 : funcionario.hashCode());
-		result = prime * result + idUsuario;
-		result = prime * result + nivel;
-		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
-		result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
+		result = prime * result + idFuncionario;
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -113,26 +144,7 @@ public class Usuario implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
-		if (ativo != other.ativo)
-			return false;
-		if (funcionario == null) {
-			if (other.funcionario != null)
-				return false;
-		} else if (!funcionario.equals(other.funcionario))
-			return false;
-		if (idUsuario != other.idUsuario)
-			return false;
-		if (nivel != other.nivel)
-			return false;
-		if (senha == null) {
-			if (other.senha != null)
-				return false;
-		} else if (!senha.equals(other.senha))
-			return false;
-		if (usuario == null) {
-			if (other.usuario != null)
-				return false;
-		} else if (!usuario.equals(other.usuario))
+		if (idFuncionario != other.idFuncionario)
 			return false;
 		return true;
 	}

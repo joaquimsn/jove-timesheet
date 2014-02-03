@@ -6,106 +6,118 @@ import javax.persistence.*;
 
 import java.util.List;
 
-
 /**
  * The persistent class for the tarefa database table.
- * 
  */
 @Entity
-@Table(name="tarefa")
-@NamedQuery(name="Tarefa.findAll", query="SELECT t FROM Tarefa t")
+@Table(name = "tarefa")
+@NamedQuery(name = "Tarefa.findAll", query = "SELECT t FROM Tarefa t")
 public class Tarefa implements Serializable {
 
-	private static final long serialVersionUID = -8477097361045555138L;
+	private static final long serialVersionUID = 8979888423992685324L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_tarefa")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_tarefa")
 	private int idTarefa;
 
-	private int ativo;
+	private byte ativo;
 
 	private String descricao;
 
 	private String nome;
 
-	//bi-directional many-to-one association to Registro
-	@OneToMany(mappedBy="tarefa")
+	// bi-directional many-to-one association to Registro
+	@OneToMany(mappedBy = "tarefa")
 	private List<Registro> registros;
 
 	public Tarefa() {
 	}
 
+	/**
+	 * @return the idTarefa
+	 */
 	public int getIdTarefa() {
-		return this.idTarefa;
+		return idTarefa;
 	}
 
+	/**
+	 * @param idTarefa the idTarefa to set
+	 */
 	public void setIdTarefa(int idTarefa) {
 		this.idTarefa = idTarefa;
 	}
 
-	public int getAtivo() {
-		return this.ativo;
+	/**
+	 * @return the ativo
+	 */
+	public byte getAtivo() {
+		return ativo;
 	}
 
-	public void setAtivo(int ativo) {
+	/**
+	 * @param ativo the ativo to set
+	 */
+	public void setAtivo(byte ativo) {
 		this.ativo = ativo;
 	}
 
+	/**
+	 * @return the descricao
+	 */
 	public String getDescricao() {
-		return this.descricao;
+		return descricao;
 	}
 
+	/**
+	 * @param descricao the descricao to set
+	 */
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 
+	/**
+	 * @return the nome
+	 */
 	public String getNome() {
-		return this.nome;
+		return nome;
 	}
 
+	/**
+	 * @param nome the nome to set
+	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
+	/**
+	 * @return the registros
+	 */
 	public List<Registro> getRegistros() {
-		return this.registros;
+		return registros;
 	}
 
+	/**
+	 * @param registros the registros to set
+	 */
 	public void setRegistros(List<Registro> registros) {
 		this.registros = registros;
 	}
 
-	public Registro addRegistro(Registro registro) {
-		getRegistros().add(registro);
-		registro.setTarefa(this);
-
-		return registro;
-	}
-
-	public Registro removeRegistro(Registro registro) {
-		getRegistros().remove(registro);
-		registro.setTarefa(null);
-
-		return registro;
-	}
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ativo;
-		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + idTarefa;
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((registros == null) ? 0 : registros.hashCode());
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -117,24 +129,7 @@ public class Tarefa implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Tarefa other = (Tarefa) obj;
-		if (ativo != other.ativo)
-			return false;
-		if (descricao == null) {
-			if (other.descricao != null)
-				return false;
-		} else if (!descricao.equals(other.descricao))
-			return false;
 		if (idTarefa != other.idTarefa)
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (registros == null) {
-			if (other.registros != null)
-				return false;
-		} else if (!registros.equals(other.registros))
 			return false;
 		return true;
 	}
