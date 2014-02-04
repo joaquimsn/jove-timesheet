@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<div id="header" >
+		<div id="logo-header" >
+		<div id="divisor-header" />
+		</div>
+		<div id="menus-header">
+			<p:commandLink styleClass="menu-registro" value="Registro" />
+			<div class="divisor-menus">|</div>
+			<p:commandLink styleClass="menu-cadastro" value="Cadastro" />
+			<div class="divisor-menus">|</div>
+			<p:commandLink styleClass="menu-acompanhamento" value="Acompanhamento" />
+			<div class="divisor-menus">|</div>
+			<p:commandLink styleClass="menu-relatorios" value="Relatórios" />
+			<div class="divisor-menus">|</div>
+			<p:commandLink styleClass="menu-meu-perfil" value="Meu Perfil" />
+			
+		</div>
+		
+		<div id="usuario-header">
+			<div id="div-usuario-logado">
+				<p:outputLabel value="Usuário logado: " styleClass="usuario-logado" />
+			</div>
+			<div id="div-menu-sair">
+				<p:commandLink styleClass="menu-sair" value="Sair" /> 
+			</div>
+		</div>
+	</div>
+
+</ui:composition>

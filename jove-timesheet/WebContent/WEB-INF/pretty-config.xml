@@ -9,4 +9,9 @@
 		<view-id value="/public/index.xhtml" />
 	</url-mapping>
 	
+	<url-mapping id="cadastro">
+		<pattern value="/cadastro" />
+		<view-id value="/restrict/administrador/cadastro.xhtml"/>
+	</url-mapping>
+	
 </pretty-config>

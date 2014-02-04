@@ -1,6 +1,10 @@
 *{
-	margin: 0px;
-	padding: opx;
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	height: 100%;
 }
 
 /*===================================
@@ -8,29 +12,159 @@ Configuração do Menu
 =====================================*/
 #header{
 	height: 100px;
+	width: 100%;
 	background: #ddd;
 	box-shadow: 0 8px 6px -6px #777;
+	position: fixed;
+	top: 0;
 }
+
+#logo-header{
+	float: left;
+	width: 200px;
+	height: 90px;
+	margin: 10px 0 0 5%;
+	background: url("../images/layout/jove-logo-128x70.png") no-repeat;
+}
+
+#divisor-header{
+	height: 80px;
+	width: 1px;
+	float: right;
+	background: #fff;
+	border: 1px solid #fff;
+	margin-right: -20%;
+}
+
+#menus-header{
+	width: 600px;
+	height: 40px;
+	margin: 55px auto 0 auto;
+}
+
+#menus-header a, .divisor-menus{
+	float: left !important;
+	text-decoration: none;
+	color: #fff;
+	transition: all 1.5s;
+}
+
+#menus-header a:hover{
+	color: #555;
+	background: #f6f6f6;
+	border-radius: 5px;
+	transition: all 1s;
+}
+
+.divisor-menus{
+	width: 4px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+}
+
+.menu-registro{
+	width: 80px !important;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+
+.menu-cadastro{
+	width: 80px !important;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+
+.menu-acompanhamento{
+	width: 160px !important;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+
+.menu-relatorios{
+	width: 100px !important;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+
+.menu-meu-perfil{
+	width: 100px !important;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+
+#usuario-header{
+	width: 250px;
+	height: 100px;
+	float: right;
+	margin: -100px 1%;
+}
+
+#div-usuario-logado{
+	width: 200px;
+	height: 30px;
+	margin: 5px 0 0;
+}
+
+.usuario-logado{
+	white-space: 90px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	font: verdana;
+	font-size: 0.8em;
+	color: #fff;
+}
+
+#div-menu-sair{
+	width: 50px;
+	height: 40px;
+	margin: 30px 0 0 200px;
+}
+
+#div-menu-sair a:hover{
+	color: #555;
+	background: #f6f6f6;
+	border-radius: 5px;
+}
+
+.menu-sair, a{
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1em;
+	color: #fff;
+}
+
 
 /*===================================
 Configuração do container
 =====================================*/
 #container{
 	width: 1024px;
-	height: 550px;
+	min-height: 550px;
 	border-radius: 10px;
-	margin: 18px auto;
+	background: black;
 	padding: 10px;
-	box-shadow: -4px 4px 5px -2px #777;
+	margin: 120px auto 60px auto;
 }
 
 /*===================================
 Configuração Footer
 =====================================*/
 #footer{
+	width: 100%;
 	height: 50px;
 	background: #ddd;
-	padding: 0;
+	position: fixed;
+	bottom: 0;	
 }
 
 #footer-conteudo{

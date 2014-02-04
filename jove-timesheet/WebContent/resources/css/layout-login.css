@@ -1,0 +1,65 @@
+/*===================================
+Configuração Genericas
+=====================================*/
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	height: 100%;
+	background: url("../images/layout/clock-hand.jpg");
+}
+
+/*===================================
+Configuração do formulario de login
+=====================================*/
+#formulario-login{
+	margin: 10% 35%;
+	width: 400px;
+	height: 350px;
+	background: #eee;
+	border: 1px solid;
+	border-radius: 10px;	
+}
+
+#logo-jove{
+	margin: 10px auto;
+	background-image: url("../images/layout/jove-logo-128x70.png");
+	width: 128px;
+	height: 70px;
+}
+
+#campos-login{
+	width: 350px;
+	margin: 50px auto 25px auto;
+}
+
+/*===================================
+Configuração dos campos do formulario de login
+=====================================*/
+.div-usuario{
+	width: 300px;
+	height: 50px;
+	margin: 0 auto;
+}
+
+.input-usuario{
+	margin-left: 10px !important;
+}
+
+.div-senha{
+	width: 300px;
+	height: 50px;
+	margin: 0 auto;
+}
+
+.input-senha{
+	margin-left: 19px !important;
+}
+
+.div-botoes{
+	width: 100px;
+	height: 75px;
+	margin: 0 auto;
+}

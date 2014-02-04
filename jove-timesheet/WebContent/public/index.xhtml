@@ -1,17 +1,45 @@
-<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 	<h:head>
+		<!-- Aqui vai as tags para definição dos padrões da pagina -->
 		<meta http-equiv="restrict-type" content="text/html; charset=UTF-8" />
+		
+		<!--Aqui vai os CSS e javascript -->
+		<link rel="stylesheet" type="text/css" href="resources/css/layout-login.css" />
+		
+		<title>JOVE TimeSheet - LOGIN </title>
 	</h:head>
 	
 	<h:body>
-		Teste
+		<div id="container">
+			<h:form id="formulario-login">
+				<div id="logo-jove" ></div>
+				
+				<p:messages id="messages" autoUpdate="true" showDetail="true"  closable="true" />
+				
+				<div id="campos-login">
+					<div class="div-usuario">
+						<p:outputLabel value="Usuário:"/>
+						<p:inputText styleClass="input-usuario" title="Usuário" maxlength="30" 
+							value="#{loginBean.usuarioSelecionado.usuario}" requiredMessage="Informe o nome do usuário" required="true"/>
+					</div>
+					<div class="div-senha">
+						<p:outputLabel value="Senha:"/>
+						<p:password styleClass="input-senha" title="Senha" maxlength="16" 
+							value="#{loginBean.usuarioSelecionado.senha}" vrequiredMessage="Informe a senha" required="true" />
+					</div>
+				</div>
+				<div class="div-botoes">
+					<p:commandButton value="Acessar" styleClass="btn-acessar" actionListener="#{loginBean.fazLogin()}"/>
+				</div>
+				
+			</h:form>
+		</div>	
 	</h:body>
 
 </html>
