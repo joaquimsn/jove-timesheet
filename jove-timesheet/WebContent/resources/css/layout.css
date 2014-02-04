@@ -21,100 +21,106 @@ Configuração do Menu
 
 #logo-header{
 	float: left;
-	width: 200px;
-	height: 90px;
-	margin: 10px 0 0 5%;
-	background: url("../images/layout/jove-logo-128x70.png") no-repeat;
+	width: 12.5em;
+	height: 5.625em;
+	margin: 0.625em 0 0 2em;
+	background: url("../images/layout/jove-logo-160x80.png") no-repeat;
 }
 
 #divisor-header{
-	height: 80px;
-	width: 1px;
+	height: 5em;
+	width: 0.1em;
 	float: right;
 	background: #fff;
-	border: 1px solid #fff;
-	margin-right: -20%;
+	border: 0.1em solid #fff;
 }
 
 #menus-header{
-	width: 600px;
-	height: 40px;
-	margin: 55px auto 0 auto;
+	width: 37.5em;
+	height: 2.5;
+	margin: 3.4375em auto 0 auto;
 }
 
 #menus-header a, .divisor-menus{
 	float: left !important;
 	text-decoration: none;
 	color: #fff;
-	transition: all 1.5s;
 }
 
 #menus-header a:hover{
 	color: #555;
 	background: #f6f6f6;
-	border-radius: 5px;
+	border-radius: 0.3125em;
 	transition: all 1s;
 }
 
-.divisor-menus{
-	width: 4px;
-	height: 40px;
+.divisor-menus {
+	width: 0.01em;
+	height: 1em;
 	text-align: center;
-	line-height: 40px;
+	line-height: 1em;
+	border: 0.1em solid;
+	background: #fff;
+	margin: 0.85em 0 0.65em;
 }
 
 .menu-registro{
-	width: 80px !important;
-	height: 40px;
-	line-height: 40px;
+	width: 5em !important;
+	height: 2.5em;
+	line-height: 2.5em;
 	text-align: center;
+	transition: all 1.5s;
 }
 
 .menu-cadastro{
-	width: 80px !important;
-	height: 40px;
-	line-height: 40px;
+	width: 5em !important;
+	height: 2.5em;
+	line-height: 2.5em;
 	text-align: center;
+	transition: all 1.5s;
 }
 
 .menu-acompanhamento{
-	width: 160px !important;
-	height: 40px;
-	line-height: 40px;
+	width: 10em !important;
+	height: 2.5em;
+	line-height: 2.5em;
 	text-align: center;
+	transition: all 1.5s;
 }
 
 .menu-relatorios{
-	width: 100px !important;
-	height: 40px;
-	line-height: 40px;
+	width: 6.25em !important;
+	height: 2.5em;
+	line-height: 2.5em;
 	text-align: center;
+	transition: all 1.5s;
 }
 
 .menu-meu-perfil{
-	width: 100px !important;
-	height: 40px;
-	line-height: 40px;
+	width: 6.25em !important;
+	height: 2.5em;
+	line-height: 2.5em;
 	text-align: center;
+	transition: all 1.5s;
 }
 
 #usuario-header{
-	width: 250px;
-	height: 100px;
+	width: 15.625em;
+	height: 6.25em;
 	float: right;
-	margin: -100px 1%;
+	margin: -3.9em 1%;
 }
 
 #div-usuario-logado{
-	width: 200px;
-	height: 30px;
-	margin: 5px 0 0;
+	width: 12.5em;
+	height: 1.875em;
+	margin: 0.3125em 0 0;
 }
 
 .usuario-logado{
-	white-space: 90px;
-	height: 30px;
-	line-height: 30px;
+	white-space: 5.625em;
+	height: 1.875em;
+	line-height: 1.875em;
 	text-align: center;
 	font: verdana;
 	font-size: 0.8em;
@@ -122,21 +128,22 @@ Configuração do Menu
 }
 
 #div-menu-sair{
-	width: 50px;
-	height: 40px;
-	margin: 30px 0 0 200px;
+	width: 3.125em;
+	height: 2.5em;
+	margin: 1.875em 0 0 12.5em;
 }
 
 #div-menu-sair a:hover{
 	color: #555;
 	background: #f6f6f6;
-	border-radius: 5px;
+	border-radius: 0.3125em;
+	transition: all 1.5s;
 }
 
 .menu-sair, a{
-	width: 50px;
-	height: 40px;
-	line-height: 40px;
+	width: 3.125em;
+	height: 2.5em;
+	line-height: 2.5em;
 	text-align: center;
 	text-decoration: none;
 	font-size: 1em;
@@ -164,7 +171,8 @@ Configuração Footer
 	height: 50px;
 	background: #ddd;
 	position: fixed;
-	bottom: 0;	
+	bottom: 0;
+	box-shadow: -2px 0px 6px 3px #777;
 }
 
 #footer-conteudo{
