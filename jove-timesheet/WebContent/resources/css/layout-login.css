@@ -1,65 +1,125 @@
 /*===================================
 Configuração Genericas
 =====================================*/
-*{
+* {
 	margin: 0;
 	padding: 0;
 }
 
-body{
+body {
 	height: 100%;
-	background: url("../images/layout/clock-hand.jpg");
+	/*Background responsivo*/
+	background: url("../images/layout/clock-hand.jpg") no-repeat center fixed;
+	background-size: cover; /*Css padrão*/
+	-webkit-background-size: cover; /*Css safari e chrome*/
+	-moz-background-size: cover; /*Css firefox*/
+	-ms-background-size: cover; /*Css IE não use mer#^@%#*/
+	-o-background-size: cover; /*Css Opera*/
+}
+
+/*===================================
+Configuração do header
+=====================================*/
+#header-login{
+	width: 100%;
+	height: 45px;
+	position: fixed;
+	top: 0;
+	background: #eee;
+	box-shadow: 0 2px 2px  #777;
+}
+
+#div-slogan{
+	width: 40em;
+	height: 2.5em;
+}
+
+#logo-jove-header{
+	background: url("../images/layout/jove-logo-mini.png") no-repeat !important;
+	width: 53px;
+	height: 32px;
+	margin: 7px 0 0 5px;
+}
+
+#div-slogan p{
+	width: 40em;
+	height: 1.5em;
+	line-height: 1.5em;
+	text-align: center;
+	font-family: verdana, arial, sans-serif;
+	font-size: 0.8em;
+	color: #6f6f6f;
+	margin: -28px 0 20px 60px;
+}
+
+#div-contato{
+	width: 35em;
+	height: 2.5em;
+	float: right;
+	margin: -43px 0 0;
+}
+
+#div-contato p{
+	width: 40em;
+	height: 2.5em;
+	line-height: 2.5em;
+	text-align: center;
+	font-family: verdana, arial, sans-serif;
+	font-size: 0.8em;
+	float: right;
+	color: #6f6f6f;
 }
 
 /*===================================
 Configuração do formulario de login
 =====================================*/
-#formulario-login{
-	margin: 10% 35%;
+#formulario-login {
+	margin: 13% 33%;
 	width: 400px;
-	height: 350px;
+	height: 300px;
 	background: #eee;
 	border: 1px solid;
-	border-radius: 10px;	
+	border-radius: 10px;
 }
 
-#logo-jove{
-	margin: 10px auto;
+#logo-jove {
+	margin: 10px;
 	background-image: url("../images/layout/jove-logo-128x70.png");
 	width: 128px;
 	height: 70px;
 }
 
-#campos-login{
+#campos-login {
 	width: 350px;
-	margin: 50px auto 25px auto;
+	margin: 40px auto 5px auto;
 }
 
 /*===================================
 Configuração dos campos do formulario de login
 =====================================*/
-.div-usuario{
+.div-usuario {
 	width: 300px;
 	height: 50px;
 	margin: 0 auto;
 }
 
-.input-usuario{
+.input-usuario {
 	margin-left: 10px !important;
 }
 
-.div-senha{
+.div-senha {
 	width: 300px;
 	height: 50px;
 	margin: 0 auto;
 }
 
-.input-senha{
+.input-senha {
 	margin-left: 19px !important;
 }
 
-.div-botoes{
+.div-botoes {
 	width: 100px;
 	height: 75px;
-	margin: 0 auto;
+	margin:0 70px 0;
+	float: right;
 }

@@ -16,6 +16,14 @@
 	</h:head>
 	
 	<h:body>
+		<div id="header-login">
+			<div id="div-slogan">
+				<div id="logo-jove-header" />
+				<p>JOVE INOVAÇÂO E TECNOLOGIA - Serviços de Consultoria e Treinamento</p>
+			</div>
+			<div id="div-contato"><p>Suporte:  tel: 55-11 2446-2563 | Email: suporte@jovelogistica.com.br</p></div>
+		</div>
+		
 		<div id="container">
 			<h:form id="formulario-login">
 				<div id="logo-jove" ></div>
@@ -24,12 +32,12 @@
 				
 				<div id="campos-login">
 					<div class="div-usuario">
-						<p:outputLabel value="Usuário:"/>
+						<p:outputLabel value="Usuário"/>
 						<p:inputText styleClass="input-usuario" title="Usuário" maxlength="30" 
 							value="#{loginBean.usuarioSelecionado.usuario}" requiredMessage="Informe o nome do usuário" required="true"/>
 					</div>
 					<div class="div-senha">
-						<p:outputLabel value="Senha:"/>
+						<p:outputLabel value="Senha"/>
 						<p:password styleClass="input-senha" title="Senha" maxlength="16" 
 							value="#{loginBean.usuarioSelecionado.senha}" vrequiredMessage="Informe a senha" required="true" />
 					</div>
