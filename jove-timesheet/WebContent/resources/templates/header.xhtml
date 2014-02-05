@@ -7,30 +7,47 @@
 	xmlns:p="http://primefaces.org/ui">
 	
 	<div id="header" >
-		<div id="logo-header" >
+		<div id="div-header-esquerda">
+			<div id="div-logo" >
+				<h:graphicImage value="/resources/images/layout/jove-logo-128x70.png"  styleClass="logo-header" />
+			</div>
 			<div id="divisor-header" />
 		</div>
 		
-		<div id="menus-header">
-		
-			<p:commandLink styleClass="menu-label" value="Registro" />
-			<div class="divisor-menus" />
-			<p:commandLink styleClass="menu-label" value="Cadastro" />
-			<div class="divisor-menus" />
-			<p:commandLink styleClass="menu-label" value="Acompanhamento" />
-			<div class="divisor-menus" />
-			<p:commandLink styleClass="menu-label" value="Meu Perfil" />
-			
+		<div id="div-header-direita">
+			<div id="menus-header">
+				<ul>
+					<li>
+						<p:commandLink styleClass="menu-label" value="Registro" />
+					</li>
+					
+					<li class="divisor-menus" />
+					
+					<li>
+						<p:commandLink styleClass="menu-label" value="Cadastro" />
+					</li>
+					
+					<li class="divisor-menus" />
+					
+					<li>	
+						<p:commandLink styleClass="menu-label" value="Acompanhamento" />
+					</li>
+					
+					<li class="divisor-menus" />
+					
+					<li>
+						<p:commandLink styleClass="menu-label" value="Meu Perfil" />
+					</li>
+					
+					<li class="divisor-menus" />
+					
+					<li>
+						<p:commandLink styleClass="menu-label" value="Sair" />
+					</li>
+				</ul>
+			</div>
 		</div>
 		
-		<div id="usuario-header">
-			<div id="div-usuario-logado">
-				<p:outputLabel value="Usuário logado: " styleClass="usuario-logado" />
-			</div>
-			<div id="div-menu-sair">
-				<p:commandLink styleClass="menu-sair" value="Sair" /> 
-			</div>
-		</div>
 	</div>
 
 </ui:composition>

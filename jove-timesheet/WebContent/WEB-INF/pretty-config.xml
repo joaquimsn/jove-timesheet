@@ -14,4 +14,9 @@
 		<view-id value="/restrict/administrador/cadastro.xhtml"/>
 	</url-mapping>
 	
+	<url-mapping id="registro">
+		<pattern value="/registro" />
+		<view-id value="/restrict/administrador/cadastro.xhtml"/>
+	</url-mapping>
+	
 </pretty-config>

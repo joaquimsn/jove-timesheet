@@ -28,22 +28,22 @@
 			<h:form id="formulario-login">
 				<div id="logo-jove" ></div>
 				
-				<p:messages id="messages" autoUpdate="true" showDetail="true"  closable="true" />
+				<p:messages id="messages" autoUpdate="true" showDetail="false"  closable="true" />
 				
 				<div id="campos-login">
 					<div class="div-usuario">
 						<p:outputLabel value="Usuário"/>
 						<p:inputText styleClass="input-usuario" title="Usuário" maxlength="30" 
-							value="#{loginBean.usuarioSelecionado.usuario}" requiredMessage="Informe o nome do usuário" required="true"/>
+							value="#{loginBean.usuarioSelecionado.usuario}" />
 					</div>
 					<div class="div-senha">
 						<p:outputLabel value="Senha"/>
 						<p:password styleClass="input-senha" title="Senha" maxlength="16" 
-							value="#{loginBean.usuarioSelecionado.senha}" vrequiredMessage="Informe a senha" required="true" />
+							value="#{loginBean.usuarioSelecionado.senha}" />
 					</div>
 				</div>
 				<div class="div-botoes">
-					<p:commandButton value="Acessar" styleClass="btn-acessar" actionListener="#{loginBean.fazLogin()}"/>
+					<p:commandButton value="Acessar" styleClass="btn-acessar" action="#{loginBean.abrirPagina()}"/>
 				</div>
 				
 			</h:form>

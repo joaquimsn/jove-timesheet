@@ -6,7 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import br.com.jovetecnologia.domain.model.Usuario;
-import br.com.jovetecnologia.infrastructure.util.DAOFactory;
+import br.com.jovetecnologia.web.util.IOutcome;
 
 @ManagedBean
 @SessionScoped
@@ -15,22 +15,25 @@ public class LoginBean implements Serializable {
 	private static final long serialVersionUID = 5185840091249342115L;
 
 	private Usuario usuarioSelecionado;
-	private DAOFactory daoFactory;
+	private String nome;
+	private String senha;
 
 	/**
 	 * Inicializa os objetos da class
 	 * @author Joaquim Neto
 	 */
-	public LoginBean() {
+	public String abrirPagina() {
+		
 		usuarioSelecionado = new Usuario();
-		daoFactory = new DAOFactory();
+		
+		return IOutcome.REGISTRO;
 	}
 
 	/**
 	 * Realiza o login verificando o usuário e a senha na base
 	 * @author Joaquim Neto
 	 */
-	public void fazLogin() {
+	private void fazLogin() {
 
 	}
 

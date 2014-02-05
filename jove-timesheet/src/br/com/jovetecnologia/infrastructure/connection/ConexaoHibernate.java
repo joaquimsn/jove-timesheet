@@ -7,6 +7,11 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
+/**
+ * Realiza a conexão com a base de dados
+ * @author Joaquim Neto
+ *
+ */
 public class ConexaoHibernate {
 	private static final SessionFactory SESSION_FACTORY = buildSessionFactory();
 
