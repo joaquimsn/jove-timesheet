@@ -12,14 +12,14 @@
 		<!--Aqui vai os CSS e javascript -->
 		<link rel="stylesheet" type="text/css" href="resources/css/layout-login.css" />
 		
-		<title>JOVE TimeSheet - LOGIN </title>
+		<title>JOVE Timesheet - Login </title>
 	</h:head>
 	
 	<h:body>
 		<div id="header-login">
 			<div id="div-slogan">
 				<div id="logo-jove-header" />
-				<p>JOVE INOVAÇÂO E TECNOLOGIA - Serviços de Consultoria e Treinamento</p>
+				<div id="texto-slogan">JOVE INOVAÇÂO E TECNOLOGIA - Serviços de Consultoria e Treinamento</div>
 			</div>
 			<div id="div-contato"><p>Suporte:  tel: 55-11 2446-2563 | Email: suporte@jovelogistica.com.br</p></div>
 		</div>
@@ -42,9 +42,8 @@
 							value="#{loginBean.usuarioSelecionado.senha}" />
 					</div>
 				</div>
-				<div class="div-botoes">
-					<p:commandButton value="Acessar" styleClass="btn-acessar" action="#{loginBean.abrirPagina()}"/>
-				</div>
+				
+				<p:commandButton value="Acessar" styleClass="btn-acessar" action="#{loginBean.abrirPagina}"/>
 				
 			</h:form>
 		</div>	
