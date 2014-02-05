@@ -127,4 +127,10 @@ Configuração dos campos do formulario de login
 	background: #B52D00;
 	color: #eee;
 	margin: -10px 45px 0 0 ;
+	transition: all 0.2s linear;
+}
+
+.btn-acessar:hover {
+	background: #E83A00;
+	transition: all 0.2s linear;
 }
