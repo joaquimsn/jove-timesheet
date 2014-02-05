@@ -9,7 +9,7 @@ Configuração Genericas
 }
 
 body {
-	height: 100%;
+	width: 100%;
 	/*Background responsivo*/
 	background: url("../images/layout/clock-hand.jpg") no-repeat center fixed;
 	background-size: cover; /*Css padrão*/
@@ -75,12 +75,13 @@ Configuração do header
 Configuração do formulario de login
 =====================================*/
 #formulario-login {
-	margin: 13% 33%;
+	margin: 180px auto 0 auto;
 	width: 400px;
 	height: 290px;
 	background: #eee;
 	border: 1px solid;
 	border-radius: 10px;
+	position: relative;
 }
 
 #logo-jove {
