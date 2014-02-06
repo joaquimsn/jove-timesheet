@@ -10,18 +10,20 @@
 	
 	<ui:define name="conteudo">
 		<div id="container">
-			<jove:titulo icon="" label="#{cadastroBean.tituloDaPagina()}" />
+			<jove:titulo icon="" label="Cadastro" />
 					
 		<h:form id="form-pagina-cadastro" >
 				<p:tabView id="tabview-cadastro" >
 					<p:tab id="tab-tarefa" title="Tarefa">
-						<ui:include src="/resources/include/tarefa.xhtml" />
+						<ui:include src="/restrict/administrador/cadastro/tarefa.xhtml" />
 					</p:tab>
 					
 					<p:tab id="tab-atividade" title="Atividade" >
+						<ui:include src="/restrict/administrador/cadastro/atividade.xhtml" />
 					</p:tab>
 					
 					<p:tab id="tab-projeto" title="Projeto" >
+						<ui:include src="/restrict/administrador/cadastro/projeto.xhtml" />
 					</p:tab>
 					
 					<p:tab id="tab-funcionario" title="Funcionário" >

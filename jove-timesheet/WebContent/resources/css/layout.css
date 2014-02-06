@@ -42,7 +42,7 @@ Configuração do Menu
 	height: 65px;
 	width: 1.5px;
 	float: left;
-	margin: 5px 0 0 15%; 
+	margin: 5px 0; 
 	background: #fff;
 }
 
@@ -105,11 +105,8 @@ Configuração do container
 #container{
 	width: 1006px;
 	min-height: 550px;
-	border-radius: 10px;
-	padding: 10px;
+	padding: 10px 0;
 	margin: 85px auto 45px auto;
-	box-shadow: 0px 2px 2px 1px #777;
-	/* border: 1px solid; */
 }
 
 /* Configuração do Titulo */
@@ -118,56 +115,171 @@ Configuração do container
 	color: 	#f89117;
 	line-height: 20px;
 	text-align: center;
+	margin-bottom: 15px;
 }
 
 #nome-titulo{
-	width: 5em;
+	width: 80px;
 	height: 20px;
-	font-size: 1.2em;
-	margin-left: 20px;
+	font-size: 22px;
 	float: left;
 }
 
 #div-usuario-logado{
-	width: 40em;
+	width: 800px;
 	height: 20px;
 	color: #111;
-	font-size: 0.7em;
-	margin-right: 20px;
+	font-size: 12px;
 	float: right;
 }
 
+#form-pagina-cadastro{
+	font-size: 14px;
+}
+
 /* Configuração dos campos */
+#tabview-cadastro{
+	font-size: 10px !important;
+}
 
 #formulario-cadastro{
-	width: 900px;
-	margin: 30px auto;
-	font-size: 0.8em;
-	
-}
-
-#div-campos-form{
 	width: 500px;
-	margin: 0 auto;
+	margin: 30px auto;
+	font-size: 14px;
 }
 
-.campos-form-cadastro{
-	height: 30px;
-	line-height: 30px;
-	text-align: left;
-	margin: 10px 0; 
-}
-
-.campo-input-form-cadastro{
-	margin-left: 10px;
+.label-cadastro-simples{
+	width: 150px;
+	margin: 10px 5px;
 	height: 20px;
-	width: 20em;
+	line-height: 20px;
 }
 
-.textarea-form-cadastro{
-	width: 400px;
+.input-cadastro-simples{
+	width: 315px;
+	margin: 10px 5px;
+	height: 20px;
 }
 
+.textarea-cadastro-simples{
+	width: 315px;
+	margin: 0 8px;
+	height: 105px;
+}
+
+
+/*=================================================== 
+   Configurações genericas para colunas do panelGrid
+===================================================== */
+.coluna-5-fit {
+	width: 5%;
+}
+
+.coluna-10 {
+	width: 10%;
+	padding-right: 10px; 
+}
+
+.coluna-15 {
+	width: 15%;
+	padding-right: 10px;
+}
+
+.coluna-20 {
+	width: 20%;
+	padding-right: 10px;
+}
+
+.coluna-25 {
+	width: 25%;
+	padding-right: 10px;
+}
+
+.coluna-30 {
+	width: 30%;
+	padding-right: 10px;
+}
+
+.coluna-35 {
+	width: 35%;
+	padding-right: 10px;
+}
+
+.coluna-40 {
+	width: 40%;
+	padding-right: 10px;
+}
+
+.coluna-45 {
+	width: 45%;
+	padding-right: 10px;
+}
+
+.coluna-50 {
+	width: 50%;
+	padding-right: 10px;
+}
+
+.coluna-55 {
+	width: 55%;
+	padding-right: 10px;
+}
+
+.coluna-60 {
+	width: 60%;
+	padding-right: 10px;
+}
+
+.coluna-65 {
+	width: 65%;
+	padding-right: 10px;
+}
+
+.coluna-70 {
+	width: 70%;
+	padding-right: 10px;
+}
+
+.coluna-75 {
+	width: 75%;
+	padding-right: 10px;
+}
+
+.coluna-80 { 
+	width: 80%;
+	padding-right: 10px;
+}
+
+.coluna-85 {
+	width: 85%;
+	padding-right: 10px;
+}
+
+.coluna-90 {
+	width: 90%;
+	padding-right: 10px;
+}
+
+.coluna-90-fit {
+	width: 90%;
+}
+
+.coluna-95-fit {
+	width: 95%;
+}
+
+.border-coluna {
+	border: 1px solid blue;
+}
+
+/* Outros para definição do posicionamento dentro da tr */
+.coluna-position-30{
+	width: 30%;
+	vertical-align: baseline;
+	padding-right: 10px;
+}
+
+/* ================================= */
 
 
 /*===================================
@@ -175,7 +287,6 @@ Configuração pagina cadastro
 =====================================*/
 #form-pagina-cadastro{
 	margin-top: 10px;
-	/* border-top: 1px solid; */
 }
 
 /*===================================

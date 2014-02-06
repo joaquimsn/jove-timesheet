@@ -12,9 +12,4 @@ public interface IOutcome {
 	 */
 	String REGISTRO = "pretty:registro";
 	
-	
-	/*=========================================
-	 * Strings para os titulos das paginas
-	 * ========================================*/
-	String TITULO_CADASTRO = "Cadastro";
 }
