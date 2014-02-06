@@ -97,20 +97,84 @@ Configuração do Menu
 }
 
 
-/* Configuração do Titulo */
-
-
 
 /*===================================
 Configuração do container
 =====================================*/
 #container{
-	width: 1024px;
+	width: 1006px;
 	min-height: 550px;
 	border-radius: 10px;
-	background: black;
 	padding: 10px;
-	margin: 120px auto 60px auto;
+	margin: 85px auto 45px auto;
+	box-shadow: 0px 2px 2px 1px #777;
+	/* border: 1px solid; */
+}
+
+/* Configuração do Titulo */
+#titulo-pagina{
+	height: 20px;
+	color: 	#f89117;
+	line-height: 20px;
+	text-align: center;
+}
+
+#nome-titulo{
+	width: 5em;
+	height: 20px;
+	font-size: 1.2em;
+	margin-left: 20px;
+	float: left;
+}
+
+#div-usuario-logado{
+	width: 40em;
+	height: 20px;
+	color: #111;
+	font-size: 0.7em;
+	margin-right: 20px;
+	float: right;
+}
+
+/* Configuração dos campos */
+
+#formulario-cadastro{
+	width: 900px;
+	margin: 30px auto;
+	font-size: 0.8em;
+	
+}
+
+#div-campos-form{
+	width: 500px;
+	margin: 0 auto;
+}
+
+.campos-form-cadastro{
+	height: 30px;
+	line-height: 30px;
+	text-align: left;
+	margin: 10px 0; 
+}
+
+.campo-input-form-cadastro{
+	margin-left: 10px;
+	height: 20px;
+	width: 20em;
+}
+
+.textarea-form-cadastro{
+	width: 400px;
+}
+
+
+
+/*===================================
+Configuração pagina cadastro
+=====================================*/
+#form-pagina-cadastro{
+	margin-top: 10px;
+	/* border-top: 1px solid; */
 }
 
 /*===================================
