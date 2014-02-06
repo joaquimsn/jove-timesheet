@@ -23,18 +23,22 @@ public class LoginBean implements Serializable {
 	 * @author Joaquim Neto
 	 */
 	public String abrirPagina() {
-		
+
 		usuarioSelecionado = new Usuario();
-		
+
 		return IOutcome.REGISTRO;
 	}
 
 	/**
 	 * Realiza o login verificando o usuário e a senha na base
-	 * @author Joaquim Neto
+	 * @author Joaquim Neto	
 	 */
-	private void fazLogin() {
-
+	public void fazerLogin() {
+		// TODO observação: o método chamava fazLogin(); e está errado.
+		// O correto é utilizar um VERBO NO INFINITIVO, ou seja, fazerLogin();
+		// O método estava private e não public como deveria ser.
+		// Favor apagar estes comentáriols ao implementar a funcionalidade.
+		// By Nicolas Ibanheiz
 	}
 
 	/**
@@ -49,6 +53,34 @@ public class LoginBean implements Serializable {
 	 */
 	public void setUsuarioSelecionado(Usuario usuarioSelecionado) {
 		this.usuarioSelecionado = usuarioSelecionado;
+	}
+
+	/**
+	 * @return the nome
+	 */
+	public String getNome() {
+		return nome;
+	}
+
+	/**
+	 * @param nome the nome to set
+	 */
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	/**
+	 * @return the senha
+	 */
+	public String getSenha() {
+		return senha;
+	}
+
+	/**
+	 * @param senha the senha to set
+	 */
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 }

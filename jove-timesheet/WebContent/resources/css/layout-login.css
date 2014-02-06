@@ -4,10 +4,12 @@ Configuração Genericas
 * {
 	margin: 0;
 	padding: 0;
+	font-family: arial, freesans, sans-serif;
+	font-size: 14px;
 }
 
 body {
-	height: 100%;
+	width: 100%;
 	/*Background responsivo*/
 	background: url("../images/layout/clock-hand.jpg") no-repeat center fixed;
 	background-size: cover; /*Css padrão*/
@@ -20,49 +22,48 @@ body {
 /*===================================
 Configuração do header
 =====================================*/
-#header-login{
+#header-login {
 	width: 100%;
 	height: 45px;
 	position: fixed;
 	top: 0;
 	background: #eee;
-	box-shadow: 0 2px 2px  #777;
+	box-shadow: 0 2px 2px #777;
 }
 
-#div-slogan{
-	width: 40em;
-	height: 2.5em;
+#div-slogan {
+	width: 48%;
+	height: 40px;
 }
 
-#logo-jove-header{
-	background: url("../images/layout/jove-logo-mini.png") no-repeat !important;
+#logo-jove-header {
+	background: url("..	/images/layout/jove-logo-mini.png") no-repeat
+		!important;
 	width: 53px;
 	height: 32px;
 	margin: 7px 0 0 5px;
 }
 
-#div-slogan p{
-	width: 40em;
-	height: 1.5em;
-	line-height: 1.5em;
+#texto-slogan{
+	height: 25px;
 	text-align: center;
-	font-family: verdana, arial, sans-serif;
-	font-size: 0.8em;
+	font: 11px verdana, arial sans-serif;
 	color: #6f6f6f;
-	margin: -28px 0 20px 60px;
+	float:right;
+	margin:-23px 150px 0 0;
 }
 
-#div-contato{
+#div-contato {
 	width: 35em;
 	height: 2.5em;
 	float: right;
 	margin: -43px 0 0;
 }
 
-#div-contato p{
+#div-contato p {
 	width: 40em;
 	height: 2.5em;
-	line-height: 2.5em;
+	line-height: 35px;
 	text-align: center;
 	font-family: verdana, arial, sans-serif;
 	font-size: 0.8em;
@@ -74,12 +75,13 @@ Configuração do header
 Configuração do formulario de login
 =====================================*/
 #formulario-login {
-	margin: 13% 33%;
+	margin: 180px auto 0 auto;
 	width: 400px;
-	height: 300px;
+	height: 290px;
 	background: #eee;
 	border: 1px solid;
 	border-radius: 10px;
+	position: relative;
 }
 
 #logo-jove {
@@ -98,28 +100,37 @@ Configuração do formulario de login
 Configuração dos campos do formulario de login
 =====================================*/
 .div-usuario {
-	width: 300px;
 	height: 50px;
 	margin: 0 auto;
+	padding-left:10px;
 }
 
 .input-usuario {
+	width:250px;
 	margin-left: 10px !important;
 }
 
 .div-senha {
-	width: 300px;
 	height: 50px;
 	margin: 0 auto;
+	padding-left:10px;
 }
 
 .input-senha {
+	width:250px;
 	margin-left: 19px !important;
 }
 
-.div-botoes {
-	width: 100px;
-	height: 75px;
-	margin:0 70px 0;
+.btn-acessar {
+	width: 80px;
 	float: right;
+	background: #B52D00;
+	color: #eee;
+	margin: -10px 45px 0 0 ;
+	transition: all 0.2s linear;
+}
+
+.btn-acessar:hover {
+	background: #E83A00;
+	transition: all 0.2s linear;
 }
