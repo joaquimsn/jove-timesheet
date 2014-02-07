@@ -22,7 +22,13 @@
 		<ui:decorate template="/resources/templates/header.xhtml" />
 		
 		<!-- Aqui vai ser inserido o conteudo -->
-		<ui:insert name="conteudo" />
+		<div id="corpo-pagina">
+			<div id="pagina">
+				<div id="container">
+					<ui:insert name="conteudo" />
+				</div>
+			</div>
+		</div>
 		
 		<!-- Aqui vai o conteudo do rodape -->
 		<ui:decorate template="/resources/templates/footer.xhtml" />

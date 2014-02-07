@@ -1,83 +1,107 @@
-*{
+* {
 	margin: 0;
 	padding: 0;
 	font-family: verdana, arial, sans-serif;
 }
 
-body{
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+#corpo-pagina {
+	width: 100%;
+	position: absolute;
+	top: 77px;
+	bottom: 42px;
+}
+
+#pagina {
+	overflow: auto;
+	width: 100%;
 	height: 100%;
 }
 
 /*===================================
 Configuração do Menu
 =====================================*/
-#header{
+#header {
 	height: 75px;
 	width: 100%;
 	background: #eee;
-	box-shadow: 0 2px 2px  #777;
+	box-shadow: 0 2px 2px #777;
 	position: fixed;
+	z-index: 30;
 	top: 0;
 }
 
 /* Configuração div do cabeçalho esquerdo */
-#div-header-esquerda{
+#div-header-esquerda {
 	width: 12.5em;
 	height: 75px;
 	float: left;
 }
 
-#div-logo{
+#div-logo {
 	float: left;
 	width: 8em;
-	margin:5px 0 0 0;
+	margin: 5px 0 0 0;
 }
 
-.logo-header{
+.logo-header {
 	width: 100%;
 	height: 70px;
 }
 
-#divisor-header{
+#divisor-header {
 	height: 65px;
 	width: 1.5px;
 	float: left;
-	margin: 5px 0; 
+	margin: 5px 0;
 	background: #fff;
 }
 
-/* Configuração div do cabeçalho direito */ 
-#div-header-direita{
+/* Configuração div do cabeçalho direito */
+#div-header-direita {
 	height: 75px;
 }
 
-#menus-header{
+#menus-header {
 	height: 40px;
 	margin: 35px 5px 0 0;
 	float: right;
 }
 
-#menus-header ul li{
+#menus-header ul li {
 	float: left;
 	list-style: none;
 }
 
-#menus-header a, .divisor-menus{
+#menus-header a,.divisor-menus {
 	float: left !important;
 	text-decoration: none;
 	list-style: none;
 	color: #555;
 }
 
-#menus-header a:hover{
+#menus-header a:hover {
 	color: #f89117;
 	border-bottom: 0.2em solid;
 	margin: -10px 0 0;
 	font: bold;
 	transition: all 0.2s linear;
 }
- 
- .divisor-menus {
+
+.divisor-menus {
 	width: 2px;
 	height: 16px;
 	text-align: center;
@@ -86,87 +110,87 @@ Configuração do Menu
 	margin: 12px 0 12px;
 }
 
-.menu-label{
+.menu-label {
 	width: auto !important;
 	height: 40px;
-	padding:  0 1em;
+	padding: 0 1em;
 	line-height: 40px;
 	text-align: center;
-	font-family: arial, verdana, sans-serif; 
+	font-family: arial, verdana, sans-serif;
 	font-size: 1em;
 	transition: all 0.2s linear;
 }
 
-
-
 /*===================================
 Configuração do container
 =====================================*/
-#container{
+#container {
 	width: 1006px;
 	min-height: 550px;
 	padding: 10px 0;
-	margin: 85px auto 45px auto;
+	margin: 0 auto 45px auto;
 }
 
 /* Configuração do Titulo */
-#titulo-pagina{
+#titulo-pagina {
 	height: 20px;
-	color: 	#f89117;
+	color: #f89117;
 	line-height: 20px;
 	text-align: center;
 	margin-bottom: 15px;
 }
 
-#nome-titulo{
+#nome-titulo {
 	width: 80px;
 	height: 20px;
 	font-size: 22px;
 	float: left;
 }
 
-#div-usuario-logado{
-	width: 800px;
+#div-usuario-logado {
 	height: 20px;
 	color: #111;
 	font-size: 12px;
 	float: right;
 }
 
-#form-pagina-cadastro{
+/*===================================
+Configuração pagina cadastro
+=====================================*/
+#form-pagina-cadastro {
+	margin-top: 10px;
 	font-size: 14px;
 }
 
 /* Configuração dos campos */
-#tabview-cadastro{
+#tabview-cadastro {
 	font-size: 10px !important;
 }
 
-#formulario-cadastro{
+#formulario-cadastro {
 	width: 500px;
-	margin: 30px auto;
+	margin: 30px auto 75px auto;
 	font-size: 14px;
 }
 
-.label-cadastro-simples{
+.label-cadastro-simples {
 	width: 150px;
 	margin: 10px 5px;
 	height: 20px;
 	line-height: 20px;
 }
 
-.input-cadastro-simples{
+.input-cadastro-simples {
 	width: 315px;
 	margin: 10px 5px;
 	height: 20px;
 }
 
-.textarea-cadastro-simples{
+.textarea-cadastro-simples {
 	width: 315px;
 	margin: 0 8px;
 	height: 105px;
 }
-
 
 /*=================================================== 
    Configurações genericas para colunas do panelGrid
@@ -177,7 +201,7 @@ Configuração do container
 
 .coluna-10 {
 	width: 10%;
-	padding-right: 10px; 
+	padding-right: 10px;
 }
 
 .coluna-15 {
@@ -245,7 +269,7 @@ Configuração do container
 	padding-right: 10px;
 }
 
-.coluna-80 { 
+.coluna-80 {
 	width: 80%;
 	padding-right: 10px;
 }
@@ -273,26 +297,53 @@ Configuração do container
 }
 
 /* Outros para definição do posicionamento dentro da tr */
-.coluna-position-30{
+.coluna-position-30 {
 	width: 30%;
 	vertical-align: baseline;
 	padding-right: 10px;
 }
 
-/* ================================= */
+.coluna-position-20 {
+	width: 20%;
+	text-align: center;
+}
 
+/*==================================
+ Configurações botões cadastro
+ =================================== */
+.botoes-tela-cadastro {
+	height: 50px;
+	margin: 15px;
+	float: right;
+}
 
-/*===================================
-Configuração pagina cadastro
-=====================================*/
-#form-pagina-cadastro{
-	margin-top: 10px;
+.btn-cadastro {
+	margin: 0 5px;
+	font-size: 14px !important;
+	color: #f89117 !important;
+}
+
+.btn-cadastro :hover {
+	color: #0088CC;
+}
+
+/*==================================
+ Configurações das tabelas de cadastro
+ =================================== */
+.table-cadastro {
+	margin: 100px auto;
+	width: 900px;
+	font-size: 13px;
+}
+
+.select-one-button-cadastro {
+	margin: 0 auto;
 }
 
 /*===================================
 Configuração Footer
 =====================================*/
-#footer{
+#footer {
 	width: 100%;
 	height: 40px;
 	background: #eee;
@@ -303,31 +354,32 @@ Configuração Footer
 	box-shadow: -2px 0 4px 1px #777;
 }
 
-#div-slogan-footer{
+#div-slogan-footer {
 	height: 40px;
 }
 
-#logo-jove-footer{
-	background: url("../images/layout/jove-logo-mini.png") no-repeat !important;
+#logo-jove-footer {
+	background: url("../images/layout/jove-logo-mini.png") no-repeat
+		!important;
 	width: 53px;
 	height: 32px;
 	margin: 4px 0 0 5px;
 }
 
-#div-slogan-footer p{
+#div-slogan-footer p {
 	height: 40px;
 	line-height: 40px;
 	text-align: center;
-	font-size: 0.7em ;
+	font-size: 0.7em;
 	float: left;
 	margin: -34px 0 0 72px;
 }
 
-#div-versao{
+#div-versao {
 	float: right;
 }
 
-#div-versao p{
+#div-versao p {
 	width: 20em;
 	height: 24px;
 	line-height: 24px;
