@@ -9,14 +9,29 @@
 		<view-id value="/public/index.xhtml" />
 	</url-mapping>
 	
+	<url-mapping id="registro">
+		<pattern value="/registro" />
+		<view-id value="/restrict/funcionario/registro.xhtml"/>
+	</url-mapping>
+	
 	<url-mapping id="cadastro">
 		<pattern value="/cadastro" />
 		<view-id value="/restrict/administrador/cadastro.xhtml"/>
 	</url-mapping>
 	
-	<url-mapping id="registro">
-		<pattern value="/registro" />
-		<view-id value="/restrict/administrador/registro.xhtml"/>
+	<url-mapping id="acompanhamento">
+		<pattern value="/acompanhamento" />
+		<view-id value="/restrict/administrador/acompanhamento.xhtml"/>
+	</url-mapping>
+
+	<url-mapping id="meu-perfil">
+		<pattern value="/meuperfil" />
+		<view-id value="/restrict/funcionario/meuperfil.xhtml"/>
+	</url-mapping>
+	
+	<url-mapping id="sair">
+		<pattern value="/login" />
+		<view-id value="/public/index.xhtml"/>
 	</url-mapping>
 	
 </pretty-config>

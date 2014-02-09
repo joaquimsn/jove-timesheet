@@ -12,4 +12,24 @@ public interface IOutcome {
 	 */
 	String REGISTRO = "pretty:registro";
 	
+	/**
+	 * Tela de Cadastro 
+	 */
+	String CADASTRO = "pretty:cadastro";
+	
+	/**
+	 * Tela de Acompanhamento
+	 */
+	String ACOMPANHAMENTO = "pretty:acompanhamento";
+	
+	/**
+	 * Tela de Acompanhamento
+	 */
+	String MEU_PERFIL = "pretty:meu-perfil";
+	
+	/**
+	 * Tela de Login
+	 */
+	String SAIR = "pretty:sair";
+		
 }

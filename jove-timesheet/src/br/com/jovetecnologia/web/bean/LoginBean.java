@@ -17,7 +17,7 @@ public class LoginBean implements Serializable {
 	private Usuario usuarioSelecionado;
 	private String nome;
 	private String senha;
-
+	
 	/**
 	 * Inicializa os objetos da class
 	 * @author Joaquim Neto
