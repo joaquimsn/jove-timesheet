@@ -13,9 +13,14 @@
 	</cc:interface>
 	<cc:implementation>
 		<div id="titulo-pagina">
-			<div id="nome-titulo">
-				<h:graphicImage value="#{cc.attrs.icon}" />
-				<h:outputLabel value="#{cc.attrs.label}" />
+			<div id="titulo-esquerda">
+				<div id="icon-titulo">
+					<h:graphicImage value="#{cc.attrs.icon}" />
+				</div>
+				
+				<div id="titulo-none" >
+					<h:outputLabel value="#{cc.attrs.label}" />				
+				</div>
 			</div>
 			<div id="usuario">
 				<div id="div-usuario-logado">

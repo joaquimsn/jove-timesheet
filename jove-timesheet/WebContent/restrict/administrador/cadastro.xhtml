@@ -10,7 +10,7 @@
 
 	<ui:define name="conteudo">
 		
-		<jove:titulo icon="" label="Cadastro" />
+		<jove:titulo icon="/resources/images/icons/24x24/impressora.png" label="Cadastro" />
 	
 		<h:form id="form-pagina-cadastro">
 			<p:tabView id="tabview-cadastro">
@@ -28,12 +28,15 @@
 				</p:tab>
 	
 				<p:tab id="tab-funcionario" title="Funcionário">
+					<ui:include src="/restrict/administrador/cadastro/funcionario.xhtml" />
 				</p:tab>
 	
 				<p:tab id="tab-departamento" title="Departamento">
+					<ui:include src="/restrict/administrador/cadastro/departamento.xhtml" />
 				</p:tab>
 	
 				<p:tab id="tab-empresa" title="Empresa">
+					<ui:include src="/restrict/administrador/cadastro/empresa.xhtml" />
 				</p:tab>
 	
 			</p:tabView>

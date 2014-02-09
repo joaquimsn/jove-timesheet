@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:jove="http://java.sun.com/jsf/composite/componentes">
+	
+	<div id="formulario-cadastro-completo" >
+			<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-40, coluna-35, coluna-25">
+				<p:outputLabel value="Razão Social"/>
+				<p:outputLabel value="Fantasia" />
+				<p:outputLabel value="CNPJ" />
+				
+				<p:inputText value="" style="width: 100%;" />	
+				<p:inputText value="" style="width: 100%;" />
+				<p:inputText value="" style="width: 100%;" />
+			</h:panelGrid>
+			
+			<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-60, coluna-30, coluna-20">
+				<p:outputLabel value="Logradouro" />
+				<p:outputLabel value="Complemento" />
+				<p:outputLabel value="Nº" />
+				
+				<p:inputText value="" style="width: 100%;"/>		
+				<p:inputText value="" style="width: 100%;"/>		
+				<p:inputText value="" style="width: 100%;"/>		
+			</h:panelGrid>
+			
+			<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-50, coluna-30, coluna-20">
+				<p:outputLabel value="CEP" />
+				<p:outputLabel value="Cidade" />
+				<p:outputLabel value="UF" />
+				
+				<p:inputText value="" style="width: 100%;"/>
+				
+				<p:selectOneMenu styleClass="cbx-cidade" style="width: 100%;" >
+					<f:selectItem itemLabel="selecione" itemValue=""/>
+				</p:selectOneMenu>
+				
+				<p:selectOneMenu styleClass="cbx-uf" value="" style="width: 100%;" >
+					<f:selectItem itemLabel="selecione" itemValue=""/>
+				</p:selectOneMenu>
+			</h:panelGrid>
+			
+			
+			<h:panelGrid styleClass="panel-form-cadastro" columns="2" columnClasses="coluna-30, coluna-70">
+				<p:outputLabel value="Telefone " />
+				<p:outputLabel value="E-mail" />
+				
+				<p:inputText value="" style="width: 100%;"/>		
+				<p:inputText value="" style="width: 100%;"/>		
+			</h:panelGrid>
+			
+			<div class="botoes-tela-cadastro" >
+				<h:panelGroup rendered="true" >
+					<p:commandButton value="Cadastrar" styleClass="btn-cadastro" disabled="false" />
+					<p:commandButton value="Cancelar"  styleClass="btn-cadastro" disabled="false" />
+				</h:panelGroup>
+				
+				<h:panelGroup rendered="false" >
+					<p:commandButton value="Alterar" styleClass="btn-cadastro" disabled="true"/>
+					<p:commandButton value="Deletar" styleClass="btn-cadastro" disabled="true" />
+				</h:panelGroup>
+			</div>
+	</div>
+	
+	<div class="table-cadastro">
+		<p:dataTable id="table-empresa" var="empresa" value="" rowKey="empresa.nome" selectionMode="single" 
+			paginator="true" rows="5" paginatorTemplate="{FirstPageLink} {PreviousPageLink} 
+			{PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" resizableColumns="flase" >
+			
+			<f:facet name="header">
+				Tabela de Empresas
+			</f:facet>
+			
+			<p:column headerText="Razão social" styleClass="coluna-30"  sortBy="tarefa" filterBy="tarefa" id="pesquisar-por-coluna" >
+				Jove Logística
+			</p:column>
+			
+			<p:column headerText="Fantasia" styleClass="coluna-25">
+				Jove Tecnologia
+			</p:column>
+			
+			<p:column headerText="CNPJ" styleClass="coluna-30">
+				00.000.000/0000-00
+			</p:column>
+			
+			<p:column headerText="Status" styleClass="coluna-position-center-15" >
+				<p:selectOneButton value="true" styleClass="select-one-button-cadastro">
+					<f:selectItem itemLabel="Ativo" itemValue="true" />
+					<f:selectItem itemLabel="Inativo" itemValue="false" />
+				</p:selectOneButton>
+			</p:column>
+		
+		</p:dataTable>	
+	</div>
+	
+</ui:composition>

@@ -133,18 +133,28 @@ Configuração do container
 
 /* Configuração do Titulo */
 #titulo-pagina {
-	height: 20px;
+	height: 25px;
 	color: #f89117;
-	line-height: 20px;
+	line-height: 25px;
 	text-align: center;
 	margin-bottom: 15px;
 }
 
-#nome-titulo {
-	width: 80px;
-	height: 20px;
-	font-size: 22px;
+#titulo-esquerda{
+	height: 25px;
+	line-height: 25px;
+	font-size: 21px;
 	float: left;
+}
+
+#icon-titulo{
+	height: 24px;
+	width: 24px;
+}
+
+#titulo-none{
+	height: 25px;
+	margin: -25px 0 0 32px;
 }
 
 #div-usuario-logado {
@@ -167,30 +177,37 @@ Configuração pagina cadastro
 	font-size: 10px !important;
 }
 
-#formulario-cadastro {
-	width: 500px;
-	margin: 30px auto 75px auto;
+#formulario-cadastro-simples {
+	width: 550px;
+	margin: 30px auto 0 auto;
+	font-size: 14px;
+}
+
+#formulario-cadastro-completo {
+	width: 950px;
+	margin: 30px auto 0 auto;
 	font-size: 14px;
 }
 
 .label-cadastro-simples {
-	width: 150px;
+	width: 200px;
 	margin: 10px 5px;
 	height: 20px;
 	line-height: 20px;
 }
 
 .input-cadastro-simples {
-	width: 315px;
+	width: 330px;
 	margin: 10px 5px;
 	height: 20px;
 }
 
 .textarea-cadastro-simples {
-	width: 315px;
-	margin: 0 8px;
+	width: 330px;
+	margin: 0 5px;
 	height: 105px;
 }
+
 
 /*=================================================== 
    Configurações genericas para colunas do panelGrid
@@ -297,23 +314,30 @@ Configuração pagina cadastro
 }
 
 /* Outros para definição do posicionamento dentro da tr */
-.coluna-position-30 {
-	width: 30%;
+.coluna-position-center-15 {
+	width: 15%;
+	text-align: center;
+}
+
+.coluna-position-top-40 {
+	width: 40%;
 	vertical-align: baseline;
 	padding-right: 10px;
 }
 
-.coluna-position-20 {
-	width: 20%;
-	text-align: center;
+.coluna-position-center-40 {
+	width: 40%;
+	vertical-align: middle;
+	padding-right: 10px;
 }
+
 
 /*==================================
  Configurações botões cadastro
  =================================== */
 .botoes-tela-cadastro {
 	height: 50px;
-	margin: 15px;
+	margin: 15px 10px;
 	float: right;
 }
 
@@ -331,14 +355,21 @@ Configuração pagina cadastro
  Configurações das tabelas de cadastro
  =================================== */
 .table-cadastro {
-	margin: 100px auto;
-	width: 900px;
+	margin: 100px auto 50px auto;
+	width: 1000px;
 	font-size: 13px;
 }
 
 .select-one-button-cadastro {
 	margin: 0 auto;
+	font-size: 10px !important;
 }
+
+.panel-form-cadastro{
+	width: 100%;
+	margin: 10px 0;
+}
+
 
 /*===================================
 Configuração Footer
