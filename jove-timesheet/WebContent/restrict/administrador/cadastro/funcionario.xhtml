@@ -8,84 +8,138 @@
 	xmlns:jove="http://java.sun.com/jsf/composite/componentes">
 	
 	<div id="formulario-cadastro-completo" >
-			<h:panelGrid styleClass="panel-form-cadastro" columns="4" columnClasses="coluna-40, coluna-10, coluna-25, coluna-25">
-				<p:outputLabel value="Nome"/>
-				<p:outputLabel value="Género" />
-				<p:outputLabel value="Data Nascimento" />
-				<p:outputLabel value="CPF" />
-				
-				<p:inputText value="" style="width: 100%;" />
-				<p:inputText value="" style="width: 100%;" />	
-				<p:inputText value="" style="width: 100%;" />
-				<p:inputText value="" style="width: 100%;" />
-			</h:panelGrid>
+		<p:wizard style="margin-top: -20px auto;" showStepStatus="false">
+			<p:tab >
+				<p:panel header="Dados pessoais" >
+					
+					<h:panelGrid styleClass="panel-form-cadastro" columns="4" columnClasses="coluna-40, coluna-15, coluna-20, coluna-25">
+						<h:panelGrid width="100%">
+							<p:outputLabel value="Nome"/>
+							<p:inputText value="" style="width: 100%;" />	
+						</h:panelGrid>
+						
+						<h:panelGrid width="100%">
+							<p:outputLabel value="Género" />
+							<p:selectOneMenu value="" style="width: 105%;" >
+								<f:selectItem itemLabel="selecione" itemValue=""/>
+								<f:selectItem itemLabel="Masculino" itemValue="m"/>
+								<f:selectItem itemLabel="Feminino" itemValue="f"/>
+							</p:selectOneMenu>
+						</h:panelGrid >
+						
+						<h:panelGrid width="100%">
+							<p:outputLabel value="Data Nascimento" />
+							<p:inputText value="" style="width: 100%;" />
+						</h:panelGrid>
+							
+						<h:panelGrid width="100%" >
+							<p:outputLabel value="CPF" />
+							<p:inputText value="" style="width: 100%;" />
+						</h:panelGrid>
+						
+					</h:panelGrid>
+					
+					<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-60, coluna-30, coluna-20">
+						<h:panelGrid width="100%">
+							<p:outputLabel value="Logradouro" />
+							<p:inputText value="" style="width: 100%;"/>		
+						</h:panelGrid>
+						
+						<h:panelGrid width="100%">
+							<p:outputLabel value="Complemento" />
+							<p:inputText value="" style="width: 100%;"/>		
+						</h:panelGrid>
+						
+						<h:panelGrid width="100%">
+							<p:outputLabel value="Nº" />
+							<p:inputText value="" style="width: 100%;"/>		
+						</h:panelGrid>
+					</h:panelGrid>
+					
+					<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-50, coluna-30, coluna-20">
+						<h:panelGrid width="100%">
+							<p:outputLabel value="CEP" />
+							<p:inputText value="" style="width: 100%;"/>
+						</h:panelGrid>
+	
+						<h:panelGrid width="100%">
+							<p:outputLabel value="Cidade" />
+							<p:selectOneMenu styleClass="cbx-cidade" style="width: 103%;" >
+								<f:selectItem itemLabel="selecione" itemValue=""/>
+							</p:selectOneMenu>
+						</h:panelGrid>
+	
+						<h:panelGrid width="100%">
+							<p:outputLabel value="UF" />
+							<p:selectOneMenu styleClass="cbx-uf" value="" style="width: 104%;" >
+								<f:selectItem itemLabel="selecione" itemValue=""/>
+							</p:selectOneMenu>
+						</h:panelGrid>
+					</h:panelGrid>
+					
+					
+					<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-25, coluna-25, coluna-50">
+						<h:panelGrid width="100%">
+							<p:outputLabel value="Telefone Fixo" />
+							<p:inputText value="" style="width: 100%;"/>		
+						</h:panelGrid>
+						
+						<h:panelGrid width="100%">
+							<p:outputLabel value="Celular" />
+							<p:inputText value="" style="width: 100%;"/>		
+						</h:panelGrid>
+
+						<h:panelGrid width="100%">
+							<p:outputLabel value="E-mail" />
+							<p:inputText value="" style="width: 100%;"/>		
+						</h:panelGrid>
+					</h:panelGrid>
+					
+					<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-40, coluna-40, coluna-20">
+						<h:panelGrid width="100%">
+							<p:outputLabel value="Departamento" />
+							<p:selectOneMenu id="cbx-departamento" style="width: 102%;" >
+								<f:selectItem itemLabel="selecione" itemValue=""/>
+							</p:selectOneMenu>
+						</h:panelGrid>
+
+						<h:panelGrid width="100%">
+							<p:outputLabel value="Supervisor" />
+							<p:selectOneMenu id="cbx-supervisor" value="" style="width: 102%;" >
+								<f:selectItem itemLabel="selecione" itemValue=""/>
+							</p:selectOneMenu>
+						</h:panelGrid>
+	
+						<h:panelGrid width="100%">
+							<p:outputLabel value="Jornada de Trabalho" />
+							<p:selectOneMenu id="cbx-jornada-trabalho" value="" style="width: 104%;" >
+								<f:selectItem itemLabel="selecione" itemValue=""/>
+							</p:selectOneMenu>	
+						</h:panelGrid>
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
 			
-			<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-60, coluna-30, coluna-20">
-				<p:outputLabel value="Logradouro" />
-				<p:outputLabel value="Complemento" />
-				<p:outputLabel value="Nº" />
-				
-				<p:inputText value="" style="width: 100%;"/>		
-				<p:inputText value="" style="width: 100%;"/>		
-				<p:inputText value="" style="width: 100%;"/>		
-			</h:panelGrid>
-			
-			<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-50, coluna-30, coluna-20">
-				<p:outputLabel value="CEP" />
-				<p:outputLabel value="Cidade" />
-				<p:outputLabel value="UF" />
-				
-				<p:inputText value="" style="width: 100%;"/>
-				
-				<p:selectOneMenu styleClass="cbx-cidade" style="width: 100%;" >
-					<f:selectItem itemLabel="selecione" itemValue=""/>
-				</p:selectOneMenu>
-				
-				<p:selectOneMenu styleClass="cbx-uf" value="" style="width: 100%;" >
-					<f:selectItem itemLabel="selecione" itemValue=""/>
-				</p:selectOneMenu>
-			</h:panelGrid>
-			
-			
-			<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-25, coluna-25, coluna-50">
-				<p:outputLabel value="Telefone Fixo" />
-				<p:outputLabel value="Celular" />
-				<p:outputLabel value="E-mail" />
-				
-				<p:inputText value="" style="width: 100%;"/>		
-				<p:inputText value="" style="width: 100%;"/>		
-				<p:inputText value="" style="width: 100%;"/>		
-			</h:panelGrid>
-			
-			<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-40, coluna-40, coluna-20">
-				<p:outputLabel value="Departamento" />
-				<p:outputLabel value="Supervisor" />
-				<p:outputLabel value="Jornada de Trabalho" />
-				
-				<p:selectOneMenu id="cbx-departamento" style="width: 100%;" >
-					<f:selectItem itemLabel="selecione" itemValue=""/>
-				</p:selectOneMenu>
-				
-				<p:selectOneMenu id="cbx-supervisor" value="" style="width: 100%;" >
-					<f:selectItem itemLabel="selecione" itemValue=""/>
-				</p:selectOneMenu>
-				
-				<p:selectOneMenu id="cbx-jornada-trabalho" value="" style="width: 100%;" >
-					<f:selectItem itemLabel="selecione" itemValue=""/>
-				</p:selectOneMenu>	
-			</h:panelGrid>
-			
-			<div class="botoes-tela-cadastro" >
-				<h:panelGroup rendered="true" >
-					<p:commandButton value="Cadastrar" styleClass="btn-cadastro" disabled="false" />
-					<p:commandButton value="Cancelar"  styleClass="btn-cadastro" disabled="false" />
-				</h:panelGroup>
-				
-				<h:panelGroup rendered="false" >
-					<p:commandButton value="Alterar" styleClass="btn-cadastro" disabled="true"/>
-					<p:commandButton value="Deletar" styleClass="btn-cadastro" disabled="true" />
-				</h:panelGroup>
-			</div>
+			<p:tab >
+				<p:panel header="Credenciais de acesso">
+					<ui:include src="/restrict/administrador/cadastro/usuario.xhtml" />
+					
+					<div class="botoes-tela-cadastro" >
+						<h:panelGroup rendered="true" >
+							<p:commandButton value="Cadastrar" styleClass="btn-cadastro" disabled="false" />
+							<p:commandButton value="Cancelar"  styleClass="btn-cadastro" disabled="false" />
+						</h:panelGroup>
+						
+						<h:panelGroup rendered="false" >
+							<p:commandButton value="Alterar" styleClass="btn-cadastro" disabled="true"/>
+							<p:commandButton value="Deletar" styleClass="btn-cadastro" disabled="true" />
+						</h:panelGroup>
+					</div>
+					
+				</p:panel>
+			</p:tab>
+		</p:wizard>
+		
 	</div>
 	
 	<div class="table-cadastro">

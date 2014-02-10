@@ -10,6 +10,92 @@
 	
 	<ui:define name="conteudo">
 	
+		<jove:titulo icon="/resources/images/icons/24x24/registro.png" label="Registro" />
+		
+		<div id="navegador-registro" >
+			<h:panelGrid columns="2" id="botoes-navegacao-registro" >
+				<p:commandButton icon="ui-icon-carat-1-w" title="Dia anterior"  style="height: 25px" />
+				<p:commandButton icon="ui-icon-carat-1-e" title="Próximo dia" style="height: 25px"  />
+			</h:panelGrid>
+		</div>
+		
+		<p:fieldset legend="30 Janeiro 2014" id="fildset-registro">
+			<div id="calendario-registro">
+				<p:commandButton id="botao-calendario" icon="ui-icon-calendar" value="Calendário" />
+			</div>
+			
+			<div id="formulario-registro" >
+				<h:panelGrid id="lado-direito"
+					columns="3" columnClasses="coluna-35, coluna-35, coluna-35" width="100%">
+					
+					<h:panelGrid width="100%">
+						<p:outputLabel value="Projeto"  />
+						<p:selectOneMenu value=""  style="width: 100%;" >
+							<f:selectItem itemLabel="selecione" itemValue=""/>
+						</p:selectOneMenu>
+					</h:panelGrid>
+					
+					<h:panelGrid width="100%">
+						<p:outputLabel value="Atividade"  />
+						<p:selectOneMenu value=""  style="width: 100%;" >
+							<f:selectItem itemLabel="selecione" itemValue=""/>
+						</p:selectOneMenu>
+					</h:panelGrid>
+					
+					<h:panelGrid width="100%">
+						<p:outputLabel value="Tarefa"  />
+						<p:selectOneMenu value=""  style="width: 100%;" >
+							<f:selectItem itemLabel="selecione" itemValue=""/>
+						</p:selectOneMenu>
+					</h:panelGrid>
+				</h:panelGrid>
+				
+				<div id="lado-esquerdo">
+					<p:commandButton icon="ui-icon-circle-plus" id="btn-inserir" value="Inserir" />
+					
+					<p:selectBooleanCheckbox id="check-almoco" itemLabel="Refeição" />
+				</div>
+				
+			</div>
+			
+			<p:dataTable id="table-registro" var="" value="" editable="true" editMode="cell" resizableColumns="flase" >
+				
+				<f:facet name="header">
+					Registros efetuados
+				</f:facet>
+				
+				<p:column headerText="Projeto" styleClass="coluna-15" >
+					GETLOG
+				</p:column>
+				
+				<p:column headerText="Atividade" styleClass="coluna-15" >
+					Refatoração
+				</p:column>
+				
+				<p:column headerText="Tarefa" styleClass="coluna-15" >
+					Sei lá
+				</p:column>
+				
+				<p:column headerText="Inicio" styleClass="coluna-5" >
+					9:00
+				</p:column>
+				
+				<p:column headerText="Fim" styleClass="coluna-5" >
+					14:00
+				</p:column>
+				
+				<p:column headerText="Total" styleClass="coluna-5" >
+					5:00
+				</p:column>
+				
+				<p:column headerText="Observação" styleClass="coluna-40" >
+					Desenvolvimento de componentes extras para a pagina de Conhecimento
+				</p:column>
+				
+				
+			</p:dataTable>
+												
+		</p:fieldset>
 	</ui:define>
 
 </ui:composition>

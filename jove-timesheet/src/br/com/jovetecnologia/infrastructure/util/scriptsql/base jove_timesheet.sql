@@ -58,7 +58,7 @@ CREATE TABLE funcionario(
 	telefone_fixo VARCHAR(15) NULL,
 	celular VARCHAR(15) NULL,
 	email VARCHAR(100) NOT NULL,
-	fk_id_funcionario INT NOT NULL,
+	fk_id_funcionario INT NULL,
 	id_departamento INT NOT NULL,
 	id_jornada_trabalho INT NOT NULL,
 	ativo BOOLEAN NULL,

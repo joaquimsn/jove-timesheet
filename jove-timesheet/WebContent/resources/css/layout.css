@@ -154,7 +154,7 @@ Configuração do container
 
 #titulo-none{
 	height: 25px;
-	margin: -25px 0 0 32px;
+	margin: -25px 0 0 36px;
 }
 
 #div-usuario-logado {
@@ -313,7 +313,7 @@ Configuração pagina cadastro
 	border: 1px solid blue;
 }
 
-/* Outros para definição do posicionamento dentro da tr */
+/* Outras para definição do posicionamento dentro da tr */
 .coluna-position-center-15 {
 	width: 15%;
 	text-align: center;
@@ -352,7 +352,7 @@ Configuração pagina cadastro
 }
 
 /*==================================
- Configurações das tabelas de cadastro
+ Configuração daa tabelas de cadastro
  =================================== */
 .table-cadastro {
 	margin: 100px auto 50px auto;
@@ -370,6 +370,74 @@ Configuração pagina cadastro
 	margin: 10px 0;
 }
 
+
+/*===================================
+Configuração da pagina de registro
+=====================================*/
+#fildset-registro{
+	min-height: 500px !important;
+	font-size: 14px !important;
+	clear: both;
+}
+
+#navegador-registro{
+	width: 100%;
+	/* margin-bottom: -35px; */
+}
+
+#botoes-navegacao-registro{
+	float: right;
+	width: 100px;
+}
+
+#calendario-registro{
+	width: 100%;
+	height: 25px;
+	margin-top: -10px;
+	font-size: 12px;
+}
+
+#botao-calendario{
+	float: right;
+	width: 110px;
+	height: 25px;
+}
+
+
+#formulario-registro{
+	margin: 10px 0;
+	height: 75px;
+	width: 100%;
+}
+
+#lado-direito{
+	width: 600px;
+	height: 75px;
+	float: left;
+}
+
+#lado-esquerdo{
+	width: 250px;
+	height: 75px;
+	float: left;
+}
+
+#btn-inserir{
+	width: 90px;
+	height: 25px; 
+	margin: 35px 10px 0 10px; 
+	float: left;
+}
+
+#check-almoco{
+	height: 25px;
+	margin: 37px 0 0 10px;
+}
+
+#table-registro{
+	margin-top: 25px;;
+	font-size: 12px; 
+}
 
 /*===================================
 Configuração Footer
