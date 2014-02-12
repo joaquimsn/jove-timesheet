@@ -390,20 +390,6 @@ Configuração da pagina de registro
 	width: 100px;
 }
 
-#calendario-registro{
-	width: 100%;
-	height: 25px;
-	margin-top: -10px;
-	font-size: 12px;
-}
-
-#botao-calendario{
-	float: right;
-	width: 110px;
-	height: 25px;
-}
-
-
 #formulario-registro{
 	margin: 10px 0;
 	height: 75px;
@@ -417,27 +403,62 @@ Configuração da pagina de registro
 }
 
 #lado-esquerdo{
-	width: 250px;
+	width: 350px;
 	height: 75px;
 	float: left;
 }
 
 #btn-inserir{
+	color: #f89117;
 	width: 90px;
-	height: 25px; 
-	margin: 35px 10px 0 10px; 
+	height: 28px;
+	margin: 32px 10px 0 0; 
 	float: left;
 }
 
+#btn-inserir:hover{
+	color: #0088cc;
+}
+
 #check-almoco{
-	height: 25px;
+	height: 27px;
 	margin: 37px 0 0 10px;
+}
+
+#botao-calendario{
+	color: #f89117;
+	float:left;
+	height: 28px;
+	margin-top: 32px;
+}
+
+#botao-calendario:hover{
+	color: #0088cc;
 }
 
 #table-registro{
 	margin-top: 25px;;
-	font-size: 12px; 
+	font-size: 16px; 
 }
+
+#table-registro th{
+	font-size: 12px;
+}
+
+#table-registro tr{
+	font-size: 12px;
+}
+
+/* Configuração do calendario */
+#modal-calendario-registro{
+	font-size: 16px;
+}
+
+#calendario-registro{
+	width: 1000px;
+	height: 600px;
+}
+
 
 /*===================================
 Configuração Footer

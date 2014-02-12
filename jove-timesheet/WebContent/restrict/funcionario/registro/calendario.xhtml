@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" >
+		
+	<p:dialog id="modal-calendario-registro" widgetVar="historicoRegistro" modal="true" resizable="false" 
+		header="Histórico de Registro">
+		
+		<h:form id="form-calendario" prependId="false" >
+			<p:schedule id="calendario-registro" widgetVar="calendarioRegistro" locale="pt_BR">
+				
+			</p:schedule>
+		</h:form>
+		
+	</p:dialog>
+</ui:composition>
