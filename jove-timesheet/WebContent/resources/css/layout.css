@@ -4,6 +4,10 @@
 	font-family: verdana, arial, sans-serif;
 }
 
+
+/*===================================
+Edição do Scroll
+=====================================*/
 ::-webkit-scrollbar {
     width: 12px;
 }
@@ -16,6 +20,17 @@
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+
+
+/*===================================
+CSS universal
+=====================================*/
+.btn-padrao {
+	margin: 0 5px;
+	font-size: 14px !important;
+	color: #f89117 !important;
 }
 
 #corpo-pagina {
@@ -341,13 +356,7 @@ Configuração pagina cadastro
 	float: right;
 }
 
-.btn-cadastro {
-	margin: 0 5px;
-	font-size: 14px !important;
-	color: #f89117 !important;
-}
-
-.btn-cadastro :hover {
+.btn-padrao :hover {
 	color: #0088CC;
 }
 
@@ -461,6 +470,96 @@ Configuração da pagina de registro
 
 
 /*===================================
+Configuração da pagina Acompanhamento
+=====================================*/
+#form-pagina-acompanhamento{
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+#div-lista-funcionario{
+	width: 100%;
+	font-size: 12px;
+}
+
+#botoes-lista-funcionario{
+	width:300px;
+	height: 20px; 
+	float: right;
+}
+
+.container-funcionario{
+	text-decoration: none;
+	margin-bottom: 200px !important;
+}
+
+.funcionario{
+	width: 900px;
+	height: 80px;
+	padding: 10px;
+	border: 1px solid #DDDDDD;
+	transition: all 0.3s linear;
+}
+
+.funcionario:hover{
+	background: #F89117;
+	box-shadow: 0 0 0.5px 1px #52A8EC;
+	transition: all 0.5s linear;
+}
+
+.foto-funcionario{
+	float: left;
+	height: 80px;
+	width: 80px;
+	padding: 10px;
+}
+
+.panelgrid-funcionario{
+	width:800px;
+	height: 80px;
+}
+
+.panelgrid-funcionario tr{
+	height: 26.666px;
+}
+
+.campo-label-funcionario{
+	font-size: 13px;	
+}
+
+.campo-dados-funcionario{
+	font-size: 14px !important;
+	font-weight: bold;
+	padding:;
+}
+
+#opcao-pesquisa{
+	width: 100%;
+	height: 200px;
+	font-size: 14px;
+}
+
+/* Configuração da pagina statusequipe */
+#modal-equipe-funcionario{
+	font-size: 12px;
+}
+
+.fieldset-equipe{
+	width: 1000px;
+	height: 550px;
+}
+
+#parametro-relatorio{
+	height: 200px;
+	margin: 5px;
+}
+
+#botoes-equipe{
+	height: 40px;
+	float: right;
+}
+
+/*===================================
 Configuração Footer
 =====================================*/
 #footer {
@@ -479,8 +578,7 @@ Configuração Footer
 }
 
 #logo-jove-footer {
-	background: url("../images/layout/jove-logo-mini.png") no-repeat
-		!important;
+	background: url("../images/layout/jove-logo-mini.png") no-repeat!important;
 	width: 53px;
 	height: 32px;
 	margin: 4px 0 0 5px;

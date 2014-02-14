@@ -10,6 +10,20 @@
 	
 	<ui:define name="conteudo">
 	
+		<jove:titulo icon="/resources/images/icons/24x24/acompanhamento.png" label="Acompanhamento" />
+		
+		<h:form id="form-pagina-acompanhamento">
+			<p:tabView id="tabview-acompanhamento">
+				<p:tab id="tab-geral" title="Geral" >
+					<ui:include src="/restrict/administrador/acompanhamento/acompanhamentoprincipal.xhtml"/>
+				</p:tab>
+				<p:tab id="tab-grafico" title="Gráficos" >
+				
+				</p:tab>
+			</p:tabView>
+		</h:form>
+		
+		<!-- Modal do btn status equipe -->
+		<ui:include src="/restrict/administrador/acompanhamento/statusequipe.xhtml" />
 	</ui:define>
-
 </ui:composition>
