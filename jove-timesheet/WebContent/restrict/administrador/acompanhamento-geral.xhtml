@@ -15,7 +15,7 @@
 		<h:form id="form-pagina-acompanhamento">
 			<p:tabView id="tabview-acompanhamento">
 				<p:tab id="tab-geral" title="Geral" >
-					<ui:include src="/restrict/administrador/acompanhamento/acompanhamentoprincipal.xhtml"/>
+					<ui:include src="/restrict/administrador/acompanhamento/principal.xhtml"/>
 				</p:tab>
 				<p:tab id="tab-grafico" title="Gráficos" >
 				
@@ -23,7 +23,5 @@
 			</p:tabView>
 		</h:form>
 		
-		<!-- Modal do btn status equipe -->
-		<ui:include src="/restrict/administrador/acompanhamento/statusequipe.xhtml" />
 	</ui:define>
 </ui:composition>

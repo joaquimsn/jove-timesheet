@@ -36,8 +36,8 @@ CREATE TABLE jornada_trabalho(
 	carga_horaria TIME NOT NULL,
 	periodo VARCHAR(50) NOT NULL,
 	jornada VARCHAR(50) NOT NULL,
-	tempo_refeicao TIME NOT NULL,
-	folga VARCHAR(25) NOT NULL,
+	tempo_refeicao TIME NULL,
+	folga VARCHAR(25) NULL,
 	ativo BOOLEAN NULL,
 	PRIMARY KEY (id_jornada_trabalho)
 );
@@ -80,7 +80,7 @@ CREATE TABLE usuario(
 	usuario VARCHAR(30) NOT NULL,
 	senha VARCHAR(30)NOT NULL,
 	nivel INT NOT NULL,
-	ativo BOOLEAN NOT NULL,
+	ativo BOOLEAN NULL,
 	PRIMARY KEY (id_funcionario),
 	UNIQUE KEY (usuario),
 	CONSTRAINT fk_funcionario_id_funcionario

@@ -4,35 +4,9 @@
 	font-family: verdana, arial, sans-serif;
 }
 
-
-/*===================================
-Edição do Scroll
-=====================================*/
-::-webkit-scrollbar {
-    width: 12px;
-}
- 
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-    border-radius: 10px;
-}
- 
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-}
-
-
-
 /*===================================
 CSS universal
 =====================================*/
-.btn-padrao {
-	margin: 0 5px;
-	font-size: 14px !important;
-	color: #f89117 !important;
-}
-
 #corpo-pagina {
 	width: 100%;
 	position: absolute;
@@ -45,6 +19,26 @@ CSS universal
 	width: 100%;
 	height: 100%;
 }
+
+.btn-padrao {
+	margin: 0 5px;
+	font-size: 14px !important;
+	color: #f89117 !important;
+}
+
+.label-padrao{
+	font-size: 14px !important;
+}
+
+.campo-padrao{
+	font-size: 17px !important;
+}
+
+.select-padrao{
+	width: 100% !important;
+	font-size: 13px !important;
+}
+
 
 /*===================================
 Configuração do Menu
@@ -383,20 +377,18 @@ Configuração pagina cadastro
 /*===================================
 Configuração da pagina de registro
 =====================================*/
-#fildset-registro{
-	min-height: 500px !important;
+#form-registro{
+	width: 100%;
+	min-height: 550px !important;
 	font-size: 14px !important;
-	clear: both;
 }
 
 #navegador-registro{
 	width: 100%;
-	/* margin-bottom: -35px; */
 }
 
-#botoes-navegacao-registro{
-	float: right;
-	width: 100px;
+.botoes-navegacao-registro{
+	float: right !important;
 }
 
 #formulario-registro{
@@ -405,9 +397,14 @@ Configuração da pagina de registro
 	width: 100%;
 }
 
-#lado-direito{
+.fildset-registro{
+	min-height: 550px !important;
+	clear: both;
+}
+
+.lado-direito{
 	width: 600px;
-	height: 75px;
+	10height: 75px;
 	float: left;
 }
 
@@ -417,55 +414,42 @@ Configuração da pagina de registro
 	float: left;
 }
 
-#btn-inserir{
-	color: #f89117;
-	width: 90px;
-	height: 28px;
-	margin: 32px 10px 0 0; 
-	float: left;
+#botoes-lado-esquerdo-registro{
+	margin-top: 24px;
 }
 
-#btn-inserir:hover{
-	color: #0088cc;
+.check-almoco{
+	margin: 0 10px;
 }
 
-#check-almoco{
-	height: 27px;
-	margin: 37px 0 0 10px;
-}
-
-#botao-calendario{
-	color: #f89117;
-	float:left;
-	height: 28px;
-	margin-top: 32px;
-}
-
-#botao-calendario:hover{
-	color: #0088cc;
-}
-
-#table-registro{
+.table-registro{
 	margin-top: 25px;;
 	font-size: 16px; 
 }
 
-#table-registro th{
+.table-registro th{
 	font-size: 12px;
 }
 
-#table-registro tr{
+.table-registro tr{
 	font-size: 12px;
 }
 
 /* Configuração do calendario */
-#modal-calendario-registro{
-	font-size: 16px;
-}
-
 #calendario-registro{
 	width: 1000px;
 	height: 600px;
+	font-size: 16px;
+}
+
+#botoes-calendario{
+	height: 30px;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.botoes-direita{
+	float: right;
 }
 
 
@@ -502,8 +486,7 @@ Configuração da pagina Acompanhamento
 }
 
 .funcionario:hover{
-	background: #F89117;
-	box-shadow: 0 0 0.5px 1px #52A8EC;
+	background: #fcd09b;
 	transition: all 0.5s linear;
 }
 
@@ -524,13 +507,12 @@ Configuração da pagina Acompanhamento
 }
 
 .campo-label-funcionario{
-	font-size: 13px;	
+	font-size: 13px;
+	font-weight: bold;	
 }
 
 .campo-dados-funcionario{
 	font-size: 14px !important;
-	font-weight: bold;
-	padding:;
 }
 
 #opcao-pesquisa{
@@ -544,20 +526,85 @@ Configuração da pagina Acompanhamento
 	font-size: 12px;
 }
 
-.fieldset-equipe{
-	width: 1000px;
-	height: 550px;
+.container-equipe{
+	width: 900px;
+	height: 450px;
 }
 
-#parametro-relatorio{
+#parametros-de-relatorio{
+	width: 100%;
+	height: 70px;
+	margin: 5px 0 20px 0;
+}
+
+.panelgrid-parametros{
+	width: 100%;
+	height: 30px;
+}
+
+#panelgrop-de-tabelas{
+	margin: 10px 0;
+}
+
+
+/*===================================
+Configuração da pagina meu perfil
+=====================================*/
+#usuario-topo{
+	width: 100%;
 	height: 200px;
-	margin: 5px;
+	border: 1px solid #DDDDDD;
 }
 
-#botoes-equipe{
-	height: 40px;
-	float: right;
+#usuario-esquerda{
+	width: 160px;
+	height: 160px;
+	margin: 20px 10px;
+	float: left;
 }
+
+#foto-usuario{
+	width: 140px;
+	height: 140px;
+	margin: 0 auto;
+}
+
+.img-usuario-padrao{
+	width: 100%;
+	height: 100%;
+}
+
+.btn-link-padrao{
+	text-decoration: none;
+	font-size: 13px;
+	color: #0088CC;
+	margin: 5px 0 0 40px;
+}
+
+.btn-link-padrao:hover{
+	color: #333;	
+}
+
+#usuario-direta{
+	height: 200px;
+	float: left;
+}
+
+.grid-funcionario-meuperfil{
+	height: 180px;
+	margin: 10px 0 0 40px;
+}
+
+#dados-cadastrais-funcionario{
+	margin: 25px auto 0 auto;
+}
+
+/* Modal alterar usuario e senha */
+.grid-alterar-usuario-senha{
+	width: 275px;
+	height: 225px;
+}
+
 
 /*===================================
 Configuração Footer
@@ -605,4 +652,37 @@ Configuração Footer
 	margin-top: -34px;
 	font-size: 0.7em;
 	float: right;
+}
+
+/****** Classes de componentes PrimeFaces reescritas ******/
+
+.ui-state-disabled {
+	background-image: none;
+	opacity: 0.55 !important;
+}
+
+.ui-widget-content .ui-datatable-even {
+	height: 40px;
+}
+
+.ui-widget-content .ui-datatable-odd {
+	height: 40px;
+}
+
+.ui-widget-content .ui-datatable-empty-message {
+	height: 40px;
+}
+
+.fileupload-buttonbar .ui-button input {
+	z-index: 1;
+}
+
+.ui-inputfield[readonly] {
+	background-color: rgb(245, 245, 245);
+}
+
+.ui-inputfield[readonly].ui-state-focus {
+	border-color: rgb(204, 204, 204);
+	box-shadow: 0px 0px 1px lightgray;
+	outline: 0 !important;
 }

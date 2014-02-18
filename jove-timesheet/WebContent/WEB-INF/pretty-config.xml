@@ -21,12 +21,12 @@
 	
 	<url-mapping id="acompanhamento">
 		<pattern value="/acompanhamento" />
-		<view-id value="/restrict/administrador/acompanhamento.xhtml"/>
+		<view-id value="/restrict/administrador/acompanhamento-geral.xhtml"/>
 	</url-mapping>
 
 	<url-mapping id="meu-perfil">
 		<pattern value="/meuperfil" />
-		<view-id value="/restrict/funcionario/meuperfil.xhtml"/>
+		<view-id value="/restrict/universal/meu-perfil.xhtml"/>
 	</url-mapping>
 	
 	<url-mapping id="sair">

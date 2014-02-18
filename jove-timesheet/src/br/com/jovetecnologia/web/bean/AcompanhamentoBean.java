@@ -2,7 +2,6 @@ package br.com.jovetecnologia.web.bean;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -27,13 +26,13 @@ public class AcompanhamentoBean {
 		String[] nomes =  {"Joaquim", "Nicolas", "Renan", "Neto", "Baggio", "Carlos", "Verissimo", "Pedro", "Marcos", "Maria" };
 		
 		for(int i = 0; i < 10; i++){
-			Funcionario funcionario1 = new Funcionario();
+			funcionario = new Funcionario();
 			double aleatorio = Math.random() * 10;
 			
 			String numero = "" + aleatorio;
 			
-			funcionario1.setNome(nomes[i]);
-			funcionario1.setNumero(numero);
+			funcionario.setNome(nomes[i]);
+			funcionario.setNumero(numero);
 			
 			listaFuncionario.add(funcionario);
 			
