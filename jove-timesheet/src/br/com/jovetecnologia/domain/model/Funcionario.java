@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 
@@ -55,6 +56,15 @@ public class Funcionario implements Serializable {
 
 	private String uf;
 
+	@Column(name = "tipo_contrato")
+	private String tipoContrato;
+
+	@Column(name = "tempo_refeicao")
+	private Time tempoRefeicao;
+
+	@Column(name = "carga_horaria")
+	private Time cargaHoraria;
+
 	// bi-directional many-to-one association to Funcionario
 	@ManyToOne
 	@JoinColumn(name = "fk_id_funcionario")
@@ -68,11 +78,6 @@ public class Funcionario implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_departamento")
 	private Departamento departamento;
-
-	// bi-directional many-to-one association to JornadaTrabalho
-	@ManyToOne
-	@JoinColumn(name = "id_jornada_trabalho")
-	private JornadaTrabalho jornadaTrabalho;
 
 	// bi-directional many-to-one association to Registro
 	@OneToMany(mappedBy = "funcionario")
@@ -310,6 +315,48 @@ public class Funcionario implements Serializable {
 	}
 
 	/**
+	 * @return the tipoContrato
+	 */
+	public String getTipoContrato() {
+		return tipoContrato;
+	}
+
+	/**
+	 * @param tipoContrato the tipoContrato to set
+	 */
+	public void setTipoContrato(String tipoContrato) {
+		this.tipoContrato = tipoContrato;
+	}
+
+	/**
+	 * @return the tempoRefeicao
+	 */
+	public Time getTempoRefeicao() {
+		return tempoRefeicao;
+	}
+
+	/**
+	 * @param tempoRefeicao the tempoRefeicao to set
+	 */
+	public void setTempoRefeicao(Time tempoRefeicao) {
+		this.tempoRefeicao = tempoRefeicao;
+	}
+
+	/**
+	 * @return the cargaHoraria
+	 */
+	public Time getCargaHoraria() {
+		return cargaHoraria;
+	}
+
+	/**
+	 * @param cargaHoraria the cargaHoraria to set
+	 */
+	public void setCargaHoraria(Time cargaHoraria) {
+		this.cargaHoraria = cargaHoraria;
+	}
+
+	/**
 	 * @return the funcionario
 	 */
 	public Funcionario getFuncionario() {
@@ -349,20 +396,6 @@ public class Funcionario implements Serializable {
 	 */
 	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
-	}
-
-	/**
-	 * @return the jornadaTrabalho
-	 */
-	public JornadaTrabalho getJornadaTrabalho() {
-		return jornadaTrabalho;
-	}
-
-	/**
-	 * @param jornadaTrabalho the jornadaTrabalho to set
-	 */
-	public void setJornadaTrabalho(JornadaTrabalho jornadaTrabalho) {
-		this.jornadaTrabalho = jornadaTrabalho;
 	}
 
 	/**

@@ -30,18 +30,6 @@ CREATE TABLE departamento(
 		REFERENCES empresa (id_empresa)
 );
 
-CREATE TABLE jornada_trabalho(
-	id_jornada_trabalho INT NOT NULL AUTO_INCREMENT,
-	tipo_contrato VARCHAR(75) NOT NULL,
-	carga_horaria TIME NOT NULL,
-	periodo VARCHAR(50) NOT NULL,
-	jornada VARCHAR(50) NOT NULL,
-	tempo_refeicao TIME NULL,
-	folga VARCHAR(25) NULL,
-	ativo BOOLEAN NULL,
-	PRIMARY KEY (id_jornada_trabalho)
-);
-
 CREATE TABLE funcionario(
 	id_funcionario INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(100) NOT NULL,
@@ -60,7 +48,9 @@ CREATE TABLE funcionario(
 	email VARCHAR(100) NOT NULL,
 	fk_id_funcionario INT NULL,
 	id_departamento INT NOT NULL,
-	id_jornada_trabalho INT NOT NULL,
+	tipo_contrato VARCHAR(75) NOT NULL,
+	carga_horaria TIME NOT NULL,
+	tempo_refeicao TIME NULL,
 	ativo BOOLEAN NULL,
 	PRIMARY KEY (id_funcionario),
 	UNIQUE KEY (email),
@@ -69,10 +59,7 @@ CREATE TABLE funcionario(
 		REFERENCES funcionario (id_funcionario),
 	CONSTRAINT fk_departamento_id_departamento
 		FOREIGN KEY (id_departamento)
-		REFERENCES departamento (id_departamento),
-	CONSTRAINT fk_jornada_tr_id_jornada_trabalho
-		FOREIGN KEY (id_jornada_trabalho)
-		REFERENCES jornada_trabalho (id_jornada_trabalho)
+		REFERENCES departamento (id_departamento)
 );
 
 CREATE TABLE usuario(

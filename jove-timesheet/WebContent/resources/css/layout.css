@@ -531,7 +531,7 @@ Configuração da pagina Acompanhamento
 	height: 450px;
 }
 
-#parametros-de-relatorio{
+#parametros-do-relatorio{
 	width: 100%;
 	height: 70px;
 	margin: 5px 0 20px 0;
@@ -545,6 +545,8 @@ Configuração da pagina Acompanhamento
 #panelgrop-de-tabelas{
 	margin: 10px 0;
 }
+
+/* Relatorio por funcionario */
 
 
 /*===================================
