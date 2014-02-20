@@ -12,7 +12,7 @@ import br.com.jovetecnologia.domain.model.Funcionario;
 import br.com.jovetecnologia.domain.model.Projeto;
 import br.com.jovetecnologia.domain.model.Tarefa;
 import br.com.jovetecnologia.domain.model.Usuario;
-import br.com.jovetecnologia.web.util.IOutcome;
+import br.com.jovetecnologia.infrastructure.util.IOutcome;
 
 @ManagedBean
 @ViewScoped

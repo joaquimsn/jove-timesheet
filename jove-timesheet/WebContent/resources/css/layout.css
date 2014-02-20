@@ -419,7 +419,8 @@ Configuração da pagina de registro
 }
 
 .check-almoco{
-	margin: 0 10px;
+	margin: 0 10px ;
+	line-height: 15px !important;
 }
 
 .table-registro{
@@ -436,11 +437,6 @@ Configuração da pagina de registro
 }
 
 /* Configuração do calendario */
-#calendario-registro{
-	width: 1000px;
-	height: 600px;
-	font-size: 16px;
-}
 
 #botoes-calendario{
 	height: 30px;
@@ -470,6 +466,7 @@ Configuração da pagina Acompanhamento
 	width:300px;
 	height: 20px; 
 	float: right;
+	margin-bottom: 10px;
 }
 
 .container-funcionario{
@@ -547,7 +544,11 @@ Configuração da pagina Acompanhamento
 }
 
 /* Relatorio por funcionario */
-
+#botoes-topo{
+	height: 30px;
+	width: 100%;
+	margin-bottom: 5px; 
+}
 
 /*===================================
 Configuração da pagina meu perfil

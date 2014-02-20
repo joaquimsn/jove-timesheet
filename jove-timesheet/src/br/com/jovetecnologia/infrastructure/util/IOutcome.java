@@ -1,4 +1,4 @@
-package br.com.jovetecnologia.web.util;
+package br.com.jovetecnologia.infrastructure.util;
 
 /**
  * Retornar as String de mapeamento das paginas (Outcome)

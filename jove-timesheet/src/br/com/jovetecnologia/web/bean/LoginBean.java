@@ -3,13 +3,13 @@ package br.com.jovetecnologia.web.bean;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import br.com.jovetecnologia.domain.model.Usuario;
-import br.com.jovetecnologia.web.util.IOutcome;
+import br.com.jovetecnologia.infrastructure.util.IOutcome;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class LoginBean implements Serializable {
 
 	private static final long serialVersionUID = 5185840091249342115L;

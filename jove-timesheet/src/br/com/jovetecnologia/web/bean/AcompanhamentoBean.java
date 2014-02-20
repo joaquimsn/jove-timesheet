@@ -3,26 +3,39 @@ package br.com.jovetecnologia.web.bean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import br.com.jovetecnologia.domain.model.Funcionario;
-import br.com.jovetecnologia.web.util.IOutcome;
+import br.com.jovetecnologia.infrastructure.util.IOutcome;
+import br.com.jovetecnologia.infrastructure.util.enums.EscopoEnum;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class AcompanhamentoBean {
 	
 	private Funcionario funcionario;
 	private List<Funcionario> listaFuncionario;
+	private List<String> listaEscopo;
+	private int escopoSelecionado;
 	
 	/**
-	 * Refazer esse metodo, só teste
+	 * Abri a pagina acompanhamento
 	 * @author Joaquim Neto
+	 * @return O nome da pagina solicitada
 	 */
-	public AcompanhamentoBean(){
+	public String abrirPagina(){
+		return IOutcome.ACOMPANHAMENTO;
+	}
+	
+	@PostConstruct
+	public void inicializarPagina() {
+		funcionario = new Funcionario();
 		listaFuncionario = new ArrayList<Funcionario>();
-		
+		setListaEscopo(EscopoEnum.getDisplayList());
+				
+	    // TODO Caguei aqui, favor limpar	
 		String[] nomes =  {"Joaquim", "Nicolas", "Renan", "Neto", "Baggio", "Carlos", "Verissimo", "Pedro", "Marcos", "Maria" };
 		
 		for(int i = 0; i < 10; i++){
@@ -38,24 +51,20 @@ public class AcompanhamentoBean {
 			
 		}
 		
+		limpar();
+		
 	}
 	
-	/**
-	 * Responsavel por instanciar os objetos e variaveis essenciais para pagina
-	 * 
+	/** REFAZER só Testepri
 	 * @author Joaquim Neto
-	 * @return O nome da pagina solicitada
 	 */
-	public String abrirPagina(){
+	public void limpar(){
 		funcionario = new Funcionario();
-		listaFuncionario = new ArrayList<Funcionario>();
-		
-		return IOutcome.ACOMPANHAMENTO;
 	}
 	
-	public boolean hasFuncionarioSelecionado(){
+	public boolean isFuncionarioSelecionado(){
 		
-		if (funcionario.getNome().equals("")){
+		if (funcionario.getNome() == null){
 			return false;
 		}
 		
@@ -88,6 +97,34 @@ public class AcompanhamentoBean {
 	 */
 	public void setListaFuncionario(List<Funcionario> listaFuncionario) {
 		this.listaFuncionario = listaFuncionario;
+	}
+
+	/**
+	 * @return the listaEscopo
+	 */
+	public List<String> getListaEscopo() {
+		return listaEscopo;
+	}
+
+	/**
+	 * @param listaEscopo the listaEscopo to set
+	 */
+	public void setListaEscopo(List<String> listaEscopo) {
+		this.listaEscopo = listaEscopo;
+	}
+
+	/**
+	 * @return the escopoSelecionado
+	 */
+	public int getEscopoSelecionado() {
+		return escopoSelecionado;
+	}
+
+	/**
+	 * @param escopoSelecionado the escopoSelecionado to set
+	 */
+	public void setEscopoSelecionado(int escopoSelecionado) {
+		this.escopoSelecionado = escopoSelecionado;
 	}
 	
 

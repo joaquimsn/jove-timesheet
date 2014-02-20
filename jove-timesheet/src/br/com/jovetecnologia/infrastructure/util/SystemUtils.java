@@ -22,7 +22,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.IOUtils;
 import org.primefaces.context.RequestContext;
 
+import br.com.jovetecnologia.domain.model.Usuario;
 import br.com.jovetecnologia.infrastructure.util.annotation.Required;
+import br.com.jovetecnologia.web.bean.SessionBean;
 
 public class SystemUtils {
 	
@@ -534,53 +536,52 @@ public class SystemUtils {
 		}
 	}
 	
-//	/**
-//	 * Retorna a instância de sessão do SessionBean
-//	 * @author Renan Baggio
-//	 * @return Sessao
-//	 */
-//	public static Sessao getSessao() {
-//		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-//		HttpSession session = (HttpSession) request.getSession();
-//		Sessao sessao = (Sessao) session.getAttribute("sessao");
-//		
-//		return sessao;
-//	}
-//	
-//	/**
-//	 * Verifica se o usuário está logado
-//	 * @author Renan Baggio
-//	 * @return <b>true</b> se o usuário estiver logado
-//	 */
-//	public static boolean isUsuarioLogado() {
-//		try {
-//			Sessao sessao = getSessao();
-//			if(sessao == null) 
-//				return false;
-//			
-//			// Obtendo o usuário logado
-//			Usuario usuarioLogado = sessao.getUsuarioLogado();
-//			
-//			// Se não houver usuário logado, retornar para tela de login
-//			if (usuarioLogado == null)
-//				return false;
-//			
-//			// Se o usuário não for nulo, então está logado
-//			return true;
-//			
-//		} catch (Exception e) {
-//			Messages.addFatal("Erro fatal no sistema. Informe o administrador do sistema");
-//			e.printStackTrace();
-//			return false;
-//		}
-//	}
-//	
-//	/**
-//	 * Recupera o Usuário logado no momento
-//	 * @author Renan Baggio
-//	 * @return Usuário logado
-//	 */
-//	public static Usuario getUsuarioLogado() {
-//		return getSessao().getUsuarioLogado();
-//	}
+
+	/**
+	 * Retorna a instancia do SessionBean da sessão do usuário
+	 * @author Joaquim Neto
+	 * @return Um objeto SessionBean
+	 */
+	public static SessionBean getSessionBean() {
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		
+		return (SessionBean) externalContext.getSessionMap().get("sessionBean");
+	}
+	
+	/**
+	 * Retorna o usuário com os dados do usuarioLogado
+	 * @author Joaquim Neto
+	 * @return Um objeto Usuario
+	 */
+	public static Usuario getUsuarioLogado() {
+		return getSessionBean().getUsuarioLogado();
+	}
+	
+	/**
+	 * Verifica se o usuário está logado
+	 * @author Joaquim Neto
+	 * @return <b>true</b> se o usuário estiver logado
+	 */
+	public static boolean isUsuarioLogado() {
+		try {
+			SessionBean sessionBean = getSessionBean();
+			if(sessionBean == null) 
+				return false;
+			
+			// Obtendo o usuário logado
+			Usuario usuarioLogado = sessionBean.getUsuarioLogado();
+			
+			// Se não houver usuário logado, retornar para tela de login
+			if (usuarioLogado == null)
+				return false;
+			
+			// Se o usuário não for nulo, então está logado
+			return true;
+			
+		} catch (Exception e) {
+			Messages.addFatal("Erro fatal no sistema. Informe o administrador do sistema");
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

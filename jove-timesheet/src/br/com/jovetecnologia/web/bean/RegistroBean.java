@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import br.com.jovetecnologia.web.util.IOutcome;
+import br.com.jovetecnologia.infrastructure.util.IOutcome;
 
 @ManagedBean
 @ViewScoped
