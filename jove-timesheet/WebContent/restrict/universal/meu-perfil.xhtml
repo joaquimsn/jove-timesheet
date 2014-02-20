@@ -131,7 +131,24 @@
 						</h:panelGrid>
 					</h:panelGrid>
 					
-					<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-40, coluna-40, coluna-20">
+					<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-35, coluna-35, coluna-30">
+						<h:panelGrid width="100%">
+							<p:outputLabel value="Modalidade do contrato" />
+							<p:inputText value="" style="width: 100%;" readonly="true" />		
+						</h:panelGrid>
+						
+						<h:panelGrid width="100%">
+							<p:outputLabel value="Carga Horária" />
+							<p:inputText value="" style="width: 100%;" readonly="true" />		
+						</h:panelGrid>
+
+						<h:panelGrid width="100%">
+							<p:outputLabel value="Tempo Refeição" />
+							<p:inputText value="" style="width: 100%;" readonly="true" />		
+						</h:panelGrid>
+					</h:panelGrid>
+					
+					<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-50, coluna-50">
 						<h:panelGrid width="100%">
 							<p:outputLabel value="Departamento" />
 							<p:selectOneMenu id="cbx-departamento" style="width: 102%;" disabled="true" >
@@ -144,13 +161,6 @@
 							<p:selectOneMenu id="cbx-supervisor" value="" style="width: 102%;" disabled="true" >
 								<f:selectItem itemLabel="selecione" itemValue=""/>
 							</p:selectOneMenu>
-						</h:panelGrid>
-	
-						<h:panelGrid width="100%">
-							<p:outputLabel value="Jornada de Trabalho" />
-							<p:selectOneMenu id="cbx-jornada-trabalho" value="" style="width: 104%;" disabled="true" >
-								<f:selectItem itemLabel="selecione" itemValue=""/>
-							</p:selectOneMenu>	
 						</h:panelGrid>
 					</h:panelGrid>
 				</p:panel>

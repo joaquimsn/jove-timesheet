@@ -7,31 +7,37 @@
 	<url-mapping id="index">
 		<pattern value="/" />
 		<view-id value="/public/index.xhtml" />
+		<action>#{autorizadorBean.redirecionar}</action>
+	</url-mapping>
+	
+	<url-mapping id="login">
+		<pattern value="/login" />
+		<view-id value="/public/index.xhtml" />
+		<action>#{autorizadorBean.redirecionar}</action>
 	</url-mapping>
 	
 	<url-mapping id="registro">
 		<pattern value="/registro" />
 		<view-id value="/restrict/funcionario/registro.xhtml"/>
+		<action>#{autorizadorBean.autorizarPaginaInicial}</action>
 	</url-mapping>
 	
 	<url-mapping id="cadastro">
 		<pattern value="/cadastro" />
 		<view-id value="/restrict/administrador/cadastro.xhtml"/>
+		<action>#{autorizadorBean.autorizar}</action>
 	</url-mapping>
 	
 	<url-mapping id="acompanhamento">
 		<pattern value="/acompanhamento" />
 		<view-id value="/restrict/administrador/acompanhamento-geral.xhtml"/>
+		<action>#{autorizadorBean.autorizar}</action>
 	</url-mapping>
 
 	<url-mapping id="meu-perfil">
 		<pattern value="/meuperfil" />
 		<view-id value="/restrict/universal/meu-perfil.xhtml"/>
-	</url-mapping>
-	
-	<url-mapping id="sair">
-		<pattern value="/login" />
-		<view-id value="/public/index.xhtml"/>
+		<action>#{autorizadorBean.autorizar}</action>
 	</url-mapping>
 	
 </pretty-config>
