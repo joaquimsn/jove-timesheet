@@ -7,6 +7,8 @@ import javax.faces.bean.ViewScoped;
 
 import br.com.jovetecnologia.domain.model.Usuario;
 import br.com.jovetecnologia.infrastructure.util.IOutcome;
+import br.com.jovetecnologia.infrastructure.util.Messages;
+import br.com.jovetecnologia.infrastructure.util.SystemUtils;
 
 @ManagedBean
 @ViewScoped
@@ -23,7 +25,6 @@ public class LoginBean implements Serializable {
 	 * @author Joaquim Neto
 	 */
 	public String abrirPagina() {
-
 		usuarioSelecionado = new Usuario();
 
 		return IOutcome.REGISTRO;
@@ -33,12 +34,24 @@ public class LoginBean implements Serializable {
 	 * Realiza o login verificando o usuário e a senha na base
 	 * @author Joaquim Neto	
 	 */
-	public void fazerLogin() {
-		// TODO observação: o método chamava fazLogin(); e está errado.
-		// O correto é utilizar um VERBO NO INFINITIVO, ou seja, fazerLogin();
-		// O método estava private e não public como deveria ser.
-		// Favor apagar estes comentáriols ao implementar a funcionalidade.
-		// By Nicolas Ibanheiz
+	public String fazerLogin() {
+		// TODO REMOVER ESTE MOCK APÓS CRIAÇÃO DO DAO
+		if(nome.equals("joaquim") && senha.equals("jove")) {
+			Usuario usuario = new Usuario();
+			usuario.setUsuario("joaquim");
+			usuario.setNivel(1);
+			usuario.setAtivo(true);
+			
+			// Adicionando o usuário logado à sessão
+			SessionBean sessionBean = SystemUtils.getSessionBean();
+			sessionBean.setUsuarioLogado(usuario);
+			
+			return IOutcome.REGISTRO;
+		} else {
+			Messages.addError("Usuário ou senha incorreto");
+			
+			return null;
+		}
 	}
 
 	/**

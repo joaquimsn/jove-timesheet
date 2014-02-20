@@ -7,9 +7,9 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.jovetecnologia.domain.enums.EscopoEnum;
 import br.com.jovetecnologia.domain.model.Funcionario;
 import br.com.jovetecnologia.infrastructure.util.IOutcome;
-import br.com.jovetecnologia.infrastructure.util.enums.EscopoEnum;
 
 @ManagedBean
 @ViewScoped

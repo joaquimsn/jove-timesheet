@@ -28,7 +28,7 @@
 			<h:form id="formulario-login">
 				<div id="logo-jove" ></div>
 				
-				<p:messages id="messages" autoUpdate="true" showDetail="false"  closable="true" />
+				<p:growl id="messages" showDetail="true" closable="true" />
 				
 				<div id="campos-login">
 					<div class="div-usuario">
@@ -43,8 +43,10 @@
 					</div>
 				</div>
 				
-				<p:commandButton value="Acessar" styleClass="btn-acessar" action="#{loginBean.abrirPagina}"/>
+				<p:commandButton value="Acessar" styleClass="btn-acessar" 
+					action="#{loginBean.fazerLogin}" update=":formulario-login:messages"/>
 				
+				<h:panelGroup rendered="#{not empty sessionBean.instancia}"/>
 			</h:form>
 		</div>	
 	</h:body>

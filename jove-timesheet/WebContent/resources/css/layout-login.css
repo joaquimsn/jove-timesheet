@@ -134,3 +134,10 @@ Configuração dos campos do formulario de login
 	background: #E83A00;
 	transition: all 0.2s linear;
 }
+
+/****** Classes de componentes PrimeFaces reescritas ******/
+
+.ui-growl {
+	top: 88px !important;
+	right: 22px !important;
+}

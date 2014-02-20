@@ -32,5 +32,13 @@ public class SessionBean implements Serializable {
 	public void setUsuarioLogado(Usuario usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
 	}
+	
+	/**
+	 * Usado somente no login para inicializar o sessionBean
+	 * @return ""
+	 */
+	public String getInstancia() {
+		return "";
+	}
 
 }

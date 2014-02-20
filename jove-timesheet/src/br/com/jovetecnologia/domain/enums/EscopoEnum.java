@@ -1,4 +1,4 @@
-package br.com.jovetecnologia.infrastructure.util.enums;
+package br.com.jovetecnologia.domain.enums;
 
 import java.util.ArrayList;
 import java.util.List;

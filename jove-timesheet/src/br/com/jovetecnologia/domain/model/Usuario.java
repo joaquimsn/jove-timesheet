@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import br.com.jovetecnologia.domain.enums.NivelUsuarioEnum;
+
 /**
  * The persistent class for the usuario database table.
  */
@@ -19,7 +21,8 @@ public class Usuario implements Serializable {
 	@Column(name = "id_funcionario")
 	private int idFuncionario;
 
-	private byte ativo;
+	@Column(name="ativo", columnDefinition = "BIT", length = 1)
+	private boolean ativo;
 
 	private int nivel;
 
@@ -52,14 +55,14 @@ public class Usuario implements Serializable {
 	/**
 	 * @return the ativo
 	 */
-	public byte getAtivo() {
+	public boolean getAtivo() {
 		return ativo;
 	}
 
 	/**
 	 * @param ativo the ativo to set
 	 */
-	public void setAtivo(byte ativo) {
+	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
 
@@ -117,6 +120,17 @@ public class Usuario implements Serializable {
 	 */
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
+	}
+	
+	/**
+	 * Verifica se o usuário possuir nível de permissão Administrador
+	 * @return <b>true</b> se o usuário possuir nível de permissão Administrador
+	 */
+	public boolean isAdministrador() {
+		if(nivel == NivelUsuarioEnum.ADMINISTRADOR.getValue()) {
+			return true;
+		}
+		return false;
 	}
 
 	/*

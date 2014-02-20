@@ -5,7 +5,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import br.com.jovetecnologia.infrastructure.util.enums.EscopoEnum;
+import br.com.jovetecnologia.domain.enums.EscopoEnum;
 
 @FacesConverter(value="escopoConverter")
 public class EscopoConverter implements Converter{
