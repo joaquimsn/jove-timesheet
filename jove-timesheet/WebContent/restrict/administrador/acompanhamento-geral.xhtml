@@ -15,7 +15,14 @@
 		<h:form id="form-pagina-acompanhamento">
 			<p:tabView id="tabview-acompanhamento">
 				<p:tab id="tab-geral" title="Geral" >
-					<ui:include src="/restrict/administrador/acompanhamento/principal.xhtml"/>
+					<h:panelGroup rendered="#{!acompanhamentoBean.funcionarioSelecionado}">
+						<ui:include src="/restrict/administrador/acompanhamento/principal.xhtml"/>
+					</h:panelGroup>
+					
+					<h:panelGroup rendered="#{acompanhamentoBean.funcionarioSelecionado}">
+						<ui:include src="/restrict/administrador/acompanhamento/relatorio-funcionario.xhtml" />
+					</h:panelGroup>
+					
 				</p:tab>
 				<p:tab id="tab-grafico" title="Gráficos" >
 				

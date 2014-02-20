@@ -10,14 +10,17 @@
 	<div id="div-lista-funcionario" >
 		<div id="botoes-lista-funcionario">
 			<p:commandButton value="Status Equipe" styleClass="btn-padrao" onsuccess="equipeFuncionario.show()" />
-			<p:commandButton value="Banco de Horas" styleClass="btn-padrao" />		
+			<p:commandButton value="Banco de Horas" styleClass="btn-padrao" onsuccess="equipeBancoHoras.show()" />		
 		</div>
 		
 		<p:fieldset legend="Funcionarios" style="clear: both;">
 			<p:dataGrid id="datagrid-funcionario" value="#{acompanhamentoBean.listaFuncionario}" var="funcionario" rows="5" paginator="true"
 				columns="1" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 				
-				<h:commandLink class="container-funcionario">
+				<h:commandLink class="container-funcionario" actionListener="#{acompanhamentoBean.setFuncionario(funcionario)}" >
+				
+					<p:ajax update=":form-pagina-acompanhamento" />
+					
 					<div class="funcionario">	
 						<div class="foto-funcionario">
 							<p:graphicImage value="/resources/images/icons/64x64/user.png"/>
@@ -46,5 +49,8 @@
 	
 	<!-- Modal aplicado no btn status equipe -->
 	<ui:include src="/restrict/administrador/acompanhamento/status-equipe.xhtml" />
+	
+	<!--Modal aplicado no btn Banco de horas  -->
+	<ui:include src="/restrict/administrador/acompanhamento/bancode-horas.xhtml" />
 		
 </ui:composition>

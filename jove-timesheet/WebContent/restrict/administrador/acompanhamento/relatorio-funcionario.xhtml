@@ -9,38 +9,35 @@
 
 	<div id="relatorio-funcionario">
 		
-			<div class="dados-funcionario">
-				<h:panelGrid styleClass="panelgrid-funcionario" columns="2" columnClasses="coluna-20, coluna-80" >
-					<p:outputLabel value="Nome:" styleClass="campo-label-funcionario" />
-					<p:outputLabel value="#{funcionario.nome}" styleClass="campo-dados-funcionario" />
-					
-					<p:outputLabel value="Departamento:" styleClass="campo-label-funcionario" />
-					<p:outputLabel value="TI" styleClass="campo-dados-funcionario" />
-					
-					<p:outputLabel value="Banco de Horas:" styleClass="campo-label-funcionario" />
-					<p:outputLabel value="#{funcionario.numero}" styleClass="campo-dados-funcionario" />
-					
-				</h:panelGrid>				
-			</div>
+		<div id="botoes-topo">
+			<p:commandButton value="Voltar" actionListener="#{acompanhamentoBean.limpar}" update=":form-pagina-acompanhamento" 
+				styleClass="btn-padrao" style="float: right; margin-right: 16px;"/>
+		</div>
+		
+		<div class="dados-funcionario">
+			<h:panelGrid styleClass="panelgrid-funcionario" columns="2" columnClasses="coluna-20, coluna-80"  
+				style="height: 20px; margin-bottom:10px;">
+				<p:outputLabel value="Nome:" styleClass="campo-label-funcionario" />
+				<p:outputLabel value="#{acompanhamentoBean.funcionario.nome}" styleClass="campo-dados-funcionario" />
+				
+				<p:outputLabel value="Departamento:" styleClass="campo-label-funcionario" />
+				<p:outputLabel value="TI" styleClass="campo-dados-funcionario" />
+				
+				<p:outputLabel value="Banco de Horas:" styleClass="campo-label-funcionario" />
+				<p:outputLabel value="#{acompanhamentoBean.funcionario.numero}" styleClass="campo-dados-funcionario" />
+				
+			</h:panelGrid>				
+		</div>
 	
 		<div id="parametros-do-relatorio">
-			<h:panelGrid styleClass="panelgrid-parametros" columns="4"
-				columnClasses="coluna-25, coluna-25, coluna-40, coluna-10">
+			<h:panelGrid styleClass="panelgrid-parametros" columns="3"
+				columnClasses="coluna-50, coluna-40, coluna-10">
 
 				<h:panelGrid width="100%">
-					<p:outputLabel value="Departamento" styleClass="label-padrao" />
-					<p:selectOneMenu value="" styleClass="select-padrao">
+					<h:outputText value="Pesquisar por" styleClass="label-padrao" />
+					<p:selectOneMenu  value="#{acompanhamentoBean.escopoSelecionado}" styleClass="select-padrao" converter="escopoConverter">
 						<f:selectItem itemLabel="Selecione" itemValue="" />
-						<f:selectItem itemLabel="TI" itemValue="ti" />
-					</p:selectOneMenu>
-				</h:panelGrid>
-
-				<h:panelGrid width="100%">
-					<p:outputLabel value="Pesquisar por" styleClass="label-padrao" />
-					<p:selectOneMenu value="" styleClass="select-padrao">
-						<f:selectItem itemLabel="Selecione" itemValue="" />
-						<f:selectItem itemLabel="Projeto" itemValue="projeto" />
-						<f:selectItem itemLabel="Atividade" itemValue="atividade" />
+						<f:selectItems value="#{acompanhamentoBean.listaEscopo}"/>
 					</p:selectOneMenu>
 				</h:panelGrid>
 
@@ -49,7 +46,7 @@
 					<h:panelGroup style="width: 100%">
 						<p:calendar title="Inicio" pattern="dd/mm/yyyy" size="11"
 							showOn="button" readonlyInput="true" />
-						a
+						<h:outputText value="a" />
 						<p:calendar title="Fim" pattern="dd/mm/yyyy" size="11"
 							showOn="button" readonlyInput="true" />
 					</h:panelGroup>
@@ -61,5 +58,28 @@
 			</h:panelGrid>
 		</div>
 	</div>
+	
+	<p:dataTable id="table-relatorio-funcionario" resizableColumns="false" rows="10" style="font-size: 12px;"
+		paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		emptyMessage="Nenhum registro encontrada no periodo definido, tente outro periodo.">
+		
+		<f:facet name="header">
+			Lista de Registro
+		</f:facet>
+			
+		<p:column headerText="Departamento" styleClass="coluna-40">
+			Administrativo
+		</p:column>	
+			
+		<p:column headerText="Projeto" styleClass="coluna-40">
+			Administrativo
+		</p:column>
+		
+		<p:column headerText="Total de H" styleClass="coluna-20">
+			GETLOG versão 2
+		</p:column>
+		
+	</p:dataTable>	
+
 
 </ui:composition>
