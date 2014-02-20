@@ -58,6 +58,4 @@ public class RegistroBean implements Serializable {
 		this.calendario = calendario;
 	}
 	
-
-
 }

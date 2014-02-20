@@ -689,3 +689,8 @@ Configuração Footer
 	box-shadow: 0px 0px 1px lightgray;
 	outline: 0 !important;
 }
+
+.ui-growl {
+	top: 88px !important;
+	right: 22px !important;
+}

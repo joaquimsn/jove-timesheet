@@ -24,7 +24,8 @@
 					<li class="divisor-menus" />
 					
 					<li>
-						<p:commandLink styleClass="menu-label" value="Cadastro" action="#{cadastroBean.abrirPagina}" />
+						<p:commandLink styleClass="menu-label" value="Cadastro" action="#{cadastroBean.abrirPagina}" 
+							rendered="#{sessionBean.usuarioLogado.administrador}"/>
 					</li>
 					
 					<li class="divisor-menus" />

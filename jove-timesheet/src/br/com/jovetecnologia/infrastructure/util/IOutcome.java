@@ -8,7 +8,12 @@ package br.com.jovetecnologia.infrastructure.util;
 public interface IOutcome {
 	
 	/**
-	 * Tela de REGISTRO 
+	 * Tela de Login 
+	 */
+	String LOGIN = "pretty:login";
+	
+	/**
+	 * Tela de Registro 
 	 */
 	String REGISTRO = "pretty:registro";
 	
@@ -27,9 +32,4 @@ public interface IOutcome {
 	 */
 	String MEU_PERFIL = "pretty:meu-perfil";
 	
-	/**
-	 * Tela de Login
-	 */
-	String SAIR = "pretty:sair";
-		
 }
