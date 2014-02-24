@@ -39,7 +39,7 @@ public class LoginBean implements Serializable {
 		if(nome.equals("joaquim") && senha.equals("jove")) {
 			Usuario usuario = new Usuario();
 			usuario.setUsuario("joaquim");
-			usuario.setNivel(1);
+			usuario.setNivel(2);
 			usuario.setAtivo(true);
 			
 			// Adicionando o usuário logado à sessão

@@ -23,10 +23,9 @@
 					
 					<h:panelGrid width="100%" >
 						<p:outputLabel value="Pesquisar por" styleClass="label-padrao" />
-						<p:selectOneMenu value="" styleClass="select-padrao" >
-							<f:selectItem  itemLabel="Selecione" itemValue="" />
-							<f:selectItem itemLabel="Projeto" itemValue="projeto" />					
-							<f:selectItem itemLabel="Atividade" itemValue="atividade" />					
+						<p:selectOneMenu  value="#{acompanhamentoBean.escopoSelecionado}" styleClass="select-padrao" converter="escopoConverter">
+							<f:selectItem itemLabel="Selecione" itemValue="" />
+							<f:selectItems value="#{acompanhamentoBean.listaEscopo}"/>
 						</p:selectOneMenu>
 					</h:panelGrid>			
 					
