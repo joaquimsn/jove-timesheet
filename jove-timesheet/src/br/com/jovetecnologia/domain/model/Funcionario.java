@@ -13,7 +13,6 @@ import java.util.List;
  */
 @Entity
 @Table(name = "funcionario")
-@NamedQuery(name = "Funcionario.findAll", query = "SELECT f FROM Funcionario f")
 public class Funcionario implements Serializable {
 
 	private static final long serialVersionUID = 6298185253889592066L;
@@ -23,7 +22,8 @@ public class Funcionario implements Serializable {
 	@Column(name = "id_funcionario")
 	private int idFuncionario;
 
-	private byte ativo;
+	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
+	private boolean ativo;
 
 	private String bairro;
 
@@ -43,6 +43,7 @@ public class Funcionario implements Serializable {
 
 	private String email;
 
+	@Column(name = "genero", columnDefinition = "char(1)")
 	private String genero;
 
 	private String logradouro;
@@ -107,14 +108,14 @@ public class Funcionario implements Serializable {
 	/**
 	 * @return the ativo
 	 */
-	public byte getAtivo() {
+	public boolean isAtivo() {
 		return ativo;
 	}
 
 	/**
 	 * @param ativo the ativo to set
 	 */
-	public void setAtivo(byte ativo) {
+	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
 

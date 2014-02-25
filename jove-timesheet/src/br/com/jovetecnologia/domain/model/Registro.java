@@ -12,7 +12,6 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "registro")
-@NamedQuery(name = "Registro.findAll", query = "SELECT r FROM Registro r")
 public class Registro implements Serializable {
 
 	private static final long serialVersionUID = 7418838017608429704L;

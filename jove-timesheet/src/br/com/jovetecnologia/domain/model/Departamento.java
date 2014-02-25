@@ -11,7 +11,6 @@ import java.util.List;
  */
 @Entity
 @Table(name = "departamento")
-@NamedQuery(name = "Departamento.findAll", query = "SELECT d FROM Departamento d")
 public class Departamento implements Serializable {
 
 	private static final long serialVersionUID = -2875193932395234071L;
@@ -21,7 +20,8 @@ public class Departamento implements Serializable {
 	@Column(name = "id_departamento")
 	private int idDepartamento;
 
-	private byte ativo;
+	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
+	private boolean ativo;
 
 	private String descricao;
 
@@ -56,14 +56,14 @@ public class Departamento implements Serializable {
 	/**
 	 * @return the ativo
 	 */
-	public byte getAtivo() {
+	public boolean isAtivo() {
 		return ativo;
 	}
 
 	/**
 	 * @param ativo the ativo to set
 	 */
-	public void setAtivo(byte ativo) {
+	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
 
