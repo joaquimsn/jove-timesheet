@@ -23,7 +23,7 @@ CREATE TABLE departamento(
 	id_departamento INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(100) NOT NULL,
 	descricao VARCHAR(150) NOT NULL,
-	ativo BOOLEAN NULL,
+	ativo BOOLEAN NOT NULL,
 	id_empresa int NOT NULL,
 	PRIMARY KEY (id_departamento),
 	CONSTRAINT fk_empresa_id_empresa
@@ -52,7 +52,7 @@ CREATE TABLE funcionario(
 	tipo_contrato VARCHAR(75) NOT NULL,
 	carga_horaria TIME NOT NULL,
 	tempo_refeicao TIME NULL,
-	ativo BOOLEAN NULL,
+	ativo BOOLEAN NOT NULL,
 	PRIMARY KEY (id_funcionario),
 	UNIQUE KEY (email),
 	CONSTRAINT fk_funcionario_fk_id_funcionario
@@ -68,7 +68,7 @@ CREATE TABLE usuario(
 	usuario VARCHAR(30) NOT NULL,
 	senha VARCHAR(30)NOT NULL,
 	nivel INT NOT NULL,
-	ativo BOOLEAN NULL,
+	ativo BOOLEAN NOT NULL,
 	PRIMARY KEY (id_funcionario),
 	UNIQUE KEY (usuario),
 	CONSTRAINT fk_funcionario_id_funcionario
@@ -80,7 +80,7 @@ CREATE TABLE projeto(
 	id_projeto INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(100) NOT NULL,
 	descricao VARCHAR(200) NOT NULL,
-	ativo BOOLEAN NULL,
+	ativo BOOLEAN NOT NULL,
 	PRIMARY KEY (id_projeto)
 );
 
@@ -88,7 +88,7 @@ CREATE TABLE atividade(
 	id_atividade INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(100) NOT NULL,
 	descricao VARCHAR(200) NOT NULL,
-	ativo BOOLEAN NULL,
+	ativo BOOLEAN NOT NULL,
 	PRIMARY KEY (id_atividade)
 );
 
@@ -96,7 +96,7 @@ CREATE TABLE tarefa(
 	id_tarefa INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(100) NOT NULL,
 	descricao VARCHAR(200) NOT NULL,
-	ativo BOOLEAN NULL,
+	ativo BOOLEAN NOT NULL,
 	PRIMARY KEY (id_tarefa)
 );
 
@@ -140,13 +140,13 @@ INSERT INTO funcionario(nome, genero, data_nascimento, cpf, logradouro, numero, 
 	telefone_fixo, celular, email, fk_id_funcionario, id_departamento, tipo_contrato, carga_horaria, tempo_refeicao, ativo)
 	VALUES
 	('administrador', 'm', '1990-02-20', '000.000.000-00', 'av. exemplo', '00', 'ex', 'ex', 'São Paulo', 'SP', '0000000', 
-	'(00) 0000-0000', '(00) 0000-0000', 'admin@admin.com', null, 1, 'efetivo', '08:00:00', '01:00:00', 1),
+	'(00) 0000-0000', '(00) 0000-0000', 'admin@admin.com', null, 1, 'efetivo', '08:00:00', '01:00:00', true),
 	('funcionario', 'm', '1990-02-20', '000.000.000-00', 'av. exemplo', '00', 'ex', 'ex', 'São Paulo', 'SP', '0000000', 
-	'(00) 0000-0000', '(00) 0000-0000', 'funcionario@user.com', 1, 1, 'efetivo', '08:00:00', '01:00:00', 1);
+	'(00) 0000-0000', '(00) 0000-0000', 'funcionario@user.com', 1, 1, 'efetivo', '08:00:00', '01:00:00', true);
 
 INSERT INTO usuario(id_funcionario, usuario, senha, nivel, ativo) values
-	(1, 'admin', 'admin', 2, 1),
-	(2, 'user', 'user', 1, 1);
+	(1, 'admin', 'admin', 2, true),
+	(2, 'user', 'user', 1, true);
 
 INSERT INTO atividade(nome, descricao, ativo) values
 	('GETLOG - Versão 2', 'Desenvolvimento do novo sitema da jove',  1),
