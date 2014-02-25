@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.xml.crypto.Data"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="org.primefaces.model.chart.CartesianChartModel"/>
+<fullyQualifiedTypeName name="org.primefaces.model.chart.ChartSeries"/>
+<fullyQualifiedTypeName name="br.com.jovetecnologia.domain.GraficoMensal"/>
+<fullyQualifiedTypeName name="javax.annotation.ManagedBean"/>
+<fullyQualifiedTypeName name="javax.faces.bean.ViewScoped"/>
+<fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
+</qualifiedTypeNameHistroy>

@@ -125,3 +125,39 @@ CREATE TABLE registro(
 		FOREIGN KEY (id_tarefa)
 		REFERENCES tarefa (id_tarefa)
 );
+
+
+INSERT INTO empresa(razao_social, fantasia, cnpj, logradouro, numero, bairro, complemento, cidade, uf, cep, telefone, email) 
+	values('Empresa exemplo', 'exemplo', '00000000000000', 'av. exemplo', '00', 'ex', 'ex', 'São Paulo', 'SP', '0000000', 
+			'(00) 0000-0000', 'exemplo@exemplo.com');
+
+INSERT INTO departamento(nome, descricao, ativo, id_empresa) 
+	values('TI', 'Desenvolvimento e Treinamento', 1, 1);
+
+INSERT INTO funcionario(nome, genero, data_nascimento, cpf, logradouro, numero, bairro, complemento, cidade, uf, cep, 
+	telefone_fixo, celular, email, fk_id_funcionario, id_departamento, tipo_contrato, carga_horaria, tempo_refeicao, ativo)
+	VALUES('funcionario', 'm', '20-02-2014', '000.000.000-00', 'av. exemplo', '00', 'ex', 'ex', 'São Paulo', 'SP', '0000000', 
+			'(00) 0000-0000', '(00) 0000-0000', 'funcionario@user.com', 1, 1, 'efetivo', '08:00:00', '01:00:00', 1);
+
+INSERT INTO usuario(id_funcionario, usuario, senha, nivel, ativo) 
+	values(3, 'user', 'user', 1, 1);
+
+INSERT INTO atividade(nome, descricao, ativo) values
+	('GETLOG - Versão 2', 'Desenvolvimento do novo sitema da jove',  1),
+	('GETLOG - Legado', 'Correção em ultima instancia do GETLOG versão 1 ',  1),
+	('Ferias', 'Periodo de ferias dos funcionarios',  1),
+	('Ladrão de Tempo', 'Registro de atividades inesperadas',  1),
+	('Time Sheet', 'Projeto Time Sheet', 1);
+
+INSERT INTO atividade(nome, descricao, ativo) values
+	('Refatoração', 'Tempo utilizado para melhoria do código',  1),
+	('Codificação', 'Tempo destinado para codificação',  1),
+	('Estudo', 'Tempo destinato a estudos de novas tecnlogias ou recurso para implementação no projeto',  1),
+	('Criação de Telas', 'Tempo utilizado pra criação de novas interfaces graficas', 1);
+
+INSERT INTO atividade(nome, descricao, ativo) values
+	('Codificação', 'Tempo utilizado criar código',  1),
+	('Refeição', 'Tempo destinado a refieção obrigatoria',  1),
+	('Reunião', 'Tempo destinado em reuniões',  1),
+	('Planejamento', 'Tempo destinado para planejar e organizar ideias',  1),
+	('Suporte Omaha', 'Tempo destinado soluções de problemas na Omaha', 1);

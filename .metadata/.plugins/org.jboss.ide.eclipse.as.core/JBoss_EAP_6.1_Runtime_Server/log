@@ -1,0 +1,404 @@
+!SESSION 2014-02-24 10:41:20.956 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_21
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:00:04.652
+!MESSAGE Module jove-timesheet published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:00:04.660
+!MESSAGE Module prettyfaces-jsf2-3.3.3.jar published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-02-24 11:00:05.792
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-02-24 11:00:18.128
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:16:26.589
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:17:07.312
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:18:30.942
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:18:45.353
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:19:44.588
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:21:44.928
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:22:23.130
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:22:50.849
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:23:05.237
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:24:34.542
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:25:02.901
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:25:08.357
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:25:43.497
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:25:48.790
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:26:14.539
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:29:06.737
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:30:03.235
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:33:32.745
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:34:01.302
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:34:25.466
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:34:35.908
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:35:09.594
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:36:00.291
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:44:53.056
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:45:50.491
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:46:17.559
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:47:29.946
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-02-24 11:47:34.020
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:49:17.433
+!MESSAGE 2 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-02-24 11:49:18.268
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-02-24 11:49:25.581
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:49:26.633
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:50:22.230
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2014-02-24 11:50:44.954
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-02-24 11:50:45.482
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:52:23.038
+!MESSAGE 3 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-02-24 11:52:23.886
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-02-24 11:52:31.095
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2014-02-24 11:53:45.863
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-02-24 11:53:46.086
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:54:02.799
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-02-24 11:54:03.630
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-02-24 11:54:11.140
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:55:36.424
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:56:00.043
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2014-02-24 11:56:14.704
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-02-24 11:56:14.930
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 11:59:32.873
+!MESSAGE 4 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-02-24 11:59:33.709
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-02-24 11:59:40.620
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 12:03:16.226
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2014-02-24 12:03:16.274
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-02-24 12:03:16.451
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-02-24 12:03:26.141
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-02-24 12:03:33.357
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2014-02-24 12:04:20.037
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-02-24 12:04:20.556
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-02-24 12:13:07.126
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-02-24 12:13:15.438
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-02-24 12:53:16.970
+!MESSAGE Server processes have been terminated.
+!SESSION 2014-02-24 13:41:24.792 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_21
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-24 13:45:04.432
+!MESSAGE Module prettyfaces-jsf2-3.3.3.jar published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-02-24 13:45:05.824
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-02-24 13:45:19.095
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-02-24 13:46:03.902
+!MESSAGE Server processes have been terminated.
+!SESSION 2014-02-25 09:37:13.827 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_21
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-25 10:55:06.140
+!MESSAGE 42 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-25 10:55:06.157
+!MESSAGE Module prettyfaces-jsf2-3.3.3.jar published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-02-25 10:55:07.842
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-02-25 10:55:20.683
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-25 10:58:01.820
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2014-02-25 11:08:36.252
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-02-25 11:08:36.511
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-25 11:09:26.018
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-02-25 11:09:26.881
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-02-25 11:09:34.503
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-25 11:11:09.340
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2014-02-25 11:11:12.335
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-02-25 11:11:12.533
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-02-25 11:11:20.031
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-02-25 11:11:27.241
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-25 11:16:06.464
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2014-02-25 11:17:25.286
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-02-25 11:22:25.601
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-25 11:55:34.771
+!MESSAGE 4 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-02-25 11:55:35.601
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-02-25 11:55:42.926
+!MESSAGE Server Startup Succeeded
+!SESSION 2014-02-25 11:56:45.899 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_21
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-25 11:57:29.146
+!MESSAGE 42 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-25 11:57:29.158
+!MESSAGE Module prettyfaces-jsf2-3.3.3.jar published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-02-25 11:57:42.152
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-02-25 11:57:47.662
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-02-25 11:57:47.764
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2014-02-25 11:58:12.196
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-02-25 11:58:18.333
+!MESSAGE Server processes have been terminated.
+!SESSION 2014-02-25 11:59:14.741 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_21
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-25 12:00:02.200
+!MESSAGE Module jove-timesheet published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-25 12:00:02.234
+!MESSAGE Module prettyfaces-jsf2-3.3.3.jar published without error.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-02-25 12:00:04.179
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-02-25 12:00:17.057
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-25 12:01:32.973
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2014-02-25 12:03:44.117
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-02-25 12:03:44.383
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-02-25 12:04:34.329
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-02-25 12:04:41.848
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-25 12:10:51.543
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-25 12:14:26.901
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2014-02-25 12:15:14.010
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-02-25 12:17:03.289
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-02-25 12:17:07.944
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-02-25 12:17:15.157
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-25 12:19:12.701
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-25 12:25:48.181
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-02-25 12:25:48.711
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-02-25 13:43:58.061
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-02-25 13:44:23.720
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2014-02-25 13:53:41.464
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-02-25 13:53:42.021
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2014-02-25 13:53:48.215
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2014-02-25 13:53:55.929
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 0 33685505 2014-02-25 13:59:13.709
+!MESSAGE 1 files modified in module jove-timesheet
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2014-02-25 13:59:52.589
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16973825 2014-02-25 13:59:53.121
+!MESSAGE Server processes have been terminated.

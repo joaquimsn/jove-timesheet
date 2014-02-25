@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<!-- Aqui vai as tags para definição dos padrões da pagina -->
+		<meta http-equiv="restrict-type" content="text/html; charset=UTF-8" />
+		
+		<!--Aqui vai os CSS e javascript -->
+		<link rel="stylesheet" type="text/css" href="resources/css/layout-login.css" />
+		
+		<title>JOVE Timesheet - Login </title>
+	</h:head>
+	
+	<h:body>
+		<div id="header-login">
+			<div id="div-slogan">
+				<div id="logo-jove-header" />
+				<div id="texto-slogan">JOVE INOVAÇÂO E TECNOLOGIA - Serviços de Consultoria e Treinamento</div>
+			</div>
+			<div id="div-contato"><p>Suporte:  tel: 55-11 2446-2563 | Email: suporte@jovelogistica.com.br</p></div>
+		</div>
+		
+		<div id="container">
+			<h:form id="formulario-login">
+				<div id="logo-jove" ></div>
+				
+				<p:growl id="messages" showDetail="true" closable="true" />
+				
+				<div id="campos-login">
+					<div class="div-usuario">
+						<p:outputLabel value="Usuário"/>
+						<p:inputText styleClass="input-usuario" title="Usuário" maxlength="30" 
+							value="#{loginBean.nome}" />
+					</div>
+					<div class="div-senha">
+						<p:outputLabel value="Senha"/>
+						<p:password styleClass="input-senha" title="Senha" maxlength="16" 
+							value="#{loginBean.senha}" />
+					</div>
+				</div>
+				
+				<p:commandButton value="Acessar" styleClass="btn-acessar" 
+					action="#{loginBean.fazerLogin}" update=":formulario-login:messages"/>
+				
+				<h:panelGroup rendered="#{not empty sessionBean.instancia}"/>
+			</h:form>
+		</div>	
+	</h:body>
+
+</html>

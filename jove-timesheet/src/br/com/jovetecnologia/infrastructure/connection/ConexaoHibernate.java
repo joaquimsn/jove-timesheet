@@ -10,7 +10,6 @@ import org.hibernate.service.ServiceRegistryBuilder;
 /**
  * Realiza a conexão com a base de dados
  * @author Joaquim Neto
- *
  */
 public class ConexaoHibernate {
 	private static final SessionFactory SESSION_FACTORY = buildSessionFactory();
@@ -23,7 +22,7 @@ public class ConexaoHibernate {
 
 			Configuration configuration = new Configuration();
 
-			configuration.configure("br/com/jove/infrastructure/util/hibernate.cfg.xml");
+			configuration.configure("br/com/jovetecnologia/infrastructure/util/hibernate.cfg.xml");
 
 			ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties())
 					.buildServiceRegistry();

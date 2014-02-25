@@ -19,6 +19,7 @@ public class AcompanhamentoBean {
 	private List<Funcionario> listaFuncionario;
 	private List<String> listaEscopo;
 	private int escopoSelecionado;
+	private GraficoMensal mensal;
 	
 	/**
 	 * Abri a pagina acompanhamento
@@ -76,6 +77,13 @@ public class AcompanhamentoBean {
 	 */
 	public Funcionario getFuncionario() {
 		return funcionario;
+	}
+
+	/**
+	 * @return the mensal
+	 */
+	public GraficoMensal getMensal() {
+		return mensal;
 	}
 
 	/**

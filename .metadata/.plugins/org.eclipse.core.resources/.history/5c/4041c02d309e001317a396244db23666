@@ -1,0 +1,143 @@
+/*===================================
+Configuração Genericas
+=====================================*/
+* {
+	margin: 0;
+	padding: 0;
+	font-family: arial, freesans, sans-serif;
+	font-size: 14px;
+}
+
+body {
+	width: 100%;
+	/*Background responsivo*/
+	background: url("../images/layout/clock-hand.jpg") no-repeat center fixed;
+	background-size: cover; /*Css padrão*/
+	-webkit-background-size: cover; /*Css safari e chrome*/
+	-moz-background-size: cover; /*Css firefox*/
+	-ms-background-size: cover; /*Css IE não use mer#^@%#*/
+	-o-background-size: cover; /*Css Opera*/
+}
+
+/*===================================
+Configuração do header
+=====================================*/
+#header-login {
+	width: 100%;
+	height: 45px;
+	position: fixed;
+	top: 0;
+	background: #eee;
+	box-shadow: 0 2px 2px #777;
+}
+
+#div-slogan {
+	width: 48%;
+	height: 40px;
+}
+
+#logo-jove-header {
+	background: url("..	/images/layout/jove-logo-mini.png") no-repeat
+		!important;
+	width: 53px;
+	height: 32px;
+	margin: 7px 0 0 5px;
+}
+
+#texto-slogan{
+	height: 25px;
+	text-align: center;
+	font: 11px verdana, arial sans-serif;
+	color: #6f6f6f;
+	float:right;
+	margin:-23px 150px 0 0;
+}
+
+#div-contato {
+	width: 35em;
+	height: 2.5em;
+	float: right;
+	margin: -43px 0 0;
+}
+
+#div-contato p {
+	width: 40em;
+	height: 2.5em;
+	line-height: 35px;
+	text-align: center;
+	font-family: verdana, arial, sans-serif;
+	font-size: 0.8em;
+	float: right;
+	color: #6f6f6f;
+}
+
+/*===================================
+Configuração do formulario de login
+=====================================*/
+#formulario-login {
+	margin: 180px auto 0 auto;
+	width: 400px;
+	height: 290px;
+	background: #eee;
+	border: 1px solid;
+	border-radius: 10px;
+	position: relative;
+}
+
+#logo-jove {
+	margin: 10px;
+	background-image: url("../images/layout/jove-logo-128x70.png");
+	width: 128px;
+	height: 70px;
+}
+
+#campos-login {
+	width: 350px;
+	margin: 40px auto 5px auto;
+}
+
+/*===================================
+Configuração dos campos do formulario de login
+=====================================*/
+.div-usuario {
+	height: 50px;
+	margin: 0 auto;
+	padding-left:10px;
+}
+
+.input-usuario {
+	width:250px;
+	margin-left: 10px !important;
+}
+
+.div-senha {
+	height: 50px;
+	margin: 0 auto;
+	padding-left:10px;
+}
+
+.input-senha {
+	width:250px;
+	margin-left: 19px !important;
+}
+
+.btn-acessar {
+	width: 80px;
+	float: right;
+	background: #B52D00;
+	color: #eee;
+	margin: -10px 45px 0 0 ;
+	transition: all 0.2s linear;
+}
+
+.btn-acessar:hover {
+	background: #E83A00;
+	transition: all 0.2s linear;
+}
+
+/****** Classes de componentes PrimeFaces reescritas ******/
+
+.ui-growl {
+	top: 88px !important;
+	right: 22px !important;
+}

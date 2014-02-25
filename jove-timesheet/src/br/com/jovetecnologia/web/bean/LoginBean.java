@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import br.com.jovetecnologia.domain.model.Usuario;
+import br.com.jovetecnologia.infrastructure.dao.UsuarioDAO;
 import br.com.jovetecnologia.infrastructure.util.IOutcome;
 import br.com.jovetecnologia.infrastructure.util.Messages;
 import br.com.jovetecnologia.infrastructure.util.SystemUtils;
@@ -15,32 +16,19 @@ import br.com.jovetecnologia.infrastructure.util.SystemUtils;
 public class LoginBean implements Serializable {
 
 	private static final long serialVersionUID = 5185840091249342115L;
-
-	private Usuario usuarioSelecionado;
-	private String nome;
+	
+	private String login;
 	private String senha;
 	
-	/**
-	 * Inicializa os objetos da class
-	 * @author Joaquim Neto
-	 */
-	public String abrirPagina() {
-		usuarioSelecionado = new Usuario();
-
-		return IOutcome.REGISTRO;
-	}
 
 	/**
 	 * Realiza o login verificando o usuário e a senha na base
 	 * @author Joaquim Neto	
 	 */
 	public String fazerLogin() {
-		// TODO REMOVER ESTE MOCK APÓS CRIAÇÃO DO DAO
-		if(nome.equals("joaquim") && senha.equals("jove")) {
-			Usuario usuario = new Usuario();
-			usuario.setUsuario("joaquim");
-			usuario.setNivel(2);
-			usuario.setAtivo(true);
+		Usuario usuario = new  UsuarioDAO().validarUsuario(getLogin(), getSenha());
+		
+		if(usuario != null) {
 			
 			// Adicionando o usuário logado à sessão
 			SessionBean sessionBean = SystemUtils.getSessionBean();
@@ -53,33 +41,27 @@ public class LoginBean implements Serializable {
 			return null;
 		}
 	}
+	
+	public String fazerLogOff() {
+		SessionBean sessionBean = SystemUtils.getSessionBean();
+		sessionBean.setUsuarioLogado(null);
+		
+		return IOutcome.LOGIN;
+	}
+
 
 	/**
-	 * @return the usuarioSelecionado
+	 * @return the login
 	 */
-	public Usuario getUsuarioSelecionado() {
-		return usuarioSelecionado;
+	public String getLogin() {
+		return login;
 	}
 
 	/**
-	 * @param usuarioSelecionado the usuarioSelecionado to set
+	 * @param nome the login to set
 	 */
-	public void setUsuarioSelecionado(Usuario usuarioSelecionado) {
-		this.usuarioSelecionado = usuarioSelecionado;
-	}
-
-	/**
-	 * @return the nome
-	 */
-	public String getNome() {
-		return nome;
-	}
-
-	/**
-	 * @param nome the nome to set
-	 */
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	/**

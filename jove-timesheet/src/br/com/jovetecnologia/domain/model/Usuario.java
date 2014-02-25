@@ -27,8 +27,9 @@ public class Usuario implements Serializable {
 	private int nivel;
 
 	private String senha;
-
-	private String usuario;
+	
+	@Column(name = "usuario")
+	private String login;
 
 	// bi-directional one-to-one association to Funcionario
 	@OneToOne
@@ -95,17 +96,17 @@ public class Usuario implements Serializable {
 	}
 
 	/**
-	 * @return the usuario
+	 * @return the login
 	 */
-	public String getUsuario() {
-		return usuario;
+	public String getLogin() {
+		return login;
 	}
 
 	/**
-	 * @param usuario the usuario to set
+	 * @param login the login to set
 	 */
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	/**

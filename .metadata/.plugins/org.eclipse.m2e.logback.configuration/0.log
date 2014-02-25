@@ -1,0 +1,7 @@
+2014-02-25 11:00:28,053 [Worker-24] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-02-25 11:00:29,052 [New I/O client worker #1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/jboss/spec/javax/el/jboss-el-api_2.2_spec/1.0.2.Final-redhat-1/jboss-el-api_2.2_spec-1.0.2.Final-redhat-1-sources.jar
+2014-02-25 11:00:41,056 [Worker-22] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-02-25 11:00:41,439 [New I/O client worker #2-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/jboss/spec/javax/faces/jboss-jsf-api_2.1_spec/2.1.19.1.Final-redhat-1/jboss-jsf-api_2.1_spec-2.1.19.1.Final-redhat-1-sources.jar
+2014-02-25 11:14:23,720 [Worker-42] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-02-25 11:14:24,269 [New I/O client worker #3-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/hibernate/hibernate-core/4.1.7.Final/hibernate-core-4.1.7.Final-sources.jar
+2014-02-25 11:14:28,400 [New I/O client worker #3-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/hibernate/hibernate-core/4.1.7.Final/hibernate-core-4.1.7.Final-sources.jar
