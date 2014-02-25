@@ -127,6 +127,7 @@ CREATE TABLE registro(
 		REFERENCES tarefa (id_tarefa)
 );
 
+-- ********** Dados para teste **********
 
 INSERT INTO empresa(razao_social, fantasia, cnpj, logradouro, numero, bairro, complemento, cidade, uf, cep, telefone, email) 
 	values('Empresa exemplo', 'exemplo', '00000000000000', 'av. exemplo', '00', 'ex', 'ex', 'São Paulo', 'SP', '0000000', 
@@ -138,9 +139,9 @@ INSERT INTO departamento(nome, descricao, ativo, id_empresa)
 INSERT INTO funcionario(nome, genero, data_nascimento, cpf, logradouro, numero, bairro, complemento, cidade, uf, cep, 
 	telefone_fixo, celular, email, fk_id_funcionario, id_departamento, tipo_contrato, carga_horaria, tempo_refeicao, ativo)
 	VALUES
-	('administrador', 'm', '20-02-1990', '000.000.000-00', 'av. exemplo', '00', 'ex', 'ex', 'São Paulo', 'SP', '0000000', 
+	('administrador', 'm', '1990-02-20', '000.000.000-00', 'av. exemplo', '00', 'ex', 'ex', 'São Paulo', 'SP', '0000000', 
 	'(00) 0000-0000', '(00) 0000-0000', 'admin@admin.com', null, 1, 'efetivo', '08:00:00', '01:00:00', 1),
-	('funcionario', 'm', '20-02-1990', '000.000.000-00', 'av. exemplo', '00', 'ex', 'ex', 'São Paulo', 'SP', '0000000', 
+	('funcionario', 'm', '1990-02-20', '000.000.000-00', 'av. exemplo', '00', 'ex', 'ex', 'São Paulo', 'SP', '0000000', 
 	'(00) 0000-0000', '(00) 0000-0000', 'funcionario@user.com', 1, 1, 'efetivo', '08:00:00', '01:00:00', 1);
 
 INSERT INTO usuario(id_funcionario, usuario, senha, nivel, ativo) values
