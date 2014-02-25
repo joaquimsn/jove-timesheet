@@ -1309,3 +1309,40 @@ Binding(CTRL+R,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.jboss.tools.vpe.editorContext,,,system)
+!SESSION 2014-02-25 14:40:06.781 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_21
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2014-02-25 14:40:15.477
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jst.jsp.core 4 4 2014-02-25 14:40:47.909
+!MESSAGE A workspace crash was detected. The previous session did not exit normally. Not using saved taglib indexes.
+
+!ENTRY org.eclipse.ui 4 4 2014-02-25 14:57:47.252
+!MESSAGE Plug-in 'org.eclipse.m2e.core.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.eclipse.m2e.enableNatureAction
+
+!ENTRY org.eclipse.ui 4 4 2014-02-25 14:57:47.252
+!MESSAGE Plug-in 'org.eclipse.pde.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.eclipse.pde.ui.ConvertedProjectWizard
+
+!ENTRY org.eclipse.ui 4 4 2014-02-25 14:57:47.252
+!MESSAGE Plug-in 'org.jboss.tools.cdi.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.jboss.tools.cdi.ui.AddCDISupport
+
+!ENTRY org.eclipse.ui 4 4 2014-02-25 14:57:47.253
+!MESSAGE Plug-in 'org.jboss.tools.jsf.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.jboss.tools.jsf.ui.action.RemoveJSFNatureActionDelegate
+
+!ENTRY org.eclipse.ui 4 4 2014-02-25 14:57:47.253
+!MESSAGE Plug-in 'org.jboss.tools.jsf.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.jboss.tools.jsf.ui.action.AddCapabilitiesActionDelegate
+
+!ENTRY org.eclipse.ui 4 4 2014-02-25 14:57:47.253
+!MESSAGE Plug-in 'org.jboss.tools.jst.web.kb' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.jboss.tools.web.kb.RemoveKBSupport
+
+!ENTRY org.eclipse.ui 4 4 2014-02-25 14:57:47.253
+!MESSAGE Plug-in 'org.jboss.tools.seam.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.jboss.tools.seam.ui.AddSeamSupport
+
+!ENTRY org.eclipse.ui 4 4 2014-02-25 14:57:47.253
+!MESSAGE Plug-in 'org.jboss.tools.ws.jaxrs.core' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.jboss.tools.ws.jaxrs.configuration.addJaxrsConfigurationAction

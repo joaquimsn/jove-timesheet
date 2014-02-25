@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS jove_timesheet; 
+DROP DATABASES IF EXISTS jove_timesheet; 
 CREATE DATABASE jove_timesheet;
 USE jove_timesheet;
 

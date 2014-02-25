@@ -30,13 +30,13 @@
   <path value="/home/workspace/jove-timesheet/jove-timesheet/WebContent/WEB-INF/lib/mysql-connector-java-5.1.21-bin.jar"/>
   <path value="/home/workspace/jove-timesheet/jove-timesheet/WebContent/WEB-INF/lib/commons-io-1.4.jar"/>
   <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/faces/api/main/jboss-jsf-api_2.1_spec-2.1.19.1.Final-redhat-1.jar"/>
-  <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/servlet/api/main/jboss-servlet-api_3.0_spec-1.0.2.Final-redhat-1.jar"/>
-  <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/security/auth/message/api/main/jboss-jaspi-api_1.0_spec-1.0.1.Final-redhat-2.jar"/>
   <path value="/home/workspace/jove-timesheet/jove-timesheet/WebContent/WEB-INF/lib/c3p0-0.9.1.jar"/>
+  <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/security/auth/message/api/main/jboss-jaspi-api_1.0_spec-1.0.1.Final-redhat-2.jar"/>
+  <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/servlet/api/main/jboss-servlet-api_3.0_spec-1.0.2.Final-redhat-1.jar"/>
   <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/xml/rpc/api/main/jboss-jaxrpc-api_1.1_spec-1.0.1.Final-redhat-3.jar"/>
-  <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/jws/api/main/jsr181-api-1.0-MR1-redhat-3.jar"/>
-  <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/annotation/api/main/jboss-annotations-api_1.1_spec-1.0.1.Final-redhat-2.jar"/>
   <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/org/jboss/ejb3/main/jboss-ejb3-ext-api-2.0.0-redhat-2.jar"/>
+  <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/annotation/api/main/jboss-annotations-api_1.1_spec-1.0.1.Final-redhat-2.jar"/>
+  <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/jws/api/main/jsr181-api-1.0-MR1-redhat-3.jar"/>
   <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/org/jboss/as/controller-client/main/jboss-as-controller-client-7.2.0.Final-redhat-8.jar"/>
   <path value="/home/workspace/jove-timesheet/jove-timesheet/WebContent/WEB-INF/lib/omnifaces-1.7.jar">
    <libraries>
@@ -91,13 +91,9 @@
      <component class="composite" path="/jove-timesheet/WebContent/resources/componentes/titulo.xhtml">
       <id class="model-object" path="/titulo.xhtml" project="jove-timesheet"/>
       <attributes>
-       <entry name="component-type"/>
-       <entry name="description"/>
        <entry name="name">
         <value-info value="titulo"/>
        </entry>
-       <entry name="component-class"/>
-       <entry name="bodycontent"/>
       </attributes>
       <attribute class="composite">
        <id class="model-object" path="/titulo.xhtml/Interface/icon" project="jove-timesheet"/>
@@ -124,26 +120,34 @@
   <path value="/home/workspace/jove-timesheet/jove-timesheet/WebContent/WEB-INF/lib/javassist-3.15.0-GA.jar"/>
   <path value="/home/workspace/jove-timesheet/jove-timesheet/WebContent/WEB-INF/lib/commons-httpclient-3.1.jar"/>
   <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/wsdl4j/api/main/wsdl4j-1.6.2-redhat-4.jar"/>
-  <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/mail/api/main/mail-1.4.5-redhat-1.jar"/>
   <path value="/home/workspace/jove-timesheet/jove-timesheet/WebContent/WEB-INF/lib/hibernate-core-4.1.7.Final.jar"/>
+  <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/mail/api/main/mail-1.4.5-redhat-1.jar"/>
   <path value="/home/workspace/jove-timesheet/jove-timesheet/WebContent/WEB-INF/lib/commons-digester-1.7.jar"/>
   <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/management/j2ee/api/main/jboss-j2eemgmt-api_1.1_spec-1.0.1.Final-redhat-2.jar"/>
   <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/org/jboss/resteasy/resteasy-jaxb-provider/main/resteasy-jaxb-provider-2.3.6.Final-redhat-1.jar"/>
   <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/enterprise/api/main/cdi-api-1.0-SP4-redhat-2.jar"/>
   <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/validation/api/main/validation-api-1.0.0.GA-redhat-2.jar"/>
-  <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/jms/api/main/jboss-jms-api_1.1_spec-1.0.1.Final-redhat-2.jar"/>
   <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/ws/rs/api/main/jboss-jaxrs-api_1.1_spec-1.0.1.Final-redhat-2.jar"/>
+  <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/jms/api/main/jboss-jms-api_1.1_spec-1.0.1.Final-redhat-2.jar"/>
   <path value="/home/workspace/jove-timesheet/jove-timesheet/WebContent/WEB-INF/lib/commons-codec-1.3.jar"/>
   <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/enterprise/deploy/api/main/jboss-jad-api_1.2_spec-1.0.1.Final-redhat-2.jar"/>
   <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/xml/ws/api/main/jboss-jaxws-api_2.2_spec-2.0.1.Final-redhat-2.jar"/>
   <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/org/jboss/resteasy/resteasy-jaxrs/main/resteasy-jaxrs-2.3.6.Final-redhat-1.jar"/>
   <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/org/hibernate/validator/main/hibernate-validator-4.3.1.Final-redhat-1.jar"/>
-  <path value="/home/workspace/jove-timesheet/jove-timesheet/WebContent/WEB-INF/lib/commons-lang3-3.1.jar"/>
   <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/transaction/api/main/jboss-transaction-api_1.1_spec-1.0.1.Final-redhat-2.jar"/>
-  <path value="/home/workspace/jove-timesheet/jove-timesheet/WebContent/WEB-INF/lib/antlr-2.7.7.jar"/>
+  <path value="/home/workspace/jove-timesheet/jove-timesheet/WebContent/WEB-INF/lib/commons-lang3-3.1.jar"/>
   <path value="/home/workspace/jove-timesheet/jove-timesheet/WebContent/WEB-INF/lib/hibernate-c3p0-4.1.7.Final.jar"/>
+  <path value="/home/workspace/jove-timesheet/jove-timesheet/WebContent/WEB-INF/lib/antlr-2.7.7.jar"/>
   <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/ejb/api/main/jboss-ejb-api_3.1_spec-1.0.2.Final-redhat-2.jar"/>
   <path value="/home/workspace/jove-timesheet/jove-timesheet/WebContent/WEB-INF/lib/commons-logging-1.1.jar"/>
+  <path value="/jove-timesheet/WebContent/WEB-INF/faces-config.xml">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/WEB-INF/faces-config.xml" project="jove-timesheet"/>
+    </library>
+   </libraries>
+  </path>
   <path value="/home/development/jboss-eap-6.1/modules/system/layers/base/javax/servlet/jstl/api/main/jboss-jstl-api_1.2_spec-1.0.3.Final-redhat-2.jar">
    <libraries>
     <library class="tld">
@@ -208,17 +212,8 @@
     </library>
    </libraries>
   </path>
-  <path value="/jove-timesheet/WebContent/WEB-INF/faces-config.xml">
-   <libraries>
-    <library class="faces-config">
-     <id class="model-object"
-      path="FileSystems/WEB-INF/faces-config.xml" project="jove-timesheet"/>
-    </library>
-   </libraries>
-  </path>
  </paths>
  <validation>
-  <core validator-id="jsf-verification"/>
   <core validator-id="jboss.jsf.core">
    <linked-resource name="%1;" path="%0"/>
    <linked-resource name="%1;" path="%2"/>
@@ -226,25 +221,25 @@
    <linked-resource name="%1;" path="%4"/>
   </core>
   <el>
-   <linked-el length="31" name="%5" offset="592" path="%6"/>
    <linked-el length="28" name="%5" offset="992" path="%6"/>
+   <linked-el length="31" name="%5" offset="592" path="%6"/>
    <linked-el length="28" name="%5" offset="1402" path="%6"/>
-   <linked-el length="41" name="%5" offset="786" path="%6"/>
    <linked-el length="28" name="%5" offset="1209" path="%6"/>
+   <linked-el length="41" name="%5" offset="786" path="%6"/>
    <linked-el length="31" name="%5" offset="420" path="%6"/>
-   <linked-el length="29" name="%7" offset="628" path="%3"/>
-   <linked-el length="28" name="%7" offset="3739" path="%3"/>
    <linked-el length="29" name="%7" offset="725" path="%8"/>
+   <linked-el length="28" name="%7" offset="3739" path="%3"/>
+   <linked-el length="29" name="%7" offset="628" path="%3"/>
    <linked-el length="34" name="%7" offset="2357" path="%3"/>
    <linked-el length="34" name="%7" offset="518" path="%9"/>
    <linked-el length="38" name="%10" offset="893" path="%8"/>
    <linked-el length="30" name="%10" offset="611" path="%11"/>
    <linked-el length="39" name="%10" offset="881" path="%11"/>
-   <linked-el length="31" name="%12" offset="592" path="%6"/>
    <linked-el length="28" name="%12" offset="992" path="%6"/>
+   <linked-el length="31" name="%12" offset="592" path="%6"/>
    <linked-el length="28" name="%12" offset="1402" path="%6"/>
-   <linked-el length="41" name="%12" offset="786" path="%6"/>
    <linked-el length="28" name="%12" offset="1209" path="%6"/>
+   <linked-el length="41" name="%12" offset="786" path="%6"/>
    <linked-el length="31" name="%12" offset="420" path="%6"/>
    <linked-el length="26" name="%13" offset="442" path="%14"/>
    <linked-el length="30" name="%15" offset="611" path="%11"/>
@@ -258,9 +253,9 @@
    <linked-el length="26" name="%20" offset="1648" path="%19"/>
    <linked-el length="21" name="%20" offset="1333" path="%19"/>
    <linked-el length="21" name="%20" offset="1521" path="%19"/>
-   <linked-el length="29" name="%21" offset="628" path="%3"/>
-   <linked-el length="28" name="%21" offset="3739" path="%3"/>
    <linked-el length="29" name="%21" offset="725" path="%8"/>
+   <linked-el length="28" name="%21" offset="3739" path="%3"/>
+   <linked-el length="29" name="%21" offset="628" path="%3"/>
    <linked-el length="34" name="%21" offset="2357" path="%3"/>
    <linked-el length="34" name="%21" offset="518" path="%9"/>
    <linked-el length="27" name="%22" offset="1306" path="%8"/>
@@ -269,25 +264,25 @@
    <linked-el length="26" name="%24" offset="1648" path="%19"/>
    <linked-el length="21" name="%24" offset="1333" path="%19"/>
    <linked-el length="21" name="%24" offset="1521" path="%19"/>
-   <linked-el length="31" name="%25" offset="513" path="%26"/>
    <linked-el length="41" name="%25" offset="947" path="%26"/>
-   <linked-el length="43" name="%25" offset="1297" path="%26"/>
+   <linked-el length="31" name="%25" offset="513" path="%26"/>
    <linked-el length="47" name="%25" offset="737" path="%2"/>
+   <linked-el length="43" name="%25" offset="1297" path="%26"/>
    <linked-el length="52" name="%25" offset="1096" path="%27"/>
-   <linked-el length="35" name="%25" offset="1884" path="%26"/>
-   <linked-el length="35" name="%25" offset="1130" path="%8"/>
    <linked-el length="41" name="%25" offset="806" path="%27"/>
+   <linked-el length="35" name="%25" offset="1130" path="%8"/>
+   <linked-el length="35" name="%25" offset="1884" path="%26"/>
    <linked-el length="42" name="%25" offset="1701" path="%26"/>
    <linked-el length="46" name="%25" offset="922" path="%2"/>
-   <linked-el length="42" name="%25" offset="1209" path="%28"/>
    <linked-el length="35" name="%25" offset="1394" path="%28"/>
+   <linked-el length="42" name="%25" offset="1209" path="%28"/>
    <linked-el length="26" name="%29" offset="442" path="%14"/>
-   <linked-el length="41" name="%30" offset="947" path="%26"/>
-   <linked-el length="43" name="%30" offset="1297" path="%26"/>
-   <linked-el length="24" name="%30" offset="1979" path="%27"/>
-   <linked-el length="22" name="%30" offset="1625" path="%27"/>
-   <linked-el length="36" name="%31" offset="1744" path="%19"/>
-   <linked-el length="44" name="%31" offset="940" path="%8"/>
+   <linked-el length="36" name="%30" offset="1744" path="%19"/>
+   <linked-el length="44" name="%30" offset="940" path="%8"/>
+   <linked-el length="41" name="%31" offset="947" path="%26"/>
+   <linked-el length="24" name="%31" offset="1979" path="%27"/>
+   <linked-el length="43" name="%31" offset="1297" path="%26"/>
+   <linked-el length="22" name="%31" offset="1625" path="%27"/>
    <linked-el length="31" name="%32" offset="513" path="%26"/>
    <linked-el length="41" name="%32" offset="947" path="%26"/>
    <linked-el length="47" name="%32" offset="737" path="%2"/>
@@ -300,8 +295,8 @@
    <linked-el length="35" name="%32" offset="1884" path="%26"/>
    <linked-el length="41" name="%32" offset="806" path="%27"/>
    <linked-el length="22" name="%32" offset="1625" path="%27"/>
-   <linked-el length="35" name="%32" offset="1394" path="%28"/>
    <linked-el length="42" name="%32" offset="1209" path="%28"/>
+   <linked-el length="35" name="%32" offset="1394" path="%28"/>
    <linked-el length="44" name="%33" offset="940" path="%8"/>
   </el>
  </validation>
@@ -358,9 +353,9 @@
   <alias path="/jove-timesheet/WebContent/WEB-INF/pretty-config.xml" value="%6"/>
   <alias
    path="/jove-timesheet/src/br/com/jovetecnologia/web/bean/GraficoMensal.java" value="%29"/>
-  <alias path="sessionBean" value="%31"/>
   <alias
-   path="/jove-timesheet/src/br/com/jovetecnologia/domain/model/Funcionario.java" value="%30"/>
+   path="/jove-timesheet/src/br/com/jovetecnologia/domain/model/Funcionario.java" value="%31"/>
+  <alias path="sessionBean" value="%30"/>
   <alias
    path="/jove-timesheet/src/br/com/jovetecnologia/domain/model/Usuario.java" value="%33"/>
   <alias path="%26" value="/jove-timesheet/WebContent/restrict/administrador/acompanhamento/relatorio-funcionario.xhtml"/>
@@ -391,9 +386,9 @@
   <alias path="%18" value="/jove-timesheet/src/br/com/jovetecnologia/web/bean/SessionBean.java"/>
   <alias path="%33" value="/jove-timesheet/src/br/com/jovetecnologia/domain/model/Usuario.java"/>
   <alias path="%32" value="acompanhamentoBean"/>
-  <alias path="%31" value="sessionBean"/>
+  <alias path="%31" value="/jove-timesheet/src/br/com/jovetecnologia/domain/model/Funcionario.java"/>
   <alias path="%13" value="graficoMensal"/>
-  <alias path="%30" value="/jove-timesheet/src/br/com/jovetecnologia/domain/model/Funcionario.java"/>
+  <alias path="%30" value="sessionBean"/>
   <alias path="%12" value="/jove-timesheet/src/br/com/jovetecnologia/web/bean/AutorizadorBean.java"/>
   <alias path="%11" value="/jove-timesheet/WebContent/restrict/administrador/cadastro/tarefa.xhtml"/>
   <alias path="%10" value="/jove-timesheet/src/br/com/jovetecnologia/web/bean/CadastroBean.java"/>
