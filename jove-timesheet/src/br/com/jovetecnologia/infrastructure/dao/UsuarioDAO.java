@@ -7,6 +7,7 @@ import org.hibernate.Session;
 
 import br.com.jovetecnologia.domain.model.Usuario;
 import br.com.jovetecnologia.infrastructure.connection.ConexaoHibernate;
+import br.com.jovetecnologia.infrastructure.util.Criptografia;
 
 public class UsuarioDAO {
 	
@@ -28,7 +29,7 @@ public class UsuarioDAO {
 			
 			Query query = session.createQuery(hql);
 			query.setParameter("login", login);
-			query.setParameter("senha", senha);
+			query.setParameter("senha", Criptografia.criptografar(senha));
 			
 			usuario = (Usuario) query.uniqueResult();
 			

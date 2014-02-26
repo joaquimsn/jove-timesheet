@@ -4,37 +4,50 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import java.util.Date;
 import java.util.List;
+
 
 /**
  * The persistent class for the departamento database table.
+ * 
  */
 @Entity
-@Table(name = "departamento")
+@Table(name="departamento")
 public class Departamento implements Serializable {
-
-	private static final long serialVersionUID = -2875193932395234071L;
+	private static final long serialVersionUID = 2160040241309177147L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id_departamento")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id_departamento")
 	private int idDepartamento;
-
+	
 	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
 	private boolean ativo;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="data_cadastro")
+	private Date dataCadastro;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="data_manutencao")
+	private Date dataManutencao;
+
 	private String descricao;
+
+	@Column(name="id_usuario")
+	private int idUsuario;
 
 	private String nome;
 
-	// bi-directional many-to-one association to Empresa
+	//bi-directional many-to-one association to Empresa
 	@ManyToOne
-	@JoinColumn(name = "id_empresa")
+	@JoinColumn(name="id_empresa")
 	private Empresa empresa;
 
-	// bi-directional many-to-one association to Funcionario
-	@OneToMany(mappedBy = "departamento")
-	private List<Funcionario> funcionarios;
+	//bi-directional many-to-one association to Funcionario
+	@OneToMany(mappedBy="departamento")
+	private List<Funcionario> listaFuncionarios;
 
 	public Departamento() {
 	}
@@ -68,6 +81,34 @@ public class Departamento implements Serializable {
 	}
 
 	/**
+	 * @return the dataCadastro
+	 */
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+
+	/**
+	 * @param dataCadastro the dataCadastro to set
+	 */
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	/**
+	 * @return the dataManutencao
+	 */
+	public Date getDataManutencao() {
+		return dataManutencao;
+	}
+
+	/**
+	 * @param dataManutencao the dataManutencao to set
+	 */
+	public void setDataManutencao(Date dataManutencao) {
+		this.dataManutencao = dataManutencao;
+	}
+
+	/**
 	 * @return the descricao
 	 */
 	public String getDescricao() {
@@ -79,6 +120,20 @@ public class Departamento implements Serializable {
 	 */
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	/**
+	 * @return the idUsuario
+	 */
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	/**
+	 * @param idUsuario the idUsuario to set
+	 */
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	/**
@@ -110,17 +165,17 @@ public class Departamento implements Serializable {
 	}
 
 	/**
-	 * @return the funcionarios
+	 * @return the listaFuncionarios
 	 */
-	public List<Funcionario> getFuncionarios() {
-		return funcionarios;
+	public List<Funcionario> getListaFuncionarios() {
+		return listaFuncionarios;
 	}
 
 	/**
-	 * @param funcionarios the funcionarios to set
+	 * @param listaFuncionarios the listaFuncionarios to set
 	 */
-	public void setFuncionarios(List<Funcionario> funcionarios) {
-		this.funcionarios = funcionarios;
+	public void setListaFuncionarios(List<Funcionario> listaFuncionarios) {
+		this.listaFuncionarios = listaFuncionarios;
 	}
 
 	/*
@@ -152,5 +207,5 @@ public class Departamento implements Serializable {
 			return false;
 		return true;
 	}
-
+	
 }

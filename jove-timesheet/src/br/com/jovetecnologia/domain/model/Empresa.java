@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,14 +12,17 @@ import java.util.List;
  */
 @Entity
 @Table(name = "empresa")
+@NamedQuery(name = "Empresa.findAll", query = "SELECT e FROM Empresa e")
 public class Empresa implements Serializable {
-
-	private static final long serialVersionUID = -2163362020390152398L;
+	private static final long serialVersionUID = 7719689909954321363L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_empresa")
 	private int idEmpresa;
+
+	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
+	private boolean ativo;
 
 	private String bairro;
 
@@ -30,9 +34,20 @@ public class Empresa implements Serializable {
 
 	private String complemento;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_cadastro")
+	private Date dataCadastro;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_manutencao")
+	private Date dataManutencao;
+
 	private String email;
 
 	private String fantasia;
+
+	@Column(name = "id_usuario")
+	private int idUsuario;
 
 	private String logradouro;
 
@@ -47,7 +62,7 @@ public class Empresa implements Serializable {
 
 	// bi-directional many-to-one association to Departamento
 	@OneToMany(mappedBy = "empresa")
-	private List<Departamento> departamentos;
+	private List<Departamento> listaDepartamentos;
 
 	public Empresa() {
 	}
@@ -64,6 +79,20 @@ public class Empresa implements Serializable {
 	 */
 	public void setIdEmpresa(int idEmpresa) {
 		this.idEmpresa = idEmpresa;
+	}
+
+	/**
+	 * @return the ativo
+	 */
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	/**
+	 * @param ativo the ativo to set
+	 */
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 
 	/**
@@ -137,6 +166,34 @@ public class Empresa implements Serializable {
 	}
 
 	/**
+	 * @return the dataCadastro
+	 */
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+
+	/**
+	 * @param dataCadastro the dataCadastro to set
+	 */
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	/**
+	 * @return the dataManutencao
+	 */
+	public Date getDataManutencao() {
+		return dataManutencao;
+	}
+
+	/**
+	 * @param dataManutencao the dataManutencao to set
+	 */
+	public void setDataManutencao(Date dataManutencao) {
+		this.dataManutencao = dataManutencao;
+	}
+
+	/**
 	 * @return the email
 	 */
 	public String getEmail() {
@@ -162,6 +219,20 @@ public class Empresa implements Serializable {
 	 */
 	public void setFantasia(String fantasia) {
 		this.fantasia = fantasia;
+	}
+
+	/**
+	 * @return the idUsuario
+	 */
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	/**
+	 * @param idUsuario the idUsuario to set
+	 */
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	/**
@@ -235,17 +306,17 @@ public class Empresa implements Serializable {
 	}
 
 	/**
-	 * @return the departamentos
+	 * @return the listaDepartamentos
 	 */
-	public List<Departamento> getDepartamentos() {
-		return departamentos;
+	public List<Departamento> getListaDepartamentos() {
+		return listaDepartamentos;
 	}
 
 	/**
-	 * @param departamentos the departamentos to set
+	 * @param listaDepartamentos the listaDepartamentos to set
 	 */
-	public void setDepartamentos(List<Departamento> departamentos) {
-		this.departamentos = departamentos;
+	public void setListaDepartamentos(List<Departamento> listaDepartamentos) {
+		this.listaDepartamentos = listaDepartamentos;
 	}
 
 	/*
@@ -277,5 +348,4 @@ public class Empresa implements Serializable {
 			return false;
 		return true;
 	}
-
 }

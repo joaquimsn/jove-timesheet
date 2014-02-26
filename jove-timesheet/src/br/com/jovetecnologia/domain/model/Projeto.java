@@ -1,9 +1,8 @@
 package br.com.jovetecnologia.domain.model;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,8 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "projeto")
 public class Projeto implements Serializable {
-
-	private static final long serialVersionUID = -7301561406528812734L;
+	private static final long serialVersionUID = -4140344418911494794L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,13 +21,24 @@ public class Projeto implements Serializable {
 	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
 	private boolean ativo;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_cadastro")
+	private Date dataCadastro;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_manutencao")
+	private Date dataManutencao;
+
 	private String descricao;
+
+	@Column(name = "id_usuario")
+	private int idUsuario;
 
 	private String nome;
 
 	// bi-directional many-to-one association to Registro
 	@OneToMany(mappedBy = "projeto")
-	private List<Registro> registros;
+	private List<Registro> listaRegistros;
 
 	public Projeto() {
 	}
@@ -63,6 +72,34 @@ public class Projeto implements Serializable {
 	}
 
 	/**
+	 * @return the dataCadastro
+	 */
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+
+	/**
+	 * @param dataCadastro the dataCadastro to set
+	 */
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	/**
+	 * @return the dataManutencao
+	 */
+	public Date getDataManutencao() {
+		return dataManutencao;
+	}
+
+	/**
+	 * @param dataManutencao the dataManutencao to set
+	 */
+	public void setDataManutencao(Date dataManutencao) {
+		this.dataManutencao = dataManutencao;
+	}
+
+	/**
 	 * @return the descricao
 	 */
 	public String getDescricao() {
@@ -74,6 +111,20 @@ public class Projeto implements Serializable {
 	 */
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	/**
+	 * @return the idUsuario
+	 */
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	/**
+	 * @param idUsuario the idUsuario to set
+	 */
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	/**
@@ -91,47 +142,22 @@ public class Projeto implements Serializable {
 	}
 
 	/**
-	 * @return the registros
+	 * @return the listaRegistros
 	 */
-	public List<Registro> getRegistros() {
-		return registros;
+	public List<Registro> getListaRegistros() {
+		return listaRegistros;
 	}
 
 	/**
-	 * @param registros the registros to set
+	 * @param listaRegistros the listaRegistros to set
 	 */
-	public void setRegistros(List<Registro> registros) {
-		this.registros = registros;
+	public void setListaRegistros(List<Registro> listaRegistros) {
+		this.listaRegistros = listaRegistros;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + idProjeto;
-		return result;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Projeto other = (Projeto) obj;
-		if (idProjeto != other.idProjeto)
-			return false;
-		return true;
+	public Projeto(int idProjeto) {
+		super();
+		this.idProjeto = idProjeto;
 	}
 
 }

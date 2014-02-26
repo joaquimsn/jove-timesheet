@@ -13,8 +13,7 @@ import java.util.Date;
 @Entity
 @Table(name = "registro")
 public class Registro implements Serializable {
-
-	private static final long serialVersionUID = 7418838017608429704L;
+	private static final long serialVersionUID = 8578478159773527453L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,9 +22,20 @@ public class Registro implements Serializable {
 
 	private int aprovado;
 
+	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
+	private boolean ativo;
+
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_acatamento")
 	private Date dataAcatamento;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_cadastro")
+	private Date dataCadastro;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_manutencao")
+	private Date dataManutencao;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_registro")
@@ -33,9 +43,17 @@ public class Registro implements Serializable {
 
 	private Time fim;
 
+	@Column(name = "id_usuario")
+	private int idUsuario;
+
 	private Time inicio;
 
 	private String observacao;
+
+	// bi-directional many-to-one association to Atividade
+	@ManyToOne
+	@JoinColumn(name = "id_atividade")
+	private Atividade atividade;
 
 	// bi-directional many-to-one association to Funcionario
 	@ManyToOne
@@ -46,11 +64,6 @@ public class Registro implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_projeto")
 	private Projeto projeto;
-
-	// bi-directional many-to-one association to Atividade
-	@ManyToOne
-	@JoinColumn(name = "id_atividade")
-	private Atividade atividade;
 
 	// bi-directional many-to-one association to Tarefa
 	@ManyToOne
@@ -89,6 +102,20 @@ public class Registro implements Serializable {
 	}
 
 	/**
+	 * @return the ativo
+	 */
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	/**
+	 * @param ativo the ativo to set
+	 */
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	/**
 	 * @return the dataAcatamento
 	 */
 	public Date getDataAcatamento() {
@@ -100,6 +127,34 @@ public class Registro implements Serializable {
 	 */
 	public void setDataAcatamento(Date dataAcatamento) {
 		this.dataAcatamento = dataAcatamento;
+	}
+
+	/**
+	 * @return the dataCadastro
+	 */
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+
+	/**
+	 * @param dataCadastro the dataCadastro to set
+	 */
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	/**
+	 * @return the dataManutencao
+	 */
+	public Date getDataManutencao() {
+		return dataManutencao;
+	}
+
+	/**
+	 * @param dataManutencao the dataManutencao to set
+	 */
+	public void setDataManutencao(Date dataManutencao) {
+		this.dataManutencao = dataManutencao;
 	}
 
 	/**
@@ -131,6 +186,20 @@ public class Registro implements Serializable {
 	}
 
 	/**
+	 * @return the idUsuario
+	 */
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	/**
+	 * @param idUsuario the idUsuario to set
+	 */
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	/**
 	 * @return the inicio
 	 */
 	public Time getInicio() {
@@ -159,6 +228,20 @@ public class Registro implements Serializable {
 	}
 
 	/**
+	 * @return the atividade
+	 */
+	public Atividade getAtividade() {
+		return atividade;
+	}
+
+	/**
+	 * @param atividade the atividade to set
+	 */
+	public void setAtividade(Atividade atividade) {
+		this.atividade = atividade;
+	}
+
+	/**
 	 * @return the funcionario
 	 */
 	public Funcionario getFuncionario() {
@@ -184,20 +267,6 @@ public class Registro implements Serializable {
 	 */
 	public void setProjeto(Projeto projeto) {
 		this.projeto = projeto;
-	}
-
-	/**
-	 * @return the atividade
-	 */
-	public Atividade getAtividade() {
-		return atividade;
-	}
-
-	/**
-	 * @param atividade the atividade to set
-	 */
-	public void setAtividade(Atividade atividade) {
-		this.atividade = atividade;
 	}
 
 	/**
@@ -243,5 +312,4 @@ public class Registro implements Serializable {
 			return false;
 		return true;
 	}
-
 }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,8 +13,7 @@ import java.util.List;
 @Entity
 @Table(name = "atividade")
 public class Atividade implements Serializable {
-
-	private static final long serialVersionUID = -4974894945636766855L;
+	private static final long serialVersionUID = -2928312462548852293L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,13 +23,28 @@ public class Atividade implements Serializable {
 	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
 	private boolean ativo;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_cadastro")
+	private Date dataCadastro;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_manutencao")
+	private Date dataManutencao;
+
 	private String descricao;
+
+	@Column(name = "id_usuario")
+	private int idUsuario;
 
 	private String nome;
 
+	// bi-directional many-to-one association to AtividadeTarefa
+	@OneToMany(mappedBy = "atividade")
+	private List<AtividadeTarefa> listaAtividadeTarefas;
+
 	// bi-directional many-to-one association to Registro
 	@OneToMany(mappedBy = "atividade")
-	private List<Registro> registros;
+	private List<Registro> listaRegistros;
 
 	public Atividade() {
 	}
@@ -63,6 +78,34 @@ public class Atividade implements Serializable {
 	}
 
 	/**
+	 * @return the dataCadastro
+	 */
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+
+	/**
+	 * @param dataCadastro the dataCadastro to set
+	 */
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	/**
+	 * @return the dataManutencao
+	 */
+	public Date getDataManutencao() {
+		return dataManutencao;
+	}
+
+	/**
+	 * @param dataManutencao the dataManutencao to set
+	 */
+	public void setDataManutencao(Date dataManutencao) {
+		this.dataManutencao = dataManutencao;
+	}
+
+	/**
 	 * @return the descricao
 	 */
 	public String getDescricao() {
@@ -74,6 +117,20 @@ public class Atividade implements Serializable {
 	 */
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	/**
+	 * @return the idUsuario
+	 */
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	/**
+	 * @param idUsuario the idUsuario to set
+	 */
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	/**
@@ -91,17 +148,31 @@ public class Atividade implements Serializable {
 	}
 
 	/**
-	 * @return the registros
+	 * @return the listaAtividadeTarefas
 	 */
-	public List<Registro> getRegistros() {
-		return registros;
+	public List<AtividadeTarefa> getListaAtividadeTarefas() {
+		return listaAtividadeTarefas;
 	}
 
 	/**
-	 * @param registros the registros to set
+	 * @param listaAtividadeTarefas the listaAtividadeTarefas to set
 	 */
-	public void setRegistros(List<Registro> registros) {
-		this.registros = registros;
+	public void setListaAtividadeTarefas(List<AtividadeTarefa> listaAtividadeTarefas) {
+		this.listaAtividadeTarefas = listaAtividadeTarefas;
+	}
+
+	/**
+	 * @return the listaRegistros
+	 */
+	public List<Registro> getListaRegistros() {
+		return listaRegistros;
+	}
+
+	/**
+	 * @param listaRegistros the listaRegistros to set
+	 */
+	public void setListaRegistros(List<Registro> listaRegistros) {
+		this.listaRegistros = listaRegistros;
 	}
 
 	/*

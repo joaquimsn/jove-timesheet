@@ -1,8 +1,18 @@
 package br.com.jovetecnologia.domain.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import br.com.jovetecnologia.domain.enums.NivelUsuarioEnum;
 
@@ -12,26 +22,35 @@ import br.com.jovetecnologia.domain.enums.NivelUsuarioEnum;
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable {
-
-	private static final long serialVersionUID = 3198675969842101851L;
+	private static final long serialVersionUID = 5309645625068380023L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id_funcionario")
-	private int idFuncionario;
+	@Column(name = "id_usuario")
+	private int idUsuario;
 
-	@Column(name="ativo", columnDefinition = "BIT", length = 1)
+	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
 	private boolean ativo;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_cadastro")
+	private Date dataCadastro;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_manutencao")
+	private Date dataManutencao;
+
+	@Column(name = "fk_id_usuario")
+	private int fkIdUsuario;
+
+	private String login;
 
 	private int nivel;
 
 	private String senha;
-	
-	@Column(name = "usuario")
-	private String login;
 
-	// bi-directional one-to-one association to Funcionario
-	@OneToOne
+	// bi-directional many-to-one association to Funcionario
+	@ManyToOne
 	@JoinColumn(name = "id_funcionario")
 	private Funcionario funcionario;
 
@@ -39,23 +58,34 @@ public class Usuario implements Serializable {
 	}
 
 	/**
-	 * @return the idFuncionario
+	 * Verifica se o usuário possuir nível de permissão Administrador
+	 * @return <b>true</b> se o usuário possuir nível de permissão Administrador
 	 */
-	public int getIdFuncionario() {
-		return idFuncionario;
+	public boolean isAdministrador() {
+		if (nivel == NivelUsuarioEnum.ADMINISTRADOR.getValue()) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
-	 * @param idFuncionario the idFuncionario to set
+	 * @return the idUsuario
 	 */
-	public void setIdFuncionario(int idFuncionario) {
-		this.idFuncionario = idFuncionario;
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	/**
+	 * @param idUsuario the idUsuario to set
+	 */
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	/**
 	 * @return the ativo
 	 */
-	public boolean getAtivo() {
+	public boolean isAtivo() {
 		return ativo;
 	}
 
@@ -64,6 +94,62 @@ public class Usuario implements Serializable {
 	 */
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+
+	/**
+	 * @return the dataCadastro
+	 */
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+
+	/**
+	 * @param dataCadastro the dataCadastro to set
+	 */
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	/**
+	 * @return the dataManutencao
+	 */
+	public Date getDataManutencao() {
+		return dataManutencao;
+	}
+
+	/**
+	 * @param dataManutencao the dataManutencao to set
+	 */
+	public void setDataManutencao(Date dataManutencao) {
+		this.dataManutencao = dataManutencao;
+	}
+
+	/**
+	 * @return the fkIdUsuario
+	 */
+	public int getFkIdUsuario() {
+		return fkIdUsuario;
+	}
+
+	/**
+	 * @param fkIdUsuario the fkIdUsuario to set
+	 */
+	public void setFkIdUsuario(int fkIdUsuario) {
+		this.fkIdUsuario = fkIdUsuario;
+	}
+
+	/**
+	 * @return the login
+	 */
+	public String getLogin() {
+		return login;
+	}
+
+	/**
+	 * @param login the login to set
+	 */
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	/**
@@ -95,20 +181,6 @@ public class Usuario implements Serializable {
 	}
 
 	/**
-	 * @return the login
-	 */
-	public String getLogin() {
-		return login;
-	}
-
-	/**
-	 * @param login the login to set
-	 */
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	/**
 	 * @return the funcionario
 	 */
 	public Funcionario getFuncionario() {
@@ -121,17 +193,6 @@ public class Usuario implements Serializable {
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
 	}
-	
-	/**
-	 * Verifica se o usuário possuir nível de permissão Administrador
-	 * @return <b>true</b> se o usuário possuir nível de permissão Administrador
-	 */
-	public boolean isAdministrador() {
-		if(nivel == NivelUsuarioEnum.ADMINISTRADOR.getValue()) {
-			return true;
-		}
-		return false;
-	}
 
 	/*
 	 * (non-Javadoc)
@@ -141,7 +202,7 @@ public class Usuario implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + idFuncionario;
+		result = prime * result + idUsuario;
 		return result;
 	}
 
@@ -158,7 +219,7 @@ public class Usuario implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
-		if (idFuncionario != other.idFuncionario)
+		if (idUsuario != other.idUsuario)
 			return false;
 		return true;
 	}

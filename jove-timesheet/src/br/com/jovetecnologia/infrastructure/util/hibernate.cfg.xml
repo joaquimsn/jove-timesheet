@@ -19,5 +19,6 @@
 		<mapping class="br.com.jovetecnologia.domain.model.Empresa" />
 		<mapping class="br.com.jovetecnologia.domain.model.Departamento" />
 		<mapping class="br.com.jovetecnologia.domain.model.Registro" />
+		<mapping class="br.com.jovetecnologia.domain.model.AtividadeTarefa" />
 	</session-factory>
 </hibernate-configuration>

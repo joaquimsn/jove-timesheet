@@ -14,8 +14,7 @@ import java.util.List;
 @Entity
 @Table(name = "funcionario")
 public class Funcionario implements Serializable {
-
-	private static final long serialVersionUID = 6298185253889592066L;
+	private static final long serialVersionUID = 1173982713922256842L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,6 +26,9 @@ public class Funcionario implements Serializable {
 
 	private String bairro;
 
+	@Column(name = "carga_horaria")
+	private Time cargaHoraria;
+
 	private String celular;
 
 	private String cep;
@@ -37,14 +39,24 @@ public class Funcionario implements Serializable {
 
 	private String cpf;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_cadastro")
+	private Date dataCadastro;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_manutencao")
+	private Date dataManutencao;
+
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_nascimento")
 	private Date dataNascimento;
 
 	private String email;
 
-	@Column(name = "genero", columnDefinition = "char(1)")
 	private String genero;
+
+	@Column(name = "id_usuario")
+	private int idUsuario;
 
 	private String logradouro;
 
@@ -55,16 +67,18 @@ public class Funcionario implements Serializable {
 	@Column(name = "telefone_fixo")
 	private String telefoneFixo;
 
-	private String uf;
+	@Column(name = "tempo_refeicao")
+	private Time tempoRefeicao;
 
 	@Column(name = "tipo_contrato")
 	private String tipoContrato;
 
-	@Column(name = "tempo_refeicao")
-	private Time tempoRefeicao;
+	private String uf;
 
-	@Column(name = "carga_horaria")
-	private Time cargaHoraria;
+	// bi-directional many-to-one association to Departamento
+	@ManyToOne
+	@JoinColumn(name = "id_departamento")
+	private Departamento departamento;
 
 	// bi-directional many-to-one association to Funcionario
 	@ManyToOne
@@ -73,20 +87,15 @@ public class Funcionario implements Serializable {
 
 	// bi-directional many-to-one association to Funcionario
 	@OneToMany(mappedBy = "funcionario")
-	private List<Funcionario> funcionarios;
-
-	// bi-directional many-to-one association to Departamento
-	@ManyToOne
-	@JoinColumn(name = "id_departamento")
-	private Departamento departamento;
+	private List<Funcionario> listaFuncionarios;
 
 	// bi-directional many-to-one association to Registro
 	@OneToMany(mappedBy = "funcionario")
-	private List<Registro> registros;
+	private List<Registro> listaRegistros;
 
-	// bi-directional one-to-one association to Usuario
-	@OneToOne(mappedBy = "funcionario")
-	private Usuario usuario;
+	// bi-directional many-to-one association to Usuario
+	@OneToMany(mappedBy = "funcionario")
+	private List<Usuario> listaUsuarios;
 
 	public Funcionario() {
 	}
@@ -131,6 +140,20 @@ public class Funcionario implements Serializable {
 	 */
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
+	}
+
+	/**
+	 * @return the cargaHoraria
+	 */
+	public Time getCargaHoraria() {
+		return cargaHoraria;
+	}
+
+	/**
+	 * @param cargaHoraria the cargaHoraria to set
+	 */
+	public void setCargaHoraria(Time cargaHoraria) {
+		this.cargaHoraria = cargaHoraria;
 	}
 
 	/**
@@ -204,6 +227,34 @@ public class Funcionario implements Serializable {
 	}
 
 	/**
+	 * @return the dataCadastro
+	 */
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+
+	/**
+	 * @param dataCadastro the dataCadastro to set
+	 */
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	/**
+	 * @return the dataManutencao
+	 */
+	public Date getDataManutencao() {
+		return dataManutencao;
+	}
+
+	/**
+	 * @param dataManutencao the dataManutencao to set
+	 */
+	public void setDataManutencao(Date dataManutencao) {
+		this.dataManutencao = dataManutencao;
+	}
+
+	/**
 	 * @return the dataNascimento
 	 */
 	public Date getDataNascimento() {
@@ -243,6 +294,20 @@ public class Funcionario implements Serializable {
 	 */
 	public void setGenero(String genero) {
 		this.genero = genero;
+	}
+
+	/**
+	 * @return the idUsuario
+	 */
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	/**
+	 * @param idUsuario the idUsuario to set
+	 */
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	/**
@@ -302,17 +367,17 @@ public class Funcionario implements Serializable {
 	}
 
 	/**
-	 * @return the uf
+	 * @return the tempoRefeicao
 	 */
-	public String getUf() {
-		return uf;
+	public Time getTempoRefeicao() {
+		return tempoRefeicao;
 	}
 
 	/**
-	 * @param uf the uf to set
+	 * @param tempoRefeicao the tempoRefeicao to set
 	 */
-	public void setUf(String uf) {
-		this.uf = uf;
+	public void setTempoRefeicao(Time tempoRefeicao) {
+		this.tempoRefeicao = tempoRefeicao;
 	}
 
 	/**
@@ -330,59 +395,17 @@ public class Funcionario implements Serializable {
 	}
 
 	/**
-	 * @return the tempoRefeicao
+	 * @return the uf
 	 */
-	public Time getTempoRefeicao() {
-		return tempoRefeicao;
+	public String getUf() {
+		return uf;
 	}
 
 	/**
-	 * @param tempoRefeicao the tempoRefeicao to set
+	 * @param uf the uf to set
 	 */
-	public void setTempoRefeicao(Time tempoRefeicao) {
-		this.tempoRefeicao = tempoRefeicao;
-	}
-
-	/**
-	 * @return the cargaHoraria
-	 */
-	public Time getCargaHoraria() {
-		return cargaHoraria;
-	}
-
-	/**
-	 * @param cargaHoraria the cargaHoraria to set
-	 */
-	public void setCargaHoraria(Time cargaHoraria) {
-		this.cargaHoraria = cargaHoraria;
-	}
-
-	/**
-	 * @return the funcionario
-	 */
-	public Funcionario getFuncionario() {
-		return funcionario;
-	}
-
-	/**
-	 * @param funcionario the funcionario to set
-	 */
-	public void setFuncionario(Funcionario funcionario) {
-		this.funcionario = funcionario;
-	}
-
-	/**
-	 * @return the funcionarios
-	 */
-	public List<Funcionario> getFuncionarios() {
-		return funcionarios;
-	}
-
-	/**
-	 * @param funcionarios the funcionarios to set
-	 */
-	public void setFuncionarios(List<Funcionario> funcionarios) {
-		this.funcionarios = funcionarios;
+	public void setUf(String uf) {
+		this.uf = uf;
 	}
 
 	/**
@@ -400,31 +423,59 @@ public class Funcionario implements Serializable {
 	}
 
 	/**
-	 * @return the registros
+	 * @return the funcionario
 	 */
-	public List<Registro> getRegistros() {
-		return registros;
+	public Funcionario getFuncionario() {
+		return funcionario;
 	}
 
 	/**
-	 * @param registros the registros to set
+	 * @param funcionario the funcionario to set
 	 */
-	public void setRegistros(List<Registro> registros) {
-		this.registros = registros;
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
 	}
 
 	/**
-	 * @return the usuario
+	 * @return the listaFuncionarios
 	 */
-	public Usuario getUsuario() {
-		return usuario;
+	public List<Funcionario> getListaFuncionarios() {
+		return listaFuncionarios;
 	}
 
 	/**
-	 * @param usuario the usuario to set
+	 * @param listaFuncionarios the listaFuncionarios to set
 	 */
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setListaFuncionarios(List<Funcionario> listaFuncionarios) {
+		this.listaFuncionarios = listaFuncionarios;
+	}
+
+	/**
+	 * @return the listaRegistros
+	 */
+	public List<Registro> getListaRegistros() {
+		return listaRegistros;
+	}
+
+	/**
+	 * @param listaRegistros the listaRegistros to set
+	 */
+	public void setListaRegistros(List<Registro> listaRegistros) {
+		this.listaRegistros = listaRegistros;
+	}
+
+	/**
+	 * @return the listaUsuarios
+	 */
+	public List<Usuario> getListaUsuarios() {
+		return listaUsuarios;
+	}
+
+	/**
+	 * @param listaUsuarios the listaUsuarios to set
+	 */
+	public void setListaUsuarios(List<Usuario> listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
 	}
 
 	/*
