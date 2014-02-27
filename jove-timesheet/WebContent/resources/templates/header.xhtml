@@ -21,12 +21,13 @@
 						<p:commandLink styleClass="menu-label" value="Registro" action="#{registroBean.abrirPagina}"/>
 					</li>
 					
-					<li class="divisor-menus" />
-					
-					<li>
-						<p:commandLink styleClass="menu-label" value="Cadastro" action="#{cadastroBean.abrirPagina}" 
-							rendered="#{sessionBean.usuarioLogado.administrador}"/>
-					</li>
+					<h:panelGroup rendered="#{sessionBean.usuarioLogado.administrador}">
+						<li class="divisor-menus" />
+						
+						<li>
+							<p:commandLink styleClass="menu-label" value="Cadastro" action="#{cadastroBean.abrirPagina}" />
+						</li>
+					</h:panelGroup>
 					
 					<li class="divisor-menus" />
 					
