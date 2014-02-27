@@ -6,7 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import br.com.jovetecnologia.domain.model.Usuario;
-import br.com.jovetecnologia.infrastructure.dao.UsuarioDAO;
+import br.com.jovetecnologia.infrastructure.dao.UsuarioService;
 import br.com.jovetecnologia.infrastructure.util.IOutcome;
 import br.com.jovetecnologia.infrastructure.util.Messages;
 import br.com.jovetecnologia.infrastructure.util.SystemUtils;
@@ -16,39 +16,38 @@ import br.com.jovetecnologia.infrastructure.util.SystemUtils;
 public class LoginBean implements Serializable {
 
 	private static final long serialVersionUID = 5185840091249342115L;
-	
+
 	private String login;
 	private String senha;
-	
 
 	/**
 	 * Realiza o login verificando o usuário e a senha na base
-	 * @author Joaquim Neto	
+	 * @author Joaquim Neto
 	 */
 	public String fazerLogin() {
-		Usuario usuario = new  UsuarioDAO().validarUsuario(getLogin(), getSenha());
-		
-		if(usuario != null) {
-			
+
+		Usuario usuario = new UsuarioService().validar(getLogin(), getSenha());
+
+		if (usuario != null) {
+
 			// Adicionando o usuário logado à sessão
 			SessionBean sessionBean = SystemUtils.getSessionBean();
 			sessionBean.setUsuarioLogado(usuario);
-			
+
 			return IOutcome.REGISTRO;
 		} else {
 			Messages.addError("Usuário ou senha incorreto");
-			
+
 			return null;
 		}
 	}
-	
+
 	public String fazerLogOff() {
 		SessionBean sessionBean = SystemUtils.getSessionBean();
 		sessionBean.setUsuarioLogado(null);
-		
+
 		return IOutcome.LOGIN;
 	}
-
 
 	/**
 	 * @return the login
