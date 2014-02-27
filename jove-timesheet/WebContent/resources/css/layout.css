@@ -556,6 +556,7 @@ Configuração da pagina meu perfil
 #usuario-topo{
 	width: 100%;
 	height: 200px;
+	margin-top: 20px;
 	border: 1px solid #DDDDDD;
 }
 
@@ -600,6 +601,7 @@ Configuração da pagina meu perfil
 
 #dados-cadastrais-funcionario{
 	margin: 25px auto 0 auto;
+	font-size: 13px;
 }
 
 /* Modal alterar usuario e senha */

@@ -5,8 +5,8 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.connection.datasource">java:jboss/datasources/joveTimesheetDS</property>
 		<property name="hibernate.show_sql">false</property>
-		<property name="hibernate.format_sql">true</property>
-		<property name="hibernate.hbm2ddl.auto">validate</property>
+		<property name="hibernate.format_sql">false</property>
+		<property name="hibernate.hbm2ddl.auto">false</property>
 		<property name="connection.release_mode">after_transaction</property>
 		<property name="current_session_context_class">thread</property>
 
