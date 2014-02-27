@@ -21,6 +21,7 @@ public class DAO<T> implements Serializable {
 
 	/**
 	 * Cadastra o objeto na base de dados.
+	 * @author Joaquim Neto
 	 * @param objeto type genérico
 	 */
 	public void cadastar(T objeto) {
@@ -40,6 +41,7 @@ public class DAO<T> implements Serializable {
 
 	/**
 	 * Altera o objeto na base de dados
+	 * @author Joaquim Neto
 	 * @param objeto type genérico
 	 */
 	public void alterar(T objeto) {
@@ -59,6 +61,7 @@ public class DAO<T> implements Serializable {
 
 	/**
 	 * Deleta o objeto da base
+	 * @author Joaquim Neto
 	 * @param objeto type genérico
 	 */
 	public void deletar(T objeto) {
@@ -78,6 +81,7 @@ public class DAO<T> implements Serializable {
 	
 	/**
 	 * Pesquisa todos os objetos persistidos na base
+	 * @author Joaquim Neto
 	 * @return Lista type genérico persistidos na base
 	 */
 	@SuppressWarnings("rawtypes")

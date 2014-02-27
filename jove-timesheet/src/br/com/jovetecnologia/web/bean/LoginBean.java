@@ -6,7 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import br.com.jovetecnologia.domain.model.Usuario;
-import br.com.jovetecnologia.infrastructure.dao.UsuarioService;
+import br.com.jovetecnologia.domain.service.UsuarioService;
 import br.com.jovetecnologia.infrastructure.util.IOutcome;
 import br.com.jovetecnologia.infrastructure.util.Messages;
 import br.com.jovetecnologia.infrastructure.util.SystemUtils;

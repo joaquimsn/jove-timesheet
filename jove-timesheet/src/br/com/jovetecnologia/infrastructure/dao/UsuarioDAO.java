@@ -21,7 +21,7 @@ public class UsuarioDAO extends DAO<Usuario> implements Serializable {
 	/**
 	 * Retorna um objeto usuario se as credenciais passadas estiverem na DB, se não retorna null
 	 * @author Joaquim Neto
-	 * @param nome String com o login
+	 * @param login String com o login
 	 * @param senha String com a senha
 	 * @return Objeto usuario
 	 */
