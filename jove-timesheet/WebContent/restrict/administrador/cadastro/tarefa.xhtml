@@ -10,12 +10,12 @@
 	<div id="formulario-cadastro-simples" >
 		<h:panelGrid columns="2" columnClasses="coluna-40, coluna-60" >
 			<p:outputLabel value="Nome da tarefa" styleClass="label-cadastro-simples" />
-			<p:inputText value="#{cadastroBean.tarefa.nome}" styleClass="input-cadastro-simples" />
+			<p:inputText value="#{tarefaBean.tarefaSelecionada.nome}" styleClass="input-cadastro-simples" />
 		</h:panelGrid>
 		
 		<h:panelGrid columns="2" columnClasses="coluna-position-top-40, coluna-60" >
 			<p:outputLabel  value="Descrição" styleClass="label-cadastro-simples" />
-			<p:inputTextarea value="#{cadastroBean.tarefa.descricao}" 
+			<p:inputTextarea value="#{tarefaBean.tarefaSelecionada.descricao}" 
 			styleClass="textarea-cadastro-simples" maxlength="300" cols="50" rows="6" autoResize="true"/>
 		</h:panelGrid>
 		
@@ -33,7 +33,7 @@
 	</div>
 	
 	<div class="table-cadastro">
-		<p:dataTable id="table-tarefa" var="tarefa" value="" rowKey="tarefa.nome" selectionMode="single" 
+		<p:dataTable id="table-tarefa" rowKey="tarefa.nome" selectionMode="single" 
 			paginator="true" rows="5" paginatorTemplate="{FirstPageLink} {PreviousPageLink} 
 			{PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" resizableColumns="flase" >
 			

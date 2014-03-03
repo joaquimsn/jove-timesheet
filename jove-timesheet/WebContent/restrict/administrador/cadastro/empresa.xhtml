@@ -11,41 +11,46 @@
 		<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-40, coluna-35, coluna-25">
 			<h:panelGrid width="100%" >
 				<p:outputLabel value="Razão Social"/>
-				<p:inputText value="" style="width: 100%;" />	
+				<p:inputText value="#{empresaBean.empresaSelecionada.razaoSocial}" style="width: 100%;" maxlength="200" />	
 			</h:panelGrid>
 			
 			<h:panelGrid width="100%" >
 				<p:outputLabel value="Fantasia" />
-				<p:inputText value="" style="width: 100%;" />
+				<p:inputText value="#{empresaBean.empresaSelecionada.fantasia}" style="width: 100%;" maxlength="100" />
 			</h:panelGrid>
 			
 			<h:panelGrid width="100%" >
 				<p:outputLabel value="CNPJ" />
-				<p:inputText value="" style="width: 100%;" />
+				<p:inputText value="#{empresaBean.empresaSelecionada.cnpj}" style="width: 100%;" maxlength="18" />
 			</h:panelGrid>
 		</h:panelGrid>
 		
-		<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-60, coluna-30, coluna-20">
+		<h:panelGrid styleClass="panel-form-cadastro" columns="4" columnClasses="coluna-45, coluna-20, coluna-25, coluna-10">
 			<h:panelGrid width="100%">
 				<p:outputLabel value="Logradouro" />
-				<p:inputText value="" style="width: 100%;"/>		
+				<p:inputText value="#{empresaBean.empresaSelecionada.logradouro}" style="width: 100%;" maxlength="120" />		
+			</h:panelGrid>
+			
+			<h:panelGrid width="100%">
+				<p:outputLabel value="Bairro" />
+				<p:inputText value="#{empresaBean.empresaSelecionada.bairro}" style="width: 100%;" maxlength="50" />		
 			</h:panelGrid>
 			
 			<h:panelGrid width="100%">
 				<p:outputLabel value="Complemento" />
-				<p:inputText value="" style="width: 100%;"/>		
+				<p:inputText value="#{empresaBean.empresaSelecionada.complemento}" style="width: 100%;" maxlength="50" />		
 			</h:panelGrid>
 			
 			<h:panelGrid width="100%">
 				<p:outputLabel value="Nº" />
-				<p:inputText value="" style="width: 100%;"/>		
+				<p:inputText value="#{empresaBean.empresaSelecionada.numero}" style="width: 100%;" maxlength="10" />		
 			</h:panelGrid>
 		</h:panelGrid>
 		
 		<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-50, coluna-30, coluna-20">
 			<h:panelGrid width="100%">
 				<p:outputLabel value="CEP" />
-				<p:inputText value="" style="width: 100%;"/>
+				<p:inputText value="#{empresaBean.empresaSelecionada.cep}" style="width: 100%;" maxlength="9" />
 			</h:panelGrid>
 
 			<h:panelGrid width="100%">
@@ -57,7 +62,7 @@
 
 			<h:panelGrid width="100%">
 				<p:outputLabel value="UF" />
-				<p:selectOneMenu styleClass="cbx-uf" value="" style="width: 104%;" >
+				<p:selectOneMenu styleClass="cbx-uf" style="width: 104%;" >
 					<f:selectItem itemLabel="selecione" itemValue=""/>
 				</p:selectOneMenu>
 			</h:panelGrid>
@@ -66,18 +71,19 @@
 		<h:panelGrid styleClass="panel-form-cadastro" columns="2" columnClasses="coluna-30, coluna-70">
 			<h:panelGrid width="100%" >
 				<p:outputLabel value="Telefone " />
-				<p:inputText value="" style="width: 100%;"/>		
+				<p:inputText value="#{empresaBean.empresaSelecionada.telefone}" style="width: 100%;" maxlength="15" />		
 			</h:panelGrid>
 			
 			<h:panelGrid width="100%" >
 				<p:outputLabel value="E-mail" />
-				<p:inputText value="" style="width: 100%;"/>		
+				<p:inputText value="#{empresaBean.empresaSelecionada.email}" style="width: 100%;" maxlength="100" />		
 			</h:panelGrid>
 		</h:panelGrid>
 		
 		<div class="botoes-tela-cadastro" >
 			<h:panelGroup rendered="true" >
-				<p:commandButton value="Cadastrar" styleClass="btn-padrao" disabled="false" />
+				<p:commandButton value="Cadastrar" styleClass="btn-padrao" disabled="false" actionListener="#{empresaBean.cadastrar}" 
+					update="tab-empresa"/>
 				<p:commandButton value="Cancelar"  styleClass="btn-padrao" disabled="false" />
 			</h:panelGroup>
 			
@@ -89,8 +95,8 @@
 	</div>
 	
 	<div class="table-cadastro">
-		<p:dataTable id="table-empresa" var="empresa" value="" rowKey="empresa.nome" selectionMode="single" 
-			paginator="true" rows="5" paginatorTemplate="{FirstPageLink} {PreviousPageLink} 
+		<p:dataTable id="table-empresa" rowKey="empresa.nome" selectionMode="single" 
+			paginator="true" rows="5" paginatorTemplate="{FirstPageLink} {PreviousPageLink}
 			{PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" resizableColumns="flase" >
 			
 			<f:facet name="header">
@@ -110,7 +116,7 @@
 			</p:column>
 			
 			<p:column headerText="Status" styleClass="coluna-position-center-15" >
-				<p:selectOneButton value="true" styleClass="select-one-button-cadastro">
+				<p:selectOneButton styleClass="select-one-button-cadastro">
 					<f:selectItem itemLabel="Ativo" itemValue="true" />
 					<f:selectItem itemLabel="Inativo" itemValue="false" />
 				</p:selectOneButton>

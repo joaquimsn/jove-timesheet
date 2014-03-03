@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import br.com.jovetecnologia.domain.model.Usuario;
+import br.com.jovetecnologia.domain.service.FuncionarioService;
 import br.com.jovetecnologia.domain.service.UsuarioService;
 import br.com.jovetecnologia.infrastructure.util.IOutcome;
 import br.com.jovetecnologia.infrastructure.util.Messages;
@@ -33,6 +34,9 @@ public class LoginBean implements Serializable {
 			// Adicionando o usuário logado à sessão
 			SessionBean sessionBean = SystemUtils.getSessionBean();
 			sessionBean.setUsuarioLogado(usuario);
+			
+			// Adiciona o funcionário à sessão
+			sessionBean.setFuncionarioLogado(new FuncionarioService().consultarPorId(usuario.getFuncionario().getIdFuncionario()));
 
 			return IOutcome.REGISTRO;
 		} else {
@@ -42,9 +46,15 @@ public class LoginBean implements Serializable {
 		}
 	}
 
+	/**
+	 * Zera a session e redireciona o usuário para pagina de login
+	 * @author Joaquim Neto
+	 * @return A pagina de login
+	 */
 	public String fazerLogOff() {
 		SessionBean sessionBean = SystemUtils.getSessionBean();
 		sessionBean.setUsuarioLogado(null);
+		sessionBean.setFuncionarioLogado(null);
 
 		return IOutcome.LOGIN;
 	}

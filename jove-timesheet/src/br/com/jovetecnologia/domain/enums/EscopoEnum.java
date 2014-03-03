@@ -3,6 +3,11 @@ package br.com.jovetecnologia.domain.enums;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Contem os escopos que serão exibidos nos combo box.
+ * @author Joaquim Neto
+ *
+ */
 public enum EscopoEnum {
 	
 	PROJETO("Projeto", 1),
