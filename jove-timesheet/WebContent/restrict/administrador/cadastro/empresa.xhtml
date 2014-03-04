@@ -7,50 +7,60 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:jove="http://java.sun.com/jsf/composite/componentes">
 	
+	<p:growl id="messages" showDetail="true" />
+	
 	<div id="formulario-cadastro-completo" >
 		<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-40, coluna-35, coluna-25">
 			<h:panelGrid width="100%" >
 				<p:outputLabel value="Razão Social"/>
-				<p:inputText value="#{empresaBean.empresaSelecionada.razaoSocial}" style="width: 100%;" maxlength="200" />	
+				<p:inputText value="#{empresaBean.empresaSelecionada.razaoSocial}" style="width: 100%;" maxlength="200" 
+					onkeyup="mascara(this, soTexto);" required="true" requiredMessage="O campo Razão Social é obrigatorio"/>	
 			</h:panelGrid>
 			
 			<h:panelGrid width="100%" >
 				<p:outputLabel value="Fantasia" />
-				<p:inputText value="#{empresaBean.empresaSelecionada.fantasia}" style="width: 100%;" maxlength="100" />
+				<p:inputText value="#{empresaBean.empresaSelecionada.fantasia}" style="width: 100%;" maxlength="100" 
+					onkeyup="mascara(this, soTexto);" />
 			</h:panelGrid>
 			
 			<h:panelGrid width="100%" >
 				<p:outputLabel value="CNPJ" />
-				<p:inputText value="#{empresaBean.empresaSelecionada.cnpj}" style="width: 100%;" maxlength="18" />
+				<p:inputText value="#{empresaBean.empresaSelecionada.cnpj}" style="width: 100%;" maxlength="18" 
+					onkeyup="mascara(this, maskCnpj);"/>
 			</h:panelGrid>
 		</h:panelGrid>
 		
 		<h:panelGrid styleClass="panel-form-cadastro" columns="4" columnClasses="coluna-45, coluna-20, coluna-25, coluna-10">
 			<h:panelGrid width="100%">
 				<p:outputLabel value="Logradouro" />
-				<p:inputText value="#{empresaBean.empresaSelecionada.logradouro}" style="width: 100%;" maxlength="120" />		
+				<p:inputText value="#{empresaBean.empresaSelecionada.logradouro}" style="width: 100%;" maxlength="120" 
+				onkeyup="mascara(this, soTextoNumeros);" />		
 			</h:panelGrid>
 			
 			<h:panelGrid width="100%">
 				<p:outputLabel value="Bairro" />
-				<p:inputText value="#{empresaBean.empresaSelecionada.bairro}" style="width: 100%;" maxlength="50" />		
+				<p:inputText value="#{empresaBean.empresaSelecionada.bairro}" style="width: 100%;" maxlength="50" 
+					onkeyup="mascara(this, soTextoNumeros);" />		
 			</h:panelGrid>
 			
 			<h:panelGrid width="100%">
 				<p:outputLabel value="Complemento" />
-				<p:inputText value="#{empresaBean.empresaSelecionada.complemento}" style="width: 100%;" maxlength="50" />		
+				<p:inputText value="#{empresaBean.empresaSelecionada.complemento}" style="width: 100%;" maxlength="50" 
+					onkeyup="mascara(this, soTextoNumeros);" />		
 			</h:panelGrid>
 			
 			<h:panelGrid width="100%">
 				<p:outputLabel value="Nº" />
-				<p:inputText value="#{empresaBean.empresaSelecionada.numero}" style="width: 100%;" maxlength="10" />		
+				<p:inputText value="#{empresaBean.empresaSelecionada.numero}" style="width: 100%;" maxlength="10" 
+					onkeyup="mascara(this, soNumeros);" />		
 			</h:panelGrid>
 		</h:panelGrid>
 		
 		<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-50, coluna-30, coluna-20">
 			<h:panelGrid width="100%">
 				<p:outputLabel value="CEP" />
-				<p:inputText value="#{empresaBean.empresaSelecionada.cep}" style="width: 100%;" maxlength="9" />
+				<p:inputText value="#{empresaBean.empresaSelecionada.cep}" style="width: 100%;" maxlength="9" 
+					onkeyup="mascara(this, maskCep);" />
 			</h:panelGrid>
 
 			<h:panelGrid width="100%">
@@ -71,12 +81,14 @@
 		<h:panelGrid styleClass="panel-form-cadastro" columns="2" columnClasses="coluna-30, coluna-70">
 			<h:panelGrid width="100%" >
 				<p:outputLabel value="Telefone " />
-				<p:inputText value="#{empresaBean.empresaSelecionada.telefone}" style="width: 100%;" maxlength="15" />		
+				<p:inputText value="#{empresaBean.empresaSelecionada.telefone}" style="width: 100%;" maxlength="14" 
+					onkeyup="mascara(this, maskTelefone);" />		
 			</h:panelGrid>
 			
 			<h:panelGrid width="100%" >
 				<p:outputLabel value="E-mail" />
-				<p:inputText value="#{empresaBean.empresaSelecionada.email}" style="width: 100%;" maxlength="100" />		
+				<p:inputText value="#{empresaBean.empresaSelecionada.email}" style="width: 100%;" maxlength="100" 
+					onkeyup="mascara(this, mista);" />		
 			</h:panelGrid>
 		</h:panelGrid>
 		
@@ -84,18 +96,19 @@
 			<h:panelGroup rendered="true" >
 				<p:commandButton value="Cadastrar" styleClass="btn-padrao" disabled="false" actionListener="#{empresaBean.cadastrar}" 
 					update="tab-empresa"/>
-				<p:commandButton value="Cancelar"  styleClass="btn-padrao" disabled="false" />
+					
+				<p:commandButton value="Cancelar"  styleClass="btn-padrao" disabled="false" onclick="limparCampos.show();" />
 			</h:panelGroup>
 			
-			<h:panelGroup rendered="false" >
-				<p:commandButton value="Alterar" styleClass="btn-padrao" disabled="true"/>
-				<p:commandButton value="Deletar" styleClass="btn-padrao" disabled="true" />
+			<h:panelGroup rendered="false" >	
+				<p:commandButton value="Alterar" type="button" styleClass="btn-padrao" disabled="true"/>
+				<p:commandButton value="Deletar" type="button" styleClass="btn-padrao" disabled="true" />
 			</h:panelGroup>
 		</div>
 	</div>
 	
 	<div class="table-cadastro">
-		<p:dataTable id="table-empresa" rowKey="empresa.nome" selectionMode="single" 
+		<p:dataTable id="table-empresa" value="#{empresaBean.listaEmpresa}" var="empresa" rowKey="empresa.idEmpresa" selectionMode="single" 
 			paginator="true" rows="5" paginatorTemplate="{FirstPageLink} {PreviousPageLink}
 			{PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" resizableColumns="flase" >
 			
@@ -104,25 +117,33 @@
 			</f:facet>
 			
 			<p:column headerText="Razão social" styleClass="coluna-30"  sortBy="tarefa" filterBy="tarefa" id="pesquisar-por-coluna" >
-				Jove Logística
+				#{empresa.razaoSocial}
 			</p:column>
 			
 			<p:column headerText="Fantasia" styleClass="coluna-25">
-				Jove Tecnologia
+				#{empresa.fantasia}
 			</p:column>
 			
 			<p:column headerText="CNPJ" styleClass="coluna-30">
-				00.000.000/0000-00
+				#{empresa.cnpj}
 			</p:column>
 			
 			<p:column headerText="Status" styleClass="coluna-position-center-15" >
-				<p:selectOneButton styleClass="select-one-button-cadastro">
+				<p:selectOneButton value="#{empresaBean.empresaSelecionada.ativo}" styleClass="select-one-button-cadastro" >
 					<f:selectItem itemLabel="Ativo" itemValue="true" />
 					<f:selectItem itemLabel="Inativo" itemValue="false" />
 				</p:selectOneButton>
 			</p:column>
-		
+
 		</p:dataTable>	
 	</div>
+	
+	<!-- Dailogs-->
+
+	<p:confirmDialog widgetVar="limparCampos" global="true" showEffect="fade" hideEffect="explode" 
+		style="font-size: 13px;" header="Atenção" message="Essa ação irá limpar todos os campos, tem certeza?">
+		<p:commandButton value="Sim" actionListener="#{empresaBean.limparCampos}" onclick="limparCampos.hide();" update="tab-empresa"/>
+		<p:commandButton value="Não" onclick="limparCampos.hide();" />
+	</p:confirmDialog>
 	
 </ui:composition>
