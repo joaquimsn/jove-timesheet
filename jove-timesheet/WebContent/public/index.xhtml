@@ -16,6 +16,17 @@
 	</h:head>
 	
 	<h:body>
+	
+		<p:ajaxStatus style="width:43px;height:11px;position:fixed;right:20px;bottom:50px;z-index:12000;" >
+			<f:facet name="start">
+				<p:graphicImage value="/resources/images/ajax-loader.gif" />
+			</f:facet>
+			
+			<f:facet name="complete">
+				<h:outputText value="" />
+			</f:facet>
+		</p:ajaxStatus>	
+	
 		<div id="header-login">
 			<div id="div-slogan">
 				<div id="logo-jove-header" />
