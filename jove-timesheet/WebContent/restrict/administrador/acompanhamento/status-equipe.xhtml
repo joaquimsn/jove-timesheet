@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:jove="http://java.sun.com/jsf/composite/componentes">
+	
+	<p:dialog id="modal-equipe-funcionario" header="Relatório por equipe" widgetVar="equipeFuncionario" modal="true" resizable="false" >
+	
+		<div class="container-equipe" >
+			<div id="parametros-do-relatorio">
+				<h:panelGrid styleClass="panelgrid-parametros" columns="4" columnClasses="coluna-25, coluna-25, coluna-40, coluna-10">
+					
+					<h:panelGrid width="100%" >
+						<p:outputLabel value="Departamento" styleClass="label-padrao" />
+						<p:selectOneMenu value="" styleClass="select-padrao" >
+							<f:selectItem  itemLabel="Selecione" itemValue="" />
+							<f:selectItem itemLabel="TI" itemValue="ti" />					
+						</p:selectOneMenu>
+					</h:panelGrid>
+					
+					<h:panelGrid width="100%" >
+						<p:outputLabel value="Pesquisar por" styleClass="label-padrao" />
+						<p:selectOneMenu  value="#{acompanhamentoBean.escopoSelecionado}" styleClass="select-padrao" converter="escopoConverter">
+							<f:selectItem itemLabel="Selecione" itemValue="" />
+							<f:selectItems value="#{acompanhamentoBean.listaEscopo}"/>
+						</p:selectOneMenu>
+					</h:panelGrid>			
+					
+					<h:panelGrid width="100%" >
+						<p:outputLabel value="Definir periodo"  styleClass="label-padrao"/>
+						<h:panelGroup style="width: 100%" >
+							<p:calendar  title="Inicio" pattern="dd/mm/yyyy" size="11" showOn="button" readonlyInput="true" />
+							a
+							<p:calendar  title="Fim" pattern="dd/mm/yyyy" size="11" showOn="button" readonlyInput="true" />
+						</h:panelGroup>
+					</h:panelGrid>			
+					
+					<p:commandButton value="Pesquisar" styleClass="btn-padrao" style="margin-top: 20px;"/>
+
+				</h:panelGrid>
+			</div>
+			
+			<h:panelGroup id="panelgrop-de-tabelas">
+				<p:dataTable id="table-relatorio-projeto" value="" var="" resizableColumns="false"  rendered="true" rows="10" style="font-size: 12px;"
+					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					emptyMessage="Nenhum projeto encontrado no periodo definido, tente outro periodo.">
+					
+					<f:facet name="header">
+						Resultado da pesquisa
+					</f:facet>
+					
+					<p:column headerText="Departamento" styleClass="coluna-30">
+						TI
+					</p:column>
+					
+					<p:column headerText="Projeto" styleClass="coluna-40">
+						GETLOG versão 2
+					</p:column>
+					
+					<p:column headerText="Total de horas trabalhadas" styleClass="coluna-30">
+						200
+					</p:column>
+					
+				</p:dataTable>	
+				
+				<p:dataTable id="table-relatorio-atividade" value="" var=""  resizableColumns="false"  rendered="false" rows="10"
+					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					emptyMessage="Nenhum atividade encontrada no periodo definido, tente outro periodo.">
+					
+					<f:facet name="header">
+						Resultado da pesquisa
+					</f:facet>
+						
+					<p:column headerText="Departamento" styleClass="coluna-30">
+						Administrativo
+					</p:column>
+					
+					<p:column headerText="Atividade" styleClass="coluna-40">
+						GETLOG versão 2
+					</p:column>
+					
+					<p:column headerText="Total de horas trabalhadas" styleClass="coluna-30">
+						200
+					</p:column>
+					
+				</p:dataTable>	
+			</h:panelGroup>
+			
+		</div>
+		
+	</p:dialog>
+</ui:composition>

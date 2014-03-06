@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:jove="http://java.sun.com/jsf/composite/componentes">
+	
+	<p:dialog header="Alterar Usuário e Senha" widgetVar="alterarUsuarioSenha" modal="true" resizable="false" >
+	
+		<h:panelGrid styleClass="grid-alterar-usuario-senha" columns="2" columnClasses="coluna-40, coluna-60">		
+			<p:outputLabel value=" Novo usuário" styleClass="label-padrao" />
+			<p:inputText value="joaquim" />
+			
+			<p:outputLabel value="Senha atual" styleClass="label-padrao" />
+			<p:inputText value="" />
+			
+			<p:outputLabel value=" Nova senha" styleClass="label-padrao" />
+			<p:inputText value="" />
+			
+			<p:outputLabel value="Confirmar senha" styleClass="label-padrao" />
+			<p:inputText value="" />
+			 
+			<p:commandButton value="Cancelar"  styleClass="btn-padrao" style="margin-left: 50px;" />
+			<p:commandButton value="Alterar"  styleClass="btn-padrao" style="margin-left: 50px;" />
+		</h:panelGrid>
+		
+	</p:dialog>
+	
+</ui:composition>
