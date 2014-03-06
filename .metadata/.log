@@ -8857,3 +8857,91 @@ java.lang.NullPointerException
 
 !ENTRY org.jboss.tools.common.model 2 0 2014-03-06 09:46:16.296
 !MESSAGE Project P/jove-timesheet has corrupted nature: org.jboss.tools.jsf.jsfnature
+
+!ENTRY org.eclipse.team.ui 4 0 2014-03-06 09:47:23.732
+!MESSAGE Error creating Synchronization Git:
+!STACK 1
+org.eclipse.team.core.TeamException: Error creating Synchronization Git:
+	at org.eclipse.team.internal.ui.synchronize.SynchronizeManager$ParticipantInstance.instantiate(SynchronizeManager.java:253)
+	at org.eclipse.team.internal.ui.synchronize.SynchronizeManager$ParticipantInstance.getParticipant(SynchronizeManager.java:217)
+	at org.eclipse.team.internal.ui.synchronize.SynchronizeManager.removeMatchingParticipant(SynchronizeManager.java:370)
+	at org.eclipse.team.internal.ui.synchronize.SynchronizeManager.addSynchronizeParticipants(SynchronizeManager.java:347)
+	at org.eclipse.egit.ui.internal.synchronize.GitModelSynchronize$2.done(GitModelSynchronize.java:219)
+	at org.eclipse.core.internal.jobs.JobListeners$3.notify(JobListeners.java:39)
+	at org.eclipse.core.internal.jobs.JobListeners.doNotify(JobListeners.java:112)
+	at org.eclipse.core.internal.jobs.JobListeners.done(JobListeners.java:152)
+	at org.eclipse.core.internal.jobs.JobManager.endJob(JobManager.java:647)
+	at org.eclipse.core.internal.jobs.WorkerPool.endJob(WorkerPool.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:70)
+Caused by: java.lang.NullPointerException
+	at org.eclipse.team.core.RepositoryProvider.getProvider(RepositoryProvider.java:491)
+	at org.eclipse.egit.core.project.GitProjectData.get(GitProjectData.java:202)
+	at org.eclipse.egit.ui.internal.synchronize.GitModelSynchronizeParticipant.getRepositoryForPath(GitModelSynchronizeParticipant.java:388)
+	at org.eclipse.egit.ui.internal.synchronize.GitModelSynchronizeParticipant.restoreSynchronizationData(GitModelSynchronizeParticipant.java:363)
+	at org.eclipse.egit.ui.internal.synchronize.GitModelSynchronizeParticipant.init(GitModelSynchronizeParticipant.java:332)
+	at org.eclipse.team.internal.ui.synchronize.SynchronizeManager$ParticipantInstance.instantiate(SynchronizeManager.java:245)
+	... 10 more
+!SUBENTRY 1 org.eclipse.team.core 4 0 2014-03-06 09:47:23.732
+!MESSAGE Error creating Synchronization Git:
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.team.core.RepositoryProvider.getProvider(RepositoryProvider.java:491)
+	at org.eclipse.egit.core.project.GitProjectData.get(GitProjectData.java:202)
+	at org.eclipse.egit.ui.internal.synchronize.GitModelSynchronizeParticipant.getRepositoryForPath(GitModelSynchronizeParticipant.java:388)
+	at org.eclipse.egit.ui.internal.synchronize.GitModelSynchronizeParticipant.restoreSynchronizationData(GitModelSynchronizeParticipant.java:363)
+	at org.eclipse.egit.ui.internal.synchronize.GitModelSynchronizeParticipant.init(GitModelSynchronizeParticipant.java:332)
+	at org.eclipse.team.internal.ui.synchronize.SynchronizeManager$ParticipantInstance.instantiate(SynchronizeManager.java:245)
+	at org.eclipse.team.internal.ui.synchronize.SynchronizeManager$ParticipantInstance.getParticipant(SynchronizeManager.java:217)
+	at org.eclipse.team.internal.ui.synchronize.SynchronizeManager.removeMatchingParticipant(SynchronizeManager.java:370)
+	at org.eclipse.team.internal.ui.synchronize.SynchronizeManager.addSynchronizeParticipants(SynchronizeManager.java:347)
+	at org.eclipse.egit.ui.internal.synchronize.GitModelSynchronize$2.done(GitModelSynchronize.java:219)
+	at org.eclipse.core.internal.jobs.JobListeners$3.notify(JobListeners.java:39)
+	at org.eclipse.core.internal.jobs.JobListeners.doNotify(JobListeners.java:112)
+	at org.eclipse.core.internal.jobs.JobListeners.done(JobListeners.java:152)
+	at org.eclipse.core.internal.jobs.JobManager.endJob(JobManager.java:647)
+	at org.eclipse.core.internal.jobs.WorkerPool.endJob(WorkerPool.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:70)
+
+!ENTRY org.eclipse.team.ui 4 0 2014-03-06 09:47:23.733
+!MESSAGE Error creating Synchronization Git:
+!STACK 1
+org.eclipse.team.core.TeamException: Error creating Synchronization Git:
+	at org.eclipse.team.internal.ui.synchronize.SynchronizeManager$ParticipantInstance.instantiate(SynchronizeManager.java:253)
+	at org.eclipse.team.internal.ui.synchronize.SynchronizeManager$ParticipantInstance.getParticipant(SynchronizeManager.java:217)
+	at org.eclipse.team.internal.ui.synchronize.SynchronizeManager.removeMatchingParticipant(SynchronizeManager.java:370)
+	at org.eclipse.team.internal.ui.synchronize.SynchronizeManager.addSynchronizeParticipants(SynchronizeManager.java:347)
+	at org.eclipse.egit.ui.internal.synchronize.GitModelSynchronize$2.done(GitModelSynchronize.java:219)
+	at org.eclipse.core.internal.jobs.JobListeners$3.notify(JobListeners.java:39)
+	at org.eclipse.core.internal.jobs.JobListeners.doNotify(JobListeners.java:112)
+	at org.eclipse.core.internal.jobs.JobListeners.done(JobListeners.java:152)
+	at org.eclipse.core.internal.jobs.JobManager.endJob(JobManager.java:647)
+	at org.eclipse.core.internal.jobs.WorkerPool.endJob(WorkerPool.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:70)
+Caused by: java.lang.NullPointerException
+	at org.eclipse.team.core.RepositoryProvider.getProvider(RepositoryProvider.java:491)
+	at org.eclipse.egit.core.project.GitProjectData.get(GitProjectData.java:202)
+	at org.eclipse.egit.ui.internal.synchronize.GitModelSynchronizeParticipant.getRepositoryForPath(GitModelSynchronizeParticipant.java:388)
+	at org.eclipse.egit.ui.internal.synchronize.GitModelSynchronizeParticipant.restoreSynchronizationData(GitModelSynchronizeParticipant.java:363)
+	at org.eclipse.egit.ui.internal.synchronize.GitModelSynchronizeParticipant.init(GitModelSynchronizeParticipant.java:332)
+	at org.eclipse.team.internal.ui.synchronize.SynchronizeManager$ParticipantInstance.instantiate(SynchronizeManager.java:245)
+	... 10 more
+!SUBENTRY 1 org.eclipse.team.core 4 0 2014-03-06 09:47:23.733
+!MESSAGE Error creating Synchronization Git:
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.team.core.RepositoryProvider.getProvider(RepositoryProvider.java:491)
+	at org.eclipse.egit.core.project.GitProjectData.get(GitProjectData.java:202)
+	at org.eclipse.egit.ui.internal.synchronize.GitModelSynchronizeParticipant.getRepositoryForPath(GitModelSynchronizeParticipant.java:388)
+	at org.eclipse.egit.ui.internal.synchronize.GitModelSynchronizeParticipant.restoreSynchronizationData(GitModelSynchronizeParticipant.java:363)
+	at org.eclipse.egit.ui.internal.synchronize.GitModelSynchronizeParticipant.init(GitModelSynchronizeParticipant.java:332)
+	at org.eclipse.team.internal.ui.synchronize.SynchronizeManager$ParticipantInstance.instantiate(SynchronizeManager.java:245)
+	at org.eclipse.team.internal.ui.synchronize.SynchronizeManager$ParticipantInstance.getParticipant(SynchronizeManager.java:217)
+	at org.eclipse.team.internal.ui.synchronize.SynchronizeManager.removeMatchingParticipant(SynchronizeManager.java:370)
+	at org.eclipse.team.internal.ui.synchronize.SynchronizeManager.addSynchronizeParticipants(SynchronizeManager.java:347)
+	at org.eclipse.egit.ui.internal.synchronize.GitModelSynchronize$2.done(GitModelSynchronize.java:219)
+	at org.eclipse.core.internal.jobs.JobListeners$3.notify(JobListeners.java:39)
+	at org.eclipse.core.internal.jobs.JobListeners.doNotify(JobListeners.java:112)
+	at org.eclipse.core.internal.jobs.JobListeners.done(JobListeners.java:152)
+	at org.eclipse.core.internal.jobs.JobManager.endJob(JobManager.java:647)
+	at org.eclipse.core.internal.jobs.WorkerPool.endJob(WorkerPool.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:70)
