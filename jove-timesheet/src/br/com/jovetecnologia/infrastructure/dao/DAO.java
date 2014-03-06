@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 
 import br.com.jovetecnologia.infrastructure.connection.ConexaoHibernate;
 
@@ -89,6 +90,18 @@ public class DAO<T> implements Serializable {
 		session = ConexaoHibernate.getSessionFactory().openSession();
 		
 		return session.createCriteria(classse).list();
+	}
+	
+	/**
+	 * Pesquisa em ordem Decrescente todos os objetos persistidos na base 
+	 * @author Joaquim Neto
+	 * @return Lista type genérico persistidos ordem DESC
+	 */
+	@SuppressWarnings("rawtypes")
+	public List listarTodosDesc() {
+		session = ConexaoHibernate.getSessionFactory().openSession();
+		
+		return session.createCriteria(classse).addOrder(Order.desc("dataCadastro")).list();
 	}
 
 }

@@ -6,7 +6,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import br.com.jovetecnologia.domain.model.Departamento;
 import br.com.jovetecnologia.domain.model.Tarefa;
 
 @ManagedBean
@@ -15,8 +14,6 @@ public class TarefaBean extends CadastroBean implements Serializable {
 
 	private static final long serialVersionUID = -3779041589727892789L;
 	
-	private Tarefa tarefaSelecionado;
- 
 	/**
 	 * Inicia os compontes essenciais para o funcionamento da pagina Tarefa
 	 * @author Joaquim Neto
@@ -33,7 +30,7 @@ public class TarefaBean extends CadastroBean implements Serializable {
 	 * @author Joaquim Neto
 	 */
 	private void limparCampos() {
-		tarefaSelecionado = new Tarefa();
+		tarefaSelecionada = new Tarefa();
 	}
 	
 	/**
