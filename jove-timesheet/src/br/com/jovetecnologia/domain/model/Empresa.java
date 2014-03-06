@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import br.com.jovetecnologia.infrastructure.util.annotation.Required;
+
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +14,6 @@ import java.util.List;
  */
 @Entity
 @Table(name = "empresa")
-@NamedQuery(name = "Empresa.findAll", query = "SELECT e FROM Empresa e")
 public class Empresa implements Serializable {
 	private static final long serialVersionUID = 7719689909954321363L;
 
@@ -24,14 +25,17 @@ public class Empresa implements Serializable {
 	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
 	private boolean ativo;
 
+	@Required(label = "Bairro", minimo = 3)
 	private String bairro;
 
+	@Required(label = "CEP", minimo = 3)
 	private String cep;
 
 	private String cidade;
 
 	private String cnpj;
 
+	@Required(label = "Complemento", minimo = 2)
 	private String complemento;
 
 	@Temporal(TemporalType.TIMESTAMP)

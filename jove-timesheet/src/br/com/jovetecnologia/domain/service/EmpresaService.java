@@ -7,6 +7,7 @@ import java.util.List;
 
 import br.com.jovetecnologia.domain.model.Empresa;
 import br.com.jovetecnologia.infrastructure.dao.EmpresaDAO;
+import br.com.jovetecnologia.infrastructure.util.SystemUtils;
 
 
 /**
@@ -17,6 +18,12 @@ import br.com.jovetecnologia.infrastructure.dao.EmpresaDAO;
 public class EmpresaService implements Serializable {
 
 	private static final long serialVersionUID = -1533531032670588261L;
+	
+	private EmpresaDAO empresaDAO;
+	
+	public EmpresaService() {
+		empresaDAO = new EmpresaDAO();
+	}
 	
 	/**
 	 * Cadastra uma empresa
@@ -31,7 +38,19 @@ public class EmpresaService implements Serializable {
 			empresa.setDataCadastro( new Date());			
 		}
 		
-		new EmpresaDAO().cadastar(empresa);
+		empresaDAO.cadastar(empresa);
+	}
+	
+	/**
+	 * Alterar salva a empresa alterada, define a data da modificação e qual usuário a fez;
+	 * @author Joaquim Neto
+	 * @param empresa Empresa modificada que será atualizada na base
+	 */
+	public void alterar(Empresa empresa) {
+		empresa.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
+		empresa.setDataManutencao(new Date());
+		
+		empresaDAO.alterar(empresa);
 	}
 	
 	/**
@@ -44,7 +63,7 @@ public class EmpresaService implements Serializable {
 		List<Empresa> lista = new ArrayList<Empresa>();
 		
 		try {
-			lista = new EmpresaDAO().listarTodos();
+			lista = empresaDAO.listarTodosDesc();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

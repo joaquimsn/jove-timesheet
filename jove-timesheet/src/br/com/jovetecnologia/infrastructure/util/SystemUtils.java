@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.IOUtils;
 import org.primefaces.context.RequestContext;
 
+import br.com.jovetecnologia.domain.model.Funcionario;
 import br.com.jovetecnologia.domain.model.Usuario;
 import br.com.jovetecnologia.infrastructure.util.annotation.Required;
 import br.com.jovetecnologia.web.bean.SessionBean;
@@ -551,10 +552,20 @@ public class SystemUtils {
 	/**
 	 * Retorna o usuário com os dados do usuarioLogado
 	 * @author Joaquim Neto
-	 * @return Um objeto Usuario
+	 * @return Objeto Usuario
 	 */
 	public static Usuario getUsuarioLogado() {
 		return getSessionBean().getUsuarioLogado();
+	}
+	
+	
+	/**
+	 * Retorna o funcionario logado
+	 * @author Joaquim Neto
+	 * @return Objeto Funcionario
+	 */
+	public static Funcionario getFuncionarioLogado() {
+		return getSessionBean().getFuncionarioLogado();
 	}
 	
 	/**
