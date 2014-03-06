@@ -30,9 +30,10 @@ public class Empresa implements Serializable {
 
 	@Required(label = "CEP", minimo = 3)
 	private String cep;
-
+	
 	private String cidade;
-
+	
+	@Required(label = "CNPJ", minimo = 3)
 	private String cnpj;
 
 	@Required(label = "Complemento", minimo = 2)
@@ -46,17 +47,22 @@ public class Empresa implements Serializable {
 	@Column(name = "data_manutencao")
 	private Date dataManutencao;
 
+	@Required(label = "e-mail", minimo = 10)
 	private String email;
 
+	@Required(label = "Fantasia", minimo = 3)
 	private String fantasia;
 
 	@Column(name = "id_usuario")
 	private int idUsuario;
-
+	
+	@Required(label = "Logradouro", minimo = 5)
 	private String logradouro;
-
+	
+	@Required(label = "Numero", minimo = 1)
 	private String numero;
-
+	
+	@Required(label = "Razão Social", minimo = 10)
 	@Column(name = "razao_social")
 	private String razaoSocial;
 
