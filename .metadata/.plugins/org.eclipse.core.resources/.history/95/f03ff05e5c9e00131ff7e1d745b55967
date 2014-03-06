@@ -1,0 +1,38 @@
+package br.com.jovetecnologia.domain.model;
+
+import java.io.Serializable;
+
+import javax.persistence.*;
+
+import java.util.List;
+
+
+/**
+ * The persistent class for the projeto database table.
+ * 
+ */
+@Entity
+@Table(name="projeto")
+@NamedQuery(name="Projeto.findAll", query="SELECT p FROM Projeto p")
+public class Projeto implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name="id_projeto")
+	private int idProjeto;
+	
+	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
+	private boolean ativo;
+
+	private String descricao;
+
+	private String nome;
+
+	//bi-directional many-to-one association to Registro
+	@OneToMany(mappedBy="projeto")
+	private List<Registro> registros;
+
+	public Projeto() {
+	}
+	
+}

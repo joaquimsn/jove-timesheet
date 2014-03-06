@@ -1,5 +1,0 @@
-package br.com.jovetecnologia.infrastructure.util.converter.basic;
-
-public class TimeConverter {
-
-}

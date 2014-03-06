@@ -5,3 +5,12 @@
 2014-02-25 11:14:23,720 [Worker-42] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
 2014-02-25 11:14:24,269 [New I/O client worker #3-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/hibernate/hibernate-core/4.1.7.Final/hibernate-core-4.1.7.Final-sources.jar
 2014-02-25 11:14:28,400 [New I/O client worker #3-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/hibernate/hibernate-core/4.1.7.Final/hibernate-core-4.1.7.Final-sources.jar
+2014-02-26 01:52:35,941 [Worker-41] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-02-26 01:52:36,876 [New I/O client worker #1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/primefaces/primefaces/4.0/primefaces-4.0-sources.jar
+2014-02-26 01:52:38,275 [Worker-48] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-02-26 01:52:38,666 [New I/O client worker #2-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/ocpsoft/prettyfaces-jsf2/3.3.3/prettyfaces-jsf2-3.3.3-sources.jar
+2014-02-26 01:52:38,766 [New I/O client worker #1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/primefaces/primefaces/4.0/primefaces-4.0-sources.jar
+2014-02-26 01:52:38,861 [Worker-60] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-02-26 01:52:38,862 [Worker-60] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-02-26 01:52:39,153 [New I/O client worker #4-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/ocpsoft/prettyfaces-jsf2/3.3.3/prettyfaces-jsf2-3.3.3-sources.jar
+2014-02-26 01:52:39,852 [New I/O client worker #2-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/ocpsoft/prettyfaces-jsf2/3.3.3/prettyfaces-jsf2-3.3.3-sources.jar

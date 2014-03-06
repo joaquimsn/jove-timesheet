@@ -1,0 +1,7 @@
+package br.com.jovetecnologia.infrastructure.dao;
+
+import java.io.Serializable;
+
+public class DAO<T> implements Serializable {
+
+}

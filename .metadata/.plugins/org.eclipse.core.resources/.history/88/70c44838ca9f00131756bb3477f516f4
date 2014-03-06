@@ -1,0 +1,13 @@
+package br.com.jovetecnologia.domain.service;
+
+import java.io.Serializable;
+
+
+/**
+ * Contem as principais regras de negocio do objeto Empresa
+ * @author Joaquim S. Neto
+ *
+ */
+public class EmpresaService implements Serializable {
+
+}

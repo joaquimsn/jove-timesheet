@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:jove="http://java.sun.com/jsf/composite/componentes">
+	
+	<p:growl id="messages" showDetail="true" />
+	
+	<!-- Tabela que lista as empresas cadastradas-->
+	<div class="table-cadastro">
+		<p:dataTable id="table-empresa" value="#{empresaBean.listaEmpresa}" var="empresa" rowKey="#{empresa.idEmpresa}"  widgetVar="tabelaEmpresa"
+			selection="#{empresaBean.empresaSelecionada}" selectionMode="single" paginator="true" rows="5" filteredValue="#{empresaBean.empresasFiltradas}"
+			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
+			resizableColumns="flase" style="width: 900px;">
+			
+			<p:ajax event="rowSelect" update=":form-pagina-cadastro:tabview-cadastro"/>
+			
+			<f:facet name="header">
+				Tabela de Empresas
+			</f:facet>
+			
+			<p:column headerText="Razão social" styleClass="coluna-30" filterBy="razaoSocial"
+				id="pesquisar-por-coluna" >
+				<h:outputText value="#{empresa.razaoSocial}" />
+			</p:column>
+			
+			<p:column headerText="Fantasia" styleClass="coluna-25">
+				<h:outputText value="#{empresa.fantasia}" />
+			</p:column>
+			
+			<p:column headerText="CNPJ" styleClass="coluna-30">
+				<h:outputText value="#{empresa.cnpj}" />
+			</p:column>
+			
+			<p:column headerText="Status" styleClass="coluna-position-center-15" >
+				<p:selectOneButton value="#{empresaBean.empresaSelecionada.ativo}" styleClass="select-one-button-cadastro" >
+					<f:selectItem itemLabel="Ativo" itemValue="true" />
+					<f:selectItem itemLabel="Inativo" itemValue="false" />
+				</p:selectOneButton>
+			</p:column>
+
+		</p:dataTable>	
+	</div>
+	
+	<!-- Formulario de cadastro/alteração  -->
+	<p:fieldset id="formulario-cadastro-completo" >
+		<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-40, coluna-35, coluna-25">
+			<h:panelGrid width="100%" >
+				<p:outputLabel value="Razão Social"/>
+				<p:inputText value="#{empresaBean.empresaSelecionada.razaoSocial}" style="width: 100%;" maxlength="200" readonly="#{empresaBean.readonly}"
+					onkeyup="mascara(this, soTexto);" />	
+			</h:panelGrid>
+			
+			<h:panelGrid width="100%" >
+				<p:outputLabel value="Fantasia" />
+				<p:inputText value="#{empresaBean.empresaSelecionada.fantasia}" style="width: 100%;" maxlength="100" readonly="#{empresaBean.readonly}"
+					onkeyup="mascara(this, soTexto);" />
+			</h:panelGrid>
+			
+			<h:panelGrid width="100%" >
+				<p:outputLabel value="CNPJ" />
+				<p:inputText value="#{empresaBean.empresaSelecionada.cnpj}" style="width: 100%;" maxlength="18" readonly="#{empresaBean.readonly}"
+					onkeyup="mascara(this, maskCnpj);" />
+			</h:panelGrid>
+		</h:panelGrid>
+		
+		<h:panelGrid styleClass="panel-form-cadastro" columns="4" columnClasses="coluna-45, coluna-20, coluna-25, coluna-10">
+			<h:panelGrid width="100%">
+				<p:outputLabel value="Logradouro" />
+				<p:inputText value="#{empresaBean.empresaSelecionada.logradouro}" style="width: 100%;" maxlength="120" readonly="#{empresaBean.readonly}"
+				onkeyup="mascara(this, soTextoNumeros);" />		
+			</h:panelGrid>
+			
+			<h:panelGrid width="100%">
+				<p:outputLabel value="Bairro" />
+				<p:inputText value="#{empresaBean.empresaSelecionada.bairro}" style="width: 100%;" maxlength="50" readonly="#{empresaBean.readonly}"
+					onkeyup="mascara(this, soTextoNumeros);" />		
+			</h:panelGrid>
+			
+			<h:panelGrid width="100%">
+				<p:outputLabel value="Complemento" />
+				<p:inputText value="#{empresaBean.empresaSelecionada.complemento}" style="width: 100%;" maxlength="50" readonly="#{empresaBean.readonly}"
+					onkeyup="mascara(this, soTextoNumeros);" />		
+			</h:panelGrid>
+			
+			<h:panelGrid width="100%">
+				<p:outputLabel value="Nº" />
+				<p:inputText value="#{empresaBean.empresaSelecionada.numero}" style="width: 100%;" maxlength="10" readonly="#{empresaBean.readonly}"
+					onkeyup="mascara(this, soNumeros);" />		
+			</h:panelGrid>
+		</h:panelGrid>
+		
+		<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-50, coluna-30, coluna-20">
+			<h:panelGrid width="100%">
+				<p:outputLabel value="CEP" />
+				<p:inputText value="#{empresaBean.empresaSelecionada.cep}" style="width: 100%;" maxlength="9" readonly="#{empresaBean.readonly}"
+					onkeyup="mascara(this, maskCep);" />
+			</h:panelGrid>
+
+			<h:panelGrid width="100%">
+				<p:outputLabel value="Cidade" />
+				<p:selectOneMenu styleClass="cbx-cidade" style="width: 103%;" disabled="#{empresaBean.readonly}">
+					<f:selectItem itemLabel="selecione" itemValue=""/>
+				</p:selectOneMenu>
+			</h:panelGrid>
+
+			<h:panelGrid width="100%">
+				<p:outputLabel value="UF" />
+				<p:selectOneMenu styleClass="cbx-uf" style="width: 104%;" disabled="#{empresaBean.readonly}">
+					<f:selectItem itemLabel="selecione" itemValue=""/>
+				</p:selectOneMenu>
+			</h:panelGrid>
+		</h:panelGrid>
+		
+		<h:panelGrid styleClass="panel-form-cadastro" columns="2" columnClasses="coluna-30, coluna-70">
+			<h:panelGrid width="100%" >
+				<p:outputLabel value="Telefone " />
+				<p:inputText value="#{empresaBean.empresaSelecionada.telefone}" style="width: 100%;" maxlength="14" readonly="#{empresaBean.readonly}"
+					onkeyup="mascara(this, maskTelefone);" />		
+			</h:panelGrid>
+			
+			<h:panelGrid width="100%" >
+				<p:outputLabel value="E-mail" />
+				<p:inputText value="#{empresaBean.empresaSelecionada.email}" style="width: 100%;" maxlength="100" readonly="#{empresaBean.readonly}"
+					onkeyup="mascara(this, mista);" />		
+			</h:panelGrid>
+		</h:panelGrid>
+		
+		<!-- Botões exibidos na view -->
+		<div class="botões-tela-cadastro" >
+			<!-- Botões para cadastro, exibido apenas se não tiver uma empresa selecionada-->
+			<h:panelGroup rendered="#{!empresaBean.hasEmpresaSelecionada()}" >
+				<p:commandButton value="Cadastrar" styleClass="btn-padrao" actionListener="#{empresaBean.cadastrar}" 
+					update="tab-empresa"/>
+					
+				<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{empresaBean.inicializarPagina}" 
+					update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-completo"/>
+			</h:panelGroup>
+			 
+			 <!-- Botões para liberar a alteração, exibido apenas se tiver uma empresa selecionada -->
+			<h:panelGroup rendered="#{empresaBean.hasEmpresaSelecionada()}" >
+				<h:panelGroup rendered="#{empresaBean.readonly}">
+					<p:commandButton value="Alterar" styleClass="btn-padrao" actionListener="#{empresaBean.habilitarCampo}" 
+						update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-completo"/>
+					<p:commandButton value="Deletar" styleClass="btn-padrao" />
+				</h:panelGroup>
+				
+				<!-- Botões exibidos quando clica-se no botão alterar-->
+				<h:panelGroup rendered="#{!empresaBean.readonly}">
+					<p:commandButton value="Salvar" styleClass="btn-padrao" actionListener="#{empresaBean.alterar}" 
+						update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-completo"/>
+					<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{empresaBean.inicializarPagina}" 
+						update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-completo"/>
+				</h:panelGroup>
+			</h:panelGroup>
+		</div>
+	</p:fieldset>
+	
+</ui:composition>

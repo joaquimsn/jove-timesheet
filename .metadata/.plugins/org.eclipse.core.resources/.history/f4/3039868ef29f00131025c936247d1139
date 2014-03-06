@@ -1,0 +1,173 @@
+package br.com.jovetecnologia.web.bean;
+
+import java.io.Serializable;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+import br.com.jovetecnologia.domain.model.Atividade;
+import br.com.jovetecnologia.domain.model.Departamento;
+import br.com.jovetecnologia.domain.model.Empresa;
+import br.com.jovetecnologia.domain.model.Funcionario;
+import br.com.jovetecnologia.domain.model.Projeto;
+import br.com.jovetecnologia.domain.model.Tarefa;
+import br.com.jovetecnologia.domain.model.Usuario;
+import br.com.jovetecnologia.domain.service.EmpresaService;
+import br.com.jovetecnologia.infrastructure.util.IOutcome;
+
+@ManagedBean
+@ViewScoped
+public class CadastroBean implements Serializable {
+
+	private static final long serialVersionUID = 8397217586141036024L;
+	
+	private Tarefa tarefaSelecionada;
+	private Atividade atividadeSelecionada;
+	private Projeto projetoSelecionado;
+	private Funcionario funcionarioSelecionado;
+	private Usuario usuarioSelecionado;
+	private Departamento departamentoSelecionado;
+	private Empresa empresaSelecionada;
+
+	/**
+	 * Inicializa os objetos necessario para o funcionamento da pagina
+	 * @author Joaquim Neto
+	 * @return O nome da pagina solicitada pelo cliente
+	 */
+	public String abrirPagina() {
+		return IOutcome.CADASTRO;
+	}
+	
+	@PostConstruct
+	public void inicializarPagina() {
+		tarefaSelecionada = new Tarefa();
+		atividadeSelecionada = new Atividade();
+		projetoSelecionado = new Projeto();
+		funcionarioSelecionado = new Funcionario();
+		usuarioSelecionado = new Usuario();
+		departamentoSelecionado = new Departamento();
+		empresaSelecionada = new Empresa();
+	}
+	
+	public void limparTodosCampos() {
+		inicializarPagina();
+	}
+	
+	public void cadastrarEmpresa() {
+		new EmpresaService().cadastrar(getEmpresaSelecionada());
+	}
+	
+	/**
+	 * @author Joaquim Neto
+	 * @return the tarefaSelecionada
+	 */
+	public Tarefa getTarefaSelecionada() {
+		return tarefaSelecionada;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param tarefaSelecionada the tarefaSelecionada to set
+	 */
+	public void setTarefaSelecionada(Tarefa tarefaSelecionada) {
+		this.tarefaSelecionada = tarefaSelecionada;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the atividadeSelecionada
+	 */
+	public Atividade getAtividadeSelecionada() {
+		return atividadeSelecionada;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param atividadeSelecionada the atividadeSelecionada to set
+	 */
+	public void setAtividadeSelecionada(Atividade atividadeSelecionada) {
+		this.atividadeSelecionada = atividadeSelecionada;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the projetoSelecionado
+	 */
+	public Projeto getProjetoSelecionado() {
+		return projetoSelecionado;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param projetoSelecionado the projetoSelecionado to set
+	 */
+	public void setProjetoSelecionado(Projeto projetoSelecionado) {
+		this.projetoSelecionado = projetoSelecionado;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the funcionarioSelecionado
+	 */
+	public Funcionario getFuncionarioSelecionado() {
+		return funcionarioSelecionado;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param funcionarioSelecionado the funcionarioSelecionado to set
+	 */
+	public void setFuncionarioSelecionado(Funcionario funcionarioSelecionado) {
+		this.funcionarioSelecionado = funcionarioSelecionado;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the usuarioSelecionado
+	 */
+	public Usuario getUsuarioSelecionado() {
+		return usuarioSelecionado;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param usuarioSelecionado the usuarioSelecionado to set
+	 */
+	public void setUsuarioSelecionado(Usuario usuarioSelecionado) {
+		this.usuarioSelecionado = usuarioSelecionado;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the departamentoSelecionado
+	 */
+	public Departamento getDepartamentoSelecionado() {
+		return departamentoSelecionado;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param departamentoSelecionado the departamentoSelecionado to set
+	 */
+	public void setDepartamentoSelecionado(Departamento departamentoSelecionado) {
+		this.departamentoSelecionado = departamentoSelecionado;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the empresaSelecionada
+	 */
+	public Empresa getEmpresaSelecionada() {
+		return empresaSelecionada;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param empresaSelecionada the empresaSelecionada to set
+	 */
+	public void setEmpresaSelecionada(Empresa empresaSelecionada) {
+		this.empresaSelecionada = empresaSelecionada;
+	}
+	
+}

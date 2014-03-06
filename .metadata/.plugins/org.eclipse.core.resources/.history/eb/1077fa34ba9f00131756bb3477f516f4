@@ -1,0 +1,19 @@
+package br.com.jovetecnologia.infrastructure.dao;
+
+import java.io.Serializable;
+
+import org.hibernate.Session;
+
+@SuppressWarnings("serial")
+public class DAO<T> implements Serializable {
+
+	private static final long serialVersionUID = 2887068895559328314L;
+	
+	private Session session;
+	private Class<T> classse;
+	
+	public DAO(Class<T> classe) {
+		this.classse = classe;
+	}
+	
+}

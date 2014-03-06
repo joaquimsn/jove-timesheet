@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//HIBERNATE/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration> 
+	<session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.connection.datasource">java:jboss/datasources/joveTimesheetDS</property>
+		<property name="hibernate.show_sql">false</property>
+		<property name="hibernate.format_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">validate</property>
+		<property name="connection.release_mode">after_transaction</property>
+		<property name="current_session_context_class">thread</property>
+
+		<!-- Mapeamentos das Entity -->
+		<mapping class="br.com.jovetecnologia.domain.model.Usuario" />
+		<mapping class="br.com.jovetecnologia.domain.model.Atividade" />
+		<mapping class="br.com.jovetecnologia.domain.model.Projeto" />
+		<mapping class="br.com.jovetecnologia.domain.model.Tarefa" />
+		<mapping class="br.com.jovetecnologia.domain.model.Funcionario" />
+		<mapping class="br.com.jovetecnologia.domain.model.Empresa" />
+		<mapping class="br.com.jovetecnologia.domain.model.Departamento" />
+		<mapping class="br.com.jovetecnologia.domain.model.Registro" />
+		<mapping class="br.com.jovetecnologia.domain.model.AtividadeTarefa" />
+	</session-factory>
+</hibernate-configuration>
