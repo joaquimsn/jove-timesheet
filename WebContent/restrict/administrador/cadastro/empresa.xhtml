@@ -14,7 +14,7 @@
 		<p:dataTable id="table-empresa" value="#{empresaBean.listaEmpresa}" var="empresa" rowKey="#{empresa.idEmpresa}"  widgetVar="tabelaEmpresa"
 			selection="#{empresaBean.empresaSelecionada}" selectionMode="single" paginator="true" rows="5" filteredValue="#{empresaBean.listaEmpresaFiltrada}"
 			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
-			resizableColumns="flase" style="width: 956px;">
+			paginatorPosition="bottom" resizableColumns="flase" style="width: 956px;">
 			
 			<p:ajax event="rowSelect" update=":form-pagina-cadastro:tabview-cadastro"/>
 			
@@ -148,7 +148,7 @@
 					<p:commandButton value="Alterar" styleClass="btn-padrao" actionListener="#{empresaBean.habilitarCampo}" 
 						update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-completo"/>
 					<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{empresaBean.inicializarPagina}" 
-						update="tab-empresa" />
+						update=":form-pagina-cadastro:tabview-cadastro" />
 				</h:panelGroup>
 				
 				<!-- Botões exibidos quando clica-se no botão alterar-->
@@ -156,7 +156,7 @@
 					<p:commandButton value="Salvar" styleClass="btn-padrao" actionListener="#{empresaBean.alterar}" 
 						update=":form-pagina-cadastro:tabview-cadastro"/>
 					<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{empresaBean.inicializarPagina}" 
-						update=":form-pagina-cadastro:tabview-cadastro:tab-empresa"/>
+						update=":form-pagina-cadastro:tabview-cadastro"/>
 				</h:panelGroup>
 			</h:panelGroup>
 		</div>
