@@ -6,41 +6,59 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.jovetecnologia.domain.interfaces.ICrudBean;
 import br.com.jovetecnologia.domain.model.Tarefa;
 
 @ManagedBean
 @ViewScoped
-public class TarefaBean extends CadastroBean implements Serializable {
+public class TarefaBean extends CadastroBean implements Serializable, ICrudBean {
 
 	private static final long serialVersionUID = -3779041589727892789L;
-	
-	/**
-	 * Inicia os compontes essenciais para o funcionamento da pagina Tarefa
-	 * @author Joaquim Neto
-	 */
-	
-		
+
+	private Tarefa tarefaSelecionada;
+
+	@Override
 	@PostConstruct
-	public void inicializarComponentes() {
-		
+	public void inicializarPagina() {
+
 	}
-	
-	/**
-	 * Zera os atributos da pagina departamento fazendo um nova instancia;
-	 * @author Joaquim Neto
-	 */
-	private void limparCampos() {
-		tarefaSelecionada = new Tarefa();
+
+	@Override
+	public void listarTodos() {
+		// TODO Auto-generated method stub
+
 	}
-	
-	/**
-	 * Cadastra a taerfa e limpa os campos
-	 * @author Joaquim Neto
-	 */
+
+	@Override
+	public void habilitarCampo() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
 	public void cadastrar() {
-		limparCampos();
+		// TODO Auto-generated method stub
+
 	}
-	
+
+	@Override
+	public boolean validar() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void alterar() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public boolean hasObjetoSelecionado() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	/**
 	 * @author Joaquim Neto
 	 * @return the tarefaSelecionada
@@ -56,4 +74,5 @@ public class TarefaBean extends CadastroBean implements Serializable {
 	public void setTarefaSelecionada(Tarefa tarefaSelecionada) {
 		this.tarefaSelecionada = tarefaSelecionada;
 	}
+
 }

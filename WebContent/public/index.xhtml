@@ -55,7 +55,7 @@
 				</div>
 				
 				<p:commandButton value="Acessar" styleClass="btn-acessar" 
-					action="#{loginBean.fazerLogin}" update=":formulario-login:messages"/>
+					action="#{loginBean.fazerLogin}" update=":formulario-login"/>
 				
 				<h:panelGroup rendered="#{not empty sessionBean.instancia}"/>
 			</h:form>

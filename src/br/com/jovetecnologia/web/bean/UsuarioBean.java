@@ -6,30 +6,57 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.jovetecnologia.domain.interfaces.ICrudBean;
 import br.com.jovetecnologia.domain.model.Usuario;
 
 @ManagedBean
 @ViewScoped
-public class UsuarioBean extends CadastroBean implements Serializable {
+public class UsuarioBean extends CadastroBean implements Serializable, ICrudBean {
 
 	private static final long serialVersionUID = 4085651580409833887L;
 
-	/**
-	 * Inicia os compontes essenciais para o funcionamento da pagina Departamento
-	 * @author Joaquim Neto
-	 */
+	private Usuario usuarioSelecionado;
 
+	@Override
 	@PostConstruct
-	public void inicializarComponentes() {
+	public void inicializarPagina() {
 		usuarioSelecionado = new Usuario();
 	}
-	
-	/**
-	 * Zera os atributos da departamento fazendo um nova instancia;
-	 * @author Joaquim Neto
-	 */
-	private void limparCampos() {
-		inicializarComponentes();
+
+	@Override
+	public void listarTodos() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void habilitarCampo() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void cadastrar() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public boolean validar() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void alterar() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public boolean hasObjetoSelecionado() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	/**

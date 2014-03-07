@@ -6,40 +6,59 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.jovetecnologia.domain.interfaces.ICrudBean;
 import br.com.jovetecnologia.domain.model.Funcionario;
 
 @ManagedBean
 @ViewScoped
-public class FuncionarioBean extends CadastroBean implements Serializable {
+public class FuncionarioBean extends CadastroBean implements Serializable, ICrudBean {
 
 	private static final long serialVersionUID = -3779041589727892789L;
-	
-	/**
-	 * Inicia os compontes essenciais para o funcionamento da pagina Departamento
-	 * @author Joaquim Neto
-	 */
-	
+
+	private Funcionario funcionarioSelecionado;
+
+	@Override
 	@PostConstruct
-	public void inicializarComponentes() {
+	public void inicializarPagina() {
 		funcionarioSelecionado = new Funcionario();
 	}
-	
-	/**
-	 * Zera os atributos da departamento fazendo um nova instancia;
-	 * @author Joaquim Neto
-	 */
-	private void limparCampos() {
-		funcionarioSelecionado = new Funcionario();
+
+	@Override
+	public void listarTodos() {
+		// TODO Auto-generated method stub
+
 	}
-	
-	/**
-	 * Cadastra o departamento e limpa os campos
-	 * @author Joaquim Neto
-	 */
+
+	@Override
+	public void habilitarCampo() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
 	public void cadastrar() {
-		limparCampos();
+		// TODO Auto-generated method stub
+
 	}
-	
+
+	@Override
+	public boolean validar() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void alterar() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public boolean hasObjetoSelecionado() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	/**
 	 * @author Joaquim Neto
 	 * @return the funcionarioSelecionado

@@ -41,7 +41,10 @@ public class LoginBean implements Serializable {
 			return IOutcome.REGISTRO;
 		} else {
 			Messages.addError("Usuário ou senha incorreto");
-
+			
+			//Zera a varial senha se o login não ocorrer com sucesso.
+			setSenha("");
+			
 			return null;
 		}
 	}

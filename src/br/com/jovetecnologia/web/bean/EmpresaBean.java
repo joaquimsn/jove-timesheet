@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.jovetecnologia.domain.interfaces.ICrudBean;
 import br.com.jovetecnologia.domain.model.Empresa;
 import br.com.jovetecnologia.domain.service.EmpresaService;
 import br.com.jovetecnologia.infrastructure.util.Messages;
@@ -15,19 +16,15 @@ import br.com.jovetecnologia.infrastructure.util.SystemUtils;
 
 @ManagedBean
 @ViewScoped
-public class EmpresaBean extends CadastroBean implements Serializable {
+public class EmpresaBean extends CadastroBean implements Serializable, ICrudBean {
 
-	private static final long serialVersionUID = -4308003149561237529L;
+	private static final long serialVersionUID = 1163863445999964629L;
 	
 	private Empresa empresaSelecionada;
 	private List<Empresa> listaEmpresa;
 	private List<Empresa> listaEmpresaFiltrada;
-	private boolean readonly;
-	
-	/**
-	 * Inicia os compontes essenciais para o funcionamento da pagina empresa
-	 * @author Joaquim Neto
-	 */
+
+	@Override
 	@PostConstruct
 	public void inicializarPagina() {
 		empresaSelecionada = new Empresa();
@@ -35,78 +32,65 @@ public class EmpresaBean extends CadastroBean implements Serializable {
 		listarTodos();
 	}
 
-	
-	/**
-	 * Define Readonly como <b>false</b> para liberar a edição dos campos
-	 * @author Joaquim Neto
-	 */
+	@Override
 	public void habilitarCampo() {
 		setReadonly(false);
 	}
-	
-	/**
-	 * Cadastra a empresa, valida os campos e limpa se cadastrada com sucesso;
-	 * @author Joaquim Neto
-	 */
+
+	@Override
 	public void cadastrar() {
-		
-		if(!validar()){
+
+		if (!validar()) {
 			return;
 		}
-		
-		//Remover só teste o setCidade e setUf
+
+		// Remover só teste o setCidade e setUf
 		empresaSelecionada.setCidade("São Paulo");
 		empresaSelecionada.setUf("SP");
 		empresaSelecionada.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
-		
+
 		empresaSelecionada.setAtivo(true);
 		empresaSelecionada.setDataManutencao(new Date());
 		new EmpresaService().cadastrar(getEmpresaSelecionada());
 		inicializarPagina();
-		
+
 		Messages.addInfo("Empresa Cadastrada com sucesso!");
 	}
-	
-	/**
-	 * Valida todos os campos obrigatórios
-	 * @author Joaquim Neto
-	 * @return <b>true</br> se a validação ocorrer com sucesso!
-	 */
-	private boolean validar() {
-		if(!SystemUtils.isCamposObrigatoriosPreenchidos(empresaSelecionada) || !SystemUtils.isCnpjValido(empresaSelecionada.getCnpj())) {
+
+	@Override
+	public boolean validar() {
+		if (!SystemUtils.isCamposObrigatoriosPreenchidos(empresaSelecionada)
+				|| !SystemUtils.isCnpjValido(empresaSelecionada.getCnpj())) {
 			return false;
 		}
 		return true;
 	}
 
-	/**
-	 * Persiste a empresa alterada na base, valida os campos e limpa se alterado com sucesso
-	 * @author Joaquim Neto
-	 */
+	@Override
 	public void alterar() {
-		if(!validar()){
+		if (!validar()) {
 			return;
 		}
-		
+
 		empresaSelecionada.setCidade("São Paulo");
 		empresaSelecionada.setUf("SP");
-		
+
 		new EmpresaService().alterar(getEmpresaSelecionada());
 		inicializarPagina();
-		
+
 		Messages.addInfo("Empresa Alterada com sucesso!");
 	}
-	
+
 	/**
 	 * Responsavel por ativar ou inativar a empresa selecionada
 	 * @author Joaquim Neto
-	 * @param empresa Objeto Empresa 
+	 * @param empresa Objeto Empresa
 	 */
 	public void ativar(Empresa empresa) {
-		
+
 		StringBuilder info = new StringBuilder("A empresa ");
 		info.append(empresa.getRazaoSocial()).append(" foi ");
-		
+
 		if (empresa.isAtivo()) {
 			info.append("inativada com sucesso");
 			empresa.setAtivo(false);
@@ -114,31 +98,28 @@ public class EmpresaBean extends CadastroBean implements Serializable {
 			info.append("ativada com sucesso");
 			empresa.setAtivo(true);
 		}
-		
+
 		new EmpresaService().alterar(empresa);
-		
+
 		Messages.addInfo(info.toString());
 		listarTodos();
 	}
-	
-	/**
-	 * Retorna true se existir empresa selecionada, caso contrario retorna false
-	 * @author Joaquim Neto
-	 * @return <b>true</b> Se tiver empresa selecionado
-	 */
-	public boolean hasEmpresaSelecionada() {
+
+	@Override
+	public boolean hasObjetoSelecionado() {
 		if (empresaSelecionada.getIdUsuario() == 0) {
 			return false;
 		}
 		return true;
 	}
-	
-	/**p 
-	 * Lista de todas as empresas
+
+	/**
+	 * p Lista de todas as empresas
 	 * @author Joaquim Neto
 	 * @return List de empresas
 	 */
-	private void listarTodos() {
+	@Override
+	public void listarTodos() {
 		setListaEmpresa(new EmpresaService().listarTodos());
 	}
 
@@ -150,17 +131,17 @@ public class EmpresaBean extends CadastroBean implements Serializable {
 		if (empresa != null) {
 			empresaSelecionada = empresa;
 
-		} else if (isReadonly() && hasEmpresaSelecionada()) {
+		} else if (isReadonly() && hasObjetoSelecionado()) {
 			empresaSelecionada = empresa;
 		}
 
-		if (hasEmpresaSelecionada()) {
+		if (hasObjetoSelecionado()) {
 			setReadonly(true);
 		} else {
 			setReadonly(false);
 		}
 	}
-	
+
 	/**
 	 * @author Joaquim Neto
 	 * @return the empresaSelecionada
@@ -199,22 +180,6 @@ public class EmpresaBean extends CadastroBean implements Serializable {
 	 */
 	public void setListaEmpresaFiltrada(List<Empresa> empresaFiltrada) {
 		this.listaEmpresaFiltrada = empresaFiltrada;
-	}
-
-	/**
-	 * @author Joaquim Neto
-	 * @return the readonly
-	 */
-	public boolean isReadonly() {
-		return readonly;
-	}
-
-	/**
-	 * @author Joaquim Neto
-	 * @param readonly the readonly to set
-	 */
-	public void setReadonly(boolean readonly) {
-		this.readonly = readonly;
 	}
 
 }

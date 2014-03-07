@@ -2,41 +2,62 @@ package br.com.jovetecnologia.web.bean;
 
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.jovetecnologia.domain.interfaces.ICrudBean;
 import br.com.jovetecnologia.domain.model.Atividade;
 
 @ManagedBean
 @ViewScoped
-public class AtividadeBean extends CadastroBean implements Serializable {
+public class AtividadeBean extends CadastroBean implements Serializable, ICrudBean {
 
 	private static final long serialVersionUID = -4624461885675885559L;
+	
+	private Atividade atividadeSelecionada;
 
-	/**
-	 * Inicia os compontes essenciais para o funcionamento da pagina Atividade
-	 * @author Joaquim Neto
-	 */
-	
-		
-	@PostConstruct
-	public void inicializarComponentes() {
+	@Override
+	public void inicializarPagina() {
+		// TODO Auto-generated method stub
 		
 	}
-	
-	/**
-	 * Zera os atributos da pagina Atividade fazendo um nova instancia;
-	 * @author Joaquim Neto
-	 */
-	private void limparCampos() {
-		atividadeSelecionada = new Atividade();
+
+	@Override
+	public void listarTodos() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void habilitarCampo() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void cadastrar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean validar() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void alterar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean hasObjetoSelecionado() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
-	/**
-	 * @author Joaquim Neto
-	 * @return the atividadeSelecionada
-	 */
 	public Atividade getAtividadeSelecionada() {
 		return atividadeSelecionada;
 	}

@@ -2,44 +2,62 @@ package br.com.jovetecnologia.web.bean;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.jovetecnologia.domain.interfaces.ICrudBean;
 import br.com.jovetecnologia.domain.model.Projeto;
 
 @ManagedBean
 @ViewScoped
-public class PorjetoBean extends CadastroBean implements Serializable {
+public class ProjetoBean extends CadastroBean implements Serializable, ICrudBean {
 
 	private static final long serialVersionUID = 1360530687537803289L;
 	private Projeto projetoSelecionado;
-	
-	/**
-	 * Inicia os compontes essenciais para o funcionamento da pagina empresa
-	 * @author Joaquim Neto
-	 */
-	
+
 	@Override
+	@PostConstruct
 	public void inicializarPagina() {
 		projetoSelecionado = new Projeto();
 	}
-	
-	/**
-	 * Zera os atributos da empresa fazendo um nova instancia;
-	 * @author Joaquim Neto
-	 */
-	private void limparCampos() {
-		projetoSelecionado = new Projeto();
+
+	@Override
+	public void listarTodos() {
+		// TODO Auto-generated method stub
+
 	}
-	
-	/**
-	 * Cadastra a empresa e limpa os campos
-	 * @author Joaquim Neto
-	 */
+
+	@Override
+	public void habilitarCampo() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
 	public void cadastrar() {
-		limparCampos();
+		// TODO Auto-generated method stub
+
 	}
-	
+
+	@Override
+	public boolean validar() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void alterar() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public boolean hasObjetoSelecionado() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	/**
 	 * @author Joaquim Neto
 	 * @return the projetoSelecionado

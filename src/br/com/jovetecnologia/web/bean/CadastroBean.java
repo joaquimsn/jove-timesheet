@@ -2,26 +2,18 @@ package br.com.jovetecnologia.web.bean;
 
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import br.com.jovetecnologia.domain.model.Atividade;
-import br.com.jovetecnologia.domain.model.Funcionario;
-import br.com.jovetecnologia.domain.model.Tarefa;
-import br.com.jovetecnologia.domain.model.Usuario;
 import br.com.jovetecnologia.infrastructure.util.IOutcome;
 
 @ManagedBean
 @ViewScoped
 public class CadastroBean implements Serializable {
 
-	private static final long serialVersionUID = 8397217586141036024L;
+	private static final long serialVersionUID = 1649345586752199997L;
 	
-	protected Tarefa tarefaSelecionada;
-	protected Atividade atividadeSelecionada;
-	protected Funcionario funcionarioSelecionado;
-	protected Usuario usuarioSelecionado;
+	private boolean readonly;
 
 	/**
 	 * Abre a tela de cadastro
@@ -32,12 +24,20 @@ public class CadastroBean implements Serializable {
 		return IOutcome.CADASTRO;
 	}
 	
-	@PostConstruct
-	public void inicializarPagina() {
-		tarefaSelecionada = new Tarefa();
-		atividadeSelecionada = new Atividade();
-		funcionarioSelecionado = new Funcionario();
-		usuarioSelecionado = new Usuario();
+	/**
+	 * @author Joaquim Neto
+	 * @return the readonly
+	 */
+	public boolean isReadonly() {
+		return readonly;
 	}
-	
+
+	/**
+	 * @author Joaquim Neto
+	 * @param readonly the readonly to set
+	 */
+	public void setReadonly(boolean readonly) {
+		this.readonly = readonly;
+	}
+
 }

@@ -134,7 +134,7 @@
 		<!-- Botões exibidos na view -->
 		<div class="botoes-tela-cadastro" >
 			<!-- Botões para cadastro, exibido apenas se não tiver uma empresa selecionada-->
-			<h:panelGroup rendered="#{!empresaBean.hasEmpresaSelecionada()}" >
+			<h:panelGroup rendered="#{!empresaBean.hasObjetoSelecionado()}" >
 				<p:commandButton value="Cadastrar" styleClass="btn-padrao" actionListener="#{empresaBean.cadastrar}" 
 					update=":form-pagina-cadastro:tabview-cadastro"/>
 					
@@ -143,7 +143,7 @@
 			</h:panelGroup>
 			 
 			 <!-- Botões para liberar a alteração, exibido apenas se tiver uma empresa selecionada -->
-			<h:panelGroup rendered="#{empresaBean.hasEmpresaSelecionada()}" >
+			<h:panelGroup rendered="#{empresaBean.hasObjetoSelecionado()}" >
 				<h:panelGroup rendered="#{empresaBean.readonly}">
 					<p:commandButton value="Alterar" styleClass="btn-padrao" actionListener="#{empresaBean.habilitarCampo}" 
 						update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-completo"/>
@@ -156,7 +156,7 @@
 					<p:commandButton value="Salvar" styleClass="btn-padrao" actionListener="#{empresaBean.alterar}" 
 						update=":form-pagina-cadastro:tabview-cadastro"/>
 					<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{empresaBean.inicializarPagina}" 
-						update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-completo"/>
+						update=":form-pagina-cadastro:tabview-cadastro:tab-empresa"/>
 				</h:panelGroup>
 			</h:panelGroup>
 		</div>
