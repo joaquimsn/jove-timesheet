@@ -70,8 +70,33 @@ public class DepartamentoBean extends CadastroBean implements Serializable, ICru
 			return;
 		}	
 		
+		departamentoSelecionado.setAtivo(true);
 		new DepartamentoService().alterar(getDepartamentoSelecionado());
 		Messages.addInfo("Departamento alterado com sucesso");
+	}
+	
+	/**
+	 * Responsavel por ativar ou inativar um departamento selecionado
+	 * @author Joaquim Neto
+	 * @param departamento Objeto Departamento
+	 */
+	public void ativar(Departamento departamento) {
+
+		StringBuilder info = new StringBuilder("O departamento ");
+		info.append(departamento.getNome()).append(" foi ");
+
+		if (departamento.isAtivo()) {
+			info.append("inativado com sucesso");
+			departamento.setAtivo(false);
+		} else {
+			info.append("ativado com sucesso");
+			departamento.setAtivo(true);
+		}
+
+		new DepartamentoService().alterar(departamento);
+
+		Messages.addInfo(info.toString());
+		listarTodos();
 	}
 
 	@Override

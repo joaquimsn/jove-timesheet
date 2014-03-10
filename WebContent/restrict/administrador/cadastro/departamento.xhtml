@@ -16,28 +16,29 @@
 			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
 			paginatorPosition="bottom" resizableColumns="flase" style="width: 940px;">
 			
-			<p:ajax event="rowSelect" update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-completo"/>
+			<p:ajax event="rowSelect" update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-simples"/>
 			
 			<f:facet name="header">
 				Tabela de Departamentos
 			</f:facet>
 			
-			<p:column headerText="Departamento" styleClass="coluna-40" filterBy="razaoSocial"
-				filterStyle="width:80%;">
+			<p:column headerText="Departamento" styleClass="coluna-40" filterBy="nome"
+				filterStyle="width:80%;" style="text-align: center;">
 				<h:outputText value="#{departamento.nome}" />
 			</p:column>
 			
-			<p:column headerText="Empresa" styleClass="coluna-45" filterBy="fantasia" 
-				filterStyle="width: 80%;" >
+			<p:column headerText="Empresa" styleClass="coluna-45" filterBy="empresa" 
+				filterStyle="width: 80%;" style="text-align: center;" > 
 				<h:outputText value="#{departamento.empresa.razaoSocial}" />
 			</p:column>
 			
 			<p:column headerText="Status" styleClass="coluna-position-center-15" >
 				<h:panelGroup>
-					<p:commandButton value="Ativo" disabled="#{!departamento.ativo}" actionListener="#{departamentoBean.habilitarCampo(departamento)}" 
-						update=":form-pagina-cadastro:tabview-cadastro:table-empresa" styleClass="btn-satatus-ativo" />
-					<p:commandButton value="Inativo" disabled="#{empresa.ativo}" actionListener="#{departamentoBean.habilitarCampo(departamento)}" 
-						update=":form-pagina-cadastro:tabview-cadastro:table-empresa" styleClass="btn-satatus-inativo"/>
+					<p:commandButton value="Ativo" disabled="#{!departamento.ativo}" actionListener="#{departamentoBean.ativar(departamento)}" 
+						update="table-departamento, :form-pagina-cadastro:tabview-cadastro:messages-dep" styleClass="btn-satatus-ativo" />
+						
+					<p:commandButton value="Inativo" disabled="#{departamento.ativo}" actionListener="#{departamentoBean.ativar(departamento)}" 
+						update="table-departamento, :form-pagina-cadastro:tabview-cadastro:messages-dep" styleClass="btn-satatus-inativo"/>
 				</h:panelGroup>
 			</p:column>
 
@@ -47,14 +48,15 @@
 	<p:fieldset id="formulario-cadastro-simples" legend="Dados Cadastrais" style="width: 910px;">
 		<h:panelGrid columns="2" columnClasses="coluna-40, coluna-60" width=" 600px"  style="margin:0 auto;" >
 			<p:outputLabel value="Nome do departamento" styleClass="label-cadastro-simples" />
-			<p:inputText value="#{departamentoBean.departamentoSelecionado.nome}" styleClass="input-cadastro-simples" />
+			<p:inputText value="#{departamentoBean.departamentoSelecionado.nome}" styleClass="input-cadastro-simples" 
+				readonly="#{departamentoBean.readonly}" />
 		</h:panelGrid>
 		
 		<h:panelGrid columns="2" columnClasses="coluna-position-center-40, coluna-60" width=" 600px"  style="margin:0 auto;">
 			<p:outputLabel value="Empresa" styleClass="label-cadastro-simples" />
 			
 			<p:selectOneMenu id="cbx-empresa" value="#{departamentoBean.departamentoSelecionado.empresa}"
-				style="width: 340px;"  >
+				style="width: 340px;" converter="genericConverter" disabled="#{departamentoBean.readonly}" >
 				<f:selectItem itemLabel="Selecione uma empresa" itemValue=""  />
 				<f:selectItems value="#{departamentoBean.listaEmpresa}" var="empresa" itemLabel="#{empresa.razaoSocial}" 
 					itemValue="#{empresa}"/>
@@ -64,7 +66,7 @@
 		<h:panelGrid columns="2" columnClasses="coluna-position-top-40, coluna-60" style="margin: 10px auto" width=" 600px">
 			<p:outputLabel  value="Descrição" styleClass="label-cadastro-simples" />
 			<p:inputTextarea value="#{departamentoBean.departamentoSelecionado.descricao}" styleClass="textarea-cadastro-simples" 
-				maxlength="300" cols="50" rows="6" autoResize="true"/>
+				maxlength="300" cols="50" rows="6" autoResize="true" readonly="#{departamentoBean.readonly}" />
 		</h:panelGrid>
 		
 		<!-- Botões exibidos na view -->
@@ -72,27 +74,27 @@
 			<!-- Botões para cadastro, exibido apenas se não tiver uma empresa selecionada-->
 			<h:panelGroup rendered="#{!departamentoBean.hasObjetoSelecionado()}" >
 				<p:commandButton value="Cadastrar" styleClass="btn-padrao" actionListener="#{departamentoBean.cadastrar}" 
-					update=":form-pagina-cadastro:tabview-cadastro"/>
+					update="formulario-cadastro-simples, :form-pagina-cadastro:tabview-cadastro:table-departamento, messages-dep"/>
 					
 				<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{departamentoBean.inicializarPagina}" 
-					update="formulario-cadastro-completo"/>
+					update="formulario-cadastro-simples, :form-pagina-cadastro:tabview-cadastro:table-departamento"/>
 			</h:panelGroup>
 			 
 			 <!-- Botões para liberar a alteração, exibido apenas se tiver um departamento selecionada -->
 			<h:panelGroup rendered="#{departamentoBean.hasObjetoSelecionado()}" >
 				<h:panelGroup rendered="#{departamentoBean.readonly}">
 					<p:commandButton value="Alterar" styleClass="btn-padrao" actionListener="#{departamentoBean.habilitarCampo}" 
-						update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-completo"/>
-					<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{departamentoBeann.inicializarPagina}" 
-						update=":form-pagina-cadastro:tabview-cadastro" />
+						update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-simples"/>
+					<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{departamentoBean.inicializarPagina}" 
+						update="formulario-cadastro-simples, :form-pagina-cadastro:tabview-cadastro:table-departamento" />
 				</h:panelGroup>
 				
 				<!-- Botões exibidos quando clica-se no botão alterar-->
-				<h:panelGroup rendered="#{!empresaBean.readonly}">
-					<p:commandButton value="Salvar" styleClass="btn-padrao" actionListener="#{departamentoBeann.alterar}" 
-						update=":form-pagina-cadastro:tabview-cadastro"/>
+				<h:panelGroup rendered="#{!departamentoBean.readonly}">
+					<p:commandButton value="Salvar" styleClass="btn-padrao" actionListener="#{departamentoBean.alterar}" 
+						update="formulario-cadastro-simples, :form-pagina-cadastro:tabview-cadastro:table-departamento, messages-dep"/>
 					<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{departamentoBean.inicializarPagina}" 
-						update=":form-pagina-cadastro:tabview-cadastro"/>
+						update="formulario-cadastro-simples, :form-pagina-cadastro:tabview-cadastro:table-departamento"/>
 				</h:panelGroup>
 			</h:panelGroup>
 		</div>

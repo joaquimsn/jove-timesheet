@@ -7,7 +7,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:jove="http://java.sun.com/jsf/composite/componentes">
 	 
-	<p:growl id="messages" showDetail="true" />
+	<p:growl id="messages-emp" showDetail="true" />
 	
 	<!-- Tabela que lista as empresas cadastradas-->
 	<div class="table-cadastro">
@@ -23,24 +23,26 @@
 			</f:facet>
 			
 			<p:column headerText="Razão social" styleClass="coluna-30" filterBy="razaoSocial"
-				filterStyle="width:80%;">
+				filterStyle="width:80%;" style="text-align: center;" >
 				<h:outputText value="#{empresa.razaoSocial}" />
 			</p:column>
 			
-			<p:column headerText="Fantasia" styleClass="coluna-25" filterBy="fantasia" filterStyle="width: 80%;" >
+			<p:column headerText="Fantasia" styleClass="coluna-25" filterBy="fantasia" filterStyle="width: 80%;"
+				style="text-align: center;" >
 				<h:outputText value="#{empresa.fantasia}" />
 			</p:column>
 			
-			<p:column headerText="CNPJ" styleClass="coluna-30" filterBy="cnpj" filterStyle="width: 80%;" >
-				<h:outputText value="#{empresa.cnpj}" />
+			<p:column headerText="CNPJ" styleClass="coluna-30" filterBy="cnpj" filterStyle="width: 80%;" 
+				style="text-align: center;" >
+				<h:outputText value="#{empresa.cnpj}"/>
 			</p:column>
 			
 			<p:column headerText="Status" styleClass="coluna-position-center-15" >
 				<h:panelGroup>
 					<p:commandButton value="Ativo" disabled="#{!empresa.ativo}" actionListener="#{empresaBean.ativar(empresa)}" 
-						update=":form-pagina-cadastro:tabview-cadastro:table-empresa" styleClass="btn-satatus-ativo" />
+						update="table-empresa, :form-pagina-cadastro:tabview-cadastro:messages-emp" styleClass="btn-satatus-ativo" />
 					<p:commandButton value="Inativo" disabled="#{empresa.ativo}" actionListener="#{empresaBean.ativar(empresa)}" 
-						update=":form-pagina-cadastro:tabview-cadastro:table-empresa" styleClass="btn-satatus-inativo"/>
+						update="table-empresa, :form-pagina-cadastro:tabview-cadastro:messages-emp" styleClass="btn-satatus-inativo"/>
 				</h:panelGroup>
 			</p:column>
 
@@ -136,7 +138,7 @@
 			<!-- Botões para cadastro, exibido apenas se não tiver uma empresa selecionada-->
 			<h:panelGroup rendered="#{!empresaBean.hasObjetoSelecionado()}" >
 				<p:commandButton value="Cadastrar" styleClass="btn-padrao" actionListener="#{empresaBean.cadastrar}" 
-					update=":form-pagina-cadastro:tabview-cadastro"/>
+					update="formulario-cadastro-completo, :form-pagina-cadastro:tabview-cadastro:table-empresa, messages-emp"/>
 					
 				<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{empresaBean.inicializarPagina}" 
 					update="formulario-cadastro-completo"/>
@@ -148,15 +150,15 @@
 					<p:commandButton value="Alterar" styleClass="btn-padrao" actionListener="#{empresaBean.habilitarCampo}" 
 						update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-completo"/>
 					<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{empresaBean.inicializarPagina}" 
-						update=":form-pagina-cadastro:tabview-cadastro" />
+						update="formulario-cadastro-completo, :form-pagina-cadastro:tabview-cadastro:table-empresa" />
 				</h:panelGroup>
 				
 				<!-- Botões exibidos quando clica-se no botão alterar-->
 				<h:panelGroup rendered="#{!empresaBean.readonly}">
 					<p:commandButton value="Salvar" styleClass="btn-padrao" actionListener="#{empresaBean.alterar}" 
-						update=":form-pagina-cadastro:tabview-cadastro"/>
+						update="formulario-cadastro-completo, :form-pagina-cadastro:tabview-cadastro:table-empresa, messages-emp"/>
 					<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{empresaBean.inicializarPagina}" 
-						update=":form-pagina-cadastro:tabview-cadastro"/>
+						update="formulario-cadastro-completo, :form-pagina-cadastro:tabview-cadastro:table-empresa"/>
 				</h:panelGroup>
 			</h:panelGroup>
 		</div>
