@@ -9,7 +9,7 @@
 	 
 	<p:growl id="messages-emp" showDetail="true" />
 	
-	<!-- Tabela que lista as empresas cadastradas-->
+	<!-- Tabela que lista as empresas cadastradas -->
 	<div class="table-cadastro">
 		<p:dataTable id="table-empresa" value="#{empresaBean.listaEmpresa}" var="empresa" rowKey="#{empresa.idEmpresa}"  widgetVar="tabelaEmpresa"
 			selection="#{empresaBean.empresaSelecionada}" selectionMode="single" paginator="true" rows="5" filteredValue="#{empresaBean.listaEmpresaFiltrada}"

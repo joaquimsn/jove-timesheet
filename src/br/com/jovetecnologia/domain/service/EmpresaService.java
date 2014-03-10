@@ -26,9 +26,9 @@ public class EmpresaService implements Serializable {
 	}
 	
 	/**
-	 * Cadastra uma empresa
+	 * Salva a empresa na base, definindo a data do cadastro e  o usuário que realizou o cadastro
 	 * @author Joaquim Neto
-	 * @param empresa para ser cadastrada
+	 * @param empresa Objeto empresa que será persistido
 	 */
 	public void cadastrar(Empresa empresa) {
 
@@ -36,18 +36,15 @@ public class EmpresaService implements Serializable {
 		empresa.setDataManutencao(new Date());
 		empresa.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
 		
-		//Verifica se a empresa já tem uma data de cadastro registrada
-		if(empresa.getDataCadastro() == null) {
-			empresa.setDataCadastro( new Date());			
-		}
+		empresa.setDataCadastro( new Date());			
 		
 		empresaDAO.cadastar(empresa);
 	}
 	
 	/**
-	 * Alterar salva a empresa alterada, define a data da modificação e qual usuário a fez;
+	 * Altera a empresa na base, definindo a data da manutenção e o usuário que a realizou
 	 * @author Joaquim Neto
-	 * @param empresa Empresa modificada que será atualizada na base
+	 * @param empresa Objeto empresa que será alterado
 	 */
 	public void alterar(Empresa empresa) {
 		empresa.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
@@ -57,9 +54,9 @@ public class EmpresaService implements Serializable {
 	}
 	
 	/**
-	 * Retorna todas as empresas cadastradas.
+	 * Retorna todas as empresas salva na base em ordem decrescente
 	 * @author Joaquim Neto
-	 * @return Lista com todas as empresa cadastradas
+	 * @return Lista com todas as empresas persistidas
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Empresa> listarTodos() {

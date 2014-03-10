@@ -19,7 +19,7 @@ public class DepartamentoService implements Serializable{
 	}
 	
 	/**
-	 * Salva o departamento na base, definindo a data do cadastro, e usuário que realizou o cadastro
+	 * Salva o departamento na base, definindo a data do cadastro e  o usuário que realizou o cadastro
 	 * @author Joaquim Neto
 	 * @param departamento Objeto departamento que será persistido
 	 */
@@ -47,7 +47,7 @@ public class DepartamentoService implements Serializable{
 	/**
 	 * Retorna todos os depatamentos salvo na base em ordem decrescente
 	 * @author Joaquim Neto
-	 * @return Lista de departamento em ordem Decrescente
+	 * @return Lista com todos os departamentos persistido
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Departamento> listarTodos() {

@@ -7,8 +7,51 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:jove="http://java.sun.com/jsf/composite/componentes">
 	
+	<p:growl id="messages-func" showDetail="true" />
+	
+	<!-- Tabela que lista os funcionarios cadastradas -->
+	<div class="table-cadastro">
+		<p:dataTable id="table-funcionario" value="#{funcionarioBean.listaFuncionario}" var="funcionario" rowKey="#{funcionario.idFuncionario}"  widgetVar="tabelaFuncionario"
+			selection="#{funcionarioBean.funcionarioSelecionado}" selectionMode="single" paginator="true" rows="5" filteredValue="#{funcionarioBean.listaFuncionarioFiltrado}"
+			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
+			paginatorPosition="bottom" resizableColumns="flase" style="width: 940px;">
+			
+			<p:ajax event="rowSelect" update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-completo"/>
+			
+			<f:facet name="header">
+				Tabela de Funcionarios
+			</f:facet>
+			
+			<p:column headerText="Nome" styleClass="coluna-30" filterBy="nome"
+				filterStyle="width:80%;" style="text-align: center;" >
+				<h:outputText value="#{funcionario.nome}" />
+			</p:column>
+			
+			<p:column headerText="CPF" styleClass="coluna-30" filterBy="cpf"
+				filterStyle="width:80%;" style="text-align: center;" >
+				<h:outputText value="#{funcionario.cpf}" />
+			</p:column>
+			
+			<p:column headerText="Departamento" styleClass="coluna-25" filterBy="departamento"
+				filterStyle="width:80%;" style="text-align: center;" >
+				<h:outputText value="#{funcionario.departamento.nome}" />
+			</p:column>
+			
+			<p:column headerText="Status" styleClass="coluna-position-center-15" >
+				<h:panelGroup>
+					<p:commandButton value="Ativo" disabled="#{!funcionario.ativo}" actionListener="#{funcionarioBean.ativar(funcionario)}" 
+						update="table-funcionario :form-pagina-cadastro:tabview-cadastro:messages-func" styleClass="btn-satatus-ativo" />
+					<p:commandButton value="Inativo" disabled="#{funcionario.ativo}" actionListener="#{funcionarioBean.ativar(funcionario)}" 
+						update="table-funcionario :form-pagina-cadastro:tabview-cadastro:messages-func" styleClass="btn-satatus-inativo"/>
+				</h:panelGroup>
+			</p:column>
+		
+		</p:dataTable>	
+	</div>
+	
+	<!-- Formulario de cadastro/alteração  -->
 	<div id="formulario-cadastro-completo" >
-		<p:wizard style="margin-top: -20px auto;" showStepStatus="false">
+		<p:wizard style="margin-top: -20px auto; width: 940px;" showStepStatus="false"  >
 			<p:tab >
 				<p:panel header="Dados pessoais" >
 					
@@ -136,53 +179,40 @@
 				<p:panel header="Credenciais de acesso">
 					<ui:include src="/restrict/administrador/cadastro/usuario.xhtml" />
 					
-					<div class="botoes-tela-cadastro" >
-						<h:panelGroup rendered="true" >
-							<p:commandButton value="Cadastrar" styleClass="btn-padrao" disabled="false" />
-							<p:commandButton value="Cancelar"  styleClass="btn-padrao" disabled="false" />
-						</h:panelGroup>
-						
-						<h:panelGroup rendered="false" >
-							<p:commandButton value="Alterar" styleClass="btn-padrao" disabled="true"/>
-							<p:commandButton value="Deletar" styleClass="btn-padrao" disabled="true" />
-						</h:panelGroup>
-					</div>
+						<!-- Botões exibidos na view -->
+						<div class="botoes-tela-cadastro" >
+							<!-- Botões para cadastro, exibido apenas se não tiver uma empresa selecionada-->
+							<h:panelGroup rendered="#{!empresaBean.hasObjetoSelecionado()}" >
+								<p:commandButton value="Cadastrar" styleClass="btn-padrao" actionListener="#{empresaBean.cadastrar}" 
+									update="formulario-cadastro-completo, :form-pagina-cadastro:tabview-cadastro:table-empresa, messages-emp"/>
+									
+								<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{empresaBean.inicializarPagina}" 
+									update="formulario-cadastro-completo"/>
+							</h:panelGroup>
+							 
+							 <!-- Botões para liberar a alteração, exibido apenas se tiver uma empresa selecionada -->
+							<h:panelGroup rendered="#{empresaBean.hasObjetoSelecionado()}" >
+								<h:panelGroup rendered="#{empresaBean.readonly}">
+									<p:commandButton value="Alterar" styleClass="btn-padrao" actionListener="#{empresaBean.habilitarCampo}" 
+										update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-completo"/>
+									<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{empresaBean.inicializarPagina}" 
+										update="formulario-cadastro-completo, :form-pagina-cadastro:tabview-cadastro:table-empresa" />
+								</h:panelGroup>
+								
+								<!-- Botões exibidos quando clica-se no botão alterar-->
+								<h:panelGroup rendered="#{!empresaBean.readonly}">
+									<p:commandButton value="Salvar" styleClass="btn-padrao" actionListener="#{empresaBean.alterar}" 
+										update="formulario-cadastro-completo, :form-pagina-cadastro:tabview-cadastro:table-empresa, messages-emp"/>
+									<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{empresaBean.inicializarPagina}" 
+										update="formulario-cadastro-completo, :form-pagina-cadastro:tabview-cadastro:table-empresa"/>
+								</h:panelGroup>
+							</h:panelGroup>
+						</div>
 					
 				</p:panel>
 			</p:tab>
 		</p:wizard>
 		
-	</div>
-	
-	<div class="table-cadastro">
-		<p:dataTable id="table-funcionario" var="funcionario" value="" rowKey="funcionario.nome" selectionMode="single" 
-			paginator="true" rows="5" paginatorTemplate="{FirstPageLink} {PreviousPageLink} 
-			{PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" resizableColumns="flase" >
-			
-			<f:facet name="header">
-				Tabela de Funcionarios
-			</f:facet>
-			
-			<p:column headerText="Nome" styleClass="coluna-30"  sortBy="tarefa" filterBy="tarefa" id="pesquisar-por-coluna" >
-				Joaquim Neto
-			</p:column>
-			
-			<p:column headerText="CPF" styleClass="coluna-30">
-				000.000.000-00
-			</p:column>
-			
-			<p:column headerText="Departamento" styleClass="coluna-25">
-				TI
-			</p:column>
-			
-			<p:column headerText="Status" styleClass="coluna-position-center-15" >
-				<p:selectOneButton value="true" styleClass="select-one-button-cadastro">
-					<f:selectItem itemLabel="Ativo" itemValue="true" />
-					<f:selectItem itemLabel="Inativo" itemValue="false" />
-				</p:selectOneButton>
-			</p:column>
-		
-		</p:dataTable>	
 	</div>
 	
 </ui:composition>
