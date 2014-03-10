@@ -31,7 +31,10 @@ public class EmpresaService implements Serializable {
 	 * @param empresa para ser cadastrada
 	 */
 	public void cadastrar(Empresa empresa) {
+
 		empresa.setAtivo(true);
+		empresa.setDataManutencao(new Date());
+		empresa.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
 		
 		//Verifica se a empresa já tem uma data de cadastro registrada
 		if(empresa.getDataCadastro() == null) {

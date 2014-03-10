@@ -1,7 +1,6 @@
 package br.com.jovetecnologia.web.bean;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -17,7 +16,7 @@ import br.com.jovetecnologia.infrastructure.util.SystemUtils;
 @ManagedBean
 @ViewScoped
 public class EmpresaBean extends CadastroBean implements Serializable, ICrudBean {
-
+	
 	private static final long serialVersionUID = 1163863445999964629L;
 	
 	private Empresa empresaSelecionada;
@@ -47,14 +46,11 @@ public class EmpresaBean extends CadastroBean implements Serializable, ICrudBean
 		// Remover só teste o setCidade e setUf
 		empresaSelecionada.setCidade("São Paulo");
 		empresaSelecionada.setUf("SP");
-		empresaSelecionada.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
-
-		empresaSelecionada.setAtivo(true);
-		empresaSelecionada.setDataManutencao(new Date());
+		
 		new EmpresaService().cadastrar(getEmpresaSelecionada());
 		inicializarPagina();
 
-		Messages.addInfo("Empresa Cadastrada com sucesso!");
+		Messages.addInfo("Empresa Cadastrada com sucesso");
 	}
 
 	@Override
@@ -74,7 +70,8 @@ public class EmpresaBean extends CadastroBean implements Serializable, ICrudBean
 
 		empresaSelecionada.setCidade("São Paulo");
 		empresaSelecionada.setUf("SP");
-
+		empresaSelecionada.setAtivo(true);
+		
 		new EmpresaService().alterar(getEmpresaSelecionada());
 		inicializarPagina();
 
@@ -114,7 +111,7 @@ public class EmpresaBean extends CadastroBean implements Serializable, ICrudBean
 	}
 
 	/**
-	 * p Lista de todas as empresas
+	 * Lista de todas as empresas
 	 * @author Joaquim Neto
 	 * @return List de empresas
 	 */

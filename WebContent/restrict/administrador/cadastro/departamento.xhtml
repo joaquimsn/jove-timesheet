@@ -7,69 +7,95 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:jove="http://java.sun.com/jsf/composite/componentes">
 	
-	<div id="formulario-cadastro-simples" >
-		<h:panelGrid columns="2" columnClasses="coluna-40, coluna-60" >
-			<p:outputLabel value="Nome do departamento" styleClass="label-cadastro-simples" />
-			<p:inputText value="" styleClass="input-cadastro-simples" />
-		</h:panelGrid>
-		
-		<h:panelGrid columns="2" columnClasses="coluna-position-center-40, coluna-60" >
-			<p:outputLabel value="Empresa" styleClass="label-cadastro-simples" />
-			
-			<p:selectOneMenu id="cbx-empresa" value="" 
-				style="width: 340px; margin: 5px 0 5px -28px;" >
-				<f:selectItem itemLabel="Selecione uma empresa" itemValue=""  />
-			</p:selectOneMenu>
-		</h:panelGrid>
-		
-		<h:panelGrid columns="2" columnClasses="coluna-position-top-40, coluna-60" style="margin-top: 10px">
-			<p:outputLabel  value="Descrição" styleClass="label-cadastro-simples" />
-			<p:inputTextarea value="" styleClass="textarea-cadastro-simples" maxlength="300" cols="50" rows="6" 
-				autoResize="true"/>
-		</h:panelGrid>
-		
-		<div class="botoes-tela-cadastro" >
-			<h:panelGroup rendered="true" >
-				<p:commandButton value="Cadastrar" styleClass="btn-padrao" disabled="false" />
-				<p:commandButton value="Cancelar"  styleClass="btn-padrao" disabled="false" />
-			</h:panelGroup>
-			
-			<h:panelGroup rendered="false" >
-				<p:commandButton value="Alterar" styleClass="btn-padrao" disabled="true"/>
-				<p:commandButton value="Deletar" styleClass="btn-padrao" disabled="true" />
-			</h:panelGroup>
-		</div>
-	</div>
+	<p:growl id="messages-dep" showDetail="true" />
 	
+	<!-- Tabela que lista os departamentos cadastrados cadastradas-->
 	<div class="table-cadastro">
-		<p:dataTable id="table-departamento" var="dep" value="" rowKey="departamento.nome" selectionMode="single" 
-			paginator="true" rows="5" paginatorTemplate="{FirstPageLink} {PreviousPageLink} 
-			{PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" resizableColumns="flase" >
+		<p:dataTable id="table-departamento" value="#{departamentoBean.listaDepartamento}" var="departamento" rowKey="#{departamento.idDepartamento}"  widgetVar="tabelaDepartamento"
+			selection="#{departamentoBean.departamentoSelecionado}" selectionMode="single" paginator="true" rows="3" filteredValue="#{departamentoBean.listaDepartamentoFiltrado}"
+			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
+			paginatorPosition="bottom" resizableColumns="flase" style="width: 940px;">
+			
+			<p:ajax event="rowSelect" update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-completo"/>
 			
 			<f:facet name="header">
 				Tabela de Departamentos
 			</f:facet>
 			
-			<p:column headerText="Nome" styleClass="coluna-25"  sortBy="tarefa" filterBy="tarefa" id="pesquisar-por-coluna" >
-				TI
+			<p:column headerText="Departamento" styleClass="coluna-40" filterBy="razaoSocial"
+				filterStyle="width:80%;">
+				<h:outputText value="#{departamento.nome}" />
 			</p:column>
 			
-			<p:column headerText="Empresa" styleClass="coluna-25">
-				Jove
-			</p:column>
-			
-			<p:column headerText="Descrição" styleClass="coluna-35">
-				
+			<p:column headerText="Empresa" styleClass="coluna-45" filterBy="fantasia" 
+				filterStyle="width: 80%;" >
+				<h:outputText value="#{departamento.empresa.razaoSocial}" />
 			</p:column>
 			
 			<p:column headerText="Status" styleClass="coluna-position-center-15" >
-				<p:selectOneButton value="true" styleClass="select-one-button-cadastro">
-					<f:selectItem itemLabel="Ativo" itemValue="true" />
-					<f:selectItem itemLabel="Inativo" itemValue="false" />
-				</p:selectOneButton>
+				<h:panelGroup>
+					<p:commandButton value="Ativo" disabled="#{!departamento.ativo}" actionListener="#{departamentoBean.habilitarCampo(departamento)}" 
+						update=":form-pagina-cadastro:tabview-cadastro:table-empresa" styleClass="btn-satatus-ativo" />
+					<p:commandButton value="Inativo" disabled="#{empresa.ativo}" actionListener="#{departamentoBean.habilitarCampo(departamento)}" 
+						update=":form-pagina-cadastro:tabview-cadastro:table-empresa" styleClass="btn-satatus-inativo"/>
+				</h:panelGroup>
 			</p:column>
-		
+
 		</p:dataTable>	
 	</div>
+	
+	<p:fieldset id="formulario-cadastro-simples" legend="Dados Cadastrais" style="width: 910px;">
+		<h:panelGrid columns="2" columnClasses="coluna-40, coluna-60" width=" 600px"  style="margin:0 auto;" >
+			<p:outputLabel value="Nome do departamento" styleClass="label-cadastro-simples" />
+			<p:inputText value="#{departamentoBean.departamentoSelecionado.nome}" styleClass="input-cadastro-simples" />
+		</h:panelGrid>
+		
+		<h:panelGrid columns="2" columnClasses="coluna-position-center-40, coluna-60" width=" 600px"  style="margin:0 auto;">
+			<p:outputLabel value="Empresa" styleClass="label-cadastro-simples" />
+			
+			<p:selectOneMenu id="cbx-empresa" value="#{departamentoBean.departamentoSelecionado.empresa}"
+				style="width: 340px;"  >
+				<f:selectItem itemLabel="Selecione uma empresa" itemValue=""  />
+				<f:selectItems value="#{departamentoBean.listaEmpresa}" var="empresa" itemLabel="#{empresa.razaoSocial}" 
+					itemValue="#{empresa}"/>
+			</p:selectOneMenu>
+		</h:panelGrid>
+		
+		<h:panelGrid columns="2" columnClasses="coluna-position-top-40, coluna-60" style="margin: 10px auto" width=" 600px">
+			<p:outputLabel  value="Descrição" styleClass="label-cadastro-simples" />
+			<p:inputTextarea value="#{departamentoBean.departamentoSelecionado.descricao}" styleClass="textarea-cadastro-simples" 
+				maxlength="300" cols="50" rows="6" autoResize="true"/>
+		</h:panelGrid>
+		
+		<!-- Botões exibidos na view -->
+		<div class="botoes-tela-cadastro" >
+			<!-- Botões para cadastro, exibido apenas se não tiver uma empresa selecionada-->
+			<h:panelGroup rendered="#{!departamentoBean.hasObjetoSelecionado()}" >
+				<p:commandButton value="Cadastrar" styleClass="btn-padrao" actionListener="#{departamentoBean.cadastrar}" 
+					update=":form-pagina-cadastro:tabview-cadastro"/>
+					
+				<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{departamentoBean.inicializarPagina}" 
+					update="formulario-cadastro-completo"/>
+			</h:panelGroup>
+			 
+			 <!-- Botões para liberar a alteração, exibido apenas se tiver um departamento selecionada -->
+			<h:panelGroup rendered="#{departamentoBean.hasObjetoSelecionado()}" >
+				<h:panelGroup rendered="#{departamentoBean.readonly}">
+					<p:commandButton value="Alterar" styleClass="btn-padrao" actionListener="#{departamentoBean.habilitarCampo}" 
+						update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-completo"/>
+					<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{departamentoBeann.inicializarPagina}" 
+						update=":form-pagina-cadastro:tabview-cadastro" />
+				</h:panelGroup>
+				
+				<!-- Botões exibidos quando clica-se no botão alterar-->
+				<h:panelGroup rendered="#{!empresaBean.readonly}">
+					<p:commandButton value="Salvar" styleClass="btn-padrao" actionListener="#{departamentoBeann.alterar}" 
+						update=":form-pagina-cadastro:tabview-cadastro"/>
+					<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{departamentoBean.inicializarPagina}" 
+						update=":form-pagina-cadastro:tabview-cadastro"/>
+				</h:panelGroup>
+			</h:panelGroup>
+		</div>
+	</p:fieldset>
 	
 </ui:composition>

@@ -6,7 +6,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:jove="http://java.sun.com/jsf/composite/componentes">
-	
+	 
 	<p:growl id="messages" showDetail="true" />
 	
 	<!-- Tabela que lista as empresas cadastradas-->
@@ -14,9 +14,9 @@
 		<p:dataTable id="table-empresa" value="#{empresaBean.listaEmpresa}" var="empresa" rowKey="#{empresa.idEmpresa}"  widgetVar="tabelaEmpresa"
 			selection="#{empresaBean.empresaSelecionada}" selectionMode="single" paginator="true" rows="5" filteredValue="#{empresaBean.listaEmpresaFiltrada}"
 			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
-			paginatorPosition="bottom" resizableColumns="flase" style="width: 956px;">
+			paginatorPosition="bottom" resizableColumns="flase" style="width: 940px;">
 			
-			<p:ajax event="rowSelect" update=":form-pagina-cadastro:tabview-cadastro"/>
+			<p:ajax event="rowSelect" update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-completo"/>
 			
 			<f:facet name="header">
 				Tabela de Empresas
@@ -38,9 +38,9 @@
 			<p:column headerText="Status" styleClass="coluna-position-center-15" >
 				<h:panelGroup>
 					<p:commandButton value="Ativo" disabled="#{!empresa.ativo}" actionListener="#{empresaBean.ativar(empresa)}" 
-						update=":form-pagina-cadastro:tabview-cadastro " styleClass="btn-satatus-ativo" />
+						update=":form-pagina-cadastro:tabview-cadastro:table-empresa" styleClass="btn-satatus-ativo" />
 					<p:commandButton value="Inativo" disabled="#{empresa.ativo}" actionListener="#{empresaBean.ativar(empresa)}" 
-						update=":form-pagina-cadastro:tabview-cadastro " styleClass="btn-satatus-inativo"/>
+						update=":form-pagina-cadastro:tabview-cadastro:table-empresa" styleClass="btn-satatus-inativo"/>
 				</h:panelGroup>
 			</p:column>
 
@@ -48,7 +48,7 @@
 	</div>
 	
 	<!-- Formulario de cadastro/alteração  -->
-	<p:fieldset id="formulario-cadastro-completo" legend="Dados Cadastrais">
+	<p:fieldset id="formulario-cadastro-completo" legend="Dados Cadastrais" style="width: 910px;">
 		<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-40, coluna-35, coluna-25">
 			<h:panelGrid width="100%" >
 				<p:outputLabel value="Razão Social"/>

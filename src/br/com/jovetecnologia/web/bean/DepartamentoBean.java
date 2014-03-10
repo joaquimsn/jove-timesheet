@@ -1,6 +1,7 @@
 package br.com.jovetecnologia.web.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -8,6 +9,11 @@ import javax.faces.bean.ViewScoped;
 
 import br.com.jovetecnologia.domain.interfaces.ICrudBean;
 import br.com.jovetecnologia.domain.model.Departamento;
+import br.com.jovetecnologia.domain.model.Empresa;
+import br.com.jovetecnologia.domain.service.DepartamentoService;
+import br.com.jovetecnologia.domain.service.EmpresaService;
+import br.com.jovetecnologia.infrastructure.util.Messages;
+import br.com.jovetecnologia.infrastructure.util.SystemUtils;
 
 @ManagedBean
 @ViewScoped
@@ -16,47 +22,64 @@ public class DepartamentoBean extends CadastroBean implements Serializable, ICru
 	private static final long serialVersionUID = -3779041589727892789L;
 
 	private Departamento departamentoSelecionado;
+	private List<Empresa> listaEmpresa;
+	private List<Departamento> listaDepartamento;
+	private List<Departamento> listaDepartamentoFiltrado;
 
 	@Override
 	@PostConstruct
 	public void inicializarPagina() {
-
+		departamentoSelecionado = new Departamento();
+		setReadonly(false);
+		listarTodos();
 	}
 
 	@Override
 	public void listarTodos() {
-		// TODO Auto-generated method stub
-
+		setListaDepartamento(new DepartamentoService().listarTodos());
+		setListaEmpresa(new EmpresaService().listarTodos());
 	}
 
 	@Override
 	public void habilitarCampo() {
-		// TODO Auto-generated method stub
-
+		setReadonly(false);
 	}
 
 	@Override
 	public void cadastrar() {
-		// TODO Auto-generated method stub
-
+		if (!validar()) {
+			return;
+		}		
+		
+		new DepartamentoService().cadastrar(departamentoSelecionado);
+		inicializarPagina();
+		Messages.addInfo("Departamento cadastradado com sucesso");
 	}
 
 	@Override
 	public boolean validar() {
-		// TODO Auto-generated method stub
-		return false;
+		if (!SystemUtils.isCamposObrigatoriosPreenchidos(getDepartamentoSelecionado())) {
+			return false;
+		}
+		return true;
 	}
 
 	@Override
 	public void alterar() {
-		// TODO Auto-generated method stub
-
+		if (!validar()) {
+			return;
+		}	
+		
+		new DepartamentoService().alterar(getDepartamentoSelecionado());
+		Messages.addInfo("Departamento alterado com sucesso");
 	}
 
 	@Override
 	public boolean hasObjetoSelecionado() {
-		// TODO Auto-generated method stub
-		return false;
+		if (getDepartamentoSelecionado().getIdUsuario() == 0) {
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -72,7 +95,64 @@ public class DepartamentoBean extends CadastroBean implements Serializable, ICru
 	 * @param departamentoSelecionado the departamento to set
 	 */
 	public void setDepartamentoSelecionado(Departamento departamento) {
-		this.departamentoSelecionado = departamento;
+		if (departamento != null) {
+			this.departamentoSelecionado = departamento;
+		} else if (isReadonly() && hasObjetoSelecionado()) {
+			this.departamentoSelecionado = departamento;
+		}		
+		if (hasObjetoSelecionado()) {
+			setReadonly(true);
+		} else {
+			setReadonly(false);
+		}
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the listaDepartamentoFiltrado
+	 */
+	public List<Departamento> getListaDepartamentoFiltrado() {
+		return listaDepartamentoFiltrado;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param listaDepartamentoFiltrado the listaDepartamentoFiltrado to set
+	 */
+	public void setListaDepartamentoFiltrado(List<Departamento> listaDepartamentoFiltrado) {
+		this.listaDepartamentoFiltrado = listaDepartamentoFiltrado;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the listaDepartamento
+	 */
+	public List<Departamento> getListaDepartamento() {
+		return listaDepartamento;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param listaDepartamento the listaDepartamento to set
+	 */
+	public void setListaDepartamento(List<Departamento> listaDepartamento) {
+		this.listaDepartamento = listaDepartamento;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the listaEmpresa
+	 */
+	public List<Empresa> getListaEmpresa() {
+		return listaEmpresa;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param listaEmpresa the listaEmpresa to set
+	 */
+	public void setListaEmpresa(List<Empresa> listaEmpresa) {
+		this.listaEmpresa = listaEmpresa;
 	}
 
 }

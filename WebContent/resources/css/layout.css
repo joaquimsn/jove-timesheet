@@ -205,7 +205,7 @@ Configuração pagina cadastro
 }
 
 #formulario-cadastro-completo {
-	width: 950px;
+	width: 950px !important;
 	margin: 20px auto 0 auto;
 	font-size: 14px;
 }
