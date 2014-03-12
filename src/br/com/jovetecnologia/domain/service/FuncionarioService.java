@@ -69,4 +69,13 @@ public class FuncionarioService implements Serializable {
 	public Funcionario consultarPorId(int idFuncionario) {
 		return new FuncionarioDAO().consultarPorId(idFuncionario);
 	}
+	
+	/**
+	 * Retornar uma lista com os funcionarios supervisores
+	 * @author Joaquim Neto
+	 * @return Lista de funcionarios
+	 */
+	public List<Funcionario> listarSupervisor() {
+		return funcionarioDAO.listarSupervisor();
+	}
 }

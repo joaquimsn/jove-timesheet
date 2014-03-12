@@ -8,6 +8,9 @@ import javax.faces.bean.ViewScoped;
 
 import br.com.jovetecnologia.domain.interfaces.ICrudBean;
 import br.com.jovetecnologia.domain.model.Usuario;
+import br.com.jovetecnologia.domain.service.UsuarioService;
+import br.com.jovetecnologia.infrastructure.util.Messages;
+import br.com.jovetecnologia.infrastructure.util.SystemUtils;
 
 @ManagedBean
 @ViewScoped
@@ -31,32 +34,49 @@ public class UsuarioBean extends CadastroBean implements Serializable, ICrudBean
 
 	@Override
 	public void habilitarCampo() {
-		// TODO Auto-generated method stub
+		setReadonly(false);
 
 	}
 
 	@Override
 	public void cadastrar() {
-		// TODO Auto-generated method stub
+		if (!validar()) {
+			return;
+		}
+		
+		new UsuarioService().cadastrar(getUsuarioSelecionado());
+		
+		Messages.addInfo("Usuário cadastrado com sucesso");
 
 	}
 
 	@Override
 	public boolean validar() {
-		// TODO Auto-generated method stub
-		return false;
+		if (!SystemUtils.isCamposObrigatoriosPreenchidos(getUsuarioSelecionado())) {
+			return false;
+		}
+		return true;
 	}
 
 	@Override
 	public void alterar() {
-		// TODO Auto-generated method stub
-
+		if (!validar()) {
+			return;
+		}
+		
+		usuarioSelecionado.setAtivo(true);
+		
+		new UsuarioService().cadastrar(getUsuarioSelecionado());
+		
+		Messages.addInfo("Usuário Alterado com sucesso");
 	}
 
 	@Override
 	public boolean hasObjetoSelecionado() {
-		// TODO Auto-generated method stub
-		return false;
+		if (usuarioSelecionado.getIdUsuario() == 0) {
+			return false;
+		}
+		return true;
 	}
 
 	/**

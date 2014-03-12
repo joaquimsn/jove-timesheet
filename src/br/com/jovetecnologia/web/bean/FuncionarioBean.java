@@ -10,33 +10,56 @@ import javax.faces.bean.ViewScoped;
 import br.com.jovetecnologia.domain.interfaces.ICrudBean;
 import br.com.jovetecnologia.domain.model.Departamento;
 import br.com.jovetecnologia.domain.model.Funcionario;
+import br.com.jovetecnologia.domain.model.Usuario;
 import br.com.jovetecnologia.domain.service.DepartamentoService;
 import br.com.jovetecnologia.domain.service.FuncionarioService;
+import br.com.jovetecnologia.domain.service.UsuarioService;
+import br.com.jovetecnologia.infrastructure.util.Criptografia;
+import br.com.jovetecnologia.infrastructure.util.Messages;
+import br.com.jovetecnologia.infrastructure.util.SystemUtils;
 
 @ManagedBean
 @ViewScoped
 public class FuncionarioBean extends CadastroBean implements Serializable, ICrudBean {
 
-	private static final long serialVersionUID = -3779041589727892789L;
+	private static final long serialVersionUID = -1348326016045328338L;
 
 	private Funcionario funcionarioSelecionado;
+	private Usuario usuarioSelecionado;
+
+	private String senhaAtual;
+	private String confirmarSenha;
+	
+	private boolean next;
 
 	private List<Funcionario> listaFuncionarioFiltrado;
 	private List<Funcionario> listaFuncionario;
-	private List<Departamento> listaDepartamento;
+	private List<Funcionario> listaSupervisor;
+ 	private List<Departamento> listaDepartamento;
 
 	@Override
 	@PostConstruct
 	public void inicializarPagina() {
 		funcionarioSelecionado = new Funcionario();
+		usuarioSelecionado = new Usuario();
+		next = false;
+		limparSenha();
+		
 		listarTodos();
 		setReadonly(false);
+	}
+
+	private void limparSenha() {
+		senhaAtual = "";
+		confirmarSenha = "";
+		
 	}
 
 	@Override
 	public void listarTodos() {
 		setListaFuncionario(new FuncionarioService().listarTodos());
 		setListaDepartamento(new DepartamentoService().listarTodos());
+		setListaSupervisor(new FuncionarioService().listarSupervisor());
 	}
 
 	@Override
@@ -46,32 +69,103 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 
 	@Override
 	public void cadastrar() {
-		// TODO Auto-generated method stub
-
+		
+		if (!validar()) {
+			return;
+		}
+		
+		// Remover só teste o setCidade e setUf
+		funcionarioSelecionado.setCidade("São Paulo");
+		funcionarioSelecionado.setUf("SP");
+		
+		new FuncionarioService().cadastrar(getFuncionarioSelecionado());
+		
+		//Cadastra o Usuario junto como o funcionario
+		usuarioSelecionado.setSenha(Criptografia.criptografar(usuarioSelecionado.getSenha()));
+		usuarioSelecionado.setFuncionario(getFuncionarioSelecionado());
+		new UsuarioService().cadastrar(usuarioSelecionado);
+		
+		Messages.addInfo("Funcionário cadastrado com sucesso");
 	}
 
 	@Override
 	public boolean validar() {
-		// TODO Auto-generated method stub
+		if (!SystemUtils.isCamposObrigatoriosPreenchidos(getFuncionarioSelecionado()) || !SystemUtils.isCpfValido(funcionarioSelecionado.getCpf()) 
+				|| !SystemUtils.isCamposObrigatoriosPreenchidos(getUsuarioSelecionado()) || !validarSenha()) {
+			
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * Valida se as senhas informadas são iguais.
+	 * @author Joaquim Neto
+	 * @return <b>true</b> As senhas informadas forem iguais.
+	 */
+	public boolean validarSenha(){
+		if (usuarioSelecionado.getSenha().equals(confirmarSenha)) {
+			return true;
+		} else if (hasObjetoSelecionado() && senhaAtual.equals(usuarioSelecionado.getSenha())) {
+			return true;
+		}
+		
+		Messages.addInfo("As senhas informadas são diferentes");
+		
 		return false;
 	}
 
 	@Override
 	public void alterar() {
-		// TODO Auto-generated method stub
+		
+		if (!validar()) {
+			return;
+		}
+		
+		// Remover só teste o setCidade e setUf
+		funcionarioSelecionado.setCidade("São Paulo");
+		funcionarioSelecionado.setUf("SP");
+		
+		new FuncionarioService().alterar(getFuncionarioSelecionado());
+		
+		Messages.addInfo("Funcionário alterado com sucesso");
 
 	}
 	
 	public void ativar(Funcionario funcionario) {
-		
+		StringBuilder info = new StringBuilder("O funcionário ");
+		info.append(funcionario.getNome()).append(" foi ");
+
+		if (funcionario.isAtivo()) {
+			info.append("inativado com sucesso");
+			funcionario.setAtivo(false);
+		} else {
+			info.append("ativado com sucesso");
+			funcionario.setAtivo(true);
+		}
+
+		new FuncionarioService().alterar(funcionario);
+
+		Messages.addInfo(info.toString());
+		listarTodos();
+	}
+	
+	public void mudarPagina() {
+		if (next) {
+			setNext(false);
+		} else {
+			setNext(true);
+		}
 	}
 
 	@Override
 	public boolean hasObjetoSelecionado() {
-		// TODO Auto-generated method stub
-		return false;
+		if (funcionarioSelecionado.getIdUsuario() == 0) {
+			return false;
+		}
+		return true;
 	}
-
+	
 	/**
 	 * @author Joaquim Neto
 	 * @return the funcionarioSelecionado
@@ -85,7 +179,87 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	 * @param funcionarioSelecionado the funcionarioSelecionado to set
 	 */
 	public void setFuncionarioSelecionado(Funcionario funcionarioSelecionado) {
-		this.funcionarioSelecionado = funcionarioSelecionado;
+		if (funcionarioSelecionado != null) {
+			this.funcionarioSelecionado = funcionarioSelecionado;
+
+		} else if (isReadonly() && hasObjetoSelecionado()) {
+			this.funcionarioSelecionado = funcionarioSelecionado;
+		}
+
+		if (hasObjetoSelecionado()) {
+			setReadonly(true);
+			
+			//Define o usuário selecionado ao selecionar um funcionario;
+			setUsuarioSelecionado(new UsuarioService().pesquisarPorFuncionario(getFuncionarioSelecionado()));
+			
+		} else {
+			setReadonly(false);
+		}
+		
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the usuarioSelecionado
+	 */
+	public Usuario getUsuarioSelecionado() {
+		return usuarioSelecionado;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param usuarioSelecionado the usuarioSelecionado to set
+	 */
+	public void setUsuarioSelecionado(Usuario usuarioSelecionado) {
+		this.usuarioSelecionado = usuarioSelecionado;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the senhaAtual
+	 */
+	public String getSenhaAtual() {
+		return senhaAtual;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param senhaAtual the senhaAtual to set
+	 */
+	public void setSenhaAtual(String senhaAtual) {
+		this.senhaAtual = senhaAtual;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the confirmarSenha
+	 */
+	public String getConfirmarSenha() {
+		return confirmarSenha;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param confirmarSenha the confirmarSenha to set
+	 */
+	public void setConfirmarSenha(String confirmarSenha) {
+		this.confirmarSenha = confirmarSenha;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the next
+	 */
+	public boolean isNext() {
+		return next;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param next the next to set
+	 */
+	public void setNext(boolean next) {
+		this.next = next;
 	}
 
 	/**
@@ -134,6 +308,22 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	 */
 	public void setListaFuncionarioFiltrado(List<Funcionario> listaFuncionarioFiltrado) {
 		this.listaFuncionarioFiltrado = listaFuncionarioFiltrado;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the listaSupervisor
+	 */
+	public List<Funcionario> getListaSupervisor() {
+		return listaSupervisor;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param listaSupervisor the listaSupervisor to set
+	 */
+	public void setListaSupervisor(List<Funcionario> listaSupervisor) {
+		this.listaSupervisor = listaSupervisor;
 	}
 
 }

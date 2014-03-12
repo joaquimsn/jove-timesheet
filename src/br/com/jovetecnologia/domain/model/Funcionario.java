@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import br.com.jovetecnologia.infrastructure.util.annotation.Required;
+
 import java.sql.Time;
 import java.util.Date;
 import java.util.List;
@@ -30,13 +32,15 @@ public class Funcionario implements Serializable {
 	private Time cargaHoraria;
 
 	private String celular;
-
+	
+	@Required(label = "CEP", minimo = 9)
 	private String cep;
 
 	private String cidade;
 
 	private String complemento;
-
+	
+	@Required( label = "CPF", minimo = 14)
 	private String cpf;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -50,18 +54,22 @@ public class Funcionario implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_nascimento")
 	private Date dataNascimento;
-
+	
+	@Required(label = "e-mail", minimo = 15 )
 	private String email;
 
 	private String genero;
 
 	@Column(name = "id_usuario")
 	private int idUsuario;
-
+	
+	@Required(label =  "Logradouro", minimo = 5)
 	private String logradouro;
-
+	
+	@Required(label = "Nome", minimo = 10)
 	private String nome;
-
+	
+	@Required(label =  "Numero", minimo = 1)
 	private String numero;
 
 	@Column(name = "telefone_fixo")

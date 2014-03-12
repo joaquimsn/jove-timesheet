@@ -45,7 +45,7 @@ public interface ICrudBean {
 	void alterar();
 
 	/**
-	 * Retorna true se existir empresa selecionada, caso contrario retorna false
+	 * Retorna <b>true</b> se existir empresa selecionada, caso contrario retorna false
 	 * @author Joaquim Neto
 	 * @return <b>true</b> Se tiver empresa selecionado
 	 */

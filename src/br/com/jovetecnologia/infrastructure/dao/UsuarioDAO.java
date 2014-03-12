@@ -6,6 +6,7 @@ import java.io.Serializable;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 
+import br.com.jovetecnologia.domain.model.Funcionario;
 import br.com.jovetecnologia.domain.model.Usuario;
 import br.com.jovetecnologia.infrastructure.connection.ConexaoHibernate;
 import br.com.jovetecnologia.infrastructure.util.Criptografia;
@@ -37,6 +38,27 @@ public class UsuarioDAO extends DAO<Usuario> implements Serializable {
 			query.setParameter("senha", Criptografia.criptografar(senha));
 			
 			usuario = (Usuario) query.uniqueResult();
+			
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			ConexaoHibernate.fecharConexao(session);
+		}
+		
+		return usuario;
+	}
+	
+	public Usuario pesquisarPorFuncionario(Funcionario funcionario) {
+		
+		Usuario usuario= null;
+		session = ConexaoHibernate.getSessionFactory().openSession();
+		String hql = "SELECT u FROM Usuario u where u.funcionario = :funcionario";
+		
+		try {	
+			Query query = session.createQuery(hql);
+			query.setParameter("funcionario", funcionario);
+			
+			usuario =  (Usuario) query.uniqueResult();
 			
 		} catch (HibernateException e) {
 			e.printStackTrace();

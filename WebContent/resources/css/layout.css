@@ -385,6 +385,11 @@ Configuração pagina cadastro
 	margin: 10px 0;
 }
 
+.wizard{
+	margin-top: -20px auto; 
+	width: 932px;
+}
+
 
 /*===================================
 Configuração da pagina de registro

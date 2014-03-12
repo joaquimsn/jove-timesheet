@@ -15,6 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import br.com.jovetecnologia.domain.enums.NivelUsuarioEnum;
+import br.com.jovetecnologia.infrastructure.util.annotation.Required;
 
 /**
  * The persistent class for the usuario database table.
@@ -43,10 +44,12 @@ public class Usuario implements Serializable {
 	@Column(name = "fk_id_usuario")
 	private int fkIdUsuario;
 
+	@Required(label = "Login", minimo = 3)
 	private String login;
 
 	private int nivel;
-
+	
+	@Required(label = "Senha", minimo = 6)
 	private String senha;
 
 	// bi-directional many-to-one association to Funcionario

@@ -49,7 +49,7 @@
 		<h:panelGrid columns="2" columnClasses="coluna-40, coluna-60" width=" 600px"  style="margin:0 auto;" >
 			<p:outputLabel value="Nome do departamento" styleClass="label-cadastro-simples" />
 			<p:inputText value="#{departamentoBean.departamentoSelecionado.nome}" styleClass="input-cadastro-simples" 
-				readonly="#{departamentoBean.readonly}" />
+				maxlength="100" readonly="#{departamentoBean.readonly}" />
 		</h:panelGrid>
 		
 		<h:panelGrid columns="2" columnClasses="coluna-position-center-40, coluna-60" width=" 600px"  style="margin:0 auto;">
@@ -66,7 +66,7 @@
 		<h:panelGrid columns="2" columnClasses="coluna-position-top-40, coluna-60" style="margin: 10px auto" width=" 600px">
 			<p:outputLabel  value="Descrição" styleClass="label-cadastro-simples" />
 			<p:inputTextarea value="#{departamentoBean.departamentoSelecionado.descricao}" styleClass="textarea-cadastro-simples" 
-				maxlength="300" cols="50" rows="6" autoResize="true" readonly="#{departamentoBean.readonly}" />
+				maxlength="150" cols="50" rows="6" autoResize="true" readonly="#{departamentoBean.readonly}" />
 		</h:panelGrid>
 		
 		<!-- Botões exibidos na view -->

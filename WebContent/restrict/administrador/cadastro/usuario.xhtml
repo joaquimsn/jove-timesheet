@@ -10,19 +10,42 @@
 	<div id="formulario-cadastro-simples" >
 		<h:panelGrid styleClass="panel-form-cadastro" columns="2" columnClasses="coluna-40, coluna-60,">
 			<p:outputLabel value="Usuario" styleClass="label-cadastro-simples" />
-			<p:inputText value="" styleClass="input-cadastro-simples" />
-			
-			<p:outputLabel value="Senha" styleClass="label-cadastro-simples" />
-			<p:inputText value="" styleClass="input-cadastro-simples" />
-			
-			<p:outputLabel value="Nivel" style="width: 100%;" />
-			<p:selectOneMenu style="width: 100%;">
+			<p:inputText value="#{funcionarioBean.usuarioSelecionado.login}" styleClass="input-cadastro-simples" 
+				maxlength="30" readonly="#{funcionarioBean.readonly}" />
+		</h:panelGrid>
+		
+		<h:panelGrid styleClass="panel-for,-cadastro" columns="2" columnClasses="coluna-40, coluna-60">
+			<p:outputLabel value="Nivel" styleClass="label-cadastro-simples" />
+			<p:selectOneMenu value="#{funcionarioBean.usuarioSelecionado.nivel}" style="width: 340px;margin:0 5px 0 -5px;"
+				disabled="#{funcionarioBean.readonly}">
 				<f:selectItem itemLabel="selecione" itemValue="" />
 				<f:selectItem itemLabel="Funcionario" itemValue="1" />
 				<f:selectItem itemLabel="Administrador" itemValue="2" />
 			</p:selectOneMenu>
+		</h:panelGrid>
+		
+		<h:panelGroup rendered="#{!funcionarioBean.hasObjetoSelecionado() and !funcionarioBean.readonly}">
+			<h:panelGrid styleClass="panel-form-cadastro" columns="2" columnClasses="coluna-40, coluna-60">
+				<p:outputLabel value="Senha" styleClass="label-cadastro-simples" />
+				<p:password value="#{funcionarioBean.usuarioSelecionado.senha}" styleClass="input-cadastro-simples" 
+					maxlength="16" readonly="#{funcionarioBean.readonly}"/>
+			</h:panelGrid>
 			
-		</h:panelGrid>		
+			<h:panelGrid styleClass="panel-form-cadastro" columns="2" columnClasses="coluna-40, coluna-60">
+				<p:outputLabel value="Confirmar Senha" styleClass="label-cadastro-simples" />
+				<p:password value="#{funcionarioBean.confirmarSenha}" styleClass="input-cadastro-simples"
+					maxlength="16" readonly="#{funcionarioBean.readonly}"/>
+			</h:panelGrid>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{funcionarioBean.hasObjetoSelecionado()}">
+			<h:panelGrid styleClass="panel-form-cadastro" columns="2" columnClasses="coluna-40, coluna-60">
+				<p:outputLabel value="Senha atual" styleClass="label-cadastro-simples" />
+				<p:password value="#{funcionarioBean.senhaAtual}" styleClass="input-cadastro-simples" 
+					maxlength="16" readonly="#{funcionarioBean.readonly}"/>
+			</h:panelGrid>
+		</h:panelGroup>
+					
 	</div>
 	
 </ui:composition>

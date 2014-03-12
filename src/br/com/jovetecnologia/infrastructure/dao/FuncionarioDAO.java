@@ -1,6 +1,7 @@
 package br.com.jovetecnologia.infrastructure.dao;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -38,5 +39,28 @@ public class FuncionarioDAO extends DAO<Funcionario> implements Serializable {
 		}
 		
 		return funcionario;
+	}
+	
+	/**
+	 * Retorna uma lista contendo os funcionários que foram cadastrado como supervisor
+	 * @author Joaquim Neto
+	 * @return List de funcionario supervisor
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Funcionario> listarSupervisor() {
+		List<Funcionario> listaSupervisor = null;
+		
+		session = ConexaoHibernate.getSessionFactory().openSession();
+		String hql = "SELECT f FROM Funcionario f WHERE f.funcionario = null";
+		
+		try {
+			Query query = session.createQuery(hql);
+			
+			listaSupervisor = query.list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		
+		return listaSupervisor;
 	}
 }
