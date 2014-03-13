@@ -5,7 +5,7 @@ import java.util.List;
 
 public enum NivelUsuarioEnum {
 	
-	FUNCIONARIO("Funcionario", 1),
+	FUNCIONARIO("Funcionário", 1),
 	ADMINISTRADOR("Administrador", 2);
 	
 	private String display;

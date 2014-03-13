@@ -71,7 +71,7 @@ function maskCnpj(v){
     return v;
 }
 
-function data(v){
+function maskData(v){
 		  document.getElementById('LblErroNascimento').innerHTML= '';
         v=v.replace(/\D/g,"");
         v=v.replace(/(\d{2})(\d)/,"$1/$2");
