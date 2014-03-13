@@ -7,6 +7,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.jovetecnologia.domain.enums.ModalidadeContratoEnum;
+import br.com.jovetecnologia.domain.enums.NivelUsuarioEnum;
 import br.com.jovetecnologia.domain.interfaces.ICrudBean;
 import br.com.jovetecnologia.domain.model.Departamento;
 import br.com.jovetecnologia.domain.model.Funcionario;
@@ -29,22 +31,26 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 
 	private String senhaAtual;
 	private String confirmarSenha;
-	
+
 	private boolean next;
 
 	private List<Funcionario> listaFuncionarioFiltrado;
 	private List<Funcionario> listaFuncionario;
 	private List<Funcionario> listaSupervisor;
- 	private List<Departamento> listaDepartamento;
+	private List<Departamento> listaDepartamento;
+	private List<String> listaModalidadeContrato;
+	private List<String> listaNivelUsuario;
 
 	@Override
 	@PostConstruct
 	public void inicializarPagina() {
 		funcionarioSelecionado = new Funcionario();
 		usuarioSelecionado = new Usuario();
+		listaFuncionarioFiltrado = null;
+
 		next = false;
 		limparSenha();
-		
+
 		listarTodos();
 		setReadonly(false);
 	}
@@ -52,7 +58,7 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	private void limparSenha() {
 		senhaAtual = "";
 		confirmarSenha = "";
-		
+
 	}
 
 	@Override
@@ -60,6 +66,8 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 		setListaFuncionario(new FuncionarioService().listarTodos());
 		setListaDepartamento(new DepartamentoService().listarTodos());
 		setListaSupervisor(new FuncionarioService().listarSupervisor());
+		setListaModalidadeContrato(ModalidadeContratoEnum.getDisplayList());
+		setListaNivelUsuario(NivelUsuarioEnum.getDisplayList());
 	}
 
 	@Override
@@ -69,70 +77,72 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 
 	@Override
 	public void cadastrar() {
-		
+
 		if (!validar()) {
 			return;
 		}
-		
+
 		// Remover só teste o setCidade e setUf
 		funcionarioSelecionado.setCidade("São Paulo");
 		funcionarioSelecionado.setUf("SP");
-		
+
 		new FuncionarioService().cadastrar(getFuncionarioSelecionado());
-		
-		//Cadastra o Usuario junto como o funcionario
+
+		// Cadastra o Usuario junto como o funcionario
 		usuarioSelecionado.setSenha(Criptografia.criptografar(usuarioSelecionado.getSenha()));
 		usuarioSelecionado.setFuncionario(getFuncionarioSelecionado());
 		new UsuarioService().cadastrar(usuarioSelecionado);
-		
+
 		Messages.addInfo("Funcionário cadastrado com sucesso");
 	}
 
 	@Override
 	public boolean validar() {
-		if (!SystemUtils.isCamposObrigatoriosPreenchidos(getFuncionarioSelecionado()) || !SystemUtils.isCpfValido(funcionarioSelecionado.getCpf()) 
+		if (!SystemUtils.isCamposObrigatoriosPreenchidos(getFuncionarioSelecionado())
+				|| !SystemUtils.isCpfValido(funcionarioSelecionado.getCpf())
 				|| !SystemUtils.isCamposObrigatoriosPreenchidos(getUsuarioSelecionado()) || !validarSenha()) {
-			
+
 			return false;
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Valida se as senhas informadas são iguais.
 	 * @author Joaquim Neto
 	 * @return <b>true</b> As senhas informadas forem iguais.
 	 */
-	public boolean validarSenha(){
+	public boolean validarSenha() {
 		if (usuarioSelecionado.getSenha().equals(confirmarSenha)) {
 			return true;
 		} else if (hasObjetoSelecionado() && senhaAtual.equals(usuarioSelecionado.getSenha())) {
 			return true;
 		}
-		
+
 		Messages.addInfo("As senhas informadas são diferentes");
-		
+
 		return false;
 	}
 
 	@Override
 	public void alterar() {
-		
+
 		if (!validar()) {
 			return;
 		}
-		
+
 		// Remover só teste o setCidade e setUf
 		funcionarioSelecionado.setCidade("São Paulo");
 		funcionarioSelecionado.setUf("SP");
-		
+
 		new FuncionarioService().alterar(getFuncionarioSelecionado());
-		
+
 		Messages.addInfo("Funcionário alterado com sucesso");
 
 	}
-	
+
 	public void ativar(Funcionario funcionario) {
+
 		StringBuilder info = new StringBuilder("O funcionário ");
 		info.append(funcionario.getNome()).append(" foi ");
 
@@ -149,7 +159,7 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 		Messages.addInfo(info.toString());
 		listarTodos();
 	}
-	
+
 	public void mudarPagina() {
 		if (next) {
 			setNext(false);
@@ -165,7 +175,7 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 		}
 		return true;
 	}
-	
+
 	/**
 	 * @author Joaquim Neto
 	 * @return the funcionarioSelecionado
@@ -178,24 +188,18 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	 * @author Joaquim Neto
 	 * @param funcionarioSelecionado the funcionarioSelecionado to set
 	 */
-	public void setFuncionarioSelecionado(Funcionario funcionarioSelecionado) {
-		if (funcionarioSelecionado != null) {
-			this.funcionarioSelecionado = funcionarioSelecionado;
-
-		} else if (isReadonly() && hasObjetoSelecionado()) {
-			this.funcionarioSelecionado = funcionarioSelecionado;
-		}
-
-		if (hasObjetoSelecionado()) {
+	public void setFuncionarioSelecionado(Funcionario funcionario) {
+		if (funcionario != null && !isReadonly() && funcionarioSelecionado != funcionario) {
+			funcionarioSelecionado = funcionario;
 			setReadonly(true);
-			
-			//Define o usuário selecionado ao selecionar um funcionario;
-			setUsuarioSelecionado(new UsuarioService().pesquisarPorFuncionario(getFuncionarioSelecionado()));
-			
-		} else {
-			setReadonly(false);
+		} else if (isReadonly() && hasObjetoSelecionado()) {
+			funcionarioSelecionado = funcionario;
+			setReadonly(true);
 		}
-		
+		if (hasObjetoSelecionado()) {
+			setUsuarioSelecionado(new UsuarioService().pesquisarPorFuncionario(getFuncionarioSelecionado()));
+		}
+
 	}
 
 	/**
@@ -324,6 +328,38 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	 */
 	public void setListaSupervisor(List<Funcionario> listaSupervisor) {
 		this.listaSupervisor = listaSupervisor;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the listaModalidadeContrato
+	 */
+	public List<String> getListaModalidadeContrato() {
+		return listaModalidadeContrato;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param listaModalidadeContrato the listaModalidadeContrato to set
+	 */
+	public void setListaModalidadeContrato(List<String> listaModalidadeContrato) {
+		this.listaModalidadeContrato = listaModalidadeContrato;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the listaNivelUsuario
+	 */
+	public List<String> getListaNivelUsuario() {
+		return listaNivelUsuario;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param listaNivelUsuario the listaNivelUsuario to set
+	 */
+	public void setListaNivelUsuario(List<String> listaNivelUsuario) {
+		this.listaNivelUsuario = listaNivelUsuario;
 	}
 
 }

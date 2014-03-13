@@ -17,10 +17,9 @@
 		<h:panelGrid styleClass="panel-for,-cadastro" columns="2" columnClasses="coluna-40, coluna-60">
 			<p:outputLabel value="Nivel" styleClass="label-cadastro-simples" />
 			<p:selectOneMenu value="#{funcionarioBean.usuarioSelecionado.nivel}" style="width: 340px;margin:0 5px 0 -5px;"
-				disabled="#{funcionarioBean.readonly}">
+				disabled="#{funcionarioBean.readonly}" converter="genericConverter" >
 				<f:selectItem itemLabel="selecione" itemValue="" />
-				<f:selectItem itemLabel="Funcionario" itemValue="1" />
-				<f:selectItem itemLabel="Administrador" itemValue="2" />
+				<f:selectItems value="#{funcionarioBean.listaNivelUsuario}" />
 			</p:selectOneMenu>
 		</h:panelGrid>
 		

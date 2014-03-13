@@ -53,7 +53,7 @@
 	<h:panelGroup id="update-funcionario" styleClass="formulario-cadastro-completo" >
 		
 		<h:panelGroup id="wizard" >		
-			<p:panel header="Dados pessoais" styleClass="wizard" rendered="#{!funcionarioBean.next}">
+			<p:panel header="Dados pessoais" rendered="#{!funcionarioBean.next}">
 				<h:panelGrid styleClass="panel-form-cadastro" columns="4" columnClasses="coluna-40, coluna-15, coluna-20, coluna-25">
 					<h:panelGrid width="100%">
 						<p:outputLabel value="Nome"/>
@@ -72,8 +72,8 @@
 					
 					<h:panelGrid width="100%">
 						<p:outputLabel value="Data Nascimento" />
-						<p:inputText value="#{funcionarioBean.funcionarioSelecionado.dataNascimento}" style="width: 100%;" 
-							maxlength="10" readonly="#{funcionarioBean.readonly}"/>
+						<p:calendar value="#{funcionarioBean.funcionarioSelecionado.dataNascimento}" pattern="dd/mm/yyyy" size="11"
+							showOn="button" readonlyInput="true" readonly="#{funcionarioBean.readonly}" converter="dateConverter"/> 
 					</h:panelGrid>
 						
 					<h:panelGrid width="100%" >
@@ -84,11 +84,17 @@
 					
 				</h:panelGrid>
 				
-				<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-60, coluna-30, coluna-20">
+				<h:panelGrid styleClass="panel-form-cadastro" columns="4" columnClasses="coluna-45, coluna-20, coluna-25, coluna-10">
 					<h:panelGrid width="100%">
 						<p:outputLabel value="Logradouro" />
 						<p:inputText value="#{funcionarioBean.funcionarioSelecionado.logradouro}" style="width: 100%;"
 							maxlength="120" readonly="#{funcionarioBean.readonly}" onkeyup="mascara(this, mista);"/>		
+					</h:panelGrid>
+					
+					<h:panelGrid width="100%">
+						<p:outputLabel value="Bairro" />
+						<p:inputText value="#{funcionarioBean.funcionarioSelecionado.bairro}" style="width: 100%;" maxlength="50" readonly="#{funcionarioBean.readonly}"
+							onkeyup="mascara(this, soTextoNumeros);" />		
 					</h:panelGrid>
 					
 					<h:panelGrid width="100%">
@@ -151,21 +157,22 @@
 					<h:panelGrid width="100%">
 						<p:outputLabel value="Modalidade do contrato" />
 						<p:selectOneMenu id="cbx-modalidade-contrato" value="#{funcionarioBean.funcionarioSelecionado.tipoContrato}" style="width: 102%;" 
-							disabled="#{funcionarioBean.readonly}">
+							disabled="#{funcionarioBean.readonly}" converter="genericConverter" >
 							<f:selectItem itemLabel="selecione" itemValue=""/>
+							<f:selectItems value="#{funcionarioBean.listaModalidadeContrato}" />
 						</p:selectOneMenu>		
 					</h:panelGrid>
 					
 					<h:panelGrid width="100%">
 						<p:outputLabel value="Carga Horária" />
 						<p:inputText value="#{funcionarioBean.funcionarioSelecionado.cargaHoraria}" style="width: 100%;"
-							readonly="#{funcionarioBean.readonly}"/>		
+							converter="timeConverter" readonly="#{funcionarioBean.readonly}"/>		
 					</h:panelGrid>
 	
 					<h:panelGrid width="100%">
 						<p:outputLabel value="Tempo Refeição" />
 						<p:inputText value="#{funcionarioBean.funcionarioSelecionado.tempoRefeicao}" style="width: 100%;"
-							readonly="#{funcionarioBean.readonly}" />		
+							converter="timeConverter" readonly="#{funcionarioBean.readonly}" />		
 					</h:panelGrid>
 				</h:panelGrid>
 				
@@ -190,49 +197,48 @@
 					</h:panelGrid>
 				</h:panelGrid>
 				
-				<p:commandButton value="Próximo" update="wizard, botoes-funcionario" actionListener="#{funcionarioBean.mudarPagina}" 
+				<p:commandButton value="Próximo" update="wizard" actionListener="#{funcionarioBean.mudarPagina}" 
 					style="margin-left: 800px; font-size: 14px;" />
 			</p:panel>
 			
-			<p:panel header="Credenciais de acesso" styleClass="wizard" rendered="#{funcionarioBean.next}">
+			<p:panel header="Credenciais de acesso" rendered="#{funcionarioBean.next}">
+
 				<ui:include src="/restrict/administrador/cadastro/usuario.xhtml" />
 				
-				<p:commandButton value="Anterior" update="wizard, botoes-funcionario" actionListener="#{funcionarioBean.mudarPagina}" 
+				<p:commandButton value="Anterior" update="wizard" actionListener="#{funcionarioBean.mudarPagina}" 
 					style="font-size: 14px;" />
-				
 			</p:panel>
+			
 		</h:panelGroup>
 		
 		<!-- Botões exibidos na view -->
 		<div style="margin-top: 18px;">
-			<h:panelGroup id="botoes-funcionario" >
-				<!-- Botões para cadastro, exibido apenas se não tiver uma empresa selecionada-->
-				<h:panelGroup rendered="#{!funcionarioBean.hasObjetoSelecionado()}" >
-					<p:commandButton value="Cadastrar" styleClass="btn-padrao" actionListener="#{funcionarioBean.cadastrar}" 
-						update="update-funcionario, :form-pagina-cadastro:tabview-cadastro:table-funcionario, messages-func"/>
-						
-					<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{funcionarioBean.inicializarPagina}"  immediate="true"
-						update=":form-pagina-cadastro:tabview-cadastro"/>
-				</h:panelGroup>
-				 
-				 <!-- Botões para liberar a alteração, exibido apenas se tiver uma empresa selecionada -->
-				<h:panelGroup rendered="#{funcionarioBean.hasObjetoSelecionado()}" >
-					<h:panelGroup rendered="#{funcionarioBean.readonly}">
-						<p:commandButton value="Alterar" styleClass="btn-padrao" actionListener="#{funcionarioBean.habilitarCampo}" 
-							update="update-funcionario"/>
-						<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{funcionarioBean.inicializarPagina}" immediate="true"
-							update=":form-pagina-cadastro:tabview-cadastro:table-funcionario, update-funcionario" />
-					</h:panelGroup>
+			<!-- Botões para cadastro, exibido apenas se não tiver uma empresa selecionada-->
+			<h:panelGroup rendered="#{!funcionarioBean.hasObjetoSelecionado()}" >
+				<p:commandButton value="Cadastrar" styleClass="btn-padrao" actionListener="#{funcionarioBean.cadastrar}" 
+					update=":form-pagina-cadastro:tabview-cadastro:table-funcionario, update-funcionario, messages-func"/>
 					
-					<!-- Botões exibidos quando clica-se no botão alterar-->
-					<h:panelGroup rendered="#{!funcionarioBean.readonly}">
-						<p:commandButton value="Salvar" styleClass="btn-padrao" actionListener="#{funcionarioBean.alterar}" 
-							update="botoes-funcionario, :form-pagina-cadastro:tabview-cadastro:table-funcionario, wizard, messages-func"/>
-						<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{funcionarioBean.inicializarPagina}" immediate="true"
-							update="update-funcionario, :form-pagina-cadastro:tabview-cadastro:table-funcionario"/>
-					</h:panelGroup>
+				<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{funcionarioBean.inicializarPagina}"
+					update=":form-pagina-cadastro:tabview-cadastro:table-funcionario, update-funcionario"/>
+			</h:panelGroup>
+			 
+			 <!-- Botões para liberar a alteração, exibido apenas se tiver uma empresa selecionada -->
+			<h:panelGroup rendered="#{funcionarioBean.hasObjetoSelecionado()}" >
+				<h:panelGroup rendered="#{funcionarioBean.readonly}">
+					<p:commandButton value="Alterar" styleClass="btn-padrao" actionListener="#{funcionarioBean.habilitarCampo}" 
+						update="update-funcionario" immediate="true" />
+					<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{funcionarioBean.inicializarPagina}"
+						update=":form-pagina-cadastro:tabview-cadastro:table-funcionario, update-funcionario" />
 				</h:panelGroup>
-			</h:panelGroup> 
+				
+				<!-- Botões exibidos quando clica-se no botão alterar-->
+				<h:panelGroup rendered="#{!funcionarioBean.readonly}">
+					<p:commandButton value="Salvar" styleClass="btn-padrao" actionListener="#{funcionarioBean.alterar}" 
+						update=":form-pagina-cadastro:tabview-cadastro:table-funcionario, update-funcionario, messages-func"/>
+					<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{funcionarioBean.inicializarPagina}" 
+						update=":form-pagina-cadastro:tabview-cadastro:table-funcionario, update-funcionario" />
+				</h:panelGroup>
+			</h:panelGroup>
 		</div>
 		
 	</h:panelGroup>
