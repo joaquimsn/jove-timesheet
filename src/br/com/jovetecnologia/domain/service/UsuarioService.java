@@ -58,9 +58,24 @@ public class UsuarioService implements Serializable {
 		
 		usuarioDAO.alterar(usuario);
 	}
-	
+
+	/**
+	 * Pesquisa um usuário persistido associado ao funcionário informado
+	 * @author Joaquim Neto
+	 * @param funcionario 
+	 * @return Usuario
+	 */
 	public Usuario pesquisarPorFuncionario(Funcionario funcionario ){
 		return usuarioDAO.pesquisarPorFuncionario(funcionario);
+	}
+	
+	/**
+	 * Responsável por ativar/inativar um usuário com base no método <b>isAtivo</b>
+	 * @author Joaquim Neto
+	 * @param funcionario Parametro que será utilizado para pesquisar o funcionário
+	 */
+	public void ativarOuInativarPorFuncionario(Funcionario funcionario) {
+		usuarioDAO.ativarOuInativar(funcionario);
 	}
 
 }

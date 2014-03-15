@@ -168,7 +168,7 @@ public class Usuario implements Serializable {
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
-
+	
 	/**
 	 * @return the senha
 	 */

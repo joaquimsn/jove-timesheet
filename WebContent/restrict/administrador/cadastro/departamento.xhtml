@@ -34,10 +34,10 @@
 			
 			<p:column headerText="Status" styleClass="coluna-position-center-15" >
 				<h:panelGroup>
-					<p:commandButton value="Ativo" disabled="#{!departamento.ativo}" actionListener="#{departamentoBean.ativar(departamento)}" 
+					<p:commandButton value="Ativo" disabled="#{departamento.ativo}" actionListener="#{departamentoBean.ativar(departamento)}" 
 						update="table-departamento, :form-pagina-cadastro:tabview-cadastro:messages-dep" styleClass="btn-satatus-ativo" />
 						
-					<p:commandButton value="Inativo" disabled="#{departamento.ativo}" actionListener="#{departamentoBean.ativar(departamento)}" 
+					<p:commandButton value="Inativo" disabled="#{!departamento.ativo}" actionListener="#{departamentoBean.ativar(departamento)}" 
 						update="table-departamento, :form-pagina-cadastro:tabview-cadastro:messages-dep" styleClass="btn-satatus-inativo"/>
 				</h:panelGroup>
 			</p:column>

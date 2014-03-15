@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.Transaction;
 
 import br.com.jovetecnologia.domain.model.Funcionario;
 import br.com.jovetecnologia.infrastructure.connection.ConexaoHibernate;
@@ -62,5 +63,34 @@ public class FuncionarioDAO extends DAO<Funcionario> implements Serializable {
 		}
 		
 		return listaSupervisor;
+	}
+	
+	/**
+	 * Responsavel por ativar ou inativar o funcionario
+	 * @author Joaquim Neto
+	 * @param funcionario Objeto funcionario que será atualizado	
+	 */
+	public void ativarOuInativar(Funcionario funcionario) {
+		session = ConexaoHibernate.getSessionFactory().openSession();
+		Transaction transaction = session.beginTransaction();
+		
+		StringBuilder hql = new StringBuilder("UPDATE Funcionario f SET f.ativo = :ativo");
+		hql.append(" WHERE f = :funcionario");
+
+		try {
+			Query query = session.createQuery(hql.toString());
+			
+			query.setParameter("ativo", funcionario.isAtivo());
+			query.setParameter("funcionario", funcionario);
+			
+			query.executeUpdate();
+			
+			transaction.commit();
+		} catch (Exception e) {
+			transaction.rollback();
+			e.printStackTrace();
+		} finally {
+			ConexaoHibernate.fecharConexao(session);
+		}
 	}
 }

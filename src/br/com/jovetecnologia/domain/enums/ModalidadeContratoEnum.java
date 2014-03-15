@@ -10,8 +10,8 @@ import java.util.List;
  */
 public enum ModalidadeContratoEnum {
 	
-	ESTAGIARIO("Estagiário", 1),
-	EFETIVO("Efetivo", 2),
+	ESTAGIO("Estagio", 1),
+	CLT("CLT", 2),
 	TERCERIZADO("Tecerizado", 3);
 	
 	private String display;

@@ -1,14 +1,22 @@
 package br.com.jovetecnologia.domain.model;
 
 import java.io.Serializable;
-
-import javax.persistence.*;
-
-import br.com.jovetecnologia.infrastructure.util.annotation.Required;
-
-import java.sql.Time;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import br.com.jovetecnologia.infrastructure.util.annotation.Required;
 
 /**
  * The persistent class for the funcionario database table.
@@ -29,18 +37,18 @@ public class Funcionario implements Serializable {
 	private String bairro;
 
 	@Column(name = "carga_horaria")
-	private Time cargaHoraria;
+	private Date cargaHoraria;
 
 	private String celular;
-	
+
 	@Required(label = "CEP", minimo = 9)
 	private String cep;
 
 	private String cidade;
 
 	private String complemento;
-	
-	@Required( label = "CPF", minimo = 14)
+
+	@Required(label = "CPF", minimo = 14)
 	private String cpf;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -54,29 +62,29 @@ public class Funcionario implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_nascimento")
 	private Date dataNascimento;
-	
-	@Required(label = "e-mail", minimo = 15 )
+
+	@Required(label = "e-mail", minimo = 15)
 	private String email;
 
 	private String genero;
 
 	@Column(name = "id_usuario")
 	private int idUsuario;
-	
-	@Required(label =  "Logradouro", minimo = 5)
+
+	@Required(label = "Logradouro", minimo = 5)
 	private String logradouro;
-	
+
 	@Required(label = "Nome", minimo = 10)
 	private String nome;
-	
-	@Required(label =  "Numero", minimo = 1)
+
+	@Required(label = "Numero", minimo = 1)
 	private String numero;
 
 	@Column(name = "telefone_fixo")
 	private String telefoneFixo;
 
 	@Column(name = "tempo_refeicao")
-	private Time tempoRefeicao;
+	private Date tempoRefeicao;
 
 	@Column(name = "tipo_contrato")
 	private String tipoContrato;
@@ -153,14 +161,14 @@ public class Funcionario implements Serializable {
 	/**
 	 * @return the cargaHoraria
 	 */
-	public Time getCargaHoraria() {
+	public Date getCargaHoraria() {
 		return cargaHoraria;
 	}
 
 	/**
 	 * @param cargaHoraria the cargaHoraria to set
 	 */
-	public void setCargaHoraria(Time cargaHoraria) {
+	public void setCargaHoraria(Date cargaHoraria) {
 		this.cargaHoraria = cargaHoraria;
 	}
 
@@ -377,14 +385,14 @@ public class Funcionario implements Serializable {
 	/**
 	 * @return the tempoRefeicao
 	 */
-	public Time getTempoRefeicao() {
+	public Date getTempoRefeicao() {
 		return tempoRefeicao;
 	}
 
 	/**
 	 * @param tempoRefeicao the tempoRefeicao to set
 	 */
-	public void setTempoRefeicao(Time tempoRefeicao) {
+	public void setTempoRefeicao(Date tempoRefeicao) {
 		this.tempoRefeicao = tempoRefeicao;
 	}
 
@@ -486,10 +494,6 @@ public class Funcionario implements Serializable {
 		this.listaUsuarios = listaUsuarios;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -498,10 +502,6 @@ public class Funcionario implements Serializable {
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

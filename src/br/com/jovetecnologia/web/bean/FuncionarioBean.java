@@ -33,6 +33,8 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	private String confirmarSenha;
 
 	private boolean next;
+	
+	private String nivel;
 
 	private List<Funcionario> listaFuncionarioFiltrado;
 	private List<Funcionario> listaFuncionario;
@@ -55,6 +57,10 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 		setReadonly(false);
 	}
 
+	/**
+	 * Limpa os campos senha atual e confirmar senha
+	 * @author Joaquim Neto
+	 */
 	private void limparSenha() {
 		senhaAtual = "";
 		confirmarSenha = "";
@@ -91,9 +97,12 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 		// Cadastra o Usuario junto como o funcionario
 		usuarioSelecionado.setSenha(Criptografia.criptografar(usuarioSelecionado.getSenha()));
 		usuarioSelecionado.setFuncionario(getFuncionarioSelecionado());
+		
 		new UsuarioService().cadastrar(usuarioSelecionado);
 
 		Messages.addInfo("Funcionário cadastrado com sucesso");
+		
+		listarTodos();
 	}
 
 	@Override
@@ -115,9 +124,9 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	public boolean validarSenha() {
 		if (usuarioSelecionado.getSenha().equals(confirmarSenha)) {
 			return true;
-		} else if (hasObjetoSelecionado() && senhaAtual.equals(usuarioSelecionado.getSenha())) {
-			return true;
-		}
+		} //else if (hasObjetoSelecionado() && Criptografia.criptografar(senhaAtual).equals(usuarioSelecionado.getSenha())) {
+//			return true;
+//		}
 
 		Messages.addInfo("As senhas informadas são diferentes");
 
@@ -138,10 +147,17 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 		new FuncionarioService().alterar(getFuncionarioSelecionado());
 
 		Messages.addInfo("Funcionário alterado com sucesso");
+		
+		listarTodos();
 
 	}
 
-	public void ativar(Funcionario funcionario) {
+	/**
+	 * Ativar ou inativa o funcionário como base no método <b>isAtivo</b> se <b>true</b> será alterado para inativo
+	 * @author Joaquim Neto
+	 * @param funcionario Objeto funcionario
+	 */
+	public void ativarOuInativar(Funcionario funcionario) {
 
 		StringBuilder info = new StringBuilder("O funcionário ");
 		info.append(funcionario.getNome()).append(" foi ");
@@ -154,12 +170,16 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 			funcionario.setAtivo(true);
 		}
 
-		new FuncionarioService().alterar(funcionario);
+		new FuncionarioService().ativarOuInativar(funcionario);
 
 		Messages.addInfo(info.toString());
 		listarTodos();
 	}
 
+	/**
+	 * Responsável pela flag de troca de pagina 
+	 * @author Joaquim Neto
+	 */
 	public void mudarPagina() {
 		if (next) {
 			setNext(false);
@@ -264,6 +284,24 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	 */
 	public void setNext(boolean next) {
 		this.next = next;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the nivel
+	 */
+	public String getNivel() {
+		nivel = NivelUsuarioEnum.getDisplayByValue(usuarioSelecionado.getNivel());
+		return nivel;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param nivel the nivel to set
+	 */
+	public void setNivel(String nivel) {
+		this.nivel = nivel;
+		usuarioSelecionado.setNivel(NivelUsuarioEnum.getValueByDisplay(nivel));
 	}
 
 	/**

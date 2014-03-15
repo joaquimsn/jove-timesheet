@@ -39,9 +39,9 @@
 			
 			<p:column headerText="Status" styleClass="coluna-position-center-15" >
 				<h:panelGroup>
-					<p:commandButton value="Ativo" disabled="#{!empresa.ativo}" actionListener="#{empresaBean.ativar(empresa)}" 
+					<p:commandButton value="Ativo" disabled="#{empresa.ativo}" actionListener="#{empresaBean.ativar(empresa)}" 
 						update="table-empresa, :form-pagina-cadastro:tabview-cadastro:messages-emp" styleClass="btn-satatus-ativo" />
-					<p:commandButton value="Inativo" disabled="#{empresa.ativo}" actionListener="#{empresaBean.ativar(empresa)}" 
+					<p:commandButton value="Inativo" disabled="#{!empresa.ativo}" actionListener="#{empresaBean.ativar(empresa)}" 
 						update="table-empresa, :form-pagina-cadastro:tabview-cadastro:messages-emp" styleClass="btn-satatus-inativo"/>
 				</h:panelGroup>
 			</p:column>

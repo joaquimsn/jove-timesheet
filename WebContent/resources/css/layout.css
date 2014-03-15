@@ -715,3 +715,13 @@ Configuração Footer
 	font-size: 13px;
 }
 
+.ui-timepicker-div{
+	font-size: 12px !important;
+}
+
+#ui-datepicker-div {
+	font-size: 12px !important;
+}
+
+}
+

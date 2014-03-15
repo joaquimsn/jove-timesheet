@@ -32,16 +32,16 @@
 				<h:outputText value="#{funcionario.cpf}" />
 			</p:column>
 			
-			<p:column headerText="Departamento" styleClass="coluna-25" filterBy="nome"
+			<p:column headerText="Departamento" styleClass="coluna-25" filterBy="departamento.nome"
 				filterStyle="width:80%;" style="text-align: center;" >
 				<h:outputText value="#{funcionario.departamento.nome}" />
 			</p:column>
 			
 			<p:column headerText="Status" styleClass="coluna-position-center-15" >
 				<h:panelGroup>
-					<p:commandButton value="Ativo" disabled="#{!funcionario.ativo}" actionListener="#{funcionarioBean.ativar(funcionario)}" 
+					<p:commandButton value="Ativo" disabled="#{funcionario.ativo}" actionListener="#{funcionarioBean.ativarOuInativar(funcionario)}" 
 						update="table-funcionario :form-pagina-cadastro:tabview-cadastro:messages-func" styleClass="btn-satatus-ativo" />
-					<p:commandButton value="Inativo" disabled="#{funcionario.ativo}" actionListener="#{funcionarioBean.ativar(funcionario)}" 
+					<p:commandButton value="Inativo" disabled="#{!funcionario.ativo}" actionListener="#{funcionarioBean.ativarOuInativar(funcionario)}" 
 						update="table-funcionario :form-pagina-cadastro:tabview-cadastro:messages-func" styleClass="btn-satatus-inativo"/>
 				</h:panelGroup>
 			</p:column>
@@ -72,8 +72,8 @@
 					
 					<h:panelGrid width="100%">
 						<p:outputLabel value="Data Nascimento" />
-						<p:calendar value="#{funcionarioBean.funcionarioSelecionado.dataNascimento}" pattern="dd/mm/yyyy" size="11"
-							showOn="button" readonlyInput="true" readonly="#{funcionarioBean.readonly}" converter="dateConverter"/> 
+						<p:calendar value="#{funcionarioBean.funcionarioSelecionado.dataNascimento}" navigator="true" display="inline" pattern="dd/mm/yyyy" size="11"
+							 showOn="button" readonlyInput="true" readonly="#{funcionarioBean.readonly}" converter="dateConverter"/> 
 					</h:panelGrid>
 						
 					<h:panelGrid width="100%" >
@@ -153,7 +153,7 @@
 					</h:panelGrid>
 				</h:panelGrid>
 				
-				<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-35, coluna-35, coluna-30">
+				<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-60, coluna-20, coluna-20">
 					<h:panelGrid width="100%">
 						<p:outputLabel value="Modalidade do contrato" />
 						<p:selectOneMenu id="cbx-modalidade-contrato" value="#{funcionarioBean.funcionarioSelecionado.tipoContrato}" style="width: 102%;" 
@@ -165,14 +165,14 @@
 					
 					<h:panelGrid width="100%">
 						<p:outputLabel value="Carga Horária" />
-						<p:inputText value="#{funcionarioBean.funcionarioSelecionado.cargaHoraria}" style="width: 100%;"
-							converter="timeConverter" readonly="#{funcionarioBean.readonly}"/>		
+						<p:calendar value="#{funcionarioBean.funcionarioSelecionado.cargaHoraria}"  showOn="button" readonlyInput="true"
+							 size="7" pattern="HH:mm" timeOnly="true" converter="timeConverter" readonly="#{funcionarioBean.readonly}"/>		
 					</h:panelGrid>
 	
 					<h:panelGrid width="100%">
 						<p:outputLabel value="Tempo Refeição" />
-						<p:inputText value="#{funcionarioBean.funcionarioSelecionado.tempoRefeicao}" style="width: 100%;"
-							converter="timeConverter" readonly="#{funcionarioBean.readonly}" />		
+						<p:calendar value="#{funcionarioBean.funcionarioSelecionado.tempoRefeicao}" showOn="button" readonlyInput="true" 
+							 size="7" style="width:150px; heigth:100px;" pattern="HH:mm" timeOnly="true" converter="timeConverter" readonly="#{funcionarioBean.readonly}"/>		
 					</h:panelGrid>
 				</h:panelGrid>
 				

@@ -40,6 +40,11 @@ public class Constants {
 	public final static DateFormat DATETIME_FORMAT_BRASIL = new SimpleDateFormat(PATTERN_DD_MM_YYYY + " " + PATTERN_HH_MM);
 	
 	/**
+	 * DateFormat no padrão HH:mm
+	 */
+	public final static DateFormat TIME_FORMAT = new SimpleDateFormat(PATTERN_HH_MM);
+	
+	/**
 	 * Byte Order Mark em UTF-8 (EF BB BF)
 	 */
 	public static final String UTF8_BOM = "\uFEFF";

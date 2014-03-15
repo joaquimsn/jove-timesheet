@@ -43,10 +43,24 @@ public class FuncionarioService implements Serializable {
 	 * @param funcionario Objeto funcionario que será alterado
 	 */
 	public void alterar(Funcionario funcionario) {
+		funcionario.setAtivo(true);
 		funcionario.setDataManutencao(new Date());
 		funcionario.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
 		
 		funcionarioDAO.alterar(funcionario);
+	}
+	
+	
+	/**
+	 * Ativa/Inativa o funcionario e o usuario associado a ele conforme o valor do método <b>isAtivo()</b> do objeto.
+	 * @author Joaquim Neto
+	 * @param funcionario Funcionário que será modificado na base
+	 */
+	public void ativarOuInativar(Funcionario funcionario) {
+		funcionarioDAO.ativarOuInativar(funcionario);
+		
+		//Inativa o usuário associado ao funcionario
+		new UsuarioService().ativarOuInativarPorFuncionario(funcionario);
 	}
 	
 	/**
