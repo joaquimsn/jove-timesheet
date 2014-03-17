@@ -11,19 +11,20 @@
 	
 		<h:panelGrid styleClass="grid-alterar-usuario-senha" columns="2" columnClasses="coluna-40, coluna-60">		
 			<p:outputLabel value=" Novo usuário" styleClass="label-padrao" />
-			<p:inputText value="joaquim" />
+			<p:inputText value="#{perfilBean.usuarioSelecionado.login}" />
 			
 			<p:outputLabel value="Senha atual" styleClass="label-padrao" />
-			<p:inputText value="" />
+			<p:password value="#{perfilBean.senhaAtual}" />
 			
 			<p:outputLabel value=" Nova senha" styleClass="label-padrao" />
-			<p:inputText value="" />
+			<p:password value="#{perfilBean.novaSenha}" />
 			
 			<p:outputLabel value="Confirmar senha" styleClass="label-padrao" />
-			<p:inputText value="" />
+			<p:password value="#{perfilBean.confirmarSenha}" />
 			 
-			<p:commandButton value="Cancelar"  styleClass="btn-padrao" style="margin-left: 50px;" />
-			<p:commandButton value="Alterar"  styleClass="btn-padrao" style="margin-left: 50px;" />
+			<p:commandButton value="Cancelar"  styleClass="btn-padrao" style="margin-left: 50px;" onsuccess="alterarUsuarioSenha.hide();" />
+			<p:commandButton value="Alterar"  styleClass="btn-padrao" style="margin-left: 50px;" actionListener="#{perfilBean.alterar}" 
+				update=":form-meuperfil:messages-perfil" immediate="true" />
 		</h:panelGrid>
 		
 	</p:dialog>
