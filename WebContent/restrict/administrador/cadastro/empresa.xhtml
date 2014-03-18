@@ -14,7 +14,8 @@
 		<p:dataTable id="table-empresa" value="#{empresaBean.listaEmpresa}" var="empresa" rowKey="#{empresa.idEmpresa}"  widgetVar="tabelaEmpresa"
 			selection="#{empresaBean.empresaSelecionada}" selectionMode="single" paginator="true" rows="5" filteredValue="#{empresaBean.listaEmpresaFiltrada}"
 			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
-			paginatorPosition="bottom" resizableColumns="flase" style="width: 940px;">
+			paginatorPosition="bottom" resizableColumns="flase" style="width: 940px;"
+			emptyMessage="Nenhum registro foi encontrado" >
 			
 			<p:ajax event="rowSelect" update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-completo"/>
 			
@@ -39,9 +40,9 @@
 			
 			<p:column headerText="Status" styleClass="coluna-position-center-15" >
 				<h:panelGroup>
-					<p:commandButton value="Ativo" disabled="#{empresa.ativo}" actionListener="#{empresaBean.ativar(empresa)}" 
+					<p:commandButton value="Ativo" disabled="#{empresa.ativo}" actionListener="#{empresaBean.ativarOuInativar(empresa)}" 
 						update="table-empresa, :form-pagina-cadastro:tabview-cadastro:messages-emp" styleClass="btn-satatus-ativo" />
-					<p:commandButton value="Inativo" disabled="#{!empresa.ativo}" actionListener="#{empresaBean.ativar(empresa)}" 
+					<p:commandButton value="Inativo" disabled="#{!empresa.ativo}" actionListener="#{empresaBean.ativarOuInativar(empresa)}" 
 						update="table-empresa, :form-pagina-cadastro:tabview-cadastro:messages-emp" styleClass="btn-satatus-inativo"/>
 				</h:panelGroup>
 			</p:column>

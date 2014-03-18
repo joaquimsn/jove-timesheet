@@ -14,7 +14,8 @@
 		<p:dataTable id="table-funcionario" value="#{funcionarioBean.listaFuncionario}" var="funcionario" rowKey="#{funcionario.idFuncionario}"  widgetVar="tabelaFuncionario"
 			selection="#{funcionarioBean.funcionarioSelecionado}" selectionMode="single" paginator="true" rows="5" filteredValue="#{funcionarioBean.listaFuncionarioFiltrado}"
 			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
-			paginatorPosition="bottom" resizableColumns="flase" style="width: 940px;">
+			paginatorPosition="bottom" resizableColumns="flase" style="width: 940px;"
+			emptyMessage="Nenhum registro foi encontrado" >
 			
 			<p:ajax event="rowSelect" update=":form-pagina-cadastro:tabview-cadastro:update-funcionario"/>
 			
@@ -53,7 +54,7 @@
 	<h:panelGroup id="update-funcionario" styleClass="formulario-cadastro-completo" >
 		
 		<h:panelGroup id="wizard" >		
-			<p:panel header="Dados pessoais" rendered="#{!funcionarioBean.next}">
+			<p:panel header="Dados pessoais" rendered="#{!funcionarioBean.next}" style="width: 938px;">
 				<h:panelGrid styleClass="panel-form-cadastro" columns="4" columnClasses="coluna-40, coluna-15, coluna-20, coluna-25">
 					<h:panelGrid width="100%">
 						<p:outputLabel value="Nome"/>
@@ -207,10 +208,9 @@
 				
 				<p:commandButton value="Anterior" update="wizard" actionListener="#{funcionarioBean.mudarPagina}" 
 					style="font-size: 14px;" />
-			</p:panel>
-			
+			</p:panel>			
 		</h:panelGroup>
-		
+
 		<!-- Botões exibidos na view -->
 		<div style="margin-top: 18px;">
 			<!-- Botões para cadastro, exibido apenas se não tiver uma empresa selecionada-->
@@ -239,8 +239,7 @@
 						update=":form-pagina-cadastro:tabview-cadastro:table-funcionario, update-funcionario" />
 				</h:panelGroup>
 			</h:panelGroup>
-		</div>
-		
+		</div>	
 	</h:panelGroup>
 	
 </ui:composition>

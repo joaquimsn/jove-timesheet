@@ -34,8 +34,6 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 
 	private boolean next;
 	
-	private String nivel;
-
 	private List<Funcionario> listaFuncionarioFiltrado;
 	private List<Funcionario> listaFuncionario;
 	private List<Funcionario> listaSupervisor;
@@ -102,7 +100,7 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 
 		Messages.addInfo("Funcionário cadastrado com sucesso");
 		
-		listarTodos();
+		inicializarPagina();
 	}
 
 	@Override
@@ -122,15 +120,18 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	 * @return <b>true</b> As senhas informadas forem iguais.
 	 */
 	public boolean validarSenha() {
-		if (usuarioSelecionado.getSenha().equals(confirmarSenha)) {
-			return true;
-		} //else if (hasObjetoSelecionado() && Criptografia.criptografar(senhaAtual).equals(usuarioSelecionado.getSenha())) {
+//		if (usuarioSelecionado.getSenha().equals(confirmarSenha)) {
+//			return true;
+//		} //else if (hasObjetoSelecionado() && Criptografia.criptografar(senhaAtual).equals(usuarioSelecionado.getSenha())) {
 //			return true;
 //		}
-
-		Messages.addInfo("As senhas informadas são diferentes");
-
-		return false;
+		
+		//remover 
+//
+//		Messages.addError("As senhas informadas são diferentes");
+//
+//		return false;
+		return true;
 	}
 
 	@Override
@@ -148,7 +149,7 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 
 		Messages.addInfo("Funcionário alterado com sucesso");
 		
-		listarTodos();
+		inicializarPagina();
 
 	}
 
@@ -284,24 +285,6 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	 */
 	public void setNext(boolean next) {
 		this.next = next;
-	}
-
-	/**
-	 * @author Joaquim Neto
-	 * @return the nivel
-	 */
-	public String getNivel() {
-		nivel = NivelUsuarioEnum.getDisplayByValue(usuarioSelecionado.getNivel());
-		return nivel;
-	}
-
-	/**
-	 * @author Joaquim Neto
-	 * @param nivel the nivel to set
-	 */
-	public void setNivel(String nivel) {
-		this.nivel = nivel;
-		usuarioSelecionado.setNivel(NivelUsuarioEnum.getValueByDisplay(nivel));
 	}
 
 	/**

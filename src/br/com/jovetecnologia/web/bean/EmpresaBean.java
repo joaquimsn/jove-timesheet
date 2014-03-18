@@ -79,11 +79,11 @@ public class EmpresaBean extends CadastroBean implements Serializable, ICrudBean
 	}
 
 	/**
-	 * Responsavel por ativar ou inativar a empresa selecionada
+	 * Ativar ou inativa a empresa como base no método <b>isAtivo</b> se <b>true</b> será alterado para inativo
 	 * @author Joaquim Neto
-	 * @param empresa Objeto Empresa
+	 * @param empresa Objeto empresa
 	 */
-	public void ativar(Empresa empresa) {
+	public void ativarOuInativar(Empresa empresa) {
 
 		StringBuilder info = new StringBuilder("A empresa ");
 		info.append(empresa.getRazaoSocial()).append(" foi ");
@@ -96,7 +96,7 @@ public class EmpresaBean extends CadastroBean implements Serializable, ICrudBean
 			empresa.setAtivo(true);
 		}
 
-		new EmpresaService().alterar(empresa);
+		new EmpresaService().ativarOuInativar(empresa);
 
 		Messages.addInfo(info.toString());
 		listarTodos();

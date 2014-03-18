@@ -47,10 +47,20 @@ public class EmpresaService implements Serializable {
 	 * @param empresa Objeto empresa que será alterado
 	 */
 	public void alterar(Empresa empresa) {
+		empresa.setAtivo(true);
 		empresa.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
 		empresa.setDataManutencao(new Date());
 		
 		empresaDAO.alterar(empresa);
+	}
+	
+	/**
+	 * Ativa/Inativa a empresa com base no valor do método <b>isAtivo()</b> do objeto.
+	 * @author Joaquim Neto
+	 * @param empresa Objeto que será modificado na base
+	 */
+	public void ativarOuInativar(Empresa empresa) {
+		empresaDAO.ativarOuInativar(empresa);
 	}
 	
 	/**

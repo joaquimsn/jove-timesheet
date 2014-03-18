@@ -52,7 +52,7 @@ public class FuncionarioService implements Serializable {
 	
 	
 	/**
-	 * Ativa/Inativa o funcionario e o usuario associado a ele conforme o valor do método <b>isAtivo()</b> do objeto.
+	 * Ativa/Inativa o funcionario e o usuario associado a ele com base no valor do método <b>isAtivo()</b> do objeto.
 	 * @author Joaquim Neto
 	 * @param funcionario Funcionário que será modificado na base
 	 */

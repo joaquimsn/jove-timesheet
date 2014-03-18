@@ -25,13 +25,13 @@
 				<div id="usuario-direta">
 					<h:panelGrid styleClass="grid-funcionario-meuperfil" columns="2" columnClasses="coluna-40, coluna-60">
 						<h:outputLabel value="Funcionário" styleClass="campo-label-funcionario" />
-						<h:outputLabel value="#{perfilBean.funcionarioSelecionado.nome}" styleClass="campo-padrao" />
+						<h:outputLabel value="#{perfilBean.funcionario.nome}" styleClass="campo-padrao" />
 						
 						<h:outputLabel value="E-mail" styleClass="campo-label-funcionario" />
-						<h:outputLabel value="#{perfilBean.funcionarioSelecionado.email}" styleClass="campo-padrao" />						
+						<h:outputLabel value="#{perfilBean.funcionario.email}" styleClass="campo-padrao" />						
 	
 						<h:outputLabel value="Usuário" styleClass="campo-label-funcionario" />
-						<h:outputLabel value="#{perfilBean.usuarioSelecionado.login}" styleClass="campo-padrao" />
+						<h:outputLabel value="#{perfilBean.usuario.login}" styleClass="campo-padrao" />
 						
 						<h:outputLabel value="Senha" styleClass="campo-label-funcionario" />
 						<h:outputLabel value="*********" styleClass="campo-padrao" />
@@ -47,13 +47,13 @@
 					<h:panelGrid styleClass="panel-form-cadastro" columns="4" columnClasses="coluna-40, coluna-15, coluna-20, coluna-25">
 						<h:panelGrid width="100%">
 							<p:outputLabel value="Nome"/>
-							<p:inputText value="#{perfilBean.funcionarioSelecionado.nome}" style="width: 100%;" 
+							<p:inputText value="#{perfilBean.funcionario.nome}" style="width: 100%;" 
 								maxlength="100" readonly="#{perfilBean.readonly}" onkeyup="mascara(this, soTexto);" />	
 						</h:panelGrid>
 						
 						<h:panelGrid width="100%">
 							<p:outputLabel value="Género" />
-							<p:selectOneMenu value="#{perfilBean.funcionarioSelecionado.genero}" style="width: 105%;"  disabled="#{perfilBean.readonly}">
+							<p:selectOneMenu value="#{perfilBean.funcionario.genero}" style="width: 105%;"  disabled="#{perfilBean.readonly}">
 								<f:selectItem itemLabel="selecione" itemValue=""/>
 								<f:selectItem itemLabel="Masculino" itemValue="m"/>
 								<f:selectItem itemLabel="Feminino" itemValue="f"/>
@@ -62,13 +62,13 @@
 						
 						<h:panelGrid width="100%">
 							<p:outputLabel value="Data Nascimento" />
-							<p:calendar value="#{perfilBean.funcionarioSelecionado.dataNascimento}" navigator="true" display="inline" pattern="dd/mm/yyyy" size="11"
+							<p:calendar value="#{perfilBean.funcionario.dataNascimento}" navigator="true" display="inline" pattern="dd/mm/yyyy" size="11"
 								 showOn="button" readonlyInput="true" readonly="#{perfilBean.readonly}" converter="dateConverter"/> 
 						</h:panelGrid>
 							
 						<h:panelGrid width="100%" >
 							<p:outputLabel value="CPF" />
-							<p:inputText value="#{perfilBean.funcionarioSelecionado.cpf}" style="width: 100%;" 
+							<p:inputText value="#{perfilBean.funcionario.cpf}" style="width: 100%;" 
 								maxlength="14" readonly="#{perfilBean.readonly}" onkeyup="mascara(this, maskCpf);" />
 						</h:panelGrid>
 						
@@ -77,25 +77,25 @@
 					<h:panelGrid styleClass="panel-form-cadastro" columns="4" columnClasses="coluna-45, coluna-20, coluna-25, coluna-10">
 						<h:panelGrid width="100%">
 							<p:outputLabel value="Logradouro" />
-							<p:inputText value="#{perfilBean.funcionarioSelecionado.logradouro}" style="width: 100%;"
+							<p:inputText value="#{perfilBean.funcionario.logradouro}" style="width: 100%;"
 								maxlength="120" readonly="#{perfilBean.readonly}" onkeyup="mascara(this, mista);"/>		
 						</h:panelGrid>
 						
 						<h:panelGrid width="100%">
 							<p:outputLabel value="Bairro" />
-							<p:inputText value="#{perfilBean.funcionarioSelecionado.bairro}" style="width: 100%;" maxlength="50" readonly="#{perfilBean.readonly}"
+							<p:inputText value="#{perfilBean.funcionario.bairro}" style="width: 100%;" maxlength="50" readonly="#{perfilBean.readonly}"
 								onkeyup="mascara(this, soTextoNumeros);" />		
 						</h:panelGrid>
 						
 						<h:panelGrid width="100%">
 							<p:outputLabel value="Complemento" />
-							<p:inputText value="#{perfilBean.funcionarioSelecionado.complemento}" style="width: 100%;" 
+							<p:inputText value="#{perfilBean.funcionario.complemento}" style="width: 100%;" 
 								maxlength="50" readonly="#{perfilBean.readonly}" onkeyup="mascara(this, mista);" />		
 						</h:panelGrid>
 						
 						<h:panelGrid width="100%">
 							<p:outputLabel value="Nº" />
-							<p:inputText value="#{perfilBean.funcionarioSelecionado.numero}" style="width: 100%;" 
+							<p:inputText value="#{perfilBean.funcionario.numero}" style="width: 100%;" 
 								maxlength="10" readonly="#{perfilBean.readonly}" onkeyup="mascara(this, soNumeros);" />		
 						</h:panelGrid>
 					</h:panelGrid>
@@ -103,7 +103,7 @@
 					<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-50, coluna-30, coluna-20">
 						<h:panelGrid width="100%">
 							<p:outputLabel value="CEP" />
-							<p:inputText value="#{perfilBean.funcionarioSelecionado.cep}" style="width: 100%;" 
+							<p:inputText value="#{perfilBean.funcionario.cep}" style="width: 100%;" 
 								maxlength="9" readonly="#{perfilBean.readonly}" onkeyup="mascara(this, maskCep);" />
 						</h:panelGrid>
 		
@@ -126,19 +126,19 @@
 					<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-25, coluna-25, coluna-50">
 						<h:panelGrid width="100%">
 							<p:outputLabel value="Telefone Fixo" />
-							<p:inputText value="#{perfilBean.funcionarioSelecionado.telefoneFixo}" style="width: 100%;" 
+							<p:inputText value="#{perfilBean.funcionario.telefoneFixo}" style="width: 100%;" 
 								maxlength="15" readonly="#{perfilBean.readonly}" onkeyup="mascara(this, maskTelefone);" />		
 						</h:panelGrid>
 						
 						<h:panelGrid width="100%">
 							<p:outputLabel value="Celular" />
-							<p:inputText value="#{perfilBean.funcionarioSelecionado.celular}" style="width: 100%;"
+							<p:inputText value="#{perfilBean.funcionario.celular}" style="width: 100%;"
 								maxlength="15" readonly="#{perfilBean.readonly}" onkeyup="mascara(this, maskTelefone);" />		
 						</h:panelGrid>
 		
 						<h:panelGrid width="100%">
 							<p:outputLabel value="E-mail" />
-							<p:inputText value="#{perfilBean.funcionarioSelecionado.email}" style="width: 100%;" 
+							<p:inputText value="#{perfilBean.funcionario.email}" style="width: 100%;" 
 								maxlength="100" readonly="#{perfilBean.readonly}" onkeyup="mascara(this, mista);" />		
 						</h:panelGrid>
 					</h:panelGrid>
@@ -146,19 +146,19 @@
 					<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-60, coluna-20, coluna-20">
 						<h:panelGrid width="100%">
 							<p:outputLabel value="Modalidade do contrato" />
-							<p:inputText value="#{perfilBean.funcionarioSelecionado.tipoContrato}" style="width: 100%;" 
+							<p:inputText value="#{perfilBean.funcionario.tipoContrato}" style="width: 100%;" 
 								maxlength="100" readonly="#{perfilBean.readonly}" onkeyup="mascara(this, soTexto);" />
 						</h:panelGrid>
 						
 						<h:panelGrid width="100%">
 							<p:outputLabel value="Carga Horária" />
-							<p:calendar value="#{perfilBean.funcionarioSelecionado.cargaHoraria}"  showOn="button" readonlyInput="true"
+							<p:calendar value="#{perfilBean.funcionario.cargaHoraria}"  showOn="button" readonlyInput="true"
 								 size="7" pattern="HH:mm" timeOnly="true" converter="timeConverter" readonly="#{perfilBean.readonly}"/>		
 						</h:panelGrid>
 		
 						<h:panelGrid width="100%">
 							<p:outputLabel value="Tempo Refeição" />
-							<p:calendar value="#{perfilBean.funcionarioSelecionado.tempoRefeicao}" showOn="button" readonlyInput="true" 
+							<p:calendar value="#{perfilBean.funcionario.tempoRefeicao}" showOn="button" readonlyInput="true" 
 								 size="7" style="width:150px; heigth:100px;" pattern="HH:mm" timeOnly="true" converter="timeConverter" readonly="#{perfilBean.readonly}"/>		
 						</h:panelGrid>
 					</h:panelGrid>
@@ -166,13 +166,13 @@
 					<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-50, coluna-50">
 						<h:panelGrid width="100%">
 							<p:outputLabel value="Departamento" />
-							<p:inputText value="#{perfilBean.funcionarioSelecionado.departamento.nome}" style="width: 100%;" 
+							<p:inputText value="#{perfilBean.funcionario.departamento.nome}" style="width: 100%;" 
 								maxlength="100" readonly="#{perfilBean.readonly}" onkeyup="mascara(this, soTexto);" />
 						</h:panelGrid>
 		
 						<h:panelGrid width="100%">
 							<p:outputLabel value="Supervisor" />
-							<p:inputText value="#{perfilBean.funcionarioSelecionado.funcionario.nome}" style="width: 100%;" 
+							<p:inputText value="#{perfilBean.funcionario.funcionario.nome}" style="width: 100%;" 
 								maxlength="100" readonly="#{perfilBean.readonly}" onkeyup="mascara(this, soTexto);" />
 						</h:panelGrid>
 					</h:panelGrid>

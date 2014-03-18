@@ -14,7 +14,8 @@
 		<p:dataTable id="table-departamento" value="#{departamentoBean.listaDepartamento}" var="departamento" rowKey="#{departamento.idDepartamento}"  widgetVar="tabelaDepartamento"
 			selection="#{departamentoBean.departamentoSelecionado}" selectionMode="single" paginator="true" rows="3" filteredValue="#{departamentoBean.listaDepartamentoFiltrado}"
 			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
-			paginatorPosition="bottom" resizableColumns="flase" style="width: 940px;">
+			paginatorPosition="bottom" resizableColumns="flase" style="width: 940px;"
+			emptyMessage="Nenhum registro foi encontrado" >
 			
 			<p:ajax event="rowSelect" update=":form-pagina-cadastro:tabview-cadastro:formulario-cadastro-simples"/>
 			
@@ -34,10 +35,10 @@
 			
 			<p:column headerText="Status" styleClass="coluna-position-center-15" >
 				<h:panelGroup>
-					<p:commandButton value="Ativo" disabled="#{departamento.ativo}" actionListener="#{departamentoBean.ativar(departamento)}" 
+					<p:commandButton value="Ativo" disabled="#{departamento.ativo}" actionListener="#{departamentoBean.ativarOuInativar(departamento)}" 
 						update="table-departamento, :form-pagina-cadastro:tabview-cadastro:messages-dep" styleClass="btn-satatus-ativo" />
 						
-					<p:commandButton value="Inativo" disabled="#{!departamento.ativo}" actionListener="#{departamentoBean.ativar(departamento)}" 
+					<p:commandButton value="Inativo" disabled="#{!departamento.ativo}" actionListener="#{departamentoBean.ativarOuInativar(departamento)}" 
 						update="table-departamento, :form-pagina-cadastro:tabview-cadastro:messages-dep" styleClass="btn-satatus-inativo"/>
 				</h:panelGroup>
 			</p:column>

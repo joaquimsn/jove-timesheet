@@ -6,7 +6,7 @@ import javax.annotation.PostConstruct;
 public interface ICrudBean {
 
 	/**
-	 * Inicia os compontes essenciais para o funcionamento da pagina Atividade
+	 * Inicia os compontes essenciais para o funcionamento da pagina
 	 * @author Joaquim Neto
 	 */
 	@PostConstruct
@@ -45,9 +45,9 @@ public interface ICrudBean {
 	void alterar();
 
 	/**
-	 * Retorna <b>true</b> se existir empresa selecionada, caso contrario retorna false
+	 * Retorna <b>true</b> se existir um objeto selecionada, caso contrario retorna false
 	 * @author Joaquim Neto
-	 * @return <b>true</b> Se tiver empresa selecionado
+	 * @return <b>true</b> Se tiver objeto selecionado
 	 */
 	boolean hasObjetoSelecionado();
 

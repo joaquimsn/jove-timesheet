@@ -43,6 +43,15 @@ public class DepartamentoService implements Serializable{
 		departamentoDAO.alterar(departamento);
 	}
 	
+	/**
+	 * Ativa/Inativa o departamento com base no valor do método <b>isAtivo()</b> do objeto.
+	 * @author Joaquim Neto
+	 * @param departamento Objeto que será modificado na base
+	 */
+	public void ativarOuInativar(Departamento departamento) {
+		departamentoDAO.ativarOuInativar(departamento);
+	}
+	
 	
 	/**
 	 * Retorna todos os depatamentos salvo na base em ordem decrescente

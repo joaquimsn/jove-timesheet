@@ -80,6 +80,7 @@ Configuração do formulario de login
 	height: 290px;
 	background: #eee;
 	border: 1px solid;
+	opacity: 0.97;
 	border-radius: 10px;
 	position: relative;
 }

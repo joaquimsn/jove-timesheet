@@ -36,7 +36,6 @@ public class Empresa implements Serializable {
 	@Required(label = "CNPJ", minimo = 3)
 	private String cnpj;
 
-	@Required(label = "Complemento", minimo = 2)
 	private String complemento;
 
 	@Temporal(TemporalType.TIMESTAMP)

@@ -76,11 +76,11 @@ public class DepartamentoBean extends CadastroBean implements Serializable, ICru
 	}
 	
 	/**
-	 * Responsavel por ativar ou inativar um departamento selecionado
+	 * Ativar ou inativa o departamento como base no método <b>isAtivo</b> se <b>true</b> será alterado para inativo
 	 * @author Joaquim Neto
-	 * @param departamento Objeto Departamento
+	 * @param departamento Objeto departamento
 	 */
-	public void ativar(Departamento departamento) {
+	public void ativarOuInativar(Departamento departamento) {
 
 		StringBuilder info = new StringBuilder("O departamento ");
 		info.append(departamento.getNome()).append(" foi ");

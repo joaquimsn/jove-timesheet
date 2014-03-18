@@ -8,10 +8,11 @@ import javax.faces.bean.ViewScoped;
 
 import br.com.jovetecnologia.domain.model.Funcionario;
 import br.com.jovetecnologia.domain.model.Usuario;
-import br.com.jovetecnologia.domain.service.PerfilService;
+import br.com.jovetecnologia.domain.service.UsuarioService;
 import br.com.jovetecnologia.infrastructure.util.Criptografia;
 import br.com.jovetecnologia.infrastructure.util.IOutcome;
 import br.com.jovetecnologia.infrastructure.util.Messages;
+import br.com.jovetecnologia.infrastructure.util.SystemUtils;
 
 @ManagedBean
 @ViewScoped
@@ -25,8 +26,8 @@ public class PerfilBean implements Serializable{
 	private String senhaAtual;
 	private String confirmarSenha;
 
-	private Funcionario funcionarioSelecionado;
-	private Usuario usuarioSelecionado;
+	private Funcionario funcionario;
+	private Usuario usuario;
 
 	/**
 	 * Abre a pagina meuperfil
@@ -43,13 +44,21 @@ public class PerfilBean implements Serializable{
 	 */
 	@PostConstruct
 	public void inicializarPagina() {
-		PerfilService perfilService = new PerfilService();
 		
-		setUsuarioSelecionado(perfilService.obterUsuario());
+		setUsuario(SystemUtils.getUsuarioLogado());
 		
-		setFuncionarioSelecionado(perfilService.obterFuncionario());
+		setFuncionario(SystemUtils.getFuncionarioLogado());
 		
 		setReadonly(true);
+		
+		limparSenha();
+		
+	}
+	
+	private void limparSenha() {
+		novaSenha = "";
+		senhaAtual = "";
+		confirmarSenha = "";
 	}
 	
 	/**
@@ -61,64 +70,68 @@ public class PerfilBean implements Serializable{
 			return;
 		}
 
-		new PerfilService().alterar(getUsuarioSelecionado());
+		new UsuarioService().alterar(getUsuario());
 
 		inicializarPagina();
 
 		Messages.addInfo("Dados Alterados com sucesso");
 	}
-
+	
 	/**
 	 * Valida se as senhas informadas são iguais.
 	 * @author Joaquim Neto
 	 * @return <b>true</b> As senhas informadas forem iguais.
 	 */
 	public boolean validarSenha() {
-		if (getSenhaAtual().equals(confirmarSenha)) {
+		if (getNovaSenha().equals(confirmarSenha)) {
 			
-			if (!Criptografia.criptografar(senhaAtual).equals(usuarioSelecionado.getSenha())) {
+			if (!Criptografia.criptografar(senhaAtual).equals(getUsuario().getSenha())) {
 				Messages.addError("A senha atual está incorreta");
 				return false;
 			}
-			
+			limparSenha();			
 			return true;
 		}
 		
 		Messages.addError("As senhas informadas são diferentes");
-
+		limparSenha();
 		return false;
 	}
 
 	/**
 	 * @author Joaquim Neto
-	 * @return the funcionarioSelecionado
+	 * @return the funcionario
 	 */
-	public Funcionario getFuncionarioSelecionado() {
-		return funcionarioSelecionado;
+	public Funcionario getFuncionario() {
+		return funcionario;
 	}
 
 	/**
 	 * @author Joaquim Neto
-	 * @param funcionarioSelecionado the funcionarioSelecionado to set
+	 * @param funcionario the funcionario to set
 	 */
-	public void setFuncionarioSelecionado(Funcionario funcionarioSelecionado) {
-		this.funcionarioSelecionado = funcionarioSelecionado;
+	public void setFuncionario(Funcionario funcionario) {
+		if (funcionario != null) {
+			this.funcionario = funcionario;
+		}
 	}
 
 	/**
 	 * @author Joaquim Neto
-	 * @return the usuarioSelecionado
+	 * @return the usuario
 	 */
-	public Usuario getUsuarioSelecionado() {
-		return usuarioSelecionado;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
 	/**
 	 * @author Joaquim Neto
-	 * @param usuarioSelecionado the usuarioSelecionado to set
+	 * @param usuario the usuario to set
 	 */
-	public void setUsuarioSelecionado(Usuario usuarioSelecionado) {
-		this.usuarioSelecionado = usuarioSelecionado;
+	public void setUsuario(Usuario usuario) {
+		if (usuario != null) {
+			this.usuario = usuario;
+		}
 	}
 
 	/**
@@ -150,7 +163,9 @@ public class PerfilBean implements Serializable{
 	 * @param novaSenha the novaSenha to set
 	 */
 	public void setNovaSenha(String novaSenha) {
-		this.novaSenha = novaSenha;
+		if (novaSenha != null ) {
+			this.novaSenha = novaSenha;
+		}
 	}
 
 	/**
@@ -166,7 +181,9 @@ public class PerfilBean implements Serializable{
 	 * @param senhaAtual the senhaAtual to set
 	 */
 	public void setSenhaAtual(String senhaAtual) {
-		this.senhaAtual = senhaAtual;
+		if (senhaAtual != null) {
+			this.senhaAtual = senhaAtual;
+		}
 	}
 
 	/**
@@ -182,6 +199,8 @@ public class PerfilBean implements Serializable{
 	 * @param confirmarSenha the confirmarSenha to set
 	 */
 	public void setConfirmarSenha(String confirmarSenha) {
-		this.confirmarSenha = confirmarSenha;
+		if (confirmarSenha != null) {
+			this.confirmarSenha = confirmarSenha;
+		}
 	}
 }
