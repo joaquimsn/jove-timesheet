@@ -135,7 +135,7 @@
 		</h:panelGrid>
 		
 		<!-- Botões exibidos na view -->
-		<div class="botoes-tela-cadastro" >
+		<div class="botoes-tela-cadastro" style="margin-right: 0 !important;" >
 			<!-- Botões para cadastro, exibido apenas se não tiver uma empresa selecionada-->
 			<h:panelGroup rendered="#{!empresaBean.hasObjetoSelecionado()}" >
 				<p:commandButton value="Cadastrar" styleClass="btn-padrao" actionListener="#{empresaBean.cadastrar}" 

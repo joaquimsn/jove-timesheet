@@ -64,11 +64,11 @@ public class AcompanhamentoBean {
 	
 	public boolean isFuncionarioSelecionado(){
 		
-		if (funcionario.getNome() == null){
-			return false;
-		}
+//		if (funcionario.getNome() == null){
+//			return false;
+//		}
 		
-		return true;
+		return false;
 	}
 
 	/**

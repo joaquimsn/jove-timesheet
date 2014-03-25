@@ -41,7 +41,7 @@ public class Departamento implements Serializable {
 	@Column(name="id_usuario")
 	private int idUsuario;
 	
-	@Required(label = "Nome Departamento", minimo = 3)
+	@Required(label = "Nome", minimo = 3)
 	private String nome;
 
 	//bi-directional many-to-one association to Empresa

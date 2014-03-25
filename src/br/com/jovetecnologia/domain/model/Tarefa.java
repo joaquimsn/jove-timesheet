@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import br.com.jovetecnologia.infrastructure.util.annotation.Required;
+
 import java.util.Date;
 import java.util.List;
 
@@ -30,7 +32,8 @@ public class Tarefa implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_manutencao")
 	private Date dataManutencao;
-
+	
+	@Required(label = "Descrição", minimo = 5)
 	private String descricao;
 
 	@Column(name = "id_atividade")
@@ -38,7 +41,8 @@ public class Tarefa implements Serializable {
 
 	@Column(name = "id_usuario")
 	private int idUsuario;
-
+	
+	@Required(label = "Nome", minimo = 5)
 	private String nome;
 
 	// bi-directional many-to-one association to AtividadeTarefa

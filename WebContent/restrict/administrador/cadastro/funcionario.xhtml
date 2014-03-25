@@ -167,13 +167,13 @@
 					<h:panelGrid width="100%">
 						<p:outputLabel value="Carga Horária" />
 						<p:calendar value="#{funcionarioBean.funcionarioSelecionado.cargaHoraria}"  showOn="button" readonlyInput="true"
-							 size="7" pattern="HH:mm" timeOnly="true" converter="timeConverter" readonly="#{funcionarioBean.readonly}"/>		
+							 size="11" pattern="HH:mm" timeOnly="true" converter="timeConverter" readonly="#{funcionarioBean.readonly}"/>		
 					</h:panelGrid>
 	
 					<h:panelGrid width="100%">
 						<p:outputLabel value="Tempo Refeição" />
 						<p:calendar value="#{funcionarioBean.funcionarioSelecionado.tempoRefeicao}" showOn="button" readonlyInput="true" 
-							 size="7" style="width:150px; heigth:100px;" pattern="HH:mm" timeOnly="true" converter="timeConverter" readonly="#{funcionarioBean.readonly}"/>		
+							 size="11" styleClass="input-timer" pattern="HH:mm" timeOnly="true" converter="timeConverter" readonly="#{funcionarioBean.readonly}"/>		
 					</h:panelGrid>
 				</h:panelGrid>
 				
@@ -199,7 +199,7 @@
 				</h:panelGrid>
 				
 				<p:commandButton value="Próximo" update="wizard" actionListener="#{funcionarioBean.mudarPagina}" 
-					style="margin-left: 800px; font-size: 14px;" />
+					style="margin-left: 820px; font-size: 14px;" />
 			</p:panel>
 			
 			<p:panel header="Credenciais de acesso" rendered="#{funcionarioBean.next}">
@@ -207,12 +207,12 @@
 				<ui:include src="/restrict/administrador/cadastro/usuario.xhtml" />
 				
 				<p:commandButton value="Anterior" update="wizard" actionListener="#{funcionarioBean.mudarPagina}" 
-					style="font-size: 14px;" />
+					style="font-size: 14px; margin-left:190px" />
 			</p:panel>			
 		</h:panelGroup>
 
 		<!-- Botões exibidos na view -->
-		<div style="margin-top: 18px;">
+		<div style="margin: 17px 0 0 725px;">
 			<!-- Botões para cadastro, exibido apenas se não tiver uma empresa selecionada-->
 			<h:panelGroup rendered="#{!funcionarioBean.hasObjetoSelecionado()}" >
 				<p:commandButton value="Cadastrar" styleClass="btn-padrao" actionListener="#{funcionarioBean.cadastrar}" 

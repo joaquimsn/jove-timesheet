@@ -52,6 +52,10 @@ CSS universal
 	width: 54%;
 }
 
+.input-timer{
+	width: 70% !important; 
+}
+
 /*===================================
 Configuração do Menu
 =====================================*/
@@ -335,6 +339,11 @@ Configuração pagina cadastro
 }
 
 /* Outras para definição do posicionamento dentro da tr */
+.coluna-position-center-5 {
+	width: 5%;
+	text-align: center;
+}
+
 .coluna-position-center-15 {
 	width: 15%;
 	text-align: center;
@@ -358,7 +367,7 @@ Configuração pagina cadastro
  =================================== */
 .botoes-tela-cadastro {
 	height: 30px;
-	margin: 15px 10px;
+	margin: 15px 165px;
 	float: right;
 }
 
