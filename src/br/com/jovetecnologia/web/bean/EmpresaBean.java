@@ -104,7 +104,7 @@ public class EmpresaBean extends CadastroBean implements Serializable, ICrudBean
 
 	@Override
 	public boolean hasObjetoSelecionado() {
-		if (empresaSelecionada.getIdUsuario() == 0) {
+		if (empresaSelecionada.getUsuarioModificador() == 0) {
 			return false;
 		}
 		return true;

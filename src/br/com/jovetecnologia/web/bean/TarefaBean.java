@@ -103,7 +103,7 @@ public class TarefaBean extends CadastroBean implements Serializable, ICrudBean 
 
 	@Override
 	public boolean hasObjetoSelecionado() {
-		if (getTarefaSelecionada().getIdUsuario() == 0) {
+		if (getTarefaSelecionada().getUsuarioModificador() == 0) {
 			return false;
 		}
 		return true;

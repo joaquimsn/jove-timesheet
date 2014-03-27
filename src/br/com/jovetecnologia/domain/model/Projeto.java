@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-import br.com.jovetecnologia.infrastructure.util.annotation.Required;
-
 import java.util.Date;
 import java.util.List;
 
@@ -15,55 +13,64 @@ import java.util.List;
 @Entity
 @Table(name = "projeto")
 public class Projeto implements Serializable {
-	private static final long serialVersionUID = -4140344418911494794L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_projeto")
 	private int idProjeto;
 
-	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private boolean ativo;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_cadastro")
 	private Date dataCadastro;
 
+	@Temporal(TemporalType.DATE)
+	@Column(name = "data_fim")
+	private Date dataFim;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name = "data_inicio")
+	private Date dataInicio;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_manutencao")
 	private Date dataManutencao;
-	
-	@Required(label = "Descrição", minimo = 10)
+
 	private String descricao;
 
-	@Column(name = "id_usuario")
-	private int idUsuario;
-	
-	@Required(label = "Nome", minimo = 5)
 	private String nome;
+
+	@Column(name = "usuario_modificador")
+	private int usuarioModificador;
 
 	// bi-directional many-to-one association to Registro
 	@OneToMany(mappedBy = "projeto")
-	private List<Registro> listaRegistros;
+	private List<Registro> registros;
+
+	// bi-directional many-to-one association to RelProjetoAtividade
+	@OneToMany(mappedBy = "projeto")
+	private List<RelProjetoAtividade> relProjetoAtividades;
+
+	// bi-directional many-to-one association to RelProjetoFuncionario
+	@OneToMany(mappedBy = "projeto")
+	private List<RelProjetoFuncionario> relProjetoFuncionarios;
 
 	public Projeto() {
 	}
 
-	/**
-	 * @return the idProjeto
-	 */
 	public int getIdProjeto() {
-		return idProjeto;
+		return this.idProjeto;
 	}
 
-	/**
-	 * @param idProjeto the idProjeto to set
-	 */
 	public void setIdProjeto(int idProjeto) {
 		this.idProjeto = idProjeto;
 	}
 
 	/**
+	 * @author Joaquim Neto
 	 * @return the ativo
 	 */
 	public boolean isAtivo() {
@@ -71,99 +78,163 @@ public class Projeto implements Serializable {
 	}
 
 	/**
+	 * @author Joaquim Neto
 	 * @param ativo the ativo to set
 	 */
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
 
-	/**
-	 * @return the dataCadastro
-	 */
 	public Date getDataCadastro() {
-		return dataCadastro;
+		return this.dataCadastro;
 	}
 
-	/**
-	 * @param dataCadastro the dataCadastro to set
-	 */
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 
-	/**
-	 * @return the dataManutencao
-	 */
-	public Date getDataManutencao() {
-		return dataManutencao;
+	public Date getDataFim() {
+		return this.dataFim;
 	}
 
-	/**
-	 * @param dataManutencao the dataManutencao to set
-	 */
+	public void setDataFim(Date dataFim) {
+		this.dataFim = dataFim;
+	}
+
+	public Date getDataInicio() {
+		return this.dataInicio;
+	}
+
+	public void setDataInicio(Date dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	public Date getDataManutencao() {
+		return this.dataManutencao;
+	}
+
 	public void setDataManutencao(Date dataManutencao) {
 		this.dataManutencao = dataManutencao;
 	}
 
-	/**
-	 * @return the descricao
-	 */
 	public String getDescricao() {
-		return descricao;
+		return this.descricao;
 	}
 
-	/**
-	 * @param descricao the descricao to set
-	 */
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 
-	/**
-	 * @return the idUsuario
-	 */
-	public int getIdUsuario() {
-		return idUsuario;
-	}
-
-	/**
-	 * @param idUsuario the idUsuario to set
-	 */
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
-	}
-
-	/**
-	 * @return the nome
-	 */
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
-	/**
-	 * @param nome the nome to set
-	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	/**
-	 * @return the listaRegistros
-	 */
-	public List<Registro> getListaRegistros() {
-		return listaRegistros;
+	public int getUsuarioModificador() {
+		return this.usuarioModificador;
 	}
 
-	/**
-	 * @param listaRegistros the listaRegistros to set
-	 */
-	public void setListaRegistros(List<Registro> listaRegistros) {
-		this.listaRegistros = listaRegistros;
+	public void setUsuarioModificador(int usuarioModificador) {
+		this.usuarioModificador = usuarioModificador;
 	}
 
-	public Projeto(int idProjeto) {
-		super();
-		this.idProjeto = idProjeto;
+	public List<Registro> getRegistros() {
+		return this.registros;
+	}
+
+	public void setRegistros(List<Registro> registros) {
+		this.registros = registros;
+	}
+
+	public Registro addRegistro(Registro registro) {
+		getRegistros().add(registro);
+		registro.setProjeto(this);
+
+		return registro;
+	}
+
+	public Registro removeRegistro(Registro registro) {
+		getRegistros().remove(registro);
+		registro.setProjeto(null);
+
+		return registro;
+	}
+
+	public List<RelProjetoAtividade> getRelProjetoAtividades() {
+		return this.relProjetoAtividades;
+	}
+
+	public void setRelProjetoAtividades(List<RelProjetoAtividade> relProjetoAtividades) {
+		this.relProjetoAtividades = relProjetoAtividades;
+	}
+
+	public RelProjetoAtividade addRelProjetoAtividade(RelProjetoAtividade relProjetoAtividade) {
+		getRelProjetoAtividades().add(relProjetoAtividade);
+		relProjetoAtividade.setProjeto(this);
+
+		return relProjetoAtividade;
+	}
+
+	public RelProjetoAtividade removeRelProjetoAtividade(RelProjetoAtividade relProjetoAtividade) {
+		getRelProjetoAtividades().remove(relProjetoAtividade);
+		relProjetoAtividade.setProjeto(null);
+
+		return relProjetoAtividade;
+	}
+
+	public List<RelProjetoFuncionario> getRelProjetoFuncionarios() {
+		return this.relProjetoFuncionarios;
+	}
+
+	public void setRelProjetoFuncionarios(List<RelProjetoFuncionario> relProjetoFuncionarios) {
+		this.relProjetoFuncionarios = relProjetoFuncionarios;
+	}
+
+	public RelProjetoFuncionario addRelProjetoFuncionario(RelProjetoFuncionario relProjetoFuncionario) {
+		getRelProjetoFuncionarios().add(relProjetoFuncionario);
+		relProjetoFuncionario.setProjeto(this);
+
+		return relProjetoFuncionario;
+	}
+
+	public RelProjetoFuncionario removeRelProjetoFuncionario(RelProjetoFuncionario relProjetoFuncionario) {
+		getRelProjetoFuncionarios().remove(relProjetoFuncionario);
+		relProjetoFuncionario.setProjeto(null);
+
+		return relProjetoFuncionario;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idProjeto;
+		return result;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Projeto other = (Projeto) obj;
+		if (idProjeto != other.idProjeto)
+			return false;
+		return true;
 	}
 
 }

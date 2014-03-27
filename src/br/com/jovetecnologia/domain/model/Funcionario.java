@@ -1,54 +1,43 @@
 package br.com.jovetecnologia.domain.model;
 
 import java.io.Serializable;
+
+import javax.persistence.*;
+
 import java.util.Date;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import br.com.jovetecnologia.infrastructure.util.annotation.Required;
 
 /**
  * The persistent class for the funcionario database table.
  */
 @Entity
 @Table(name = "funcionario")
+@NamedQuery(name = "Funcionario.findAll", query = "SELECT f FROM Funcionario f")
 public class Funcionario implements Serializable {
-	private static final long serialVersionUID = 1173982713922256842L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_funcionario")
 	private int idFuncionario;
 
-	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private boolean ativo;
 
 	private String bairro;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "carga_horaria")
 	private Date cargaHoraria;
 
 	private String celular;
 
-	@Required(label = "CEP", minimo = 9)
 	private String cep;
 
 	private String cidade;
 
 	private String complemento;
 
-	@Required(label = "CPF", minimo = 14)
 	private String cpf;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -63,26 +52,20 @@ public class Funcionario implements Serializable {
 	@Column(name = "data_nascimento")
 	private Date dataNascimento;
 
-	@Required(label = "e-mail", minimo = 15)
 	private String email;
 
 	private String genero;
 
-	@Column(name = "id_usuario")
-	private int idUsuario;
-
-	@Required(label = "Logradouro", minimo = 5)
 	private String logradouro;
 
-	@Required(label = "Nome", minimo = 10)
 	private String nome;
 
-	@Required(label = "Numero", minimo = 1)
 	private String numero;
 
 	@Column(name = "telefone_fixo")
 	private String telefoneFixo;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "tempo_refeicao")
 	private Date tempoRefeicao;
 
@@ -91,6 +74,9 @@ public class Funcionario implements Serializable {
 
 	private String uf;
 
+	@Column(name = "usuario_modificador")
+	private int usuarioModificador;
+
 	// bi-directional many-to-one association to Departamento
 	@ManyToOne
 	@JoinColumn(name = "id_departamento")
@@ -98,39 +84,38 @@ public class Funcionario implements Serializable {
 
 	// bi-directional many-to-one association to Funcionario
 	@ManyToOne
-	@JoinColumn(name = "fk_id_funcionario")
+	@JoinColumn(name = "id_superior")
 	private Funcionario funcionario;
 
 	// bi-directional many-to-one association to Funcionario
 	@OneToMany(mappedBy = "funcionario")
-	private List<Funcionario> listaFuncionarios;
+	private List<Funcionario> funcionarios;
 
 	// bi-directional many-to-one association to Registro
 	@OneToMany(mappedBy = "funcionario")
-	private List<Registro> listaRegistros;
+	private List<Registro> registros;
+
+	// bi-directional many-to-one association to RelProjetoFuncionario
+	@OneToMany(mappedBy = "funcionario")
+	private List<RelProjetoFuncionario> relProjetoFuncionarios;
 
 	// bi-directional many-to-one association to Usuario
 	@OneToMany(mappedBy = "funcionario")
-	private List<Usuario> listaUsuarios;
+	private List<Usuario> usuarios;
 
 	public Funcionario() {
 	}
 
-	/**
-	 * @return the idFuncionario
-	 */
 	public int getIdFuncionario() {
-		return idFuncionario;
+		return this.idFuncionario;
 	}
 
-	/**
-	 * @param idFuncionario the idFuncionario to set
-	 */
 	public void setIdFuncionario(int idFuncionario) {
 		this.idFuncionario = idFuncionario;
 	}
 
 	/**
+	 * @author Joaquim Neto
 	 * @return the ativo
 	 */
 	public boolean isAtivo() {
@@ -138,362 +123,239 @@ public class Funcionario implements Serializable {
 	}
 
 	/**
+	 * @author Joaquim Neto
 	 * @param ativo the ativo to set
 	 */
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
 
-	/**
-	 * @return the bairro
-	 */
 	public String getBairro() {
-		return bairro;
+		return this.bairro;
 	}
 
-	/**
-	 * @param bairro the bairro to set
-	 */
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
 
-	/**
-	 * @return the cargaHoraria
-	 */
 	public Date getCargaHoraria() {
-		return cargaHoraria;
+		return this.cargaHoraria;
 	}
 
-	/**
-	 * @param cargaHoraria the cargaHoraria to set
-	 */
 	public void setCargaHoraria(Date cargaHoraria) {
 		this.cargaHoraria = cargaHoraria;
 	}
 
-	/**
-	 * @return the celular
-	 */
 	public String getCelular() {
-		return celular;
+		return this.celular;
 	}
 
-	/**
-	 * @param celular the celular to set
-	 */
 	public void setCelular(String celular) {
 		this.celular = celular;
 	}
 
-	/**
-	 * @return the cep
-	 */
 	public String getCep() {
-		return cep;
+		return this.cep;
 	}
 
-	/**
-	 * @param cep the cep to set
-	 */
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
 
-	/**
-	 * @return the cidade
-	 */
 	public String getCidade() {
-		return cidade;
+		return this.cidade;
 	}
 
-	/**
-	 * @param cidade the cidade to set
-	 */
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
 
-	/**
-	 * @return the complemento
-	 */
 	public String getComplemento() {
-		return complemento;
+		return this.complemento;
 	}
 
-	/**
-	 * @param complemento the complemento to set
-	 */
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
 
-	/**
-	 * @return the cpf
-	 */
 	public String getCpf() {
-		return cpf;
+		return this.cpf;
 	}
 
-	/**
-	 * @param cpf the cpf to set
-	 */
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
-	/**
-	 * @return the dataCadastro
-	 */
 	public Date getDataCadastro() {
-		return dataCadastro;
+		return this.dataCadastro;
 	}
 
-	/**
-	 * @param dataCadastro the dataCadastro to set
-	 */
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 
-	/**
-	 * @return the dataManutencao
-	 */
 	public Date getDataManutencao() {
-		return dataManutencao;
+		return this.dataManutencao;
 	}
 
-	/**
-	 * @param dataManutencao the dataManutencao to set
-	 */
 	public void setDataManutencao(Date dataManutencao) {
 		this.dataManutencao = dataManutencao;
 	}
 
-	/**
-	 * @return the dataNascimento
-	 */
 	public Date getDataNascimento() {
-		return dataNascimento;
+		return this.dataNascimento;
 	}
 
-	/**
-	 * @param dataNascimento the dataNascimento to set
-	 */
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
-	/**
-	 * @return the email
-	 */
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
-	/**
-	 * @param email the email to set
-	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	/**
-	 * @return the genero
-	 */
 	public String getGenero() {
-		return genero;
+		return this.genero;
 	}
 
-	/**
-	 * @param genero the genero to set
-	 */
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
 
-	/**
-	 * @return the idUsuario
-	 */
-	public int getIdUsuario() {
-		return idUsuario;
-	}
-
-	/**
-	 * @param idUsuario the idUsuario to set
-	 */
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
-	}
-
-	/**
-	 * @return the logradouro
-	 */
 	public String getLogradouro() {
-		return logradouro;
+		return this.logradouro;
 	}
 
-	/**
-	 * @param logradouro the logradouro to set
-	 */
 	public void setLogradouro(String logradouro) {
 		this.logradouro = logradouro;
 	}
 
-	/**
-	 * @return the nome
-	 */
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
-	/**
-	 * @param nome the nome to set
-	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	/**
-	 * @return the numero
-	 */
 	public String getNumero() {
-		return numero;
+		return this.numero;
 	}
 
-	/**
-	 * @param numero the numero to set
-	 */
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
-	/**
-	 * @return the telefoneFixo
-	 */
 	public String getTelefoneFixo() {
-		return telefoneFixo;
+		return this.telefoneFixo;
 	}
 
-	/**
-	 * @param telefoneFixo the telefoneFixo to set
-	 */
 	public void setTelefoneFixo(String telefoneFixo) {
 		this.telefoneFixo = telefoneFixo;
 	}
 
-	/**
-	 * @return the tempoRefeicao
-	 */
 	public Date getTempoRefeicao() {
-		return tempoRefeicao;
+		return this.tempoRefeicao;
 	}
 
-	/**
-	 * @param tempoRefeicao the tempoRefeicao to set
-	 */
 	public void setTempoRefeicao(Date tempoRefeicao) {
 		this.tempoRefeicao = tempoRefeicao;
 	}
 
-	/**
-	 * @return the tipoContrato
-	 */
 	public String getTipoContrato() {
-		return tipoContrato;
+		return this.tipoContrato;
 	}
 
-	/**
-	 * @param tipoContrato the tipoContrato to set
-	 */
 	public void setTipoContrato(String tipoContrato) {
 		this.tipoContrato = tipoContrato;
 	}
 
-	/**
-	 * @return the uf
-	 */
 	public String getUf() {
-		return uf;
+		return this.uf;
 	}
 
-	/**
-	 * @param uf the uf to set
-	 */
 	public void setUf(String uf) {
 		this.uf = uf;
 	}
 
-	/**
-	 * @return the departamento
-	 */
-	public Departamento getDepartamento() {
-		return departamento;
+	public int getUsuarioModificador() {
+		return this.usuarioModificador;
 	}
 
-	/**
-	 * @param departamento the departamento to set
-	 */
+	public void setUsuarioModificador(int usuarioModificador) {
+		this.usuarioModificador = usuarioModificador;
+	}
+
+	public Departamento getDepartamento() {
+		return this.departamento;
+	}
+
 	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
 	}
 
-	/**
-	 * @return the funcionario
-	 */
 	public Funcionario getFuncionario() {
-		return funcionario;
+		return this.funcionario;
 	}
 
-	/**
-	 * @param funcionario the funcionario to set
-	 */
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
 	}
 
-	/**
-	 * @return the listaFuncionarios
-	 */
-	public List<Funcionario> getListaFuncionarios() {
-		return listaFuncionarios;
+	public List<Funcionario> getFuncionarios() {
+		return this.funcionarios;
 	}
 
-	/**
-	 * @param listaFuncionarios the listaFuncionarios to set
-	 */
-	public void setListaFuncionarios(List<Funcionario> listaFuncionarios) {
-		this.listaFuncionarios = listaFuncionarios;
+	public void setFuncionarios(List<Funcionario> funcionarios) {
+		this.funcionarios = funcionarios;
 	}
 
-	/**
-	 * @return the listaRegistros
-	 */
-	public List<Registro> getListaRegistros() {
-		return listaRegistros;
+	public Funcionario addFuncionario(Funcionario funcionario) {
+		getFuncionarios().add(funcionario);
+		funcionario.setFuncionario(this);
+
+		return funcionario;
 	}
 
-	/**
-	 * @param listaRegistros the listaRegistros to set
-	 */
-	public void setListaRegistros(List<Registro> listaRegistros) {
-		this.listaRegistros = listaRegistros;
+	public Funcionario removeFuncionario(Funcionario funcionario) {
+		getFuncionarios().remove(funcionario);
+		funcionario.setFuncionario(null);
+
+		return funcionario;
 	}
 
-	/**
-	 * @return the listaUsuarios
-	 */
-	public List<Usuario> getListaUsuarios() {
-		return listaUsuarios;
+	public List<Registro> getRegistros() {
+		return this.registros;
 	}
 
-	/**
-	 * @param listaUsuarios the listaUsuarios to set
-	 */
-	public void setListaUsuarios(List<Usuario> listaUsuarios) {
-		this.listaUsuarios = listaUsuarios;
+	public void setRegistros(List<Registro> registros) {
+		this.registros = registros;
 	}
 
+	public List<RelProjetoFuncionario> getRelProjetoFuncionarios() {
+		return this.relProjetoFuncionarios;
+	}
+
+	public void setRelProjetoFuncionarios(List<RelProjetoFuncionario> relProjetoFuncionarios) {
+		this.relProjetoFuncionarios = relProjetoFuncionarios;
+	}
+
+	public List<Usuario> getUsuarios() {
+		return this.usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -502,6 +364,10 @@ public class Funcionario implements Serializable {
 		return result;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

@@ -28,7 +28,7 @@ public class AtividadeService implements Serializable{
 		atividade.setAtivo(true);
 		atividade.setDataCadastro(new Date());
 		atividade.setDataManutencao(new Date());
-		atividade.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
+		atividade.setUsuarioModificador(SystemUtils.getUsuarioLogado().getIdUsuario());
 		
 		atividadeDAO.cadastar(atividade);
 	}
@@ -41,7 +41,7 @@ public class AtividadeService implements Serializable{
 	public void alterar(Atividade atividade) {
 		atividade.setAtivo(true);
 		atividade.setDataManutencao(new Date());
-		atividade.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
+		atividade.setUsuarioModificador(SystemUtils.getUsuarioLogado().getIdUsuario());
 		
 		atividadeDAO.alterar(atividade);
 	}

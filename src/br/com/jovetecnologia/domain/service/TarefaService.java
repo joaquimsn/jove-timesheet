@@ -28,7 +28,7 @@ public class TarefaService implements Serializable{
 		tarefa.setAtivo(true);
 		tarefa.setDataCadastro(new Date());
 		tarefa.setDataManutencao(new Date());
-		tarefa.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
+		tarefa.setUsuarioModificador(SystemUtils.getUsuarioLogado().getIdUsuario());
 		
 		tarefaDAO.cadastar(tarefa);
 	}
@@ -41,7 +41,7 @@ public class TarefaService implements Serializable{
 	public void alterar(Tarefa tarefa) {
 		tarefa.setAtivo(true);
 		tarefa.setDataManutencao(new Date());
-		tarefa.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
+		tarefa.setUsuarioModificador(SystemUtils.getUsuarioLogado().getIdUsuario());
 		
 		tarefaDAO.alterar(tarefa);
 	}

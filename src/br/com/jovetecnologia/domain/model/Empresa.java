@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-import br.com.jovetecnologia.infrastructure.util.annotation.Required;
-
 import java.util.Date;
 import java.util.List;
 
@@ -15,25 +13,22 @@ import java.util.List;
 @Entity
 @Table(name = "empresa")
 public class Empresa implements Serializable {
-	private static final long serialVersionUID = 7719689909954321363L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_empresa")
 	private int idEmpresa;
 
-	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private boolean ativo;
 
-	@Required(label = "Bairro", minimo = 3)
 	private String bairro;
 
-	@Required(label = "CEP", minimo = 3)
 	private String cep;
-	
+
 	private String cidade;
-	
-	@Required(label = "CNPJ", minimo = 3)
+
 	private String cnpj;
 
 	private String complemento;
@@ -46,22 +41,14 @@ public class Empresa implements Serializable {
 	@Column(name = "data_manutencao")
 	private Date dataManutencao;
 
-	@Required(label = "e-mail", minimo = 10)
 	private String email;
 
-	@Required(label = "Fantasia", minimo = 3)
 	private String fantasia;
 
-	@Column(name = "id_usuario")
-	private int idUsuario;
-	
-	@Required(label = "Logradouro", minimo = 5)
 	private String logradouro;
-	
-	@Required(label = "Numero", minimo = 1)
+
 	private String numero;
-	
-	@Required(label = "Razão Social", minimo = 10)
+
 	@Column(name = "razao_social")
 	private String razaoSocial;
 
@@ -69,28 +56,26 @@ public class Empresa implements Serializable {
 
 	private String uf;
 
+	@Column(name = "usuario_modificador")
+	private int usuarioModificador;
+
 	// bi-directional many-to-one association to Departamento
 	@OneToMany(mappedBy = "empresa")
-	private List<Departamento> listaDepartamentos;
+	private List<Departamento> departamentos;
 
 	public Empresa() {
 	}
 
-	/**
-	 * @return the idEmpresa
-	 */
 	public int getIdEmpresa() {
-		return idEmpresa;
+		return this.idEmpresa;
 	}
 
-	/**
-	 * @param idEmpresa the idEmpresa to set
-	 */
 	public void setIdEmpresa(int idEmpresa) {
 		this.idEmpresa = idEmpresa;
 	}
 
 	/**
+	 * @author Joaquim Neto
 	 * @return the ativo
 	 */
 	public boolean isAtivo() {
@@ -98,234 +83,119 @@ public class Empresa implements Serializable {
 	}
 
 	/**
+	 * @author Joaquim Neto
 	 * @param ativo the ativo to set
 	 */
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
 
-	/**
-	 * @return the bairro
-	 */
 	public String getBairro() {
-		return bairro;
+		return this.bairro;
 	}
 
-	/**
-	 * @param bairro the bairro to set
-	 */
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
 
-	/**
-	 * @return the cep
-	 */
 	public String getCep() {
-		return cep;
+		return this.cep;
 	}
 
-	/**
-	 * @param cep the cep to set
-	 */
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
 
-	/**
-	 * @return the cidade
-	 */
 	public String getCidade() {
-		return cidade;
+		return this.cidade;
 	}
 
-	/**
-	 * @param cidade the cidade to set
-	 */
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
 
-	/**
-	 * @return the cnpj
-	 */
 	public String getCnpj() {
-		return cnpj;
+		return this.cnpj;
 	}
 
-	/**
-	 * @param cnpj the cnpj to set
-	 */
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
 
-	/**
-	 * @return the complemento
-	 */
 	public String getComplemento() {
-		return complemento;
+		return this.complemento;
 	}
 
-	/**
-	 * @param complemento the complemento to set
-	 */
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
 
-	/**
-	 * @return the dataCadastro
-	 */
 	public Date getDataCadastro() {
-		return dataCadastro;
+		return this.dataCadastro;
 	}
 
-	/**
-	 * @param dataCadastro the dataCadastro to set
-	 */
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 
-	/**
-	 * @return the dataManutencao
-	 */
 	public Date getDataManutencao() {
-		return dataManutencao;
+		return this.dataManutencao;
 	}
 
-	/**
-	 * @param dataManutencao the dataManutencao to set
-	 */
 	public void setDataManutencao(Date dataManutencao) {
 		this.dataManutencao = dataManutencao;
 	}
 
-	/**
-	 * @return the email
-	 */
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
-	/**
-	 * @param email the email to set
-	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	/**
-	 * @return the fantasia
-	 */
 	public String getFantasia() {
-		return fantasia;
+		return this.fantasia;
 	}
 
-	/**
-	 * @param fantasia the fantasia to set
-	 */
 	public void setFantasia(String fantasia) {
 		this.fantasia = fantasia;
 	}
 
-	/**
-	 * @return the idUsuario
-	 */
-	public int getIdUsuario() {
-		return idUsuario;
-	}
-
-	/**
-	 * @param idUsuario the idUsuario to set
-	 */
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
-	}
-
-	/**
-	 * @return the logradouro
-	 */
 	public String getLogradouro() {
-		return logradouro;
+		return this.logradouro;
 	}
 
-	/**
-	 * @param logradouro the logradouro to set
-	 */
 	public void setLogradouro(String logradouro) {
 		this.logradouro = logradouro;
 	}
 
-	/**
-	 * @return the numero
-	 */
 	public String getNumero() {
-		return numero;
+		return this.numero;
 	}
 
-	/**
-	 * @param numero the numero to set
-	 */
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
-	/**
-	 * @return the razaoSocial
-	 */
 	public String getRazaoSocial() {
-		return razaoSocial;
+		return this.razaoSocial;
 	}
 
-	/**
-	 * @param razaoSocial the razaoSocial to set
-	 */
 	public void setRazaoSocial(String razaoSocial) {
 		this.razaoSocial = razaoSocial;
 	}
 
-	/**
-	 * @return the telefone
-	 */
 	public String getTelefone() {
-		return telefone;
+		return this.telefone;
 	}
 
-	/**
-	 * @param telefone the telefone to set
-	 */
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
-	/**
-	 * @return the uf
-	 */
 	public String getUf() {
-		return uf;
-	}
-
-	/**
-	 * @param uf the uf to set
-	 */
-	public void setUf(String uf) {
-		this.uf = uf;
-	}
-
-	/**
-	 * @return the listaDepartamentos
-	 */
-	public List<Departamento> getListaDepartamentos() {
-		return listaDepartamentos;
-	}
-
-	/**
-	 * @param listaDepartamentos the listaDepartamentos to set
-	 */
-	public void setListaDepartamentos(List<Departamento> listaDepartamentos) {
-		this.listaDepartamentos = listaDepartamentos;
+		return this.uf;
 	}
 
 	/*
@@ -357,4 +227,39 @@ public class Empresa implements Serializable {
 			return false;
 		return true;
 	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+
+	public int getUsuarioModificador() {
+		return this.usuarioModificador;
+	}
+
+	public void setUsuarioModificador(int usuarioModificador) {
+		this.usuarioModificador = usuarioModificador;
+	}
+
+	public List<Departamento> getDepartamentos() {
+		return this.departamentos;
+	}
+
+	public void setDepartamentos(List<Departamento> departamentos) {
+		this.departamentos = departamentos;
+	}
+
+	public Departamento addDepartamento(Departamento departamento) {
+		getDepartamentos().add(departamento);
+		departamento.setEmpresa(this);
+
+		return departamento;
+	}
+
+	public Departamento removeDepartamento(Departamento departamento) {
+		getDepartamentos().remove(departamento);
+		departamento.setEmpresa(null);
+
+		return departamento;
+	}
+
 }

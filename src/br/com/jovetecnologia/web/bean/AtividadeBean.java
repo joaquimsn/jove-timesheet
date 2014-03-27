@@ -103,7 +103,7 @@ public class AtividadeBean extends CadastroBean implements Serializable, ICrudBe
 
 	@Override
 	public boolean hasObjetoSelecionado() {
-		if (getAtividadeSelecionada().getIdUsuario() == 0) {
+		if (getAtividadeSelecionada().getUsuarioModificador() == 0) {
 			return false;
 		}
 		return true;

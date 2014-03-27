@@ -101,7 +101,7 @@ public class DepartamentoBean extends CadastroBean implements Serializable, ICru
 
 	@Override
 	public boolean hasObjetoSelecionado() {
-		if (getDepartamentoSelecionado().getIdUsuario() == 0) {
+		if (getDepartamentoSelecionado().getUsuarioModificador() == 0) {
 			return false;
 		}
 		return true;

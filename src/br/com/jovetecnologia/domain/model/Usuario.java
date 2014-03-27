@@ -1,36 +1,28 @@
 package br.com.jovetecnologia.domain.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import br.com.jovetecnologia.domain.enums.NivelUsuarioEnum;
-import br.com.jovetecnologia.infrastructure.util.annotation.Required;
+
+import java.util.Date;
 
 /**
  * The persistent class for the usuario database table.
  */
 @Entity
 @Table(name = "usuario")
+@NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
 public class Usuario implements Serializable {
-	private static final long serialVersionUID = 5309645625068380023L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_usuario")
 	private int idUsuario;
 
-	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private boolean ativo;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -41,16 +33,14 @@ public class Usuario implements Serializable {
 	@Column(name = "data_manutencao")
 	private Date dataManutencao;
 
-	@Column(name = "fk_id_usuario")
-	private int fkIdUsuario;
-
-	@Required(label = "Login", minimo = 3)
 	private String login;
 
 	private int nivel;
-	
-	@Required(label = "Senha", minimo = 6)
+
 	private String senha;
+
+	@Column(name = "usuario_modificador")
+	private int usuarioModificador;
 
 	// bi-directional many-to-one association to Funcionario
 	@ManyToOne
@@ -71,21 +61,16 @@ public class Usuario implements Serializable {
 		return false;
 	}
 
-	/**
-	 * @return the idUsuario
-	 */
 	public int getIdUsuario() {
-		return idUsuario;
+		return this.idUsuario;
 	}
 
-	/**
-	 * @param idUsuario the idUsuario to set
-	 */
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 
 	/**
+	 * @author Joaquim Neto
 	 * @return the ativo
 	 */
 	public boolean isAtivo() {
@@ -93,106 +78,65 @@ public class Usuario implements Serializable {
 	}
 
 	/**
+	 * @author Joaquim Neto
 	 * @param ativo the ativo to set
 	 */
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
 
-	/**
-	 * @return the dataCadastro
-	 */
 	public Date getDataCadastro() {
-		return dataCadastro;
+		return this.dataCadastro;
 	}
 
-	/**
-	 * @param dataCadastro the dataCadastro to set
-	 */
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 
-	/**
-	 * @return the dataManutencao
-	 */
 	public Date getDataManutencao() {
-		return dataManutencao;
+		return this.dataManutencao;
 	}
 
-	/**
-	 * @param dataManutencao the dataManutencao to set
-	 */
 	public void setDataManutencao(Date dataManutencao) {
 		this.dataManutencao = dataManutencao;
 	}
 
-	/**
-	 * @return the fkIdUsuario
-	 */
-	public int getFkIdUsuario() {
-		return fkIdUsuario;
-	}
-
-	/**
-	 * @param fkIdUsuario the fkIdUsuario to set
-	 */
-	public void setFkIdUsuario(int fkIdUsuario) {
-		this.fkIdUsuario = fkIdUsuario;
-	}
-
-	/**
-	 * @return the login
-	 */
 	public String getLogin() {
-		return login;
+		return this.login;
 	}
 
-	/**
-	 * @param login the login to set
-	 */
 	public void setLogin(String login) {
 		this.login = login;
 	}
 
-	/**
-	 * @return the nivel
-	 */
 	public int getNivel() {
-		return nivel;
+		return this.nivel;
 	}
 
-	/**
-	 * @param nivel the nivel to set
-	 */
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
-	
-	/**
-	 * @return the senha
-	 */
+
 	public String getSenha() {
-		return senha;
+		return this.senha;
 	}
 
-	/**
-	 * @param senha the senha to set
-	 */
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
 
-	/**
-	 * @return the funcionario
-	 */
-	public Funcionario getFuncionario() {
-		return funcionario;
+	public int getUsuarioModificador() {
+		return this.usuarioModificador;
 	}
 
-	/**
-	 * @param funcionario the funcionario to set
-	 */
+	public void setUsuarioModificador(int usuarioModificador) {
+		this.usuarioModificador = usuarioModificador;
+	}
+
+	public Funcionario getFuncionario() {
+		return this.funcionario;
+	}
+
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
 	}

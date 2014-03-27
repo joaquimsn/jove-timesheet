@@ -27,7 +27,7 @@ public class DepartamentoService implements Serializable{
 		departamento.setAtivo(true);
 		departamento.setDataCadastro(new Date());
 		departamento.setDataManutencao(new Date());
-		departamento.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
+		departamento.setUsuarioModificador(SystemUtils.getUsuarioLogado().getIdUsuario());
 		departamentoDAO.cadastar(departamento);
 	}
 	
@@ -38,7 +38,7 @@ public class DepartamentoService implements Serializable{
 	 */
 	public void alterar(Departamento departamento) {
 		departamento.setDataManutencao(new Date());
-		departamento.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
+		departamento.setUsuarioModificador(SystemUtils.getUsuarioLogado().getIdUsuario());
 		
 		departamentoDAO.alterar(departamento);
 	}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC "-//HIBERNATE/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
-
-<hibernate-configuration> 
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
 	<session-factory>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.connection.datasource">java:jboss/datasources/joveTimesheetDS</property>
@@ -10,16 +10,22 @@
 		<property name="hibernate.hbm2ddl.auto">false</property>
 		<property name="connection.release_mode">after_transaction</property>
 		<property name="current_session_context_class">thread</property>
+		<property name="hibernate.connection.zeroDateTimeBehavior">convertToNull</property>
 
 		<!-- Mapeamentos das Entity -->
-		<mapping class="br.com.jovetecnologia.domain.model.Usuario" />
 		<mapping class="br.com.jovetecnologia.domain.model.Atividade" />
-		<mapping class="br.com.jovetecnologia.domain.model.Projeto" />
 		<mapping class="br.com.jovetecnologia.domain.model.Tarefa" />
-		<mapping class="br.com.jovetecnologia.domain.model.Funcionario" />
+		<mapping class="br.com.jovetecnologia.domain.model.Projeto" />
 		<mapping class="br.com.jovetecnologia.domain.model.Empresa" />
 		<mapping class="br.com.jovetecnologia.domain.model.Departamento" />
+		<mapping class="br.com.jovetecnologia.domain.model.Funcionario" />
+		<mapping class="br.com.jovetecnologia.domain.model.Usuario" />
 		<mapping class="br.com.jovetecnologia.domain.model.Registro" />
-		<mapping class="br.com.jovetecnologia.domain.model.AtividadeTarefa" />
+		<mapping class="br.com.jovetecnologia.domain.model.RelAtividadeTarefa" />
+		<mapping class="br.com.jovetecnologia.domain.model.RelAtividadeTarefaPK" />
+		<mapping class="br.com.jovetecnologia.domain.model.RelProjetoAtividade" />
+		<mapping class="br.com.jovetecnologia.domain.model.RelProjetoAtividadePK" />
+		<mapping class="br.com.jovetecnologia.domain.model.RelProjetoFuncionarioPK" />
+		<mapping class="br.com.jovetecnologia.domain.model.RelProjetoFuncionario" />
 	</session-factory>
 </hibernate-configuration>

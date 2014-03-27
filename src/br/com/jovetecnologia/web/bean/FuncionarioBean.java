@@ -191,7 +191,7 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 
 	@Override
 	public boolean hasObjetoSelecionado() {
-		if (funcionarioSelecionado.getIdUsuario() == 0) {
+		if (funcionarioSelecionado.getUsuarioModificador() == 0) {
 			return false;
 		}
 		return true;

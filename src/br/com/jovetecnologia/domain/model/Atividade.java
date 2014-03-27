@@ -1,13 +1,18 @@
 package br.com.jovetecnologia.domain.model;
 
 import java.io.Serializable;
-
-import javax.persistence.*;
-
-import br.com.jovetecnologia.infrastructure.util.annotation.Required;
-
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * The persistent class for the atividade database table.
@@ -15,14 +20,15 @@ import java.util.List;
 @Entity
 @Table(name = "atividade")
 public class Atividade implements Serializable {
-	private static final long serialVersionUID = -2928312462548852293L;
+
+	private static final long serialVersionUID = 7611907117834570933L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_atividade")
 	private int idAtividade;
 
-	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private boolean ativo;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -32,42 +38,40 @@ public class Atividade implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_manutencao")
 	private Date dataManutencao;
-	
-	@Required(label = "Descrição", minimo = 5)
+
 	private String descricao;
 
-	@Column(name = "id_usuario")
-	private int idUsuario;
-	
-	@Required(label = "Nome", minimo = 5)
 	private String nome;
 
-	// bi-directional many-to-one association to AtividadeTarefa
-	@OneToMany(mappedBy = "atividade")
-	private List<AtividadeTarefa> listaAtividadeTarefas;
+	@Column(name = "usuario_modificador")
+	private int usuarioModificador;
 
 	// bi-directional many-to-one association to Registro
 	@OneToMany(mappedBy = "atividade")
-	private List<Registro> listaRegistros;
+	private List<Registro> registros;
+
+	// bi-directional many-to-one association to RelAtividadeTarefa
+	@OneToMany(mappedBy = "atividade")
+	private List<RelAtividadeTarefa> relAtividadeTarefas;
+
+	// bi-directional many-to-one association to RelProjetoAtividade
+	@OneToMany(mappedBy = "atividade")
+	private List<RelProjetoAtividade> relProjetoAtividades;
 
 	public Atividade() {
 	}
 
-	/**
-	 * @return the idAtividade
-	 */
 	public int getIdAtividade() {
-		return idAtividade;
+		return this.idAtividade;
 	}
 
-	/**
-	 * @param idAtividade the idAtividade to set
-	 */
 	public void setIdAtividade(int idAtividade) {
 		this.idAtividade = idAtividade;
 	}
 
 	/**
+	 * @author Joaquim Neto public byte getAtivo() { return this.ativo; } public void
+	 *         setAtivo(byte ativo) { this.ativo = ativo; }
 	 * @return the ativo
 	 */
 	public boolean isAtivo() {
@@ -75,108 +79,75 @@ public class Atividade implements Serializable {
 	}
 
 	/**
+	 * @author Joaquim Neto
 	 * @param ativo the ativo to set
 	 */
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
 
-	/**
-	 * @return the dataCadastro
-	 */
 	public Date getDataCadastro() {
-		return dataCadastro;
+		return this.dataCadastro;
 	}
 
-	/**
-	 * @param dataCadastro the dataCadastro to set
-	 */
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 
-	/**
-	 * @return the dataManutencao
-	 */
 	public Date getDataManutencao() {
-		return dataManutencao;
+		return this.dataManutencao;
 	}
 
-	/**
-	 * @param dataManutencao the dataManutencao to set
-	 */
 	public void setDataManutencao(Date dataManutencao) {
 		this.dataManutencao = dataManutencao;
 	}
 
-	/**
-	 * @return the descricao
-	 */
 	public String getDescricao() {
-		return descricao;
+		return this.descricao;
 	}
 
-	/**
-	 * @param descricao the descricao to set
-	 */
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 
-	/**
-	 * @return the idUsuario
-	 */
-	public int getIdUsuario() {
-		return idUsuario;
-	}
-
-	/**
-	 * @param idUsuario the idUsuario to set
-	 */
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
-	}
-
-	/**
-	 * @return the nome
-	 */
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
-	/**
-	 * @param nome the nome to set
-	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	/**
-	 * @return the listaAtividadeTarefas
-	 */
-	public List<AtividadeTarefa> getListaAtividadeTarefas() {
-		return listaAtividadeTarefas;
+	public int getUsuarioModificador() {
+		return this.usuarioModificador;
 	}
 
-	/**
-	 * @param listaAtividadeTarefas the listaAtividadeTarefas to set
-	 */
-	public void setListaAtividadeTarefas(List<AtividadeTarefa> listaAtividadeTarefas) {
-		this.listaAtividadeTarefas = listaAtividadeTarefas;
+	public void setUsuarioModificador(int usuarioModificador) {
+		this.usuarioModificador = usuarioModificador;
 	}
 
-	/**
-	 * @return the listaRegistros
-	 */
-	public List<Registro> getListaRegistros() {
-		return listaRegistros;
+	public List<Registro> getRegistros() {
+		return this.registros;
 	}
 
-	/**
-	 * @param listaRegistros the listaRegistros to set
-	 */
-	public void setListaRegistros(List<Registro> listaRegistros) {
-		this.listaRegistros = listaRegistros;
+	public void setRegistros(List<Registro> registros) {
+		this.registros = registros;
+	}
+
+	public List<RelAtividadeTarefa> getRelAtividadeTarefas() {
+		return this.relAtividadeTarefas;
+	}
+
+	public void setRelAtividadeTarefas(List<RelAtividadeTarefa> relAtividadeTarefas) {
+		this.relAtividadeTarefas = relAtividadeTarefas;
+	}
+
+	public List<RelProjetoAtividade> getRelProjetoAtividades() {
+		return this.relProjetoAtividades;
+	}
+
+	public void setRelProjetoAtividades(List<RelProjetoAtividade> relProjetoAtividades) {
+		this.relProjetoAtividades = relProjetoAtividades;
 	}
 
 	/*

@@ -104,7 +104,7 @@ public class ProjetoBean extends CadastroBean implements Serializable, ICrudBean
 
 	@Override
 	public boolean hasObjetoSelecionado() {
-		if (projetoSelecionado.getIdUsuario() == 0) {
+		if (projetoSelecionado.getUsuarioModificador() == 0) {
 			return false;
 		}
 		return true;

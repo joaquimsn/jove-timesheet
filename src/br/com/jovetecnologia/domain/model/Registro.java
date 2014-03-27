@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-import java.sql.Time;
 import java.util.Date;
 
 /**
@@ -13,7 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name = "registro")
 public class Registro implements Serializable {
-	private static final long serialVersionUID = 8578478159773527453L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,7 +21,7 @@ public class Registro implements Serializable {
 
 	private int aprovado;
 
-	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private boolean ativo;
 
 	@Temporal(TemporalType.DATE)
@@ -41,14 +40,18 @@ public class Registro implements Serializable {
 	@Column(name = "data_registro")
 	private Date dataRegistro;
 
-	private Time fim;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "hora_fim")
+	private Date horaFim;
 
-	@Column(name = "id_usuario")
-	private int idUsuario;
-
-	private Time inicio;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "hora_inicio")
+	private Date horaInicio;
 
 	private String observacao;
+
+	@Column(name = "usuario_modificador")
+	private int usuarioModificador;
 
 	// bi-directional many-to-one association to Atividade
 	@ManyToOne
@@ -73,35 +76,24 @@ public class Registro implements Serializable {
 	public Registro() {
 	}
 
-	/**
-	 * @return the idRegistro
-	 */
 	public int getIdRegistro() {
-		return idRegistro;
+		return this.idRegistro;
 	}
 
-	/**
-	 * @param idRegistro the idRegistro to set
-	 */
 	public void setIdRegistro(int idRegistro) {
 		this.idRegistro = idRegistro;
 	}
 
-	/**
-	 * @return the aprovado
-	 */
 	public int getAprovado() {
-		return aprovado;
+		return this.aprovado;
 	}
 
-	/**
-	 * @param aprovado the aprovado to set
-	 */
 	public void setAprovado(int aprovado) {
 		this.aprovado = aprovado;
 	}
 
 	/**
+	 * @author Joaquim Neto
 	 * @return the ativo
 	 */
 	public boolean isAtivo() {
@@ -109,176 +101,105 @@ public class Registro implements Serializable {
 	}
 
 	/**
+	 * @author Joaquim Neto
 	 * @param ativo the ativo to set
 	 */
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
 
-	/**
-	 * @return the dataAcatamento
-	 */
 	public Date getDataAcatamento() {
-		return dataAcatamento;
+		return this.dataAcatamento;
 	}
 
-	/**
-	 * @param dataAcatamento the dataAcatamento to set
-	 */
 	public void setDataAcatamento(Date dataAcatamento) {
 		this.dataAcatamento = dataAcatamento;
 	}
 
-	/**
-	 * @return the dataCadastro
-	 */
 	public Date getDataCadastro() {
-		return dataCadastro;
+		return this.dataCadastro;
 	}
 
-	/**
-	 * @param dataCadastro the dataCadastro to set
-	 */
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 
-	/**
-	 * @return the dataManutencao
-	 */
 	public Date getDataManutencao() {
-		return dataManutencao;
+		return this.dataManutencao;
 	}
 
-	/**
-	 * @param dataManutencao the dataManutencao to set
-	 */
 	public void setDataManutencao(Date dataManutencao) {
 		this.dataManutencao = dataManutencao;
 	}
 
-	/**
-	 * @return the dataRegistro
-	 */
 	public Date getDataRegistro() {
-		return dataRegistro;
+		return this.dataRegistro;
 	}
 
-	/**
-	 * @param dataRegistro the dataRegistro to set
-	 */
 	public void setDataRegistro(Date dataRegistro) {
 		this.dataRegistro = dataRegistro;
 	}
 
-	/**
-	 * @return the fim
-	 */
-	public Time getFim() {
-		return fim;
+	public Date getHoraFim() {
+		return this.horaFim;
 	}
 
-	/**
-	 * @param fim the fim to set
-	 */
-	public void setFim(Time fim) {
-		this.fim = fim;
+	public void setHoraFim(Date horaFim) {
+		this.horaFim = horaFim;
 	}
 
-	/**
-	 * @return the idUsuario
-	 */
-	public int getIdUsuario() {
-		return idUsuario;
+	public Date getHoraInicio() {
+		return this.horaInicio;
 	}
 
-	/**
-	 * @param idUsuario the idUsuario to set
-	 */
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setHoraInicio(Date horaInicio) {
+		this.horaInicio = horaInicio;
 	}
 
-	/**
-	 * @return the inicio
-	 */
-	public Time getInicio() {
-		return inicio;
-	}
-
-	/**
-	 * @param inicio the inicio to set
-	 */
-	public void setInicio(Time inicio) {
-		this.inicio = inicio;
-	}
-
-	/**
-	 * @return the observacao
-	 */
 	public String getObservacao() {
-		return observacao;
+		return this.observacao;
 	}
 
-	/**
-	 * @param observacao the observacao to set
-	 */
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
 
-	/**
-	 * @return the atividade
-	 */
-	public Atividade getAtividade() {
-		return atividade;
+	public int getUsuarioModificador() {
+		return this.usuarioModificador;
 	}
 
-	/**
-	 * @param atividade the atividade to set
-	 */
+	public void setUsuarioModificador(int usuarioModificador) {
+		this.usuarioModificador = usuarioModificador;
+	}
+
+	public Atividade getAtividade() {
+		return this.atividade;
+	}
+
 	public void setAtividade(Atividade atividade) {
 		this.atividade = atividade;
 	}
 
-	/**
-	 * @return the funcionario
-	 */
 	public Funcionario getFuncionario() {
-		return funcionario;
+		return this.funcionario;
 	}
 
-	/**
-	 * @param funcionario the funcionario to set
-	 */
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
 	}
 
-	/**
-	 * @return the projeto
-	 */
 	public Projeto getProjeto() {
-		return projeto;
+		return this.projeto;
 	}
 
-	/**
-	 * @param projeto the projeto to set
-	 */
 	public void setProjeto(Projeto projeto) {
 		this.projeto = projeto;
 	}
 
-	/**
-	 * @return the tarefa
-	 */
 	public Tarefa getTarefa() {
-		return tarefa;
+		return this.tarefa;
 	}
 
-	/**
-	 * @param tarefa the tarefa to set
-	 */
 	public void setTarefa(Tarefa tarefa) {
 		this.tarefa = tarefa;
 	}
@@ -312,4 +233,5 @@ public class Registro implements Serializable {
 			return false;
 		return true;
 	}
+
 }

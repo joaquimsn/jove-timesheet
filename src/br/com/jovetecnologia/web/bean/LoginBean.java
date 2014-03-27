@@ -26,7 +26,6 @@ public class LoginBean implements Serializable {
 	 * @author Joaquim Neto
 	 */
 	public String fazerLogin() {
-
 		Usuario usuario = new UsuarioService().validar(getLogin(), getSenha());
 
 		if (usuario != null) {

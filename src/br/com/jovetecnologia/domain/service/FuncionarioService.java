@@ -32,7 +32,7 @@ public class FuncionarioService implements Serializable {
 		funcionario.setAtivo(true);
 		funcionario.setDataCadastro(new Date());
 		funcionario.setDataManutencao(new Date());
-		funcionario.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
+		funcionario.setUsuarioModificador(SystemUtils.getUsuarioLogado().getIdUsuario());
 		
 		funcionarioDAO.cadastar(funcionario);
 	}
@@ -45,7 +45,7 @@ public class FuncionarioService implements Serializable {
 	public void alterar(Funcionario funcionario) {
 		funcionario.setAtivo(true);
 		funcionario.setDataManutencao(new Date());
-		funcionario.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
+		funcionario.setUsuarioModificador(SystemUtils.getUsuarioLogado().getIdUsuario());
 		
 		funcionarioDAO.alterar(funcionario);
 	}

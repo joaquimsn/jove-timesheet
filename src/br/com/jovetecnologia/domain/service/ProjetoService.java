@@ -27,7 +27,7 @@ public class ProjetoService implements Serializable{
 		projeto.setAtivo(true);
 		projeto.setDataCadastro(new Date());
 		projeto.setDataManutencao(new Date());
-		projeto.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
+		projeto.setUsuarioModificador(SystemUtils.getUsuarioLogado().getIdUsuario());
 		
 		projetoDAO.cadastar(projeto);
 	}
@@ -40,7 +40,7 @@ public class ProjetoService implements Serializable{
 	public void alterar(Projeto projeto) {
 		projeto.setAtivo(true);
 		projeto.setDataManutencao(new Date());
-		projeto.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
+		projeto.setUsuarioModificador(SystemUtils.getUsuarioLogado().getIdUsuario());
 		
 		projetoDAO.alterar(projeto);
 	}

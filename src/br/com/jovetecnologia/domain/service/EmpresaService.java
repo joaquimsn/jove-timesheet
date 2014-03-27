@@ -34,7 +34,7 @@ public class EmpresaService implements Serializable {
 
 		empresa.setAtivo(true);
 		empresa.setDataManutencao(new Date());
-		empresa.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
+		empresa.setUsuarioModificador(SystemUtils.getUsuarioLogado().getIdUsuario());
 		
 		empresa.setDataCadastro( new Date());			
 		
@@ -48,7 +48,7 @@ public class EmpresaService implements Serializable {
 	 */
 	public void alterar(Empresa empresa) {
 		empresa.setAtivo(true);
-		empresa.setIdUsuario(SystemUtils.getUsuarioLogado().getIdUsuario());
+		empresa.setUsuarioModificador(SystemUtils.getUsuarioLogado().getIdUsuario());
 		empresa.setDataManutencao(new Date());
 		
 		empresaDAO.alterar(empresa);
