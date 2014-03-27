@@ -16,12 +16,14 @@ import java.util.Date;
 @Table(name = "usuario")
 public class Usuario implements Serializable {
 
+	private static final long serialVersionUID = -8989215748837090045L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_usuario")
 	private int idUsuario;
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
 	private boolean ativo;
 
 	@Temporal(TemporalType.TIMESTAMP)

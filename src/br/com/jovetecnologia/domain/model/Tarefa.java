@@ -23,7 +23,7 @@ public class Tarefa implements Serializable {
 	@Column(name = "id_tarefa")
 	private int idTarefa;
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
 	private boolean ativo;
 
 	@Temporal(TemporalType.TIMESTAMP)

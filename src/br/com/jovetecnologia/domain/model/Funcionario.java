@@ -23,7 +23,7 @@ public class Funcionario implements Serializable {
 	@Column(name = "id_funcionario")
 	private int idFuncionario;
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
 	private boolean ativo;
 
 	private String bairro;

@@ -23,7 +23,7 @@ public class Projeto implements Serializable {
 	@Column(name = "id_projeto")
 	private int idProjeto;
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
 	private boolean ativo;
 
 	@Temporal(TemporalType.TIMESTAMP)

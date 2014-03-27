@@ -3,7 +3,7 @@ CREATE DATABASE jove_timesheet;
 USE jove_timesheet;
 
 CREATE TABLE atividade (
- id_atividade INT(11) NOT NULL PRIMARY KEY,
+ id_atividade INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
  nome VARCHAR(100) NOT NULL,
  descricao VARCHAR(200) NOT NULL,
  ativo BIT(1) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE atividade (
 
 
 CREATE TABLE empresa (
- id_empresa INT(11) NOT NULL PRIMARY KEY,
+ id_empresa INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
  razao_social VARCHAR(200) NOT NULL,
  fantasia VARCHAR(100) NOT NULL,
  cnpj VARCHAR(18) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE empresa (
 
 
 CREATE TABLE projeto (
- id_projeto INT(11) NOT NULL PRIMARY KEY,
+ id_projeto INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
  nome VARCHAR(100) NOT NULL,
  descricao VARCHAR(200) NOT NULL,
  data_inicio  DATE NOT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE rel_projeto_atividade (
 
 
 CREATE TABLE tarefa (
- id_tarefa INT(11) NOT NULL PRIMARY KEY,
+ id_tarefa INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
  nome VARCHAR(100) NOT NULL,
  descricao VARCHAR(200) NOT NULL,
  ativo BIT(1) NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE tarefa (
 
 
 CREATE TABLE departamento (
- id_departamento INT(11) NOT NULL PRIMARY KEY,
+ id_departamento INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
  nome VARCHAR(100) NOT NULL,
  descricao VARCHAR(150) NOT NULL,
  ativo BIT(1) NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE departamento (
 
 
 CREATE TABLE funcionario (
- id_funcionario INT(11) NOT NULL PRIMARY KEY,
+ id_funcionario INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
  nome VARCHAR(100) NOT NULL,
  genero VARCHAR(1) NOT NULL,
  data_nascimento DATE NOT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE funcionario (
 
 
 CREATE TABLE registro (
- id_registro INT(11) NOT NULL PRIMARY KEY,
+ id_registro INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
  data_registro DATE NOT NULL,
  hora_inicio DATETIME NOT NULL,
  hora_fim DATETIME,
@@ -170,7 +170,7 @@ CREATE TABLE rel_projeto_funcionario (
 
 
 CREATE TABLE usuario (
- id_usuario INT(11) NOT NULL PRIMARY KEY,
+ id_usuario INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
  login VARCHAR(30) NOT NULL,
  senha VARCHAR(50) NOT NULL,
  nivel INT(11) NOT NULL,

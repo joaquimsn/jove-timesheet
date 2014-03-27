@@ -30,7 +30,7 @@ public class Atividade implements Serializable {
 	@Column(name = "id_atividade")
 	private int idAtividade;
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
 	private boolean ativo;
 
 	@Temporal(TemporalType.TIMESTAMP)

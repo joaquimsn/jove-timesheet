@@ -32,7 +32,7 @@ public class Departamento implements Serializable {
 	@Column(name = "id_departamento")
 	private int idDepartamento;
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
 	private boolean ativo;
 
 	@Temporal(TemporalType.TIMESTAMP)

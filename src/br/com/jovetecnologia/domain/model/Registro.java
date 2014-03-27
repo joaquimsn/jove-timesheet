@@ -21,7 +21,7 @@ public class Registro implements Serializable {
 
 	private int aprovado;
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
 	private boolean ativo;
 
 	@Temporal(TemporalType.DATE)

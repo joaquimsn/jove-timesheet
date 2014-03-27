@@ -23,7 +23,7 @@ public class Empresa implements Serializable {
 	@Column(name = "id_empresa")
 	private int idEmpresa;
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ativo", columnDefinition = "BIT", length = 1)
 	private boolean ativo;
 
 	private String bairro;
