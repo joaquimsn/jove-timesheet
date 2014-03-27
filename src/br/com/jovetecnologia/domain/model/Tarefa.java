@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import br.com.jovetecnologia.infrastructure.util.annotation.Required;
+
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +15,8 @@ import java.util.List;
 @Entity
 @Table(name = "tarefa")
 public class Tarefa implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = 5463588139225114033L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,8 +34,10 @@ public class Tarefa implements Serializable {
 	@Column(name = "data_manutencao")
 	private Date dataManutencao;
 
+	@Required(label = "Descrição", minimo = 5)
 	private String descricao;
 
+	@Required(label = "Nome", minimo = 3)
 	private String nome;
 
 	@Column(name = "usuario_modificador")
@@ -121,40 +126,12 @@ public class Tarefa implements Serializable {
 		this.registros = registros;
 	}
 
-	public Registro addRegistro(Registro registro) {
-		getRegistros().add(registro);
-		registro.setTarefa(this);
-
-		return registro;
-	}
-
-	public Registro removeRegistro(Registro registro) {
-		getRegistros().remove(registro);
-		registro.setTarefa(null);
-
-		return registro;
-	}
-
 	public List<RelAtividadeTarefa> getRelAtividadeTarefas() {
 		return this.relAtividadeTarefas;
 	}
 
 	public void setRelAtividadeTarefas(List<RelAtividadeTarefa> relAtividadeTarefas) {
 		this.relAtividadeTarefas = relAtividadeTarefas;
-	}
-
-	public RelAtividadeTarefa addRelAtividadeTarefa(RelAtividadeTarefa relAtividadeTarefa) {
-		getRelAtividadeTarefas().add(relAtividadeTarefa);
-		relAtividadeTarefa.setTarefa(this);
-
-		return relAtividadeTarefa;
-	}
-
-	public RelAtividadeTarefa removeRelAtividadeTarefa(RelAtividadeTarefa relAtividadeTarefa) {
-		getRelAtividadeTarefas().remove(relAtividadeTarefa);
-		relAtividadeTarefa.setTarefa(null);
-
-		return relAtividadeTarefa;
 	}
 
 	/*

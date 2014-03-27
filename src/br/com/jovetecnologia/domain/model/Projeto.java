@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import br.com.jovetecnologia.infrastructure.util.annotation.Required;
+
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +15,8 @@ import java.util.List;
 @Entity
 @Table(name = "projeto")
 public class Projeto implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = -5387120707045799384L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,8 +42,10 @@ public class Projeto implements Serializable {
 	@Column(name = "data_manutencao")
 	private Date dataManutencao;
 
+	@Required(label = "Descrição", minimo = 5)
 	private String descricao;
 
+	@Required(label = "Nome", minimo = 3)
 	private String nome;
 
 	@Column(name = "usuario_modificador")
@@ -149,20 +154,6 @@ public class Projeto implements Serializable {
 		this.registros = registros;
 	}
 
-	public Registro addRegistro(Registro registro) {
-		getRegistros().add(registro);
-		registro.setProjeto(this);
-
-		return registro;
-	}
-
-	public Registro removeRegistro(Registro registro) {
-		getRegistros().remove(registro);
-		registro.setProjeto(null);
-
-		return registro;
-	}
-
 	public List<RelProjetoAtividade> getRelProjetoAtividades() {
 		return this.relProjetoAtividades;
 	}
@@ -171,40 +162,12 @@ public class Projeto implements Serializable {
 		this.relProjetoAtividades = relProjetoAtividades;
 	}
 
-	public RelProjetoAtividade addRelProjetoAtividade(RelProjetoAtividade relProjetoAtividade) {
-		getRelProjetoAtividades().add(relProjetoAtividade);
-		relProjetoAtividade.setProjeto(this);
-
-		return relProjetoAtividade;
-	}
-
-	public RelProjetoAtividade removeRelProjetoAtividade(RelProjetoAtividade relProjetoAtividade) {
-		getRelProjetoAtividades().remove(relProjetoAtividade);
-		relProjetoAtividade.setProjeto(null);
-
-		return relProjetoAtividade;
-	}
-
 	public List<RelProjetoFuncionario> getRelProjetoFuncionarios() {
 		return this.relProjetoFuncionarios;
 	}
 
 	public void setRelProjetoFuncionarios(List<RelProjetoFuncionario> relProjetoFuncionarios) {
 		this.relProjetoFuncionarios = relProjetoFuncionarios;
-	}
-
-	public RelProjetoFuncionario addRelProjetoFuncionario(RelProjetoFuncionario relProjetoFuncionario) {
-		getRelProjetoFuncionarios().add(relProjetoFuncionario);
-		relProjetoFuncionario.setProjeto(this);
-
-		return relProjetoFuncionario;
-	}
-
-	public RelProjetoFuncionario removeRelProjetoFuncionario(RelProjetoFuncionario relProjetoFuncionario) {
-		getRelProjetoFuncionarios().remove(relProjetoFuncionario);
-		relProjetoFuncionario.setProjeto(null);
-
-		return relProjetoFuncionario;
 	}
 
 	/*

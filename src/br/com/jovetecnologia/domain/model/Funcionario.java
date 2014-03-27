@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import br.com.jovetecnologia.infrastructure.util.annotation.Required;
+
 import java.util.Date;
 import java.util.List;
 
@@ -12,9 +14,9 @@ import java.util.List;
  */
 @Entity
 @Table(name = "funcionario")
-@NamedQuery(name = "Funcionario.findAll", query = "SELECT f FROM Funcionario f")
 public class Funcionario implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = 5175622276239401610L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,13 +33,15 @@ public class Funcionario implements Serializable {
 	private Date cargaHoraria;
 
 	private String celular;
-
+	
+	@Required(label = "CEP", minimo = 9)
 	private String cep;
 
 	private String cidade;
 
 	private String complemento;
-
+	
+	@Required(label = "CPF", minimo = 14)
 	private String cpf;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -52,12 +56,15 @@ public class Funcionario implements Serializable {
 	@Column(name = "data_nascimento")
 	private Date dataNascimento;
 
+	@Required(label = "e-mail", minimo = 10)
 	private String email;
 
 	private String genero;
 
+	@Required(label = "Logradouro", minimo = 5)
 	private String logradouro;
-
+	
+	@Required(label = "Nome", minimo = 10)
 	private String nome;
 
 	private String numero;
@@ -312,20 +319,6 @@ public class Funcionario implements Serializable {
 
 	public void setFuncionarios(List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
-	}
-
-	public Funcionario addFuncionario(Funcionario funcionario) {
-		getFuncionarios().add(funcionario);
-		funcionario.setFuncionario(this);
-
-		return funcionario;
-	}
-
-	public Funcionario removeFuncionario(Funcionario funcionario) {
-		getFuncionarios().remove(funcionario);
-		funcionario.setFuncionario(null);
-
-		return funcionario;
 	}
 
 	public List<Registro> getRegistros() {

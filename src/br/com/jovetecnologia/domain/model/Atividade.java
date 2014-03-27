@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.com.jovetecnologia.infrastructure.util.annotation.Required;
+
 /**
  * The persistent class for the atividade database table.
  */
@@ -38,9 +40,11 @@ public class Atividade implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_manutencao")
 	private Date dataManutencao;
-
+	
+	@Required(label = "Descrição", minimo = 5 )
 	private String descricao;
-
+	
+	@Required(label = "Nome", minimo = 3)
 	private String nome;
 
 	@Column(name = "usuario_modificador")

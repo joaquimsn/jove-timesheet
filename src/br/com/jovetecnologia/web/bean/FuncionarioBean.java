@@ -120,18 +120,15 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	 * @return <b>true</b> As senhas informadas forem iguais.
 	 */
 	public boolean validarSenha() {
-//		if (usuarioSelecionado.getSenha().equals(confirmarSenha)) {
-//			return true;
-//		} //else if (hasObjetoSelecionado() && Criptografia.criptografar(senhaAtual).equals(usuarioSelecionado.getSenha())) {
-//			return true;
-//		}
+		if (usuarioSelecionado.getSenha().equals(confirmarSenha)) {
+			return true;
+		} else if (hasObjetoSelecionado() && Criptografia.criptografar(senhaAtual).equals(usuarioSelecionado.getSenha())) {
+			return true;
+		}
 		
-		//remover 
-//
-//		Messages.addError("As senhas informadas são diferentes");
-//
-//		return false;
-		return true;
+		Messages.addError("As senhas informadas são diferentes");
+
+		return false;
 	}
 
 	@Override

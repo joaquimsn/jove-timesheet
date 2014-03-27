@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import br.com.jovetecnologia.infrastructure.util.annotation.Required;
+
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +15,8 @@ import java.util.List;
 @Entity
 @Table(name = "empresa")
 public class Empresa implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = 5066823508928029542L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,10 +28,12 @@ public class Empresa implements Serializable {
 
 	private String bairro;
 
+	@Required(label = "CEP", minimo = 9)
 	private String cep;
 
 	private String cidade;
 
+	@Required(label = "CNPJ", minimo = 18)
 	private String cnpj;
 
 	private String complemento;
@@ -41,14 +46,18 @@ public class Empresa implements Serializable {
 	@Column(name = "data_manutencao")
 	private Date dataManutencao;
 
+	@Required(label = "e-mail", minimo = 10)
 	private String email;
 
+	@Required(label = "Fantasia", minimo = 3)
 	private String fantasia;
 
+	@Required(label = "Logradouro", minimo = 5)
 	private String logradouro;
 
 	private String numero;
 
+	@Required(label = "Razão Social", minimo = 5)
 	@Column(name = "razao_social")
 	private String razaoSocial;
 
@@ -198,6 +207,26 @@ public class Empresa implements Serializable {
 		return this.uf;
 	}
 
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+
+	public int getUsuarioModificador() {
+		return this.usuarioModificador;
+	}
+
+	public void setUsuarioModificador(int usuarioModificador) {
+		this.usuarioModificador = usuarioModificador;
+	}
+
+	public List<Departamento> getDepartamentos() {
+		return this.departamentos;
+	}
+
+	public void setDepartamentos(List<Departamento> departamentos) {
+		this.departamentos = departamentos;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -226,40 +255,6 @@ public class Empresa implements Serializable {
 		if (idEmpresa != other.idEmpresa)
 			return false;
 		return true;
-	}
-
-	public void setUf(String uf) {
-		this.uf = uf;
-	}
-
-	public int getUsuarioModificador() {
-		return this.usuarioModificador;
-	}
-
-	public void setUsuarioModificador(int usuarioModificador) {
-		this.usuarioModificador = usuarioModificador;
-	}
-
-	public List<Departamento> getDepartamentos() {
-		return this.departamentos;
-	}
-
-	public void setDepartamentos(List<Departamento> departamentos) {
-		this.departamentos = departamentos;
-	}
-
-	public Departamento addDepartamento(Departamento departamento) {
-		getDepartamentos().add(departamento);
-		departamento.setEmpresa(this);
-
-		return departamento;
-	}
-
-	public Departamento removeDepartamento(Departamento departamento) {
-		getDepartamentos().remove(departamento);
-		departamento.setEmpresa(null);
-
-		return departamento;
 	}
 
 }

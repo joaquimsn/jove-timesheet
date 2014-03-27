@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import br.com.jovetecnologia.domain.enums.NivelUsuarioEnum;
+import br.com.jovetecnologia.infrastructure.util.annotation.Required;
 
 import java.util.Date;
 
@@ -13,9 +14,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "usuario")
-@NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
 public class Usuario implements Serializable {
-	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,10 +32,12 @@ public class Usuario implements Serializable {
 	@Column(name = "data_manutencao")
 	private Date dataManutencao;
 
+	@Required(label = "Login", minimo = 3)
 	private String login;
 
 	private int nivel;
 
+	@Required(label = "Senha", minimo = 6)
 	private String senha;
 
 	@Column(name = "usuario_modificador")

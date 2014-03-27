@@ -1,11 +1,22 @@
 package br.com.jovetecnologia.domain.model;
 
 import java.io.Serializable;
-
-import javax.persistence.*;
-
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import br.com.jovetecnologia.infrastructure.util.annotation.Required;
 
 /**
  * The persistent class for the departamento database table.
@@ -13,7 +24,8 @@ import java.util.List;
 @Entity
 @Table(name = "departamento")
 public class Departamento implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = 4265372382403700557L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,8 +43,10 @@ public class Departamento implements Serializable {
 	@Column(name = "data_manutencao")
 	private Date dataManutencao;
 
+	@Required(label = "Descrição", minimo = 5)
 	private String descricao;
 
+	@Required(label = "Nome", minimo = 3)
 	private String nome;
 
 	@Column(name = "usuario_modificador")
@@ -58,7 +72,8 @@ public class Departamento implements Serializable {
 		this.idDepartamento = idDepartamento;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -69,7 +84,8 @@ public class Departamento implements Serializable {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -156,20 +172,6 @@ public class Departamento implements Serializable {
 
 	public void setFuncionarios(List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
-	}
-
-	public Funcionario addFuncionario(Funcionario funcionario) {
-		getFuncionarios().add(funcionario);
-		funcionario.setDepartamento(this);
-
-		return funcionario;
-	}
-
-	public Funcionario removeFuncionario(Funcionario funcionario) {
-		getFuncionarios().remove(funcionario);
-		funcionario.setDepartamento(null);
-
-		return funcionario;
 	}
 
 }
