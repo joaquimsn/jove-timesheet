@@ -11,9 +11,11 @@ import br.com.jovetecnologia.domain.enums.ModalidadeContratoEnum;
 import br.com.jovetecnologia.domain.enums.NivelUsuarioEnum;
 import br.com.jovetecnologia.domain.interfaces.ICrudBean;
 import br.com.jovetecnologia.domain.model.Departamento;
+import br.com.jovetecnologia.domain.model.Endereco;
 import br.com.jovetecnologia.domain.model.Funcionario;
 import br.com.jovetecnologia.domain.model.Usuario;
 import br.com.jovetecnologia.domain.service.DepartamentoService;
+import br.com.jovetecnologia.domain.service.EnderecoService;
 import br.com.jovetecnologia.domain.service.FuncionarioService;
 import br.com.jovetecnologia.domain.service.UsuarioService;
 import br.com.jovetecnologia.infrastructure.util.Criptografia;
@@ -28,18 +30,23 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 
 	private Funcionario funcionarioSelecionado;
 	private Usuario usuarioSelecionado;
+	private Endereco endereco;
 
 	private String senhaAtual;
 	private String confirmarSenha;
 
 	private boolean next;
-	
+
 	private List<Funcionario> listaFuncionarioFiltrado;
 	private List<Funcionario> listaFuncionario;
 	private List<Funcionario> listaSupervisor;
+
 	private List<Departamento> listaDepartamento;
+
 	private List<String> listaModalidadeContrato;
 	private List<String> listaNivelUsuario;
+	private List<String> listaUf;
+	private List<String> listaCidade;
 
 	@Override
 	@PostConstruct
@@ -68,8 +75,13 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	@Override
 	public void listarTodos() {
 		setListaFuncionario(new FuncionarioService().listarTodos());
-		setListaDepartamento(new DepartamentoService().listarTodos());
 		setListaSupervisor(new FuncionarioService().listarSupervisor());
+		
+		setListaDepartamento(new DepartamentoService().listarTodos());
+		
+		setListaUf(new EnderecoService().listarUf());
+		setListaCidade(new EnderecoService().listarCidadePorUf(funcionarioSelecionado.getUf()));
+		
 		setListaModalidadeContrato(ModalidadeContratoEnum.getDisplayList());
 		setListaNivelUsuario(NivelUsuarioEnum.getDisplayList());
 	}
@@ -95,11 +107,11 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 		// Cadastra o Usuario junto como o funcionario
 		usuarioSelecionado.setSenha(Criptografia.criptografar(usuarioSelecionado.getSenha()));
 		usuarioSelecionado.setFuncionario(getFuncionarioSelecionado());
-		
+
 		new UsuarioService().cadastrar(usuarioSelecionado);
 
 		Messages.addInfo("Funcionário cadastrado com sucesso");
-		
+
 		inicializarPagina();
 	}
 
@@ -122,10 +134,11 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	public boolean validarSenha() {
 		if (usuarioSelecionado.getSenha().equals(confirmarSenha)) {
 			return true;
-		} else if (hasObjetoSelecionado() && Criptografia.criptografar(senhaAtual).equals(usuarioSelecionado.getSenha())) {
+		} else if (hasObjetoSelecionado()
+				&& Criptografia.criptografar(senhaAtual).equals(usuarioSelecionado.getSenha())) {
 			return true;
 		}
-		
+
 		Messages.addError("As senhas informadas são diferentes");
 
 		return false;
@@ -145,13 +158,14 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 		new FuncionarioService().alterar(getFuncionarioSelecionado());
 
 		Messages.addInfo("Funcionário alterado com sucesso");
-		
+
 		inicializarPagina();
 
 	}
 
 	/**
-	 * Ativar ou inativa o funcionário como base no método <b>isAtivo</b> se <b>true</b> será alterado para inativo
+	 * Ativar ou inativa o funcionário como base no método <b>isAtivo</b> se <b>true</b>
+	 * será alterado para inativo
 	 * @author Joaquim Neto
 	 * @param funcionario Objeto funcionario
 	 */
@@ -175,7 +189,7 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	}
 
 	/**
-	 * Responsável pela flag de troca de pagina 
+	 * Responsável pela flag de troca de pagina
 	 * @author Joaquim Neto
 	 */
 	public void mudarPagina() {
@@ -192,6 +206,21 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 			return false;
 		}
 		return true;
+	}
+	
+	/**
+	 * Pesquisa o cep na base, se existir preenche os campos logradouro, bairro, cidade, uf automaticamente
+	 * @author Joaquim Neto
+	 */
+	public void consultarCep() {
+		if (funcionarioSelecionado.getCep() != "") {
+			endereco = new EnderecoService().obterEnderecoPorCep(funcionarioSelecionado.getCep());
+			
+			funcionarioSelecionado.setLogradouro(endereco.getLogradouro());
+			funcionarioSelecionado.setBairro(endereco.getBairro());
+			funcionarioSelecionado.setUf(endereco.getUf());
+			funcionarioSelecionado.setCidade(endereco.getCidade());
+		}
 	}
 
 	/**
@@ -378,6 +407,42 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	 */
 	public void setListaNivelUsuario(List<String> listaNivelUsuario) {
 		this.listaNivelUsuario = listaNivelUsuario;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the listaUf
+	 */
+	public List<String> getListaUf() {
+		return listaUf;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param listaUf the listaUf to set
+	 */
+	public void setListaUf(List<String> listaUf) {
+		this.listaUf = listaUf;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the listaCidade
+	 */
+	public List<String> getListaCidade() {
+		if(funcionarioSelecionado.getUf() != "") {
+			return new EnderecoService().listarCidadePorUf(funcionarioSelecionado.getUf());
+		}
+		
+		return listaCidade;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param listaCidade the listaCidade to set
+	 */
+	public void setListaCidade(List<String> listaCidade) {
+		this.listaCidade = listaCidade;
 	}
 
 }

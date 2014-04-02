@@ -23,6 +23,11 @@ public interface IOutcome {
 	String CADASTRO = "pretty:cadastro";
 	
 	/**
+	 * Tela de Compor Projeto
+	 */
+	String COMPORPROJETO = "pretty:comporProjeto";
+	
+	/**
 	 * Tela de Acompanhamento
 	 */
 	String ACOMPANHAMENTO = "pretty:acompanhamento";

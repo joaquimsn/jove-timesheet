@@ -28,6 +28,12 @@
 		<action>#{autorizadorBean.autorizar}</action>
 	</url-mapping>
 	
+	<url-mapping id="comporProjeto">
+		<pattern value="/comporProjeto" />
+		<view-id value="/restrict/administrador/comporProjeto.xhtml"/>
+		<action>#{autorizadorBean.autorizar}</action>
+	</url-mapping>
+	
 	<url-mapping id="acompanhamento">
 		<pattern value="/acompanhamento" />
 		<view-id value="/restrict/administrador/acompanhamento-geral.xhtml"/>

@@ -10,9 +10,9 @@ import java.util.List;
  */
 public enum ModalidadeContratoEnum {
 	
-	ESTAGIO("Estagio", 1),
+	ESTAGIO("Estágio", 1),
 	CLT("CLT", 2),
-	TERCERIZADO("Tecerizado", 3);
+	TERCERIZADO("Tercerizado", 3);
 	
 	private String display;
 	private int value;

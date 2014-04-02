@@ -34,7 +34,7 @@ public class Funcionario implements Serializable {
 
 	private String celular;
 	
-	@Required(label = "CEP", minimo = 9)
+	@Required(label = "CEP", minimo = 8)
 	private String cep;
 
 	private String cidade;

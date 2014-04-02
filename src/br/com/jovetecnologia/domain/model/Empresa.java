@@ -28,7 +28,7 @@ public class Empresa implements Serializable {
 
 	private String bairro;
 
-	@Required(label = "CEP", minimo = 9)
+	@Required(label = "CEP", minimo = 8)
 	private String cep;
 
 	private String cidade;

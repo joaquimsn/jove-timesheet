@@ -9,7 +9,9 @@ import javax.faces.bean.ViewScoped;
 
 import br.com.jovetecnologia.domain.interfaces.ICrudBean;
 import br.com.jovetecnologia.domain.model.Empresa;
+import br.com.jovetecnologia.domain.model.Endereco;
 import br.com.jovetecnologia.domain.service.EmpresaService;
+import br.com.jovetecnologia.domain.service.EnderecoService;
 import br.com.jovetecnologia.infrastructure.util.Messages;
 import br.com.jovetecnologia.infrastructure.util.SystemUtils;
 
@@ -20,8 +22,14 @@ public class EmpresaBean extends CadastroBean implements Serializable, ICrudBean
 	private static final long serialVersionUID = 1163863445999964629L;
 	
 	private Empresa empresaSelecionada;
+	
+	private Endereco endereco;
+	
 	private List<Empresa> listaEmpresa;
 	private List<Empresa> listaEmpresaFiltrada;
+	
+	private List<String> listaUf;
+	private List<String> listaCidade;
 
 	@Override
 	@PostConstruct
@@ -109,6 +117,21 @@ public class EmpresaBean extends CadastroBean implements Serializable, ICrudBean
 		}
 		return true;
 	}
+	
+	/**
+	 * Pesquisa o cep na base, se existir preenche os campos logradouro, bairro, cidade, uf automaticamente
+	 * @author Joaquim Neto
+	 */
+	public void consultarCep() {
+		if (empresaSelecionada.getCep() != "") {
+			endereco = new EnderecoService().obterEnderecoPorCep(empresaSelecionada.getCep());
+			
+			empresaSelecionada.setLogradouro(endereco.getLogradouro());
+			empresaSelecionada.setBairro(endereco.getBairro());
+			empresaSelecionada.setUf(endereco.getUf());
+			empresaSelecionada.setCidade(endereco.getCidade());
+		}
+	}
 
 	/**
 	 * Lista de todas as empresas
@@ -118,6 +141,9 @@ public class EmpresaBean extends CadastroBean implements Serializable, ICrudBean
 	@Override
 	public void listarTodos() {
 		setListaEmpresa(new EmpresaService().listarTodos());
+		
+		setListaUf(new EnderecoService().listarUf());
+		setListaCidade(new EnderecoService().listarCidadePorUf(empresaSelecionada.getUf()));
 	}
 
 	/**
@@ -177,6 +203,42 @@ public class EmpresaBean extends CadastroBean implements Serializable, ICrudBean
 	 */
 	public void setListaEmpresaFiltrada(List<Empresa> empresaFiltrada) {
 		this.listaEmpresaFiltrada = empresaFiltrada;
+	}
+	
+	/**
+	 * @author Joaquim Neto
+	 * @return the listaUf
+	 */
+	public List<String> getListaUf() {
+		return listaUf;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param listaUf the listaUf to set
+	 */
+	public void setListaUf(List<String> listaUf) {
+		this.listaUf = listaUf;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the listaCidade
+	 */
+	public List<String> getListaCidade() {
+		if(empresaSelecionada.getUf() != "") {
+			return new EnderecoService().listarCidadePorUf(empresaSelecionada.getUf());
+		}
+		
+		return listaCidade;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param listaCidade the listaCidade to set
+	 */
+	public void setListaCidade(List<String> listaCidade) {
+		this.listaCidade = listaCidade;
 	}
 
 }

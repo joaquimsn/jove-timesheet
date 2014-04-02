@@ -192,7 +192,7 @@ Configuração do container
 /*===================================
 Configuração pagina cadastro
 =====================================*/
-#form-pagina-cadastro {
+.pagina-cadastro {
 	margin-top: 10px;
 	font-size: 14px;
 }
@@ -205,13 +205,11 @@ Configuração pagina cadastro
 #formulario-cadastro-simples {
 	width: 550px;
 	margin: 30px auto 0 auto;
-	font-size: 14px;
 }
 
 #formulario-cadastro-completo {
 	width: 950px !important;
 	margin: 20px auto 0 auto;
-	font-size: 14px;
 }
 
 .label-cadastro-simples {
@@ -381,7 +379,11 @@ Configuração pagina cadastro
 .table-cadastro {
 	margin: 10px auto 50px auto;
 	width: 1000px;
-	font-size: 13px;
+	font-size: 13px !important;
+}
+
+.table-cadastro tr th{
+	font-size: 12px !important;
 }
 
 .select-one-button-cadastro {
@@ -634,6 +636,30 @@ Configuração da pagina meu perfil
 .grid-alterar-usuario-senha{
 	width: 275px;
 	height: 225px;
+}
+
+
+/*===================================
+Configuração tela compor projeto
+=====================================*/
+.formularioDeRelacionamento{
+	width: 600px;
+	margin: 0 auto;
+	font-size: 14px !important; 
+}
+
+.formularioDeRelacionamento td{
+	padding: 5px 0 !important;
+}
+
+.cbxRelacionamento{
+	width: 100% !important;
+	font-size: 16px !important; 
+}
+
+#botaoInserir{
+	width: 600px !important;
+	height: 40px !important;
 }
 
 

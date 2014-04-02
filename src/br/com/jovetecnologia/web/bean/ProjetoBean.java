@@ -26,8 +26,7 @@ public class ProjetoBean extends CadastroBean implements Serializable, ICrudBean
 	@Override
 	@PostConstruct
 	public void inicializarPagina() {
-		projetoSelecionado = new Projeto();
-		setReadonly(false);
+		projetoSelecionado = new Projeto();	setReadonly(false);
 		
 		listarTodos();
 	}
@@ -45,6 +44,7 @@ public class ProjetoBean extends CadastroBean implements Serializable, ICrudBean
 	@Override
 	public void cadastrar() {
 		
+		
 		if (!validar()) {
 			return;
 		}
@@ -59,9 +59,23 @@ public class ProjetoBean extends CadastroBean implements Serializable, ICrudBean
 
 	@Override
 	public boolean validar() {
-		if (!SystemUtils.isCamposObrigatoriosPreenchidos(getProjetoSelecionado())){
+		if (!SystemUtils.isCamposObrigatoriosPreenchidos(getProjetoSelecionado()) || !validarDataIncio()){
 			return false;
 		}
+		return true;
+	}
+	
+	/**Valida a data de início 
+	 * @author Joaquim Neto
+	 * @return <b>true</b> se a data de inicio for menor que a data final
+	 */
+	private boolean validarDataIncio(){
+		
+		if(projetoSelecionado.getDataInicio().after(projetoSelecionado.getDataFim())){
+			Messages.addError("A data de início é maior que a da data final do projeto");
+			return false;
+		}
+		
 		return true;
 	}
 
