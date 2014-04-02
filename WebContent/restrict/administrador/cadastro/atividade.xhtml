@@ -28,13 +28,9 @@
 				<h:outputText value="#{atividade.nome}" />
 			</p:column>
 			
-			<p:column headerText="Descrição" styleClass="coluna-50" filterBy="descricao"
+			<p:column headerText="Descrição" styleClass="coluna-55" filterBy="descricao"
 				filterStyle="width:80%;" style="text-align: center;" >
 				<h:outputText value="#{atividade.descricao}" />
-			</p:column>
-			
-			<p:column headerText="Tarefa" styleClass="coluna-position-center-5">
-				<p:commandButton icon="ui-icon-search" onsuccess="atividadeTarefa.show();" />
 			</p:column>
 			
 			<p:column headerText="Status" styleClass="coluna-position-center-15" >
@@ -96,6 +92,4 @@
 		</div>
 	</p:fieldset>
 	
-	 	<!-- <ui:include src="/restrict/administrador/cadastro/atividadeTarefa.xhtml" /> -->
-		
 </ui:composition>

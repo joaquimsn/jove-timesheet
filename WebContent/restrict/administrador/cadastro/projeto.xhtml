@@ -56,14 +56,14 @@
 			
 			<h:panelGrid columns="2" columnClasses="coluna-40, coluna-60" style="margin:5px auto;" width="580px" >
 				<p:outputLabel value="Data Inicio" styleClass="label-cadastro-simples" style="width: 240px !important; margin-left: -9px;" />
-				<p:calendar value="#{projetoBean.projetoSelecionado.dataInicio}" navigator="true" display="inline" pattern="dd/mm/yyyy" size="11"
-					 style="width:340px!important;margin-left:2px ;" showOn="button" readonlyInput="true" readonly="#{projetoBean.readonly}" converter="dateConverter"/> 
+				<p:calendar value="#{projetoBean.projetoSelecionado.dataInicio}" navigator="true" display="inline" pattern="dd/MM/yyyy" size="11"
+					 style="width:340px!important;margin-left:2px ;" showOn="button" readonlyInput="true" readonly="#{projetoBean.readonly}" /> 
 			</h:panelGrid>
 			
 			<h:panelGrid columns="2" columnClasses="coluna-40, coluna-60" style="margin:15px auto;" width="580px" >
 				<p:outputLabel value="Data Fim" styleClass="label-cadastro-simples" style="width: 240px !important; margin-left: -9px;" />
-				<p:calendar value="#{projetoBean.projetoSelecionado.dataFim}" navigator="true" display="inline" pattern="dd/mm/yyyy" size="11"
-					style="width:340px!important;margin-left:2px ;" showOn="button" readonlyInput="true" readonly="#{projetoBean.readonly}" converter="dateConverter"/> 
+				<p:calendar value="#{projetoBean.projetoSelecionado.dataFim}" navigator="true" display="inline" pattern="dd/MM/yyyy" size="11"
+					style="width:340px!important;margin-left:2px ;" showOn="button" readonlyInput="true" readonly="#{projetoBean.readonly}" /> 
 			</h:panelGrid>
 			
 			<h:panelGrid columns="2" columnClasses="coluna-position-top-40, coluna-60" style="margin:0 auto;">

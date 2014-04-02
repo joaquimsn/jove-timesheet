@@ -29,6 +29,14 @@
 						</li>
 					</h:panelGroup>
 					
+					<h:panelGroup rendered="#{sessionBean.usuarioLogado.administrador}">
+						<li class="divisor-menus" />
+						
+						<li>
+							<p:commandLink styleClass="menu-label" value="Compor Projeto" action="#{comporProjetoBean.abrirPagina}" />
+						</li>
+					</h:panelGroup>
+					
 					<li class="divisor-menus" />
 					
 					<li>	

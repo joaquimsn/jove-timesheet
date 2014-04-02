@@ -1,0 +1,33 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/resources/templates/template.xhtml"
+	xmlns:jove="http://java.sun.com/jsf/composite/componentes">
+
+	<ui:define name="conteudo">
+		
+		<jove:titulo icon="/resources/images/icons/24x24/cadastro.png" label="Compor Projeto" />
+	
+		<h:form id="form-comporProjeto" styleClass="pagina-cadastro">
+			<p:tabView id="tabview-cadastro">
+				<p:tab id="tab-funcionario-projeto" title="Funcionário - Projeto">
+					<ui:include src="/restrict/comporProjeto/funcionarioProjeto.xhtml" />
+				</p:tab>
+				
+				<p:tab id="tab-projeto-atividade" title="Projeto - Atividade">
+
+				</p:tab> 
+	 
+				<p:tab id="tab-atividade-tarefa" title="Atividade - Tarefa">
+
+				</p:tab>
+	
+			</p:tabView>
+		</h:form>
+	
+	</ui:define>
+</ui:composition>
