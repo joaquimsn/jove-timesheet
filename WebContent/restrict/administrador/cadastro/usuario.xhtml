@@ -26,11 +26,11 @@
 		<h:panelGroup rendered="#{!funcionarioBean.hasObjetoSelecionado() and !funcionarioBean.readonly}">
 			<h:panelGrid styleClass="panel-form-cadastro" columns="2" columnClasses="coluna-40, coluna-60">
 				<p:outputLabel value="Senha" styleClass="label-cadastro-simples" />
-				<p:password value="#{funcionarioBean.usuarioSelecionado.senha}" styleClass="input-cadastro-simples" 
+				<p:password value="#{funcionarioBean.senha}" styleClass="input-cadastro-simples" 
 					maxlength="16" readonly="#{funcionarioBean.readonly}"/>
 			</h:panelGrid>
 			
-			<h:panelGrid styleClass="panel-form-cadastro" columns="2" columnClasses="coluna-40, coluna-60">
+			<h:panelGrid styleClass="panel-form-cadastro" columns="2" columnClasses="coluna-40, coluna-60" style="margin-top: -10px !important">
 				<p:outputLabel value="Confirmar Senha" styleClass="label-cadastro-simples" />
 				<p:password value="#{funcionarioBean.confirmarSenha}" styleClass="input-cadastro-simples"
 					maxlength="16" readonly="#{funcionarioBean.readonly}"/>
@@ -39,8 +39,14 @@
 		
 		<h:panelGroup rendered="#{funcionarioBean.hasObjetoSelecionado()}">
 			<h:panelGrid styleClass="panel-form-cadastro" columns="2" columnClasses="coluna-40, coluna-60">
-				<p:outputLabel value="Senha atual" styleClass="label-cadastro-simples" />
-				<p:password value="#{funcionarioBean.senhaAtual}" styleClass="input-cadastro-simples" 
+				<p:outputLabel value="Nova Senha" styleClass="label-cadastro-simples" />
+				<p:password value="#{funcionarioBean.senha}" styleClass="input-cadastro-simples" 
+					maxlength="16" readonly="#{funcionarioBean.readonly}"/>
+			</h:panelGrid>
+			
+			<h:panelGrid styleClass="panel-form-cadastro" columns="2" columnClasses="coluna-40, coluna-60" style="margin-top: -10px !important" >
+				<p:outputLabel value="Confirmar Senha" styleClass="label-cadastro-simples" />
+				<p:password value="#{funcionarioBean.confirmarSenha}" styleClass="input-cadastro-simples"
 					maxlength="16" readonly="#{funcionarioBean.readonly}"/>
 			</h:panelGrid>
 		</h:panelGroup>

@@ -14,10 +14,16 @@ import br.com.jovetecnologia.domain.model.Projeto;
 import br.com.jovetecnologia.domain.model.RelProjetoFuncionario;
 import br.com.jovetecnologia.domain.service.FuncionarioService;
 import br.com.jovetecnologia.domain.service.ProjetoService;
+import br.com.jovetecnologia.domain.service.RelProjetoFuncionarioService;
 
 @ManagedBean
 @ViewScoped
 public class RelProjetoFuncionarioBean extends ComporProjetoBean implements IComporProjeto, Serializable {
+
+	private static final long serialVersionUID = 4449201043825864710L;
+
+	private Funcionario funcionario;
+	private Projeto projeto;
 
 	private RelProjetoFuncionario relacionamentoSelecionado;
 	private List<RelProjetoFuncionario> listaRelacionamento;
@@ -27,9 +33,12 @@ public class RelProjetoFuncionarioBean extends ComporProjetoBean implements ICom
 
 	private List<Funcionario> listaFuncionario;
 
+	@Override
 	@PostConstruct
 	public void inicializarPagina() {
 		relacionamentoSelecionado = new RelProjetoFuncionario();
+		projeto = new Projeto();
+		funcionario = new Funcionario();
 
 		listarTodos();
 	}
@@ -38,6 +47,7 @@ public class RelProjetoFuncionarioBean extends ComporProjetoBean implements ICom
 	public void listarTodos() {
 		setListaFuncionario(new FuncionarioService().listarTodos());
 		setListaProjeto(new ProjetoService().listarTodos());
+		setListaRelacionamento(new RelProjetoFuncionarioService().listarTodos());
 
 	}
 
@@ -49,7 +59,10 @@ public class RelProjetoFuncionarioBean extends ComporProjetoBean implements ICom
 
 	@Override
 	public void cadastrar() {
-		// TODO Auto-generated method stub
+
+		new RelProjetoFuncionarioService().cadastrar(new RelProjetoFuncionario(getFuncionario(), getProjeto()));
+
+		inicializarPagina();
 
 	}
 
@@ -77,8 +90,46 @@ public class RelProjetoFuncionarioBean extends ComporProjetoBean implements ICom
 	 * @author Joaquim Neto
 	 * @param relacionamentoSelecionado the relacionamentoSelecionado to set
 	 */
-	public void setRelacionamentoSelecionado(RelProjetoFuncionario relacionamentoSelecionado) {
-		this.relacionamentoSelecionado = relacionamentoSelecionado;
+	public void setRelacionamentoSelecionado(RelProjetoFuncionario relacionamento) {
+		if (relacionamento != null && !isReadonly() && relacionamentoSelecionado != relacionamento) {
+			relacionamentoSelecionado = relacionamento;
+			setReadonly(true);
+		} else if (isReadonly() && hasObjetoSelecionado()) {
+			relacionamentoSelecionado = relacionamento;
+			setReadonly(true);
+		}
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the funcionario
+	 */
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param funcionario the funcionario to set
+	 */
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the projeto
+	 */
+	public Projeto getProjeto() {
+		return projeto;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param projeto the projeto to set
+	 */
+	public void setProjeto(Projeto projeto) {
+		this.projeto = projeto;
 	}
 
 	/**

@@ -36,10 +36,13 @@
 			<p:column headerText="Status" styleClass="coluna-position-center-15" >
 				<h:panelGroup>
 					<p:commandButton value="Ativo" disabled="#{departamento.ativo}" actionListener="#{departamentoBean.ativarOuInativar(departamento)}" 
-						update="table-departamento, :form-pagina-cadastro:tabview-cadastro:messages-dep" styleClass="btn-satatus-ativo" />
-						
+						update="table-departamento, :form-pagina-cadastro:tabview-cadastro:messages-dep" styleClass="btn-satatus-ativo" >
+						<p:confirm header="Atenção" message="Você tem certeza que deseja ativar o departamento selecionado" icon="ui-icon-alert" />
+					</p:commandButton>
 					<p:commandButton value="Inativo" disabled="#{!departamento.ativo}" actionListener="#{departamentoBean.ativarOuInativar(departamento)}" 
-						update="table-departamento, :form-pagina-cadastro:tabview-cadastro:messages-dep" styleClass="btn-satatus-inativo"/>
+						update="table-departamento, :form-pagina-cadastro:tabview-cadastro:messages-dep" styleClass="btn-satatus-inativo" >
+						<p:confirm header="Atenção" message="Você tem certeza que deseja inativar o departamento selecionado" icon="ui-icon-alert" />
+					</p:commandButton>
 				</h:panelGroup>
 			</p:column>
 
@@ -100,5 +103,5 @@
 			</h:panelGroup>
 		</div>
 	</p:fieldset>
-	
+
 </ui:composition>

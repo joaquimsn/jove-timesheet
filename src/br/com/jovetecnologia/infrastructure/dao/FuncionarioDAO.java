@@ -93,4 +93,31 @@ public class FuncionarioDAO extends DAO<Funcionario> implements Serializable {
 			ConexaoHibernate.fecharConexao(session);
 		}
 	}
+	
+	/**
+	 * Verifique se o email passado por paramentro já está cadastrado na base
+	 * @author Joaquim Neto
+	 * @param email Email que será consultado
+	 * @return <b>true</b> Se já exitir o email cadastrado na base
+	 */
+	public boolean consultarEmail(String email) {
+		session = ConexaoHibernate.getSessionFactory().openSession();
+		String hql = "SELECT f FROM Funcionario f where f.email = :email";
+		
+		try {	
+			Query query = session.createQuery(hql);
+			query.setParameter("email", email);
+			
+			if (query.uniqueResult() != null){
+				return true;
+			}
+			
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			ConexaoHibernate.fecharConexao(session);
+		}
+		
+		return false;
+	}
 }

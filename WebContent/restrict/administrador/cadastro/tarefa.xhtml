@@ -36,9 +36,13 @@
 			<p:column headerText="Status" styleClass="coluna-position-center-15" >
 				<h:panelGroup>
 					<p:commandButton value="Ativo" disabled="#{tarefa.ativo}" actionListener="#{tarefaBean.ativarOuInativar(tarefa)}" 
-						update="table-tarefa :form-pagina-cadastro:tabview-cadastro:messages-tar" styleClass="btn-satatus-ativo" />
+						update="table-tarefa :form-pagina-cadastro:tabview-cadastro:messages-tar" styleClass="btn-satatus-ativo" >
+						<p:confirm header="Atenção" message="Você tem certeza que deseja ativar a tarefa selecionada" icon="ui-icon-alert" />
+					</p:commandButton>
 					<p:commandButton value="Inativo" disabled="#{!tarefa.ativo}" actionListener="#{tarefaBean.ativarOuInativar(tarefa)}" 
-						update="table-tarefa :form-pagina-cadastro:tabview-cadastro:messages-tar" styleClass="btn-satatus-inativo"/>
+						update="table-tarefa :form-pagina-cadastro:tabview-cadastro:messages-tar" styleClass="btn-satatus-inativo" >
+						<p:confirm header="Atenção" message="Você tem certeza que deseja inativar a tarefa selecionada" icon="ui-icon-alert" />
+					</p:commandButton>
 				</h:panelGroup>
 			</p:column>
 		

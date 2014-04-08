@@ -1,6 +1,7 @@
 package br.com.jovetecnologia.web.bean;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -32,7 +33,7 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	private Usuario usuarioSelecionado;
 	private Endereco endereco;
 
-	private String senhaAtual;
+	private String senha;
 	private String confirmarSenha;
 
 	private boolean next;
@@ -54,6 +55,7 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 		funcionarioSelecionado = new Funcionario();
 		usuarioSelecionado = new Usuario();
 		listaFuncionarioFiltrado = null;
+		endereco = new Endereco();
 
 		next = false;
 		limparSenha();
@@ -67,7 +69,7 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	 * @author Joaquim Neto
 	 */
 	private void limparSenha() {
-		senhaAtual = "";
+		senha = "";
 		confirmarSenha = "";
 
 	}
@@ -76,12 +78,12 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	public void listarTodos() {
 		setListaFuncionario(new FuncionarioService().listarTodos());
 		setListaSupervisor(new FuncionarioService().listarSupervisor());
-		
+
 		setListaDepartamento(new DepartamentoService().listarTodos());
-		
+
 		setListaUf(new EnderecoService().listarUf());
 		setListaCidade(new EnderecoService().listarCidadePorUf(funcionarioSelecionado.getUf()));
-		
+
 		setListaModalidadeContrato(ModalidadeContratoEnum.getDisplayList());
 		setListaNivelUsuario(NivelUsuarioEnum.getDisplayList());
 	}
@@ -98,14 +100,10 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 			return;
 		}
 
-		// Remover só teste o setCidade e setUf
-		funcionarioSelecionado.setCidade("São Paulo");
-		funcionarioSelecionado.setUf("SP");
-
 		new FuncionarioService().cadastrar(getFuncionarioSelecionado());
 
 		// Cadastra o Usuario junto como o funcionario
-		usuarioSelecionado.setSenha(Criptografia.criptografar(usuarioSelecionado.getSenha()));
+		usuarioSelecionado.setSenha(Criptografia.criptografar(senha));
 		usuarioSelecionado.setFuncionario(getFuncionarioSelecionado());
 
 		new UsuarioService().cadastrar(usuarioSelecionado);
@@ -119,23 +117,44 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	public boolean validar() {
 		if (!SystemUtils.isCamposObrigatoriosPreenchidos(getFuncionarioSelecionado())
 				|| !SystemUtils.isCpfValido(funcionarioSelecionado.getCpf())
-				|| !SystemUtils.isCamposObrigatoriosPreenchidos(getUsuarioSelecionado()) || !validarSenha()) {
+				|| !SystemUtils.isCamposObrigatoriosPreenchidos(getUsuarioSelecionado())
+				|| !validarDataNascimento()
+				|| !validarSenha()
+				|| !validarEmail()) {
 
 			return false;
 		}
+		
+		if (funcionarioSelecionado.getTipoContrato() == "") {
+			Messages.addError("O campo modalidade de contrato é obrigatorio");
+			return false;
+		}
+		
+		if (funcionarioSelecionado.getDepartamento() == null) {
+			Messages.addError("O campo departamento é obrigatorio");
+			return false;
+		}
+				
+		if (senha.length() > 1 && senha.length() < 6) {
+			Messages.addError("A senha deve conter no minímo 6 digitos");
+			return false;
+		}
+		
+		if (usuarioSelecionado.getNivel() == 0) {
+			Messages.addError("O campo nivel do usuário é obrigatorio");
+			return false;
+		}
+		
 		return true;
 	}
 
 	/**
 	 * Valida se as senhas informadas são iguais.
 	 * @author Joaquim Neto
-	 * @return <b>true</b> As senhas informadas forem iguais.
+	 * @return <b>true</b> Se as senhas informadas forem iguais.
 	 */
 	public boolean validarSenha() {
-		if (usuarioSelecionado.getSenha().equals(confirmarSenha)) {
-			return true;
-		} else if (hasObjetoSelecionado()
-				&& Criptografia.criptografar(senhaAtual).equals(usuarioSelecionado.getSenha())) {
+		if (senha.equals(confirmarSenha)) {
 			return true;
 		}
 
@@ -144,18 +163,48 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 		return false;
 	}
 
+	/**
+	 * Verifica se o atributo dataNascimento está preenchio e se a data informa é
+	 * diferente que a data atual
+	 * @author Joaquim Neto
+	 * @return <b>true</b> Se a data de nascimento for valida
+	 */
+	public boolean validarDataNascimento() {
+		if (funcionarioSelecionado.getDataNascimento() == null
+				|| funcionarioSelecionado.getDataNascimento().equals(new Date())) {
+			
+			Messages.addError("É obrigatorio informar a data de nascimento");
+
+			return false;
+		}
+
+		return true;
+	}
+	
+	/**
+	 * Verifica se o email informado pelo usuario está cadastrado no sistema
+	 * @author Joaquim Neto
+	 * @return <b>true</b> Se o email não estiver registrado no sistema
+	 */
+	public boolean validarEmail() {
+		if (new FuncionarioService().consultarEmail(funcionarioSelecionado.getEmail()) && funcionarioSelecionado.getIdFuncionario() == 0) {
+			Messages.addError("O e-mail informada já está cadastro no sistema");
+			return false;
+		}
+		
+		return true;
+	}
+
 	@Override
 	public void alterar() {
 
 		if (!validar()) {
 			return;
 		}
-
-		// Remover só teste o setCidade e setUf
-		funcionarioSelecionado.setCidade("São Paulo");
-		funcionarioSelecionado.setUf("SP");
-
+		
 		new FuncionarioService().alterar(getFuncionarioSelecionado());
+		
+		usuarioSelecionado.setSenha(Criptografia.criptografar(senha));
 
 		Messages.addInfo("Funcionário alterado com sucesso");
 
@@ -207,15 +256,16 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 		}
 		return true;
 	}
-	
+
 	/**
-	 * Pesquisa o cep na base, se existir preenche os campos logradouro, bairro, cidade, uf automaticamente
+	 * Pesquisa o cep na base, se existir preenche os campos logradouro, bairro, cidade,
+	 * uf automaticamente
 	 * @author Joaquim Neto
 	 */
 	public void consultarCep() {
 		if (funcionarioSelecionado.getCep() != "") {
 			endereco = new EnderecoService().obterEnderecoPorCep(funcionarioSelecionado.getCep());
-			
+
 			funcionarioSelecionado.setLogradouro(endereco.getLogradouro());
 			funcionarioSelecionado.setBairro(endereco.getBairro());
 			funcionarioSelecionado.setUf(endereco.getUf());
@@ -269,16 +319,16 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	 * @author Joaquim Neto
 	 * @return the senhaAtual
 	 */
-	public String getSenhaAtual() {
-		return senhaAtual;
+	public String getSenha() {
+		return senha;
 	}
 
 	/**
 	 * @author Joaquim Neto
-	 * @param senhaAtual the senhaAtual to set
+	 * @param senha the senhaAtual to set
 	 */
-	public void setSenhaAtual(String senhaAtual) {
-		this.senhaAtual = senhaAtual;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	/**
@@ -430,10 +480,10 @@ public class FuncionarioBean extends CadastroBean implements Serializable, ICrud
 	 * @return the listaCidade
 	 */
 	public List<String> getListaCidade() {
-		if(funcionarioSelecionado.getUf() != "") {
+		if (funcionarioSelecionado.getUf() != "") {
 			return new EnderecoService().listarCidadePorUf(funcionarioSelecionado.getUf());
 		}
-		
+
 		return listaCidade;
 	}
 

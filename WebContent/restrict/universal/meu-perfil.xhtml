@@ -109,16 +109,12 @@
 		
 						<h:panelGrid width="100%">
 							<p:outputLabel value="Cidade" />
-							<p:selectOneMenu styleClass="cbx-cidade" style="width: 103%;" disabled="#{perfilBean.readonly}" >
-								<f:selectItem itemLabel="selecione" itemValue=""/>
-							</p:selectOneMenu>
+							<p:inputText value="#{perfilBean.funcionario.cidade}" style="width: 100%;" readonly="#{perfilBean.readonly}" />
 						</h:panelGrid>
 		
 						<h:panelGrid width="100%">
 							<p:outputLabel value="UF" />
-							<p:selectOneMenu styleClass="cbx-uf" style="width: 104%;" disabled="#{perfilBean.readonly}" >
-								<f:selectItem itemLabel="selecione" itemValue=""/>
-							</p:selectOneMenu>
+							<p:inputText value="#{perfilBean.funcionario.uf}" style="width: 100%;" readonly="#{perfilBean.readonly}" />
 						</h:panelGrid>
 					</h:panelGrid>
 					

@@ -64,6 +64,16 @@ public class FuncionarioService implements Serializable {
 	}
 	
 	/**
+	 * Verifica se o e-mail informada já está cadastrado no sistema
+	 * @author Joaquim Neto
+	 * @param email
+	 * @return <b>true</b> Se já exitir o email
+	 */
+	public boolean consultarEmail(String email){
+		return funcionarioDAO.consultarEmail(email);
+	}
+	
+	/**
 	 * Retorna todos os funcionarios salvo na base em ordem decrescente
 	 * @author Joaquim Neto
 	 * @return Lista com todos os funcionarios persistido

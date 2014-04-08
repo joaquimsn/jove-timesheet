@@ -39,7 +39,6 @@ public class Usuario implements Serializable {
 
 	private int nivel;
 
-	@Required(label = "Senha", minimo = 6)
 	private String senha;
 
 	@Column(name = "usuario_modificador")

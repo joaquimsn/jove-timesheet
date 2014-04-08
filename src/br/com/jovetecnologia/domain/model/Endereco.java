@@ -1,7 +1,6 @@
 package br.com.jovetecnologia.domain.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class Endereco implements Serializable {
 
@@ -12,9 +11,6 @@ public class Endereco implements Serializable {
 	private String bairro;
 	private String uf;
 	private String cidade;
-
-	private List<String> ListaUf;
-	private List<String> listaCidade;
 
 	/**
 	 * @author Joaquim Neto
@@ -89,43 +85,13 @@ public class Endereco implements Serializable {
 	}
 
 	/**
-	 * @author Joaquim Neto
+	 * @author Joaquim Neto	private List<String> ListaUf;
+	private List<String> listaCidade;
+
 	 * @param cidade the cidade to set
 	 */
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
-	}
-
-	/**
-	 * @author Joaquim Neto
-	 * @return the listaUf
-	 */
-	public List<String> getListaUf() {
-		return ListaUf;
-	}
-
-	/**
-	 * @author Joaquim Neto
-	 * @param listaUf the listaUf to set
-	 */
-	public void setListaUf(List<String> listaUf) {
-		ListaUf = listaUf;
-	}
-
-	/**
-	 * @author Joaquim Neto
-	 * @return the listaCidade
-	 */
-	public List<String> getListaCidade() {
-		return listaCidade;
-	}
-
-	/**
-	 * @author Joaquim Neto
-	 * @param listaCidade the listaCidade to set
-	 */
-	public void setListaCidade(List<String> listaCidade) {
-		this.listaCidade = listaCidade;
 	}
 
 }

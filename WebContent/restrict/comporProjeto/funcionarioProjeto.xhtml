@@ -14,32 +14,33 @@
 				<h:panelGrid columns="2" columnClasses="coluna-20, coluna-80" width="100%">
 					<h:outputText value="Funcionário" styleClass="label-cadastro-simples"/>
 					
-					<h:selectOneMenu value="#{relProjetoFuncionarioBean.relacionamentoSelecionado.funcionario}" styleClass="cbxRelacionamento" 
+					<p:selectOneMenu value="#{relProjetoFuncionarioBean.funcionario}" styleClass="cbxRelacionamento" 
 						converter="genericConverter">
 						<f:selectItem itemLabel="Selecione" itemValue=""/>
 						<f:selectItems value="#{relProjetoFuncionarioBean.listaFuncionario}" var="funcionario" itemLabel="#{funcionario.nome}" itemValue="#{funcionario}"/>
-					</h:selectOneMenu>
+					</p:selectOneMenu>
 				</h:panelGrid>
 				
 				<h:panelGrid columns="2" columnClasses="coluna-20, coluna-80" width="100%">
 					<h:outputText value="Projeto" styleClass="label-cadastro-simples"/>
 					
-					<h:selectOneMenu value="#{relProjetoFuncionarioBean.relacionamentoSelecionado.projeto}" styleClass="cbxRelacionamento" 
+					<p:selectOneMenu value="#{relProjetoFuncionarioBean.projeto}" styleClass="cbxRelacionamento" 
 						converter="genericConverter" >
 						<f:selectItem itemLabel="Selecione" itemValue=""/>
 						<f:selectItems value="#{relProjetoFuncionarioBean.listaProjeto}" var="projeto" itemLabel="#{projeto.nome}" itemValue="#{projeto}" />
-					</h:selectOneMenu>
+					</p:selectOneMenu>
 				</h:panelGrid>
 			</h:panelGrid>
 			
 			<div style="width: 700px; height: 30px;margin-bottom: 10px !important;">
-				<p:commandButton value="Inserir" id="botaoInserir" styleClass="btn-padrao" style="margin-left: 700px;" />
+				<p:commandButton value="Inserir" id="botaoInserir" styleClass="btn-padrao" style="margin-left: 700px;" 
+					actionListener="#{relProjetoFuncionarioBean.cadastrar()}" update="tableProjetoFunc, formulario-ProjetoFuncionario"/>
 			</div>
 		</h:panelGroup>
 		
 		<div class="table-cadastro">
-			<p:dataTable id="tableProjetoFunc" value="#{relProjetoFuncionarioBean.listaRelacionamento}" var="relacionamento" rowKey="#{relacionamento.projeto.nome}"  widgetVar="tabelaRelacional"
-				selection="#{relProjetoFuncionarioBean.relacionamentoSelecionado}" selectionMode="single" paginator="true" rows="5" filteredValue="#{relProjetoFuncionarioBean.listaRelacionamentoFiltrado}"
+			<p:dataTable id="tableProjetoFunc" value="#{relProjetoFuncionarioBean.listaRelacionamento}" var="relacionamento" rowKey="#{relacionamento.id}"  widgetVar="tabelaRelacional"
+				selectionMode="single" paginator="true" rows="5" filteredValue="#{relProjetoFuncionarioBean.listaRelacionamentoFiltrado}"
 				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
 				paginatorPosition="bottom" resizableColumns="flase" style="width: 940px;" 
 				emptyMessage="Nenhum relacionamento encontrado" >
@@ -50,17 +51,17 @@
 					Lista de relacionamento Projeto - Funcionario
 				</f:facet>
 				
-				<p:column headerText="Departamento" styleClass="coluna-20" filterBy="nome"
+				<p:column headerText="Departamento" styleClass="coluna-20" filterBy="funcionario.departamento.nome"
 					filterStyle="width:80%;" style="text-align: center;" >
 					<h:outputText value="#{relacionamento.funcionario.departamento.nome}" />
 				</p:column>
 				
-				<p:column headerText="Funcionário" styleClass="coluna-40" filterBy="nome"
+				<p:column headerText="Funcionário" styleClass="coluna-40" filterBy=".funcionario.nome"
 					filterStyle="width:80%;" style="text-align: center;" >
 					<h:outputText value="#{relacionamento.funcionario.nome}" />
 				</p:column>
 				
-				<p:column headerText="Projeto" styleClass="coluna-30" filterBy="nome"
+				<p:column headerText="Projeto" styleClass="coluna-30" filterBy="relacionamento.projeto.nome"
 					filterStyle="width:80%;" style="text-align: center;" >
 					<h:outputText value="#{relacionamento.projeto.nome}" />
 				</p:column>

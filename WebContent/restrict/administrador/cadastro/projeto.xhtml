@@ -36,9 +36,13 @@
 			<p:column headerText="Status" styleClass="coluna-position-center-15" >
 				<h:panelGroup>
 					<p:commandButton value="Ativo" disabled="#{projeto.ativo}" actionListener="#{projetoBean.ativarOuInativar(projeto)}" 
-						update="table-projeto :form-pagina-cadastro:tabview-cadastro:messages-pro" styleClass="btn-satatus-ativo" />
+						update="table-projeto :form-pagina-cadastro:tabview-cadastro:messages-pro" styleClass="btn-satatus-ativo" >
+						<p:confirm header="Atenção" message="Você tem certeza que deseja ativar o projeto selecionado" icon="ui-icon-alert" />
+					</p:commandButton>
 					<p:commandButton value="Inativo" disabled="#{!projeto.ativo}" actionListener="#{projetoBean.ativarOuInativar(projeto)}" 
-						update="table-projeto :form-pagina-cadastro:tabview-cadastro:messages-pro" styleClass="btn-satatus-inativo"/>
+						update="table-projeto :form-pagina-cadastro:tabview-cadastro:messages-pro" styleClass="btn-satatus-inativo">
+						<p:confirm header="Atenção" message="Você tem certeza que deseja inativar o projeto selecionado" icon="ui-icon-alert" />
+					</p:commandButton>
 				</h:panelGroup>
 			</p:column>
 		

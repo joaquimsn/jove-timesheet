@@ -1,8 +1,16 @@
 package br.com.jovetecnologia.domain.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * The persistent class for the rel_projeto_funcionario database table.
@@ -34,6 +42,23 @@ public class RelProjetoFuncionario implements Serializable {
 	private Projeto projeto;
 
 	public RelProjetoFuncionario() {
+	}
+	
+	/**
+	 * Instancia relProjetoFuncionario criandao a sua PK
+	 * @author Joaquim Neto
+	 * @param funcionario Objeto Funcionário que irá compor o realcionamento
+	 * @param projeto Objeto Projeto que irá compor o relacionamento
+	 */
+	public RelProjetoFuncionario(Funcionario funcionario, Projeto projeto) {
+		RelProjetoFuncionarioPK pk = new RelProjetoFuncionarioPK();
+		
+		pk.setIdFuncionario(funcionario.getIdFuncionario());
+		pk.setIdProjeto(projeto.getIdProjeto());
+		
+		setFuncionario(funcionario);
+		setProjeto(projeto);
+		setId(pk);
 	}
 
 	public RelProjetoFuncionarioPK getId() {

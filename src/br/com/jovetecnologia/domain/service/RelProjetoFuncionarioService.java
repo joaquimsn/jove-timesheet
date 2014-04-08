@@ -1,7 +1,11 @@
 package br.com.jovetecnologia.domain.service;
 
+import java.util.Date;
+import java.util.List;
+
 import br.com.jovetecnologia.domain.model.RelProjetoFuncionario;
 import br.com.jovetecnologia.infrastructure.dao.RelProjetoFuncionarioDAO;
+import br.com.jovetecnologia.infrastructure.util.SystemUtils;
 
 public class RelProjetoFuncionarioService {
 	
@@ -18,6 +22,9 @@ public class RelProjetoFuncionarioService {
 	 * @param relacionamento Objeto relProjetoFuncionario
 	 */
 	public void cadastrar(RelProjetoFuncionario relacionamento) {
+		relacionamento.setDataCadastro(new Date());
+		relacionamento.setUsuarioModificador(SystemUtils.getUsuarioLogado().getIdUsuario());
+		
 		relProjetoFuncionarioDAO.cadastar(relacionamento);
 	}
 	
@@ -29,4 +36,15 @@ public class RelProjetoFuncionarioService {
 	public void deletar(RelProjetoFuncionario relacionamento) {
 		relProjetoFuncionarioDAO.deletar(relacionamento);
 	}
+	
+	/**
+	 * Retorna todos os Relacionamentos de Projeto-Funcionario salvo na base em ordem decrescente
+	 * @author Joaquim Neto
+	 * @return Lista com todos os relacionamento persistido
+	 */
+	@SuppressWarnings("unchecked")
+	public List<RelProjetoFuncionario> listarTodos() {
+		return relProjetoFuncionarioDAO.listarTodosDesc();
+	}
+	
 }

@@ -41,9 +41,13 @@
 			<p:column headerText="Status" styleClass="coluna-position-center-15" >
 				<h:panelGroup>
 					<p:commandButton value="Ativo" disabled="#{empresa.ativo}" actionListener="#{empresaBean.ativarOuInativar(empresa)}" 
-						update="table-empresa, :form-pagina-cadastro:tabview-cadastro:messages-emp" styleClass="btn-satatus-ativo" />
+						update="table-empresa, :form-pagina-cadastro:tabview-cadastro:messages-emp" styleClass="btn-satatus-ativo" >
+						<p:confirm header="Atenção" message="Você tem certeza que deseja ativar a empresa selecionada" icon="ui-icon-alert" />	
+					</p:commandButton>
 					<p:commandButton value="Inativo" disabled="#{!empresa.ativo}" actionListener="#{empresaBean.ativarOuInativar(empresa)}" 
-						update="table-empresa, :form-pagina-cadastro:tabview-cadastro:messages-emp" styleClass="btn-satatus-inativo"/>
+						update="table-empresa, :form-pagina-cadastro:tabview-cadastro:messages-emp" styleClass="btn-satatus-inativo" >
+						<p:confirm header="Atenção" message="Você tem certeza que deseja inativar a empresa selecionada" icon="ui-icon-alert" />
+					</p:commandButton>
 				</h:panelGroup>
 			</p:column>
 
@@ -72,61 +76,63 @@
 			</h:panelGrid>
 		</h:panelGrid>
 		
-		<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-15, coluna-75, coluna-10">
-			<h:panelGrid width="100%">
-				<p:outputLabel value="CEP" />
-				<p:inputText value="#{empresaBean.empresaSelecionada.cep}" style="width: 100%;" 
-					maxlength="8" readonly="#{empresaBean.readonly}" onkeyup="mascara(this, soNumeros);" 
-					onmouseout="#{empresaBean.consultarCep()}">
-					
-					<p:ajax update="formulario-cadastro-completo"/>
-				</p:inputText>
+		<h:panelGroup id="blocoEnderecoEmp" >
+			<h:panelGrid styleClass="panel-form-cadastro" columns="3" columnClasses="coluna-15, coluna-75, coluna-10">
+				<h:panelGrid width="100%">
+					<p:outputLabel value="CEP" />
+					<p:inputText value="#{empresaBean.empresaSelecionada.cep}" style="width: 100%;" 
+						maxlength="8" readonly="#{empresaBean.readonly}" onkeyup="mascara(this, soNumeros);" 
+						onmouseout="#{empresaBean.consultarCep()}">
+						
+						<p:ajax update="blocoEnderecoEmp"/>
+					</p:inputText>
+				</h:panelGrid>
+				
+				<h:panelGrid width="100%">
+					<p:outputLabel value="Logradouro" />
+					<p:inputText value="#{empresaBean.empresaSelecionada.logradouro}" style="width: 100%;"
+						maxlength="120" readonly="#{empresaBean.readonly}" onkeyup="mascara(this, mista);"/>		
+				</h:panelGrid>
+				
+				<h:panelGrid width="100%">
+					<p:outputLabel value="Nº" />
+					<p:inputText value="#{empresaBean.empresaSelecionada.numero}" style="width: 100%;" 
+						maxlength="10" readonly="#{empresaBean.readonly}" onkeyup="mascara(this, soNumeros);" />		
+				</h:panelGrid>
 			</h:panelGrid>
 			
-			<h:panelGrid width="100%">
-				<p:outputLabel value="Logradouro" />
-				<p:inputText value="#{empresaBean.empresaSelecionada.logradouro}" style="width: 100%;"
-					maxlength="120" readonly="#{empresaBean.readonly}" onkeyup="mascara(this, mista);"/>		
+			<h:panelGrid styleClass="panel-form-cadastro" columns="4" columnClasses="coluna-25, coluna-30, coluna-15, coluna-30">
+				<h:panelGrid width="100%">
+					<p:outputLabel value="Bairro" />
+					<p:inputText value="#{empresaBean.empresaSelecionada.bairro}" style="width: 100%;" maxlength="50" readonly="#{empresaBean.readonly}"
+						onkeyup="mascara(this, soTextoNumeros);" />		
+				</h:panelGrid>
+				
+				<h:panelGrid width="100%">
+					<p:outputLabel value="Complemento" />
+					<p:inputText value="#{empresaBean.empresaSelecionada.complemento}" style="width: 100%;" 
+						maxlength="50" readonly="#{empresaBean.readonly}" onkeyup="mascara(this, mista);" />		
+				</h:panelGrid>
+	
+				<h:panelGrid width="100%">
+					<p:outputLabel value="UF" />
+					<p:selectOneMenu value="#{empresaBean.empresaSelecionada.uf}" styleClass="cbx-uf" style="width: 104%;" disabled="#{empresaBean.readonly}" >
+						<f:selectItem itemLabel="selecione" itemValue=""/>
+						<f:selectItems value="#{empresaBean.listaUf}" />
+						
+						<p:ajax onsuccess="#{empresaBean.listaCidade}" update="cbxEmCidade"/>
+					</p:selectOneMenu>
+				</h:panelGrid>
+				
+				<h:panelGrid width="100%">
+					<p:outputLabel value="Cidade" />
+					<p:selectOneMenu value="#{empresaBean.empresaSelecionada.cidade}" id="cbxEmCidade" styleClass="cbx-cidade" style="width: 103%;" disabled="#{empresaBean.readonly}" >
+						<f:selectItem itemLabel="selecione" itemValue="" />
+						<f:selectItems value="#{empresaBean.listaCidade}" />
+					</p:selectOneMenu>
+				</h:panelGrid>
 			</h:panelGrid>
-			
-			<h:panelGrid width="100%">
-				<p:outputLabel value="Nº" />
-				<p:inputText value="#{empresaBean.empresaSelecionada.numero}" style="width: 100%;" 
-					maxlength="10" readonly="#{empresaBean.readonly}" onkeyup="mascara(this, soNumeros);" />		
-			</h:panelGrid>
-		</h:panelGrid>
-		
-		<h:panelGrid styleClass="panel-form-cadastro" columns="4" columnClasses="coluna-25, coluna-30, coluna-15, coluna-30">
-			<h:panelGrid width="100%">
-				<p:outputLabel value="Bairro" />
-				<p:inputText value="#{empresaBean.empresaSelecionada.bairro}" style="width: 100%;" maxlength="50" readonly="#{empresaBean.readonly}"
-					onkeyup="mascara(this, soTextoNumeros);" />		
-			</h:panelGrid>
-			
-			<h:panelGrid width="100%">
-				<p:outputLabel value="Complemento" />
-				<p:inputText value="#{empresaBean.empresaSelecionada.complemento}" style="width: 100%;" 
-					maxlength="50" readonly="#{empresaBean.readonly}" onkeyup="mascara(this, mista);" />		
-			</h:panelGrid>
-
-			<h:panelGrid width="100%">
-				<p:outputLabel value="UF" />
-				<p:selectOneMenu value="#{empresaBean.empresaSelecionada.uf}" styleClass="cbx-uf" style="width: 104%;" disabled="#{empresaBean.readonly}" >
-					<f:selectItem itemLabel="selecione" itemValue=""/>
-					<f:selectItems value="#{empresaBean.listaUf}" />
-					
-					<p:ajax onsuccess="#{empresaBean.listaCidade}" update="cbxEmCidade"/>
-				</p:selectOneMenu>
-			</h:panelGrid>
-			
-			<h:panelGrid width="100%">
-				<p:outputLabel value="Cidade" />
-				<p:selectOneMenu value="#{empresaBean.empresaSelecionada.cidade}" id="cbxEmCidade" styleClass="cbx-cidade" style="width: 103%;" disabled="#{empresaBean.readonly}" >
-					<f:selectItem itemLabel="selecione" itemValue="" />
-					<f:selectItems value="#{empresaBean.listaCidade}" />
-				</p:selectOneMenu>
-			</h:panelGrid>
-		</h:panelGrid>
+		</h:panelGroup>
 		
 		<h:panelGrid styleClass="panel-form-cadastro" columns="2" columnClasses="coluna-30, coluna-70">
 			<h:panelGrid width="100%" >

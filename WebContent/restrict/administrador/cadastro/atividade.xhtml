@@ -36,9 +36,13 @@
 			<p:column headerText="Status" styleClass="coluna-position-center-15" >
 				<h:panelGroup>
 					<p:commandButton value="Ativo" disabled="#{atividade.ativo}" actionListener="#{atividadeBean.ativarOuInativar(atividade)}" 
-						update="table-atividade :form-pagina-cadastro:tabview-cadastro:messages-ativ" styleClass="btn-satatus-ativo" />
+						update="table-atividade :form-pagina-cadastro:tabview-cadastro:messages-ativ" styleClass="btn-satatus-ativo" >
+						<p:confirm header="Atenção" message="Você tem certeza que deseja ativar a atividade selecionada" icon="ui-icon-alert" />
+					</p:commandButton>
 					<p:commandButton value="Inativo" disabled="#{!atividade.ativo}" actionListener="#{atividadeBean.ativarOuInativar(atividade)}" 
-						update="table-atividade :form-pagina-cadastro:tabview-cadastro:messages-ativ" styleClass="btn-satatus-inativo"/>
+						update="table-atividade :form-pagina-cadastro:tabview-cadastro:messages-ativ" styleClass="btn-satatus-inativo" >
+						<p:confirm header="Atenção" message="Você tem certeza que deseja inativar a atividade selecionada" icon="ui-icon-alert" />
+					</p:commandButton>
 				</h:panelGroup>
 			</p:column>
 		

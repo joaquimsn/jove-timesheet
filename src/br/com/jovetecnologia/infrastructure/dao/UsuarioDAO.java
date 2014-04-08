@@ -104,4 +104,31 @@ public class UsuarioDAO extends DAO<Usuario> implements Serializable {
 			ConexaoHibernate.fecharConexao(session);
 		}
 	}
+	
+	/**
+	 * Verifique se o login passado por paramentro já está cadastrado na base
+	 * @author Joaquim Neto
+	 * @param login Nome do login que será consultado
+	 * @return <b>true</b> Se já existir o login registrado na base
+	 */
+	public boolean consultarLogin(String login) {
+		session = ConexaoHibernate.getSessionFactory().openSession();
+		String hql = "SELECT u FROM Usuario u where u.login = :login";
+		
+		try {	
+			Query query = session.createQuery(hql);
+			query.setParameter("login", login);
+			
+			if (query.equals(login) ){
+				return true;
+			}
+			
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			ConexaoHibernate.fecharConexao(session);
+		}
+		
+		return false;
+	}
 }
