@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import br.com.jovetecnologia.domain.model.Funcionario;
+import br.com.jovetecnologia.domain.model.Projeto;
 import br.com.jovetecnologia.infrastructure.dao.FuncionarioDAO;
 import br.com.jovetecnologia.infrastructure.util.SystemUtils;
 
@@ -101,5 +102,9 @@ public class FuncionarioService implements Serializable {
 	 */
 	public List<Funcionario> listarSupervisor() {
 		return funcionarioDAO.listarSupervisor();
+	}
+	
+	public List<Funcionario> listarFuncionairoPorProjeto(Projeto projeto) {
+		return funcionarioDAO.listarFuncionarioPorProjeto(projeto);
 	}
 }

@@ -3,6 +3,8 @@ package br.com.jovetecnologia.domain.service;
 import java.util.Date;
 import java.util.List;
 
+import br.com.jovetecnologia.domain.model.Funcionario;
+import br.com.jovetecnologia.domain.model.Projeto;
 import br.com.jovetecnologia.domain.model.RelProjetoFuncionario;
 import br.com.jovetecnologia.infrastructure.dao.RelProjetoFuncionarioDAO;
 import br.com.jovetecnologia.infrastructure.util.SystemUtils;
@@ -45,6 +47,10 @@ public class RelProjetoFuncionarioService {
 	@SuppressWarnings("unchecked")
 	public List<RelProjetoFuncionario> listarTodos() {
 		return relProjetoFuncionarioDAO.listarTodosDesc();
+	}
+	
+	public List<Funcionario> listarFuncionarioPorProjeto(Projeto projeto) {
+		return new FuncionarioService().listarFuncionairoPorProjeto(projeto);
 	}
 	
 }

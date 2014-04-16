@@ -15,3 +15,9 @@ SELECT e.endereco, b.bairro, c.cidade, c.uf FROM tend_endereco e
 
 --Lista as cidades com base na UF
 SELECT c.cidade FROM tend_cidade c WHERE c.uf = 'BA';
+
+--Lista os funcionários que já estão relacionado a um projeto informado
+SELECT * FROM funcionario f
+	INNER JOIN	 rel_projeto_funcionario rf ON rf.id_funcionario = f.id_funcionario AND rf.id_projeto = 1;
+
+	

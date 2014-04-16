@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.Transaction;
 
 import br.com.jovetecnologia.domain.model.Funcionario;
+import br.com.jovetecnologia.domain.model.Projeto;
 import br.com.jovetecnologia.infrastructure.connection.ConexaoHibernate;
 
 public class FuncionarioDAO extends DAO<Funcionario> implements Serializable {
@@ -37,6 +38,8 @@ public class FuncionarioDAO extends DAO<Funcionario> implements Serializable {
 			funcionario = (Funcionario) query.uniqueResult();
 		} catch (HibernateException e) {
 			e.printStackTrace();
+		} finally {
+			ConexaoHibernate.fecharConexao(session);
 		}
 		
 		return funcionario;
@@ -60,9 +63,44 @@ public class FuncionarioDAO extends DAO<Funcionario> implements Serializable {
 			listaSupervisor = query.list();
 		} catch (HibernateException e) {
 			e.printStackTrace();
+		} finally {
+			ConexaoHibernate.fecharConexao(session);
 		}
 		
+		
 		return listaSupervisor;
+	}
+	
+	/**
+	 * Pesquisa os funcionarios cadastrados na base, que estão relacionados com o projeto passado como parâmentro
+	 * @author Joaquim Neto
+	 * @param projeto Objeto projeto que será usado para consultar os funcionarios
+	 * @return Lista com os funcionários que estão relacionado ao projeto informado
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Funcionario> listarFuncionarioPorProjeto(Projeto projeto) {
+		List<Funcionario> listaFuncionario = null;
+		
+		session = ConexaoHibernate.getSessionFactory().openSession();
+		
+		StringBuilder hql = new StringBuilder("");
+		hql.append("SELECT f FROM Funcionario f");
+		hql.append(" JOIN f.relProjetoFuncionarios rf WHERE");
+		hql.append(" rf.projeto = :projeto");
+
+		try {
+			Query query = session.createQuery(hql.toString());
+			query.setParameter("projeto", projeto);
+			
+			listaFuncionario = query.list();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConexaoHibernate.fecharConexao(session);
+		}
+
+		return listaFuncionario;
 	}
 	
 	/**
@@ -102,7 +140,7 @@ public class FuncionarioDAO extends DAO<Funcionario> implements Serializable {
 	 */
 	public boolean consultarEmail(String email) {
 		session = ConexaoHibernate.getSessionFactory().openSession();
-		String hql = "SELECT f FROM Funcionario f where f.email = :email";
+		String hql = "SELECT f FROM Funcionario f WHERE f.email = :email";
 		
 		try {	
 			Query query = session.createQuery(hql);

@@ -16,29 +16,4 @@ public interface IComporProjeto {
 	 * @author Joaquim Neto
 	 */
 	abstract void listarTodos();
-
-	/**
-	 * Define Readonly como <b>false</b> para liberar o click no botão
-	 * @author Joaquim Neto
-	 */
-	void habilitarCampo();
-
-	/**
-	 * Cadastra um relacionamento
-	 * @author Joaquim Neto
-	 */
-	void cadastrar();
-
-	/**
-	 * Excluir um Relacionamento
-	 * @author Joaquim Neto
-	 */
-	void excluir();
-
-	/**
-	 * Retorna <b>true</b> se existir um relacionamento selecionada, caso contrario retorna false
-	 * @author Joaquim Neto
-	 * @return <b>true</b> Se tiver objeto selecionado
-	 */
-	boolean hasObjetoSelecionado();
 }

@@ -758,5 +758,17 @@ Configuração Footer
 	font-size: 12px !important;
 }
 
+/*Altera a cor do checkbox quando selecionado*/
+.ui-chkbox-icon{
+	background-color: #348c15 !important;
+}
+
+/*move o checkBox selecionar todos do cabeçalho  das tabelas de relacionamento*/
+.ui-chkbox-all{
+	display: none !important;	
+}
+
+.ui-selectonemenu-filter {
+	width: 90% !important;
 }
 

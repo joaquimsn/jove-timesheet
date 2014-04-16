@@ -33,14 +33,14 @@ public class Funcionario implements Serializable {
 	private Date cargaHoraria;
 
 	private String celular;
-	
+
 	@Required(label = "CEP", minimo = 8)
 	private String cep;
 
 	private String cidade;
 
 	private String complemento;
-	
+
 	@Required(label = "CPF", minimo = 14)
 	private String cpf;
 
@@ -63,7 +63,7 @@ public class Funcionario implements Serializable {
 
 	@Required(label = "Logradouro", minimo = 5)
 	private String logradouro;
-	
+
 	@Required(label = "Nome", minimo = 10)
 	private String nome;
 

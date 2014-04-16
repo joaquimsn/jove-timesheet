@@ -1,6 +1,8 @@
 package br.com.jovetecnologia.web.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,6 +17,7 @@ import br.com.jovetecnologia.domain.model.RelProjetoFuncionario;
 import br.com.jovetecnologia.domain.service.FuncionarioService;
 import br.com.jovetecnologia.domain.service.ProjetoService;
 import br.com.jovetecnologia.domain.service.RelProjetoFuncionarioService;
+import br.com.jovetecnologia.infrastructure.util.Messages;
 
 @ManagedBean
 @ViewScoped
@@ -25,9 +28,9 @@ public class RelProjetoFuncionarioBean extends ComporProjetoBean implements ICom
 	private Funcionario funcionario;
 	private Projeto projeto;
 
-	private RelProjetoFuncionario relacionamentoSelecionado;
-	private List<RelProjetoFuncionario> listaRelacionamento;
-	private List<RelProjetoFuncionario> listaRelacionamentoFiltrado;
+	private List<Funcionario> listaFuncionarioSelecionadoBase;
+
+	private Funcionario[] funcionarioSelecionados;
 
 	private List<Projeto> listaProjeto;
 
@@ -36,68 +39,60 @@ public class RelProjetoFuncionarioBean extends ComporProjetoBean implements ICom
 	@Override
 	@PostConstruct
 	public void inicializarPagina() {
-		relacionamentoSelecionado = new RelProjetoFuncionario();
+		funcionarioSelecionados = new Funcionario[0];
 		projeto = new Projeto();
 		funcionario = new Funcionario();
+		listaFuncionario = new ArrayList<Funcionario>();
 
 		listarTodos();
 	}
 
 	@Override
 	public void listarTodos() {
-		setListaFuncionario(new FuncionarioService().listarTodos());
 		setListaProjeto(new ProjetoService().listarTodos());
-		setListaRelacionamento(new RelProjetoFuncionarioService().listarTodos());
+		setListaFuncionario(new FuncionarioService().listarTodos());
 
-	}
-
-	@Override
-	public void habilitarCampo() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void cadastrar() {
-
-		new RelProjetoFuncionarioService().cadastrar(new RelProjetoFuncionario(getFuncionario(), getProjeto()));
-
-		inicializarPagina();
-
-	}
-
-	@Override
-	public void excluir() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public boolean hasObjetoSelecionado() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/**
-	 * @author Joaquim Neto
-	 * @return the relacionamentoSelecionado
-	 */
-	public RelProjetoFuncionario getRelacionamentoSelecionado() {
-		return relacionamentoSelecionado;
-	}
-
-	/**
-	 * @author Joaquim Neto
-	 * @param relacionamentoSelecionado the relacionamentoSelecionado to set
-	 */
-	public void setRelacionamentoSelecionado(RelProjetoFuncionario relacionamento) {
-		if (relacionamento != null && !isReadonly() && relacionamentoSelecionado != relacionamento) {
-			relacionamentoSelecionado = relacionamento;
-			setReadonly(true);
-		} else if (isReadonly() && hasObjetoSelecionado()) {
-			relacionamentoSelecionado = relacionamento;
-			setReadonly(true);
+		if (projeto != null && projeto.getIdProjeto() != 0) {
+			listaFuncionarioSelecionadoBase = new FuncionarioService().listarFuncionairoPorProjeto(getProjeto());
+			setFuncionarioSelecionados(listaFuncionarioSelecionadoBase.toArray(new Funcionario[0]));
+		} else {
+			funcionarioSelecionados = new Funcionario[0];
 		}
+		
+	}
+
+	/**
+	 * Salva as ações de cadastar, excluir realizada no relacionamento Funcionário Projeto
+	 * @author Joaquim Neto
+	 */
+	public void salvar() {
+		// Verifica se o usuário selecionou algum funcionário
+		if (funcionarioSelecionados.length > 0 && projeto != null) {
+			// Verifica o usuário selecionou algum novo Funcionário para o Projeto
+			for (Funcionario funcionario : funcionarioSelecionados) {
+				if (!listaFuncionarioSelecionadoBase.contains(funcionario)) {
+					RelProjetoFuncionario relProjetoFuncionario = new RelProjetoFuncionario(funcionario, getProjeto());
+					new RelProjetoFuncionarioService().cadastrar(relProjetoFuncionario);
+					listaFuncionarioSelecionadoBase.add(funcionario);
+				}
+			}
+
+			// Verifica se o usuário removeu algum Funcionario já cadastrado do projeto
+			List<Funcionario> listaFuncionarioSelecionadoModificado = new ArrayList<>(
+					Arrays.asList(funcionarioSelecionados));
+			for (Funcionario funcionario : listaFuncionarioSelecionadoBase) {
+				if (!listaFuncionarioSelecionadoModificado.contains(funcionario)) {
+					new RelProjetoFuncionarioService().deletar(new RelProjetoFuncionario(funcionario, projeto));
+				}
+			}
+
+			Messages.addWarn("Projeto salvo com sucesso");
+
+			inicializarPagina();
+		} else {
+			Messages.addWarn("Selecione ao menos 1 Funcionário para um Projeto");
+		}
+
 	}
 
 	/**
@@ -134,38 +129,6 @@ public class RelProjetoFuncionarioBean extends ComporProjetoBean implements ICom
 
 	/**
 	 * @author Joaquim Neto
-	 * @return the listaRelacionamento
-	 */
-	public List<RelProjetoFuncionario> getListaRelacionamento() {
-		return listaRelacionamento;
-	}
-
-	/**
-	 * @author Joaquim Neto
-	 * @param listaRelacionamento the listaRelacionamento to set
-	 */
-	public void setListaRelacionamento(List<RelProjetoFuncionario> listaRelacionamento) {
-		this.listaRelacionamento = listaRelacionamento;
-	}
-
-	/**
-	 * @author Joaquim Neto
-	 * @return the listaRelacionamentoFiltrado
-	 */
-	public List<RelProjetoFuncionario> getListaRelacionamentoFiltrado() {
-		return listaRelacionamentoFiltrado;
-	}
-
-	/**
-	 * @author Joaquim Neto
-	 * @param listaRelacionamentoFiltrado the listaRelacionamentoFiltrado to set
-	 */
-	public void setListaRelacionamentoFiltrado(List<RelProjetoFuncionario> listaRelacionamentoFiltrado) {
-		this.listaRelacionamentoFiltrado = listaRelacionamentoFiltrado;
-	}
-
-	/**
-	 * @author Joaquim Neto
 	 * @return the listaProjeto
 	 */
 	public List<Projeto> getListaProjeto() {
@@ -194,6 +157,22 @@ public class RelProjetoFuncionarioBean extends ComporProjetoBean implements ICom
 	 */
 	public void setListaFuncionario(List<Funcionario> listaFuncionario) {
 		this.listaFuncionario = listaFuncionario;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @return the funcionarioSelecionados
+	 */
+	public Funcionario[] getFuncionarioSelecionados() {
+		return funcionarioSelecionados;
+	}
+
+	/**
+	 * @author Joaquim Neto
+	 * @param funcionarioSelecionados the funcionarioSelecionados to set
+	 */
+	public void setFuncionarioSelecionados(Funcionario[] funcionarioSelecionados) {
+		this.funcionarioSelecionados = funcionarioSelecionados;
 	}
 
 }
