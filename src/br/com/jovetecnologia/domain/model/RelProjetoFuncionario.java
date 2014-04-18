@@ -45,7 +45,7 @@ public class RelProjetoFuncionario implements Serializable {
 	}
 	
 	/**
-	 * Instancia relProjetoFuncionario criandao a sua PK
+	 * Instancia relProjetoFuncionario para criar sua PK automaticamente
 	 * @author Joaquim Neto
 	 * @param funcionario Objeto Funcionário que irá compor o realcionamento
 	 * @param projeto Objeto Projeto que irá compor o relacionamento

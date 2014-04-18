@@ -13,7 +13,7 @@
 		<h:panelGrid columns="2" columnClasses="coluna-20, coluna-80" width="500px">
 			<h:outputText value="Projeto" styleClass="label-cadastro-simples"/>
 			
-			<p:selectOneMenu value="#{relProjetoFuncionarioBean.projeto}" styleClass="cbxRelacionamento" 
+			<p:selectOneMenu value="#{relProjetoFuncionarioBean.projetoSelecionado}" styleClass="cbxRelacionamento" 
 				converter="genericConverter" filter="true" filterMatchMode="contains">
 				<f:selectItem itemLabel="Selecione" itemValue="" />
 				<f:selectItems value="#{relProjetoFuncionarioBean.listaProjeto}" var="projeto" itemLabel="#{projeto.nome}" itemValue="#{projeto}" />
@@ -30,7 +30,7 @@
 			 resizableColumns="flase" style="width: 940px;" rowSelectMode="add">
 			
 			<f:facet name="header">
-				<p:outputLabel value="Lista de Funcionarios"/>
+				<p:outputLabel value="Lista de Funcionarios" style="font-size: 14px;" />
 			</f:facet>
 			
 			<p:ajax event="rowSelect" update="tableProjetoFunc" />
@@ -39,10 +39,12 @@
 			
 			<p:column  selectionMode="multiple" styleClass="coluna-position-center-5" />
 			
-			<p:column headerText="Funcionario" styleClass="coluna-60">
+			<p:column headerText="Funcionario" styleClass="coluna-60" filterBy="#{funcionario.nome}"
+				filterStyle="width:80%;">
 				#{funcionario.nome}
 			</p:column>
-			<p:column headerText="Departamento" styleClass="coluna-40" style="text-align: center">
+			<p:column headerText="Departamento" styleClass="coluna-40" style="text-align: center"
+				filterBy="#{funcionario.departamento.nome}" filterStyle="width:80%;">
 			 	#{funcionario.departamento.nome}
 			</p:column>
 		

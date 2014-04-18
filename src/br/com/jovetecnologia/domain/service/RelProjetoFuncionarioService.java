@@ -1,5 +1,6 @@
 package br.com.jovetecnologia.domain.service;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -9,15 +10,16 @@ import br.com.jovetecnologia.domain.model.RelProjetoFuncionario;
 import br.com.jovetecnologia.infrastructure.dao.RelProjetoFuncionarioDAO;
 import br.com.jovetecnologia.infrastructure.util.SystemUtils;
 
-public class RelProjetoFuncionarioService {
-	
+public class RelProjetoFuncionarioService implements Serializable {
+
+	private static final long serialVersionUID = 4081422723474520978L;
+
 	private RelProjetoFuncionarioDAO relProjetoFuncionarioDAO;
-	
+
 	public RelProjetoFuncionarioService() {
 		relProjetoFuncionarioDAO = new RelProjetoFuncionarioDAO();
 	}
-	
-	
+
 	/**
 	 * Grava o relacionamento entre Projeto e Funcionário
 	 * @author Joaquim Neto
@@ -26,10 +28,10 @@ public class RelProjetoFuncionarioService {
 	public void cadastrar(RelProjetoFuncionario relacionamento) {
 		relacionamento.setDataCadastro(new Date());
 		relacionamento.setUsuarioModificador(SystemUtils.getUsuarioLogado().getIdUsuario());
-		
+
 		relProjetoFuncionarioDAO.cadastar(relacionamento);
 	}
-	
+
 	/**
 	 * Excluir o relacionamento entre Projeto e Funcionário
 	 * @author Joaquim Neto
@@ -38,19 +40,9 @@ public class RelProjetoFuncionarioService {
 	public void deletar(RelProjetoFuncionario relacionamento) {
 		relProjetoFuncionarioDAO.deletar(relacionamento);
 	}
-	
-	/**
-	 * Retorna todos os Relacionamentos de Projeto-Funcionario salvo na base em ordem decrescente
-	 * @author Joaquim Neto
-	 * @return Lista com todos os relacionamento persistido
-	 */
-	@SuppressWarnings("unchecked")
-	public List<RelProjetoFuncionario> listarTodos() {
-		return relProjetoFuncionarioDAO.listarTodosDesc();
-	}
-	
+
 	public List<Funcionario> listarFuncionarioPorProjeto(Projeto projeto) {
-		return new FuncionarioService().listarFuncionairoPorProjeto(projeto);
+		return new FuncionarioService().consultarFuncionairoPorProjeto(projeto);
 	}
-	
+
 }

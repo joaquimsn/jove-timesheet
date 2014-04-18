@@ -104,7 +104,12 @@ public class FuncionarioService implements Serializable {
 		return funcionarioDAO.listarSupervisor();
 	}
 	
-	public List<Funcionario> listarFuncionairoPorProjeto(Projeto projeto) {
-		return funcionarioDAO.listarFuncionarioPorProjeto(projeto);
-	}
+	/**
+	 * Lista todos os funcionarios que estão relacionado com um projeto passado por paramentro 
+	 * @author Joaquim Neto
+	 * @param projeto Objeto Projeto
+	 * @return Lista com os funcionários que estão relacionado ao projeto informado por paramentro 
+	 */
+	public List<Funcionario> consultarFuncionairoPorProjeto(Projeto projeto) {
+		return funcionarioDAO.listarFuncionarioPorProjeto(projeto); }
 }

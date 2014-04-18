@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import br.com.jovetecnologia.domain.model.Atividade;
 import br.com.jovetecnologia.domain.model.Tarefa;
 import br.com.jovetecnologia.infrastructure.dao.TarefaDAO;
 import br.com.jovetecnologia.infrastructure.util.SystemUtils;
@@ -63,5 +64,15 @@ public class TarefaService implements Serializable{
 	@SuppressWarnings("unchecked")
 	public List<Tarefa> listarTodos(){
 		return tarefaDAO.listarTodosDesc();
+	}
+	
+	/**
+	 * Busca todas as tarefas que tenha um relacionamento com uma atividade informada por parametro.
+	 * @author Joaquim Neto
+	 * @param atividade Objeto Atividade que será usado na pesquisa
+	 * @return Lista com todas as tarefas relacionada a atividade informado
+	 */
+	public List<Tarefa> consultarTarefaPorAtividade(Atividade atividade) {
+		return tarefaDAO.consultarTarefaPorProjeto(atividade);
 	}
 }

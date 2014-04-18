@@ -14,8 +14,8 @@
 		</div>
 		
 		<p:fieldset legend="Funcionarios" style="clear: both;">
-			<p:dataGrid id="datagrid-funcionario" value="#{acompanhamentoBean.listaFuncionario}" var="funcionario" rows="5" paginator="true"
-				columns="1" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+			<p:dataGrid id="datagrid-funcionario" value="#{acompanhamentoBean.listaFuncionario}" var="funcionario" 
+				rows="5" paginator="true" columns="1">
 				
 				<h:commandLink class="container-funcionario" actionListener="#{acompanhamentoBean.setFuncionario(funcionario)}" >
 				

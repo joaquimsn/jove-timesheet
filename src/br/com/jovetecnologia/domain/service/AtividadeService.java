@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import br.com.jovetecnologia.domain.model.Atividade;
+import br.com.jovetecnologia.domain.model.Projeto;
 import br.com.jovetecnologia.infrastructure.dao.AtividadeDAO;
 import br.com.jovetecnologia.infrastructure.util.SystemUtils;
 
@@ -53,6 +54,17 @@ public class AtividadeService implements Serializable{
 	 */
 	public void ativarOuInativar(Atividade atividade) {
 		atividadeDAO.ativarOuInativar(atividade);
+	}
+	
+	
+	/**
+	 * Busca todas as atvidades que tenha um relacionamento com o projeto informado por parametro.
+	 * @author Joaquim Neto
+	 * @param projeto Objeto projeto que será usado na pesquisa
+	 * @return Lista com todas as atividades relacionada ao projeto informado
+	 */
+	public List<Atividade> buscarAtividadePorProjeto(Projeto projeto) {
+		return new AtividadeDAO().buscarAtividadePorProjeto(projeto);
 	}
 	
 	/**

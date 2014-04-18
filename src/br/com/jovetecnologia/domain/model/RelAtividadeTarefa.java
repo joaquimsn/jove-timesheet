@@ -1,8 +1,16 @@
 package br.com.jovetecnologia.domain.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * The persistent class for the rel_atividade_tarefa database table.
@@ -20,10 +28,6 @@ public class RelAtividadeTarefa implements Serializable {
 	@Column(name = "data_cadastro")
 	private Date dataCadastro;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "data_manutencao")
-	private Date dataManutencao;
-
 	@Column(name = "usuario_modificador")
 	private int usuarioModificador;
 
@@ -40,6 +44,23 @@ public class RelAtividadeTarefa implements Serializable {
 	public RelAtividadeTarefa() {
 	}
 
+	/**
+	 * Instancia relAtividadeTarefa para criar sua PK automaticamente
+	 * @author Joaquim Neto
+	 * @param atividade Objeto Atividade que irá compor o realcionamento
+	 * @param tarefa Objeto Tarefa que irá compor o relacionamento
+	 */
+	public RelAtividadeTarefa(Atividade atividade, Tarefa tarefa) {
+		RelAtividadeTarefaPK pk = new RelAtividadeTarefaPK();
+
+		pk.setIdAtividade(atividade.getIdAtividade());
+		pk.setIdTarefa(tarefa.getIdTarefa());
+
+		setAtividade(atividade);
+		setTarefa(tarefa);
+		setId(pk);
+	}
+
 	public RelAtividadeTarefaPK getId() {
 		return this.id;
 	}
@@ -54,14 +75,6 @@ public class RelAtividadeTarefa implements Serializable {
 
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
-	}
-
-	public Date getDataManutencao() {
-		return this.dataManutencao;
-	}
-
-	public void setDataManutencao(Date dataManutencao) {
-		this.dataManutencao = dataManutencao;
 	}
 
 	public int getUsuarioModificador() {

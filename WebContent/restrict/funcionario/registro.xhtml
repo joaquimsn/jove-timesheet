@@ -63,11 +63,11 @@
 					
 					<p:dataTable styleClass="table-registro" editable="true" editMode="cell" resizableColumns="flase" 
 						paginator="true" rows="5" paginatorTemplate="{FirstPageLink} {PreviousPageLink} 
-						{PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						{PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" paginatorPosition="bottom" 
 						emptyMessage="Não há registgros no momento.">
 						
 						<f:facet name="header">
-							Registros efetuados
+							<p:outputLabel value="Registros efetuados" style="font-size: 14px;" />
 						</f:facet>
 						
 						<p:column headerText="Projeto" styleClass="coluna-15" >

@@ -25,8 +25,7 @@ public class RelProjetoFuncionarioBean extends ComporProjetoBean implements ICom
 
 	private static final long serialVersionUID = 4449201043825864710L;
 
-	private Funcionario funcionario;
-	private Projeto projeto;
+	private Projeto projetoSelecionado;
 
 	private List<Funcionario> listaFuncionarioSelecionadoBase;
 
@@ -40,8 +39,7 @@ public class RelProjetoFuncionarioBean extends ComporProjetoBean implements ICom
 	@PostConstruct
 	public void inicializarPagina() {
 		funcionarioSelecionados = new Funcionario[0];
-		projeto = new Projeto();
-		funcionario = new Funcionario();
+		projetoSelecionado = new Projeto();
 		listaFuncionario = new ArrayList<Funcionario>();
 
 		listarTodos();
@@ -52,13 +50,14 @@ public class RelProjetoFuncionarioBean extends ComporProjetoBean implements ICom
 		setListaProjeto(new ProjetoService().listarTodos());
 		setListaFuncionario(new FuncionarioService().listarTodos());
 
-		if (projeto != null && projeto.getIdProjeto() != 0) {
-			listaFuncionarioSelecionadoBase = new FuncionarioService().listarFuncionairoPorProjeto(getProjeto());
+		if (projetoSelecionado != null && projetoSelecionado.getIdProjeto() != 0) {
+			listaFuncionarioSelecionadoBase = new FuncionarioService()
+					.consultarFuncionairoPorProjeto(getProjetoSelecionado());
 			setFuncionarioSelecionados(listaFuncionarioSelecionadoBase.toArray(new Funcionario[0]));
 		} else {
 			funcionarioSelecionados = new Funcionario[0];
 		}
-		
+
 	}
 
 	/**
@@ -67,11 +66,12 @@ public class RelProjetoFuncionarioBean extends ComporProjetoBean implements ICom
 	 */
 	public void salvar() {
 		// Verifica se o usuário selecionou algum funcionário
-		if (funcionarioSelecionados.length > 0 && projeto != null) {
+		if (funcionarioSelecionados.length > 0 && projetoSelecionado != null) {
 			// Verifica o usuário selecionou algum novo Funcionário para o Projeto
 			for (Funcionario funcionario : funcionarioSelecionados) {
 				if (!listaFuncionarioSelecionadoBase.contains(funcionario)) {
-					RelProjetoFuncionario relProjetoFuncionario = new RelProjetoFuncionario(funcionario, getProjeto());
+					RelProjetoFuncionario relProjetoFuncionario = new RelProjetoFuncionario(funcionario,
+							getProjetoSelecionado());
 					new RelProjetoFuncionarioService().cadastrar(relProjetoFuncionario);
 					listaFuncionarioSelecionadoBase.add(funcionario);
 				}
@@ -82,49 +82,34 @@ public class RelProjetoFuncionarioBean extends ComporProjetoBean implements ICom
 					Arrays.asList(funcionarioSelecionados));
 			for (Funcionario funcionario : listaFuncionarioSelecionadoBase) {
 				if (!listaFuncionarioSelecionadoModificado.contains(funcionario)) {
-					new RelProjetoFuncionarioService().deletar(new RelProjetoFuncionario(funcionario, projeto));
+					new RelProjetoFuncionarioService().deletar(new RelProjetoFuncionario(funcionario,
+							projetoSelecionado));
 				}
 			}
 
-			Messages.addWarn("Projeto salvo com sucesso");
+			Messages.addWarn("Relacionamento salvo com sucesso");
 
 			inicializarPagina();
 		} else {
-			Messages.addWarn("Selecione ao menos 1 Funcionário para um Projeto");
+			Messages.addWarn("Selecione ao menos 1 Tarefa para uma Atividade");
 		}
 
 	}
 
 	/**
 	 * @author Joaquim Neto
-	 * @return the funcionario
+	 * @return the projetoSelecionado
 	 */
-	public Funcionario getFuncionario() {
-		return funcionario;
+	public Projeto getProjetoSelecionado() {
+		return projetoSelecionado;
 	}
 
 	/**
 	 * @author Joaquim Neto
-	 * @param funcionario the funcionario to set
+	 * @param projetoSelecionado the projetoSelecionado to set
 	 */
-	public void setFuncionario(Funcionario funcionario) {
-		this.funcionario = funcionario;
-	}
-
-	/**
-	 * @author Joaquim Neto
-	 * @return the projeto
-	 */
-	public Projeto getProjeto() {
-		return projeto;
-	}
-
-	/**
-	 * @author Joaquim Neto
-	 * @param projeto the projeto to set
-	 */
-	public void setProjeto(Projeto projeto) {
-		this.projeto = projeto;
+	public void setProjetoSelecionado(Projeto projetoSelecionado) {
+		this.projetoSelecionado = projetoSelecionado;
 	}
 
 	/**
