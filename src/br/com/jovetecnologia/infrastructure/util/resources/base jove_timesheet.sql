@@ -66,7 +66,6 @@ CREATE TABLE tarefa (
  descricao VARCHAR(200) NOT NULL,
  ativo BIT(1) NOT NULL,
  data_cadastro DATETIME NOT NULL,
- data_manutencao DATETIME NOT NULL,
  usuario_modificador INT(11) NOT NULL
 );
 
@@ -146,7 +145,6 @@ CREATE TABLE rel_atividade_tarefa (
  id_atividade INT(11) NOT NULL,
  id_tarefa INT(11) NOT NULL,
  data_cadastro DATETIME NOT NULL,
- data_manutencao DATETIME NOT NULL,
  usuario_modificador INT(11) NOT NULL,
 
  PRIMARY KEY (id_atividade,id_tarefa),
