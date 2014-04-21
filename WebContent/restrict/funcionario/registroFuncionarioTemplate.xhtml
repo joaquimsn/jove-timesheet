@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:jove="http://java.sun.com/jsf/composite/componentes">
+	
+	<p:growl id="messagesRegistroFuncionario" showDetail="true" />
+	
+	
+	<h:panelGroup rendered="#{!registroBean.calendario}">
+		<div id="navegador-registro" >
+			<h:panelGrid columns="2" styleClass="botoes-navegacao-registro" >
+				<p:commandButton icon="ui-icon-carat-1-w" title="Dia anterior"  style="height: 25px" />
+				<p:commandButton icon="ui-icon-carat-1-e" title="Próximo dia" style="height: 25px"  />
+			</h:panelGrid>
+		</div>
+		
+		<p:fieldset legend="#{registroFuncionarioBean.dataExibicao}" styleClass="fildset-registro">
+			
+			<h:panelGroup id="formularioRegistro" >
+				<div class="formulario-registro" >
+					<h:panelGrid styleClass="lado-direito"
+						columns="3" columnClasses="coluna-35, coluna-35, coluna-35" width="100%">
+						
+						<h:panelGrid width="100%">
+							<p:outputLabel value="Projeto"  />
+							<p:selectOneMenu value="#{registroFuncionarioBean.projetoSelecionado}" converter="genericConverter" 
+								filter="true" filterMatchMode="contains" style="width: 100%;">
+								<f:selectItem itemLabel="selecione" itemValue=""/>
+								<f:selectItems value="#{registroFuncionarioBean.listaProjeto}" var="projeto"
+									itemLabel="#{projeto.nome}" itemValue="#{projeto}" />
+								<p:ajax listener="#{registroFuncionarioBean.listarTodos()}" update="formularioRegistro" />
+							</p:selectOneMenu>
+						</h:panelGrid>
+						
+						<h:panelGrid width="100%">
+							<p:outputLabel value="Atividade"  />
+							<p:selectOneMenu value="#{registroFuncionarioBean.atividadeSelecionada}" converter="genericConverter" 
+								filter="true" filterMatchMode="contains" style="width: 100%;" >
+								<f:selectItem itemLabel="selecione" itemValue=""/>
+								<f:selectItems value="#{registroFuncionarioBean.listaAtividade}" var="atividade" 
+									itemLabel="#{atividade.nome}" itemValue="#{atividade}"/>
+								<p:ajax listener="#{registroFuncionarioBean.listarTodos()}" update="formularioRegistro"/>
+							</p:selectOneMenu>
+						</h:panelGrid>
+						
+						<h:panelGrid width="100%">
+							<p:outputLabel value="Tarefa"  />
+							<p:selectOneMenu value="#{registroFuncionarioBean.tarefaSelecionada}" converter="genericConverter" 
+								filter="true" filterMatchMode="contains" style="width: 100%;" >
+								<f:selectItem itemLabel="selecione" itemValue=""/>
+								<f:selectItems value="#{registroFuncionarioBean.listaTarefa}" var="tarefa" 
+									itemLabel="#{tarefa.nome}" itemValue="#{tarefa}" />
+							</p:selectOneMenu>
+						</h:panelGrid>
+					</h:panelGrid>
+					
+					<div id="lado-esquerdo">
+						<div id="botoes-lado-esquerdo-registro">
+							<p:commandButton icon="ui-icon-circle-plus" styleClass="btn-padrao" value="Inserir" />
+							<p:selectBooleanCheckbox styleClass="check-almoco" itemLabel="Refeição" />
+							<p:commandButton styleClass="btn-padrao" icon="ui-icon-calendar" value="Calendário" 
+							actionListener="#{registroBean.setarCalendario}" />
+						</div>
+					</div>
+				</div>
+			</h:panelGroup>
+			
+			<p:dataTable styleClass="table-registro" editable="true" editMode="cell" resizableColumns="flase" 
+				paginator="true" rows="5" paginatorTemplate="{FirstPageLink} {PreviousPageLink} 
+				{PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" paginatorPosition="bottom" 
+				emptyMessage="Não há registgros no momento.">
+				
+				<f:facet name="header">
+					<p:outputLabel value="Registros efetuados" style="font-size: 14px;" />
+				</f:facet>
+				
+				<p:column headerText="Projeto" styleClass="coluna-15" >
+					GETLOG
+				</p:column>
+				
+				<p:column headerText="Atividade" styleClass="coluna-15" >
+					Refatoração
+				</p:column>
+				
+				<p:column headerText="Tarefa" styleClass="coluna-15" >
+					Sei lá
+				</p:column>
+				
+				<p:column headerText="Inicio" styleClass="coluna-5" >
+					9:00
+				</p:column>
+				
+				<p:column headerText="Fim" styleClass="coluna-5" >
+					14:00
+				</p:column>
+				
+				<p:column headerText="Total" styleClass="coluna-5" >
+					5:00
+				</p:column>
+				
+				<p:column headerText="Observação" styleClass="coluna-40" >
+					Desenvolvimento de componentes extras para a pagina de Conhecimento
+				</p:column>						
+			</p:dataTable>		
+												
+		</p:fieldset>
+	</h:panelGroup>	
+	
+	<h:panelGroup rendered="#{registroBean.calendario}">
+		<ui:include src="/restrict/funcionario/registro/calendario.xhtml" />
+	</h:panelGroup>
+			
+</ui:composition>

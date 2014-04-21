@@ -61,7 +61,7 @@
 			<h:panelGrid columns="2" columnClasses="coluna-position-top-40, coluna-60" style="margin:0 auto;">
 				<p:outputLabel  value="Descrição" styleClass="label-cadastro-simples" />
 				<p:inputTextarea value="#{tarefaBean.tarefaSelecionada.descricao}" styleClass="textarea-cadastro-simples" maxlength="200" cols="50" rows="6" 
-					autoResize="true" onkeyup="mascara(this, soTextoNumeros);" readonly="#{tarefaBean.readonly}" />
+					autoResize="true" onkeyup="mascara(this, mista);" readonly="#{tarefaBean.readonly}" />
 			</h:panelGrid>
 		</h:panelGroup>
 		
@@ -70,7 +70,7 @@
 			<!-- Botões para cadastro, exibido apenas se não tiver uma empresa selecionada-->
 			<h:panelGroup rendered="#{!tarefaBean.hasObjetoSelecionado()}" >
 				<p:commandButton value="Cadastrar" styleClass="btn-padrao" actionListener="#{tarefaBean.cadastrar}" 
-					update=":form-pagina-cadastro:tabview-cadastro:table-tarefa, formulario-tarefa, messages-tar"/>
+					update="tabview-cadastro:table-tarefa, formulario-tarefa, messages-tar"/>
 					
 				<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{tarefaBean.inicializarPagina}"
 					update=":form-pagina-cadastro:tabview-cadastro:table-tarefa, formulario-tarefa"/>

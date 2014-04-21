@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import br.com.jovetecnologia.domain.model.Funcionario;
 import br.com.jovetecnologia.domain.model.Projeto;
 import br.com.jovetecnologia.infrastructure.dao.ProjetoDAO;
 import br.com.jovetecnologia.infrastructure.util.SystemUtils;
@@ -62,5 +63,16 @@ public class ProjetoService implements Serializable{
 	@SuppressWarnings("unchecked")
 	public List<Projeto> listarTodos(){
 		return projetoDAO.listarTodosDesc();
+	}
+	
+	/**
+	 * Lista todos os projetos que estão relacionado com o funcionário passado por
+	 * paramentro
+	 * @author Joaquim Neto
+	 * @param funcionario Objeto funcionário
+	 * @return Lista com os projetos que estão relacionado ao funcionario informado por paramentro
+	 */
+	public List<Projeto> consultarProjetoPorFuncionario(Funcionario funcionario) {
+		return projetoDAO.consultarFuncionarioPorProjeto(funcionario);
 	}
 }

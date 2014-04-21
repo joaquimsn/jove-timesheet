@@ -91,7 +91,7 @@ public class RelProjetoFuncionarioBean extends ComporProjetoBean implements ICom
 
 			inicializarPagina();
 		} else {
-			Messages.addWarn("Selecione ao menos 1 Tarefa para uma Atividade");
+			Messages.addWarn("Selecione ao menos 1 Funcionário para um Projeto");
 		}
 
 	}

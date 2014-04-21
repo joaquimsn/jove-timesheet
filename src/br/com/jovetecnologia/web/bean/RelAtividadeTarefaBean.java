@@ -84,11 +84,11 @@ public class RelAtividadeTarefaBean extends ComporProjetoBean implements ICompor
 				}
 			}
 
-			Messages.addWarn("Atividade salvo com sucesso");
+			Messages.addWarn("Relacionamento salvo com sucesso");
 
 			inicializarPagina();
 		} else {
-			Messages.addWarn("Selecione ao menos 1 Funcionário para um Atividade");
+			Messages.addWarn("Selecione ao menos 1 Tarefa para um Atividade");
 		}
 
 	}

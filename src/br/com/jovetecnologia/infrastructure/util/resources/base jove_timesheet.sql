@@ -66,6 +66,7 @@ CREATE TABLE tarefa (
  descricao VARCHAR(200) NOT NULL,
  ativo BIT(1) NOT NULL,
  data_cadastro DATETIME NOT NULL,
+ data_manutencao DATETIME NOT NULL,
  usuario_modificador INT(11) NOT NULL
 );
 

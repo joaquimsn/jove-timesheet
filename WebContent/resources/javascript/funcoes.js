@@ -22,7 +22,7 @@ function soTextoNumeros(textoNumero){
 }
 
 function mista(mista){
-    return mista.replace(/[^ÁáÃãÂâÉéÊêÍíÓóÕõÔôÚúÑñÇç\sa-zA-Z0-9\@\.\-\_]/g,"").toUpperCase();//Exclua tudo que nÃ£o for letra ou numero e retorne o valor
+    return mista.replace(/[^ÁáÃãÂâÉéÊêÍíÓóÕõÔôÚúÑñÇç,.-\sa-zA-Z0-9\@\.\-\_]/g,"").toUpperCase();//Exclua tudo que nÃ£o for letra ou numero e retorne o valor
 }
 
 

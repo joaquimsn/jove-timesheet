@@ -78,7 +78,7 @@ public class FuncionarioDAO extends DAO<Funcionario> implements Serializable {
 	 * @return Lista com os funcionários que estão relacionado ao projeto informado
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Funcionario> listarFuncionarioPorProjeto(Projeto projeto) {
+	public List<Funcionario> consultarFuncionarioPorProjeto(Projeto projeto) {
 		List<Funcionario> listaFuncionario = null;
 		
 		session = ConexaoHibernate.getSessionFactory().openSession();

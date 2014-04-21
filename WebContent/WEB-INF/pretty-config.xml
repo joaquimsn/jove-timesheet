@@ -18,7 +18,7 @@
 	
 	<url-mapping id="registro">
 		<pattern value="/registro" />
-		<view-id value="/restrict/funcionario/registro.xhtml"/>
+		<view-id value="/restrict/universal/registroTelaPrincipal.xhtml"/>
 		<action>#{autorizadorBean.autorizarPaginaInicial}</action>
 	</url-mapping>
 	

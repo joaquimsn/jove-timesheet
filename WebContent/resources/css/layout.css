@@ -419,7 +419,7 @@ Configuração da pagina de registro
 	float: right !important;
 }
 
-#formulario-registro{
+.formulario-registro{
 	margin: 10px 0;
 	height: 75px;
 	width: 100%;
@@ -452,7 +452,7 @@ Configuração da pagina de registro
 }
 
 .table-registro{
-	margin-top: 25px;;
+	margin-top: 5px;;
 	font-size: 16px; 
 }
 
@@ -760,7 +760,7 @@ Configuração Footer
 
 /*Altera a cor do checkbox quando selecionado*/
 .ui-chkbox-icon{
-	background-color: #03f102 !important;
+	background-color: #01b70c !important;
 }
 
 /*move o checkBox selecionar todos do cabeçalho  das tabelas de relacionamento*/
@@ -771,4 +771,17 @@ Configuração Footer
 .ui-selectonemenu-filter {
 	width: 90% !important;
 }
+
+/*========================================
+Personalização do css dos Select
+==========================================*/
+.ui-selectonemenu .ui-selectonemenu-label{
+	font-size: 12px !important;
+	height: 20px !important;
+	line-height: 22px;
+}
+
+ .ui-selectonemenu-list-item {
+ 	font-size: 14px !important;
+ }
 

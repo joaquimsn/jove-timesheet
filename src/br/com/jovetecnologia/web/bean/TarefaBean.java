@@ -51,7 +51,7 @@ public class TarefaBean extends CadastroBean implements Serializable, ICrudBean 
 
 		new TarefaService().cadastrar(getTarefaSelecionada());
 
-		Messages.addInfo("Atividade cadastrada com sucesso");
+		Messages.addInfo("Tarefa cadastrada com sucesso");
 		
 		inicializarPagina();
 	}
@@ -72,7 +72,7 @@ public class TarefaBean extends CadastroBean implements Serializable, ICrudBean 
 
 		new TarefaService().alterar(getTarefaSelecionada());
 
-		Messages.addInfo("Atividade alterada com sucesso");
+		Messages.addInfo("Tarefa alterada com sucesso");
 		
 		inicializarPagina();
 	}
