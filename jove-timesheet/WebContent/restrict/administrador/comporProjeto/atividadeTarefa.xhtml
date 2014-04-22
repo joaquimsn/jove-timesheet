@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:jove="http://java.sun.com/jsf/composite/componentes">
+	
+	<p:growl id="messagesAtivTare" showDetail="true" />
+	
+	<h:panelGroup id="formulario-AtividadeTarefa" styleClass="formulario-cadastro-simples">
+		<h:panelGrid columns="2" columnClasses="coluna-20, coluna-80" width="500px">
+			<h:outputText value="Atividade" styleClass="label-cadastro-simples"/>
+			
+			<p:selectOneMenu value="#{relAtividadeTarefaBean.atividadeSelecionada}" styleClass="cbxRelacionamento" 
+				converter="genericConverter" filter="true" filterMatchMode="contains">
+				<f:selectItem itemLabel="Selecione" itemValue="" />
+				<f:selectItems value="#{relAtividadeTarefaBean.listaAtividade}" var="atividade" itemLabel="#{atividade.nome}" itemValue="#{atividade}" />
+				
+				<p:ajax listener="#{relAtividadeTarefaBean.listarTodos()}" update="tableAtivTare" />
+			</p:selectOneMenu>
+		</h:panelGrid>
+	</h:panelGroup>
+		
+	<div class="table-cadastro">
+		<p:dataTable id="tableAtivTare" value="#{relAtividadeTarefaBean.listaTarefa}" var="tarefa"
+			rowKey="#{tarefa.idTarefa}" paginator="true" widgetVar="tableAtividadeTarefa" rows="10"
+			 selection="#{relAtividadeTarefaBean.tarefaSelecionadas}" paginatorPosition="bottom" 
+			 resizableColumns="flase" style="width: 940px;" rowSelectMode="add"
+			 emptyMessage="Não existe tarefas cadastradas">
+			
+			<f:facet name="header">
+				<p:outputLabel value="Lista de Atividades" style="font-size: 14px;" />
+			</f:facet>
+			
+			<p:ajax event="rowSelect" update="tableAtivTare" />
+			<p:ajax event="rowSelectCheckbox" update="tableAtivTare" />
+			<p:ajax event="rowUnselectCheckbox" update="tableAtivTare" />
+			
+			<p:column  selectionMode="multiple" styleClass="coluna-position-center-5" />
+			
+			<p:column headerText="Tarefa" styleClass="coluna-100" filterBy="#{tarefa.nome}"
+				filterStyle="width:40%;" >
+				#{tarefa.nome}
+			</p:column>
+		</p:dataTable>
+	</div>
+	
+	<div style="height: 30px;margin: -30px 0 5px 0 !important;">
+		<p:commandButton value="Salvar" id="botaoInserirTare" styleClass="btn-padrao" style="margin-left: 865px;" 
+			actionListener="#{relAtividadeTarefaBean.salvar()}"
+			update="tableAtivTare formulario-AtividadeTarefa messagesAtivTare"/>
+	</div>
+</ui:composition>

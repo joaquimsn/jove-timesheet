@@ -1,0 +1,787 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: verdana, arial, sans-serif;
+}
+
+/*===================================
+CSS universal
+=====================================*/
+#corpo-pagina {
+	width: 100%;
+	position: absolute;
+	top: 77px;
+	bottom: 42px;
+}
+
+#pagina {
+	overflow: auto;
+	width: 100%;
+	height: 100%;
+}
+
+.btn-padrao {
+	margin: 0 5px;
+	font-size: 14px !important;
+	color: #f89117 !important;
+}
+
+.label-padrao{
+	font-size: 14px !important;
+}
+
+.campo-padrao{
+	font-size: 17px !important;
+}
+
+.select-padrao{
+	width: 100% !important;
+	font-size: 13px !important;
+}
+
+.btn-satatus-ativo{
+	font-size: 12px !important;
+	height: 25px;
+	width: 42%;
+	text-align: inherit!important;
+}
+
+.btn-satatus-inativo{
+	font-size: 12px !important;
+	height: 25px !important;
+	width: 54%;
+}
+
+.input-timer{
+	width: 70% !important; 
+}
+
+/*===================================
+Configuração do Menu
+=====================================*/
+#header {
+	height: 75px;
+	width: 100%;
+	background: #eee;
+	box-shadow: 0 2px 2px #777;
+	position: fixed;
+	z-index: 30;
+	top: 0;
+}
+
+/* Configuração div do cabeçalho esquerdo */
+#div-header-esquerda {
+	width: 12.5em;
+	height: 75px;
+	float: left;
+}
+
+#div-logo {
+	float: left;
+	width: 8em;
+	margin: 5px 0 0 0;
+}
+
+.logo-header {
+	width: 100%;
+	height: 70px;
+}
+
+#divisor-header {
+	height: 65px;
+	width: 1.5px;
+	float: left;
+	margin: 5px 0;
+	background: #fff;
+}
+
+/* Configuração div do cabeçalho direito */
+#div-header-direita {
+	height: 75px;
+}
+
+#menus-header {
+	height: 40px;
+	margin: 35px 5px 0 0;
+	float: right;
+}
+
+#menus-header ul li {
+	float: left;
+	list-style: none;
+}
+
+#menus-header a,.divisor-menus {
+	float: left !important;
+	text-decoration: none;
+	list-style: none;
+	color: #555;
+}
+
+#menus-header a:hover {
+	color: #f89117;
+	border-bottom: 0.2em solid;
+	margin: -10px 0 0;
+	font: bold;
+	transition: all 0.2s linear;
+}
+
+.divisor-menus {
+	width: 2px;
+	height: 16px;
+	text-align: center;
+	line-height: 16px;
+	background: #555;
+	margin: 12px 0 12px;
+}
+
+.menu-label {
+	width: auto !important;
+	height: 40px;
+	padding: 0 1em;
+	line-height: 40px;
+	text-align: center;
+	font-family: arial, verdana, sans-serif;
+	font-size: 1em;
+	transition: all 0.2s linear;
+}
+
+/*===================================
+Configuração do container
+=====================================*/
+#container {
+	width: 1006px;
+	min-height: 550px;
+	padding: 10px 0;
+	margin: 0 auto 45px auto;
+}
+
+/* Configuração do Titulo */
+#titulo-pagina {
+	height: 25px;
+	color: #f89117;
+	line-height: 25px;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+#titulo-esquerda{
+	height: 25px;
+	line-height: 25px;
+	font-size: 21px;
+	float: left;
+}
+
+#icon-titulo{
+	height: 24px;
+	width: 24px;
+}
+
+#titulo-none{
+	height: 25px;
+	margin: -25px 0 0 36px;
+}
+
+#div-usuario-logado {
+	height: 20px;
+	color: #111;
+	font-size: 12px;
+	float: right;
+}
+
+/*===================================
+Configuração pagina cadastro
+=====================================*/
+.pagina-cadastro {
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+/* Configuração dos campos */
+#tabview-cadastro {
+	font-size: 10px !important;
+}
+
+#formulario-cadastro-simples {
+	width: 550px;
+	margin: 30px auto 0 auto;
+}
+
+#formulario-cadastro-completo {
+	width: 950px !important;
+	margin: 20px auto 0 auto;
+}
+
+.label-cadastro-simples {
+	width: 200px;
+	margin: 10px 5px;
+	height: 20px;
+	line-height: 20px;
+}
+
+.input-cadastro-simples {
+	width: 330px;
+	margin: 10px 5px;
+	height: 20px;
+}
+
+.textarea-cadastro-simples {
+	width: 330px;
+	margin: 0 5px;
+	height: 105px;
+}
+
+
+/*=================================================== 
+   Configurações genericas para colunas do panelGrid
+===================================================== */
+.coluna-5-fit {
+	width: 5%;
+}
+
+.coluna-10 {
+	width: 10%;
+	padding-right: 10px;
+}
+
+.coluna-15 {
+	width: 15%;
+	padding-right: 10px;
+}
+
+.coluna-20 {
+	width: 20%;
+	padding-right: 10px;
+}
+
+.coluna-25 {
+	width: 25%;
+	padding-right: 10px;
+}
+
+.coluna-30 {
+	width: 30%;
+	padding-right: 10px;
+}
+
+.coluna-35 {
+	width: 35%;
+	padding-right: 10px;
+}
+
+.coluna-40 {
+	width: 40%;
+	padding-right: 10px;
+}
+
+.coluna-45 {
+	width: 45%;
+	padding-right: 10px;
+}
+
+.coluna-50 {
+	width: 50%;
+	padding-right: 10px;
+}
+
+.coluna-55 {
+	width: 55%;
+	padding-right: 10px;
+}
+
+.coluna-60 {
+	width: 60%;
+	padding-right: 10px;
+}
+
+.coluna-65 {
+	width: 65%;
+	padding-right: 10px;
+}
+
+.coluna-70 {
+	width: 70%;
+	padding-right: 10px;
+}
+
+.coluna-75 {
+	width: 75%;
+	padding-right: 10px;
+}
+
+.coluna-80 {
+	width: 80%;
+	padding-right: 10px;
+}
+
+.coluna-85 {
+	width: 85%;
+	padding-right: 10px;
+}
+
+.coluna-90 {
+	width: 90%;
+	padding-right: 10px;
+}
+
+.coluna-90-fit {
+	width: 90%;
+}
+
+.coluna-95-fit {
+	width: 95%;
+}
+
+.border-coluna {
+	border: 1px solid blue;
+}
+
+/* Outras para definição do posicionamento dentro da tr */
+.coluna-position-center-5 {
+	width: 5%;
+	text-align: center;
+}
+
+.coluna-position-center-15 {
+	width: 15%;
+	text-align: center;
+}
+
+.coluna-position-top-40 {
+	width: 40%;
+	vertical-align: baseline;
+	padding-right: 10px;
+}
+
+.coluna-position-center-40 {
+	width: 40%;
+	vertical-align: middle;
+	padding-right: 10px;
+}
+
+
+/*==================================
+ Configurações botões cadastro
+ =================================== */
+.botoes-tela-cadastro {
+	height: 30px;
+	margin: 15px 165px;
+	float: right;
+}
+
+.btn-padrao :hover {
+	color: #0088CC;
+}
+
+/*==================================
+ Configuração daa tabelas de cadastro
+ =================================== */
+.table-cadastro {
+	margin: 10px auto 50px auto;
+	width: 1000px;
+	font-size: 13px !important;
+}
+
+.table-cadastro tr th{
+	font-size: 12px !important;
+}
+
+.select-one-button-cadastro {
+	margin: 0 auto;
+	font-size: 10px !important;
+}
+
+.panel-form-cadastro{
+	width: 100%;
+	margin: 10px 0;
+}
+
+.wizard{
+	margin-top: -20px auto; 
+	width: 932px;
+}
+
+
+/*===================================
+Configuração da pagina de registro
+=====================================*/
+#form-registro{
+	width: 100%;
+	min-height: 550px !important;
+	font-size: 14px !important;
+}
+
+#navegador-registro{
+	width: 100%;
+}
+
+.botoes-navegacao-registro{
+	float: right !important;
+}
+
+.formulario-registro{
+	margin: 10px 0;
+	height: 75px;
+	width: 100%;
+}
+
+.fildset-registro{
+	min-height: 550px !important;
+	clear: both;
+}
+
+.lado-direito{
+	width: 600px;
+	10height: 75px;
+	float: left;
+}
+
+#lado-esquerdo{
+	width: 350px;
+	height: 75px;
+	float: left;
+}
+
+#botoes-lado-esquerdo-registro{
+	margin-top: 24px;
+}
+
+.check-almoco{
+	margin: 0 10px ;
+	line-height: 15px !important;
+}
+
+.table-registro{
+	margin-top: 5px;;
+	font-size: 16px; 
+}
+
+.table-registro th{
+	font-size: 12px;
+}
+
+.table-registro tr{
+	font-size: 12px;
+}
+
+/* Configuração do calendario */
+
+#botoes-calendario{
+	height: 30px;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.botoes-direita{
+	float: right;
+}
+
+
+/*===================================
+Configuração da pagina Acompanhamento
+=====================================*/
+#form-pagina-acompanhamento{
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+#div-lista-funcionario{
+	width: 100%;
+	font-size: 12px;
+}
+
+#botoes-lista-funcionario{
+	width:300px;
+	height: 20px; 
+	float: right;
+	margin-bottom: 10px;
+}
+
+.container-funcionario{
+	text-decoration: none;
+	margin-bottom: 200px !important;
+}
+
+.funcionario{
+	width: 900px;
+	height: 80px;
+	padding: 10px;
+	border: 1px solid #DDDDDD;
+	transition: all 0.3s linear;
+}
+
+.funcionario:hover{
+	background: #fcd09b;
+	transition: all 0.5s linear;
+}
+
+.foto-funcionario{
+	float: left;
+	height: 80px;
+	width: 80px;
+	padding: 10px;
+}
+
+.panelgrid-funcionario{
+	width:800px;
+	height: 80px;
+}
+
+.panelgrid-funcionario tr{
+	height: 26.666px;
+}
+
+.campo-label-funcionario{
+	font-size: 13px;
+	font-weight: bold;	
+}
+
+.campo-dados-funcionario{
+	font-size: 14px !important;
+}
+
+#opcao-pesquisa{
+	width: 100%;
+	height: 200px;
+	font-size: 14px;
+}
+
+/* Configuração da pagina statusequipe */
+#modal-equipe-funcionario{
+	font-size: 12px;
+}
+
+.container-equipe{
+	width: 900px;
+	height: 450px;
+}
+
+#parametros-do-relatorio{
+	width: 100%;
+	height: 70px;
+	margin: 5px 0 20px 0;
+}
+
+.panelgrid-parametros{
+	width: 100%;
+	height: 30px;
+}
+
+#panelgrop-de-tabelas{
+	margin: 10px 0;
+}
+
+/* Relatorio por funcionario */
+#botoes-topo{
+	height: 30px;
+	width: 100%;
+	margin-bottom: 5px; 
+}
+
+/*===================================
+Configuração da pagina meu perfil
+=====================================*/
+#usuario-topo{
+	width: 100%;
+	height: 200px;
+	margin-top: 20px;
+	border: 1px solid #DDDDDD;
+}
+
+#usuario-esquerda{
+	width: 160px;
+	height: 160px;
+	margin: 20px 10px;
+	float: left;
+}
+
+#foto-usuario{
+	width: 140px;
+	height: 140px;
+	margin: 0 auto;
+}
+
+.img-usuario-padrao{
+	width: 100%;
+	height: 100%;
+}
+
+.btn-link-padrao{
+	text-decoration: none;
+	font-size: 13px;
+	color: #0088CC;
+	margin: 5px 0 0 40px;
+}
+
+.btn-link-padrao:hover{
+	color: #333;	
+}
+
+#usuario-direta{
+	height: 200px;
+	float: left;
+}
+
+.grid-funcionario-meuperfil{
+	height: 180px;
+	margin: 10px 0 0 40px;
+}
+
+#dados-cadastrais-funcionario{
+	margin: 25px auto 0 auto;
+	font-size: 13px;
+}
+
+/* Modal alterar usuario e senha */
+.grid-alterar-usuario-senha{
+	width: 275px;
+	height: 225px;
+}
+
+
+/*===================================
+Configuração tela compor projeto
+=====================================*/
+.formularioDeRelacionamento{
+	width: 600px;
+	margin: 0 auto;
+	font-size: 14px !important; 
+}
+
+.formularioDeRelacionamento td{
+	padding: 5px 0 !important;
+}
+
+.cbxRelacionamento{
+	width: 100% !important;
+	font-size: 16px !important; 
+}
+
+#botaoInserir{
+	width: 600px !important;
+	height: 40px !important;
+}
+
+
+/*===================================
+Configuração Footer
+=====================================*/
+#footer {
+	width: 100%;
+	height: 40px;
+	background: #eee;
+	position: fixed;
+	bottom: 0;
+	font-family: verdana, arial, sans-serif, bold;
+	color: #6f6f6f;
+	box-shadow: -2px 0 4px 1px #777;
+}
+
+#div-slogan-footer {
+	height: 40px;
+}
+
+#logo-jove-footer {
+	background: url("../images/layout/jove-logo-mini.png") no-repeat!important;
+	width: 53px;
+	height: 32px;
+	margin: 4px 0 0 5px;
+}
+
+#div-slogan-footer p {
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 0.7em;
+	float: left;
+	margin: -34px 0 0 72px;
+}
+
+#div-versao {
+	float: right;
+}
+
+#div-versao p {
+	width: 20em;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	margin-top: -34px;
+	font-size: 0.7em;
+	float: right;
+}
+
+/****** Classes de componentes PrimeFaces reescritas ******/
+
+.ui-state-disabled {
+	background-image: none;
+	opacity: 0.55 !important;
+}
+
+.ui-widget-content .ui-datatable-even {
+	height: 40px;
+}
+
+.ui-widget-content .ui-datatable-odd {
+	height: 40px;
+}
+
+.ui-widget-content .ui-datatable-empty-message {
+	height: 40px;
+}
+
+.fileupload-buttonbar .ui-button input {
+	z-index: 1;
+}
+
+.ui-inputfield[readonly] {
+	background-color: rgb(245, 245, 245);
+}
+
+.ui-inputfield[readonly].ui-state-focus {
+	border-color: rgb(204, 204, 204);
+	box-shadow: 0px 0px 1px lightgray;
+	outline: 0 !important;
+}
+
+.ui-growl {
+	top: 75px !important;
+	right: 22px !important;
+	font-size: 13px;
+}
+
+.ui-timepicker-div{
+	font-size: 12px !important;
+}
+
+#ui-datepicker-div {
+	font-size: 12px !important;
+}
+
+/*Altera a cor do checkbox quando selecionado*/
+.ui-chkbox-icon{
+	background-color: #01b70c !important;
+}
+
+/*move o checkBox selecionar todos do cabeçalho  das tabelas de relacionamento*/
+.ui-chkbox-all{
+	display: none !important;	
+}
+
+.ui-selectonemenu-filter {
+	width: 90% !important;
+}
+
+/*========================================
+Personalização do css dos Select
+==========================================*/
+.ui-selectonemenu .ui-selectonemenu-label{
+	font-size: 12px !important;
+	height: 20px !important;
+	line-height: 22px;
+}
+
+ .ui-selectonemenu-list-item {
+ 	font-size: 14px !important;
+ }
+

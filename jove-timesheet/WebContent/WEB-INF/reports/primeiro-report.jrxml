@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="primeiro-report" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2d90603f-8123-4285-8ce8-826fb48ac831">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jove Timesheet"/>
+	<property name="ireport.callouts" value="callouts.1.fg=0,0,0\n callouts.1.bg=255,255,0\n "/>
+	<parameter name="FUNCIONARIO_NIVEL" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM funcionario f INNER JOIN usuario u ON f.id_funcionario = u.id_funcionario WHERE u.nivel =$P{FUNCIONARIO_NIVEL}]]>
+	</queryString>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cpf" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipo_contrato" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_departamento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_superior" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="nome">
+		<groupExpression><![CDATA[$F{nome}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="160" y="24" width="260" height="30" uuid="7022e971-0ecb-4d49-a97d-eb8a14d971b3"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Relatório de Funcionários Ativos"]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="20" y="20" width="50" height="50" uuid="7f82042c-306e-47d1-af80-c96ce6c6a75e"/>
+				<imageExpression><![CDATA["/home/joaquim/Imagens/usuario-example.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="490" y="7" width="70" height="30" uuid="91af7df4-1ef4-437e-b975-55847b871ed3"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="410" y="12" width="70" height="20" uuid="cb5eb407-dc47-44a5-bd9c-d2d10746dc73"/>
+				<text><![CDATA[Pagina]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="8" width="150" height="20" uuid="7e87056a-a6e1-43f5-a0da-eb15b5672ae3"/>
+				<textFieldExpression><![CDATA[$P{FUNCIONARIO_NIVEL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="8" width="120" height="20" uuid="2c2d2016-cbeb-41ac-b8cc-3d5c0e9c5057"/>
+				<text><![CDATA[Funcionario com nível:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="63" splitType="Stretch">
+			<textField>
+				<reportElement x="50" y="16" width="70" height="30" forecolor="#0000FF" uuid="b68d179c-f4de-4636-9187-39d97f055a82"/>
+				<textFieldExpression><![CDATA["Nome"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="16" width="70" height="30" forecolor="#0000FF" uuid="9ed82721-26a6-43fd-bcb4-46e66af6b274"/>
+				<textFieldExpression><![CDATA["CPF"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="288" y="20" width="90" height="30" forecolor="#0000FF" uuid="f4bc0be8-7ab0-4ec0-9eb8-e99902b89e68"/>
+				<textFieldExpression><![CDATA["Tipo Contrato"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="392" y="20" width="92" height="30" forecolor="#0000FF" uuid="30291c2d-1e18-4fda-8928-51273bf74b7d"/>
+				<textFieldExpression><![CDATA["Departamento"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="484" y="20" width="70" height="30" forecolor="#0000FF" uuid="57878310-4453-444b-97f7-0e06fbf5863f"/>
+				<textFieldExpression><![CDATA["Superior"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<textField>
+				<reportElement x="0" y="10" width="180" height="30" uuid="dd4a91f2-93af-4751-9398-0ffb914d6421"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="7" width="100" height="30" uuid="9cad53c8-120a-4f51-a3fb-2b07c21fb4b0"/>
+				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="7" width="70" height="30" uuid="bf60f91b-1906-45fc-916c-cec889e115a3"/>
+				<textFieldExpression><![CDATA[$F{tipo_contrato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="7" width="70" height="30" uuid="74b57911-1fcd-4581-a8c2-b08fc9847d4b"/>
+				<textFieldExpression><![CDATA[$F{id_departamento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="484" y="7" width="70" height="30" uuid="dc0e3f27-9592-4f9c-b4ac-a1d5f0ff6673"/>
+				<textFieldExpression><![CDATA[$F{id_superior}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="50" splitType="Stretch">
+			<textField pattern="dd MMMMM, yyyy">
+				<reportElement x="420" y="10" width="130" height="30" uuid="23e8dd71-cd5b-4a90-b895-60bbed261793"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="10" width="70" height="30" uuid="9a3bd87a-469a-4109-a535-77b5fe027af2"/>
+				<textFieldExpression><![CDATA["Gerado em:"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="210" y="17" width="150" height="20" uuid="0c2524cb-e23a-4a14-8dd8-f9ca0889a799"/>
+				<text><![CDATA[Meu Primeiro Relátorio]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

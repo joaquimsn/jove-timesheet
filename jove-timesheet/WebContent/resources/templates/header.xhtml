@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:form id="header" >
+		<div id="div-header-esquerda">
+			<div id="div-logo" >
+				<h:graphicImage value="/resources/images/layout/jove-logo-128x70.png"  styleClass="logo-header" />
+			</div>
+			<div id="divisor-header" />
+		</div>
+		
+		<div id="div-header-direita">
+			<div id="menus-header">
+				<ul>
+					<li>
+						<p:commandLink styleClass="menu-label" value="Registro" action="#{registroBean.abrirPagina}"/>
+					</li>
+					
+					<h:panelGroup rendered="#{sessionBean.usuarioLogado.administrador}">
+						<li class="divisor-menus" />
+						
+						<li>
+							<p:commandLink styleClass="menu-label" value="Cadastro" action="#{cadastroBean.abrirPagina}" />
+						</li>
+					</h:panelGroup>
+					
+					<h:panelGroup rendered="#{sessionBean.usuarioLogado.administrador}">
+						<li class="divisor-menus" />
+						
+						<li>
+							<p:commandLink styleClass="menu-label" value="Compor Projeto" action="#{comporProjetoBean.abrirPagina}" />
+						</li>
+					</h:panelGroup>
+					
+					<li class="divisor-menus" />
+					
+					<li>	
+						<p:commandLink styleClass="menu-label" value="Acompanhamento" action="#{acompanhamentoBean.abrirPagina}"/>
+					</li>
+					
+					<li class="divisor-menus" />
+					
+					<li>
+						<p:commandLink styleClass="menu-label" value="Meu Perfil" action="#{perfilBean.abrirPagina}"/>
+					</li>
+					
+					<li class="divisor-menus" />
+					
+					<li>
+						<p:commandLink styleClass="menu-label" value="Sair" action="#{loginBean.fazerLogOff}" />
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+	</h:form>
+
+</ui:composition>

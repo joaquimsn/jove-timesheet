@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:jove="http://java.sun.com/jsf/composite/componentes">
+	
+	<p:growl id="messages-tar" showDetail="true" />
+	
+	<!-- Tabela que lista as tarefas cadastradas -->
+	<div class="table-cadastro">
+		<p:dataTable id="table-tarefa" value="#{tarefaBean.listaTarefa}" var="tarefa" rowKey="#{tarefa.idTarefa}"  widgetVar="tabelaTarefa"
+			selection="#{tarefaBean.tarefaSelecionada}" selectionMode="single" paginator="true" rows="5" filteredValue="#{tarefaBean.listaTarefaFiltrada}"
+			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
+			paginatorPosition="bottom" resizableColumns="flase" style="width: 940px;" 
+			emptyMessage="Nenhum registro foi encontrado" >
+			
+			<p:ajax event="rowSelect" update=":form-pagina-cadastro:tabview-cadastro:formulario-tarefa"/>
+			
+			<f:facet name="header">
+				<p:outputLabel value="Tabela de tarefas" style="font-size: 14px;" />
+			</f:facet>
+			
+			<p:column headerText="Nome" styleClass="coluna-30" filterBy="nome"
+				filterStyle="width:80%;" style="text-align: center;" >
+				<h:outputText value="#{tarefa.nome}" />
+			</p:column>
+			
+			<p:column headerText="Descrição" styleClass="coluna-55" filterBy="descricao"
+				filterStyle="width:80%;" style="text-align: center;" >
+				<h:outputText value="#{tarefa.descricao}" />
+			</p:column>
+			
+			<p:column headerText="Status" styleClass="coluna-position-center-15" >
+				<h:panelGroup>
+					<p:commandButton value="Ativo" disabled="#{tarefa.ativo}" actionListener="#{tarefaBean.ativarOuInativar(tarefa)}" 
+						update="table-tarefa :form-pagina-cadastro:tabview-cadastro:messages-tar" styleClass="btn-satatus-ativo" >
+						<p:confirm header="Atenção" message="Você tem certeza que deseja ativar a tarefa selecionada" icon="ui-icon-alert" />
+					</p:commandButton>
+					<p:commandButton value="Inativo" disabled="#{!tarefa.ativo}" actionListener="#{tarefaBean.ativarOuInativar(tarefa)}" 
+						update="table-tarefa :form-pagina-cadastro:tabview-cadastro:messages-tar" styleClass="btn-satatus-inativo" >
+						<p:confirm header="Atenção" message="Você tem certeza que deseja inativar a tarefa selecionada" icon="ui-icon-alert" />
+					</p:commandButton>
+				</h:panelGroup>
+			</p:column>
+		
+		</p:dataTable>	
+	</div>
+	
+	<!-- Formulario de cadastro/alteração  -->
+	<p:fieldset id="formulario-tarefa" styleClass="formulario-cadastro-simples" legend="Dados Cadastrais" style="width: 910px;">		
+		<h:panelGroup id="dados-tarefa">
+			<h:panelGrid columns="2" columnClasses="coluna-40, coluna-60" style="margin:0 auto;" >
+				<p:outputLabel value="Nome do tarefa" styleClass="label-cadastro-simples" />
+				<p:inputText value="#{tarefaBean.tarefaSelecionada.nome}" styleClass="input-cadastro-simples" 
+					maxlength="100" onkeyup="mascara(this, soTextoNumeros);" readonly="#{tarefaBean.readonly}" />
+			</h:panelGrid>
+			
+			<h:panelGrid columns="2" columnClasses="coluna-position-top-40, coluna-60" style="margin:0 auto;">
+				<p:outputLabel  value="Descrição" styleClass="label-cadastro-simples" />
+				<p:inputTextarea value="#{tarefaBean.tarefaSelecionada.descricao}" styleClass="textarea-cadastro-simples" maxlength="200" cols="50" rows="6" 
+					autoResize="true" onkeyup="mascara(this, mista);" readonly="#{tarefaBean.readonly}" />
+			</h:panelGrid>
+		</h:panelGroup>
+		
+		<!-- Botões exibidos na view -->
+		<div class="botoes-tela-cadastro" >
+			<!-- Botões para cadastro, exibido apenas se não tiver uma empresa selecionada-->
+			<h:panelGroup rendered="#{!tarefaBean.hasObjetoSelecionado()}" >
+				<p:commandButton value="Cadastrar" styleClass="btn-padrao" actionListener="#{tarefaBean.cadastrar}" 
+					update="tabview-cadastro:table-tarefa, formulario-tarefa, messages-tar"/>
+					
+				<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{tarefaBean.inicializarPagina}"
+					update=":form-pagina-cadastro:tabview-cadastro:table-tarefa, formulario-tarefa"/>
+			</h:panelGroup>
+			 
+			 <!-- Botões para liberar a alteração, exibido apenas se tiver uma empresa selecionada -->
+			<h:panelGroup rendered="#{tarefaBean.hasObjetoSelecionado()}" >
+				<h:panelGroup rendered="#{tarefaBean.readonly}">
+					<p:commandButton value="Alterar" styleClass="btn-padrao" actionListener="#{tarefaBean.habilitarCampo}" 
+						update="formulario-tarefa"/>
+					<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{tarefaBean.inicializarPagina}"
+						update=":form-pagina-cadastro:tabview-cadastro:table-tarefa, formulario-tarefa" />
+				</h:panelGroup>
+				
+				<!-- Botões exibidos quando clica-se no botão alterar-->
+				<h:panelGroup rendered="#{!tarefaBean.readonly}">
+					<p:commandButton value="Salvar" styleClass="btn-padrao" actionListener="#{tarefaBean.alterar}" 
+						update=":form-pagina-cadastro:tabview-cadastro:table-tarefa, formulario-tarefa, messages-tar"/>
+					<p:commandButton value="Cancelar" styleClass="btn-padrao" actionListener="#{tarefaBean.inicializarPagina}" 
+						update=":form-pagina-cadastro:tabview-cadastro:table-tarefa, formulario-tarefa" />
+				</h:panelGroup>
+			</h:panelGroup>
+		</div>
+	</p:fieldset>
+	
+</ui:composition>
