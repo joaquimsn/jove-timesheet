@@ -16,6 +16,9 @@
 			<h:panelGroup rendered="#{registroBean.funcionario}">
 				<ui:include src="/restrict/funcionario/registroFuncionarioTemplate.xhtml" />
 			</h:panelGroup>
+			<h:panelGroup rendered="#{!registroBean.funcionario}">
+				<ui:include src="/restrict/administrador/registroAcatamento.xhtml" />
+			</h:panelGroup>
 		</h:form>
 	</ui:define>
 </ui:composition>

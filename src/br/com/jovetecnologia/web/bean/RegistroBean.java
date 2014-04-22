@@ -22,8 +22,6 @@ public class RegistroBean implements Serializable {
 
 	private boolean calendario;// Refazer só teste
 
-	private boolean funcionario;
-	
 	private Funcionario funcionarioSelecionado;
 	
 	private Projeto projetoSelecionado;
@@ -39,7 +37,7 @@ public class RegistroBean implements Serializable {
 	}
 
 	/**
-	 * Inicializa os objetos necessario para o funcionamento da pagina
+	 * Responsavel por abrir a pagina de registro
 	 * @author Joaquim Neto
 	 * @return O nome da pagina solicitada pelo cliente
 	 */
@@ -48,6 +46,10 @@ public class RegistroBean implements Serializable {
 		return IOutcome.REGISTRO;
 	}
 	
+	/**
+	 * Inicializa todos os componentes essenciais para o funcionamento da pagina
+	 * @author Joaquim Neto
+	 */
 	@PostConstruct
 	public void inicializarPagina() {
 		funcionarioSelecionado = new Funcionario();
@@ -87,20 +89,12 @@ public class RegistroBean implements Serializable {
 	}
 
 	/**
-	 * Verifica-se o funcionario logado é um funcionario ou administrado
+	 * Verifica-se o usuário logado é tem nivel de funcionario ou administrado
 	 * @author Joaquim Neto
 	 * @return <b>true<\b> se o usuário logado tiver nivel Funcionário
 	 */
 	public boolean isFuncionario() {
 		return (SystemUtils.getUsuarioLogado().isAdministrador() == false ? true : false);
-	}
-
-	/**
-	 * @author Joaquim Neto
-	 * @param funcionario the funcionario to set
-	 */
-	public void setFuncionario(boolean funcionario) {
-		this.funcionario = funcionario;
 	}
 
 	/**

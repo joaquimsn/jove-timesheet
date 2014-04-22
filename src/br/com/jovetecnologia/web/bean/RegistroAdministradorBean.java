@@ -1,5 +1,10 @@
 package br.com.jovetecnologia.web.bean;
 
-public class RegistroAdministradorBean {
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+@ManagedBean
+@ViewScoped
+public class RegistroAdministradorBean extends RegistroBean {
 
 }

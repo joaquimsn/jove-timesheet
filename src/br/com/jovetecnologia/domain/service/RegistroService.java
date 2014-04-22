@@ -14,9 +14,9 @@ public class RegistroService implements Serializable {
 	public RegistroService() {
 		registroDAO = new RegistroDAO();
 	}
-
+	
 	public void cadastrar(Registro registro) {
-
+		registroDAO.cadastar(registro);
 	}
 
 	public void deletar(Registro registro) {

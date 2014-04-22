@@ -32,6 +32,10 @@ public class RegistroFuncionarioBean extends RegistroBean {
 		listarTodos();
 	}
 
+	/**
+	 * Responsável por preencher todas lista presente na pagina
+	 * @author Joaquim Neto
+	 */
 	public void listarTodos() {
 		setListaProjeto(new ProjetoService().consultarProjetoPorFuncionario(SystemUtils.getFuncionarioLogado()));
 
